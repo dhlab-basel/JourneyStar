@@ -1,0 +1,123 @@
+@prefix schema: <https://schema.org/> .
+@prefix ex: <http://example.com/ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+ex:PersonShape a sh:NodeShape  ;
+    sh:targetClass :Person ;
+    sh:property [
+        sh:path schema:givenName ;
+       # sh:minCount 1 ;
+        sh:languageIn ("en" "de") ;
+        sh:datatype xsd:string;
+    ] ,
+    [
+        sh:path schema:familyName ;
+       # sh:minCount 1 ;
+        sh:datatype xsd:string ;
+    ] ,
+    [
+        sh:path schema:name;
+       # sh:minCount 1 ;
+        sh:datatype xsd:string ;
+    ],
+    [
+        sh:path owl:sameAs;
+        sh:datatype xsd:integer; # sh:nodekind sh:IRI
+    ],
+    [
+        sh:path :gnd;
+        sh:datatype xsd:string;
+    ],
+    [
+        sh:path schema:gender;
+        sh:in (schema:Female schema:Male :otherShape)
+    ],
+    [
+        sh:path schema:birthDate ;
+       # sh:minCount 1 ;
+        # sh:maxCount 1 ;
+        sh:datatype xsd:date ;
+    ],
+    [
+        sh:path :hasDisability;
+        sh:datatype xsd:string;
+    ], 
+    [
+        sh:path :hasParent;
+        sh:datatype schema:Person;
+    ] , 
+    [
+        sh:path :livedIn;
+        sh:datatype :Location;
+    ] , 
+    [
+        sh:path :bornIn;
+        sh:datatype :Location;
+    ],
+    [
+        sh:path schema:knows;
+        sh:in (:Location :Person :OtherShape) ; # :Person :Route 
+    ],
+    [
+        sh:path :nationality;
+        sh:datatype xsd:string;
+    ],
+    [
+        sh:path :hasSighted;
+        sh:in (:Architecuture :Landscape :occurence :Person ex:otherShape);
+    ], 
+    [
+        sh:path :travelledTo;
+        sh:datatype :LocationShape;
+    ], 
+    [
+        sh:path :trades;
+        sh:nodeKind sh:BlankNodeOrIRIOrLiteral;
+    ], 
+    [
+        sh:path :hasEmployment;
+        sh:datatype :Employment;
+    ],
+     [
+        sh:path :hasParticipatedIn;
+        sh:datatype :ActivityShape;
+    ],
+     [
+        sh:path :hasSighted;
+        sh:in (:ArchitectureShape );
+    ].
+
+
+### shacl Location ###
+ex:LocationShape a sh:NodeShape  ;
+    sh:targetClass trip:Location ;
+    sh:property 
+    [
+        sh:path :hasGeonameID ;
+        sh:maxCount 1 ;
+      #  sh:languageIn ("en" "de" ) ;
+    ] ,
+    [
+        sh:path schema:name ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ; ## add here or add in hasNameShape that it must be schema:name > xsd:string
+    ] ,
+    [
+        sh:path :hasWikiLink ;
+       # sh:minCount 1 ;
+        sh:datatype xsd:URL ; ##!!!
+    ] ,
+	  [
+        sh:path :hasAlternativeName ;
+        sh:datatype xsd:string ;
+    ],
+	  [
+        sh:path :hasComment ;
+        sh:datatype xsd:string ;
+    ], 
+    [
+        sh:path schema:adress;
+        sh:datatype xsd:string;
+    ] .

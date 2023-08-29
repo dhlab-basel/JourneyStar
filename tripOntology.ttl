@@ -1,0 +1,603 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix currency: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix schema: <https://schema.org/> .
+@prefix : <http://www.mysemantics.com/ontology/trip/> .
+@base <http://www.mysemantics.com/> .
+
+<http://www.mysemantics.com/ontology/hp/> rdf:type owl:Ontology ;
+                                       rdfs:comment "A trip ontology." ;
+                                       owl:versionInfo "v.1.0" .
+
+
+### Person ###
+
+:Person rdf:type owl:Class ;
+    rdfs:subClassOf schema:Person;
+    rdfs:label "Person"@de ,
+                "Person"@en ;
+    rdfs:comment "Represents a Person."@en .
+
+
+    # hasParent inverseOf isParentOf
+:hasParent rdf:type owl:ObjectProperty; #ObjectProperty
+    owl:inverseOf :isParentOf;
+    rdfs:label  ""@de,
+                ""@en;
+    rdfs:comment ""@en.
+
+    ### isParentOf
+:isParentOf rdf:type owl:ObjectProperty; 
+    owl:inverseOf :hasParent;
+    rdfs:label  ""@de,
+                ""@en;
+    rdfs:comment ""@en.
+
+    # participatedIn range :Activity
+:hasParticipant rdf:type owl:ObjectProperty;
+        rdfs:label ""@de,
+                ""@en;
+    rdfs:comment ""@en.
+
+
+### visited
+:visited rdf:type owl:ObjectProperty;
+        rdfs:label ""@de,
+                ""@en;
+    rdfs:comment ""@en.
+
+### hasSighted ### range:Architecture, :Person 
+:hasSighted rdf:type owl:ObjectProperty;
+        rdfs:label ""@de,
+                ""@en;
+    rdfs:comment ""@en.
+
+### lived In ### range:Location
+:livedInIn rdf:type owl:ObjectProperty;
+        rdfs:label ""@de,
+                ""@en;
+    rdfs:comment ""@en.
+
+### hasGender subPropertyOf schema:gender 
+:hasGender rdf:type owl:ObjectProperty;
+    rdfs:subPropertyOf schema:gender;
+    rdfs:label  ""@de,
+                ""@en;
+    rdfs:comment ""@en.
+
+# other xsd:literal / or resource? both
+:other rdf:type owl:DatatypeProperty; #ObjectProperty
+    rdfs:label  ""@de,
+                ""@en;
+    rdfs:comment ""@en.
+
+### :hasSensation ### :hasComment
+### :hasImpression ##
+
+
+### Location ###
+:Location rdf:type owl:Class ; 
+        rdfs:subclassOf dbo:Location;
+        rdfs:label  "Ort"@de,
+                    "Location"@en;
+        rdfs:comment "A class defining a location"@en .
+
+### Landscape ###
+:Landscape rdf:type owl:Class ; 
+        rdfs:subClassOf :Location ; #schemalandscap
+        rdfs:label "Landschaft"@de,
+                    "Landscape"@en;
+        rdfs:comment "Nature of any type"@en .
+
+
+### Settlement ###
+:Settlement rdf:type owl:Class ; 
+        rdfs:subclassOf dbo:Settlement; 
+        rdfs:label  "Niederlassung/Siedlung"@de,
+                    "Human settlement"@en;
+        rdfs:comment "A resource/class defining a settlementofanysize"@en .
+
+
+### Architecture ####
+:Architecture rdf:type owl:Class ;
+
+        rdfs:subClassOf dbo:ArchitecturalStructure  ; 
+        rdfs:label "Architektur"@de ,
+                   "Architecture"@en ;
+
+        rdfs:comment "A physical entity that was constructed by humans."@en .
+
+### Accommodation ###
+:Accommodation rdf:type owl:Class ;
+        rdfs:subClassOf :Architecture ;
+
+        rdfs:label "Unterkunft"@de ,
+                   "accommodation"@en ;
+
+        rdfs:comment "A resource representing an accommodation."@en .
+
+
+### travel > noun or as in travelling? 
+:Travel rdf:type owl:Class ;
+        rdfs:label "Reisen"@de ,
+                "Travel"@en ;
+        rdfs:comment "Any type of movement between two locations."@en .
+
+### Journey  ###
+:Journey rdf:type owl:Class ;
+        rdfs:subClassOf :Travel ;
+        owl:differentFrom :Excursion; ###!! not right example
+        rdfs:label "Reise"@de ,
+                "Journey"@en ;
+        rdfs:comment "A journey from one place to another."@en .
+
+:hasStop rdf:Type owl:ObjectProperty;
+        rdfs:label ""@de,
+                    ""@en;
+        rdfs:comment "A Stop while on the journey from one place to another"@en.
+
+# ex:JourneyShape
+
+### Excursion ###
+:Excursion rdf:type owl:Class ;
+        rdfs:subClassOf :Travel ;
+        rdfs:label "Excursion"@de ,
+                "Exkursion"@en ;
+        rdfs:comment "An excursion from a location to another location and back."@en .
+
+### Transportation ### 
+:Transportation rdf:type owl:Class ;
+        rdfs:label "Transport"@de ,
+                   "Transport"@en ;
+        rdfs:comment "Represents a transportation event."@en .
+
+### Mean Of Transportation ### 
+:MeanOfTransportation rdf:type owl:Class ;
+        rdfs:label "Transportmittel"@de ,
+                   "Mean of Transport"@en ;
+        rdfs:comment "Represents a mean of transportation."@en .
+
+#Instances?
+# schema:Car a :MeanOfTransportation .
+# schema:Ship a :MeanOfTransportation .
+# schema:Train a :MeanOfTransportation .
+# schema:Plane a :MeanOfTransportation .
+
+### Stay ###
+:Stay rdf:type owl:Class ; 
+        rdfs:label "Aufenthalt"@de,
+                    "Stay"@en;
+        rdfs:comment "A stay during a journey of undetermined amount of time"@en .
+
+ex:StayShape a sh:NodeShape  ;
+    sh:targetClass :Stay ;
+    sh:property 
+    [
+        sh:path :Location ;
+        sh:maxCount 1 ;
+        #sh:languageIn ("en" "de" ) ;
+    ] ,
+    [
+        sh:path :arrival ;
+        #sh:minCount 1 ;
+        sh:datatype xsd:dateTime ; ## add here or add in hasNameShape that it must be schema:name > xsd:string
+    ] ,
+    [
+        sh:path :departure ;
+       # sh:minCount 1 ;
+        sh:datatype xsd:dateTime ; 
+    ] ,
+	[
+        sh:path :hasAccommodation ;
+        sh:datatype :AccommodationShape ;
+    ],
+	[
+        sh:path :hasComment ;
+        sh:datatype xsd:string ;
+    ] .
+
+### LongtermStay ###
+:LongtermStayStay rdf:type owl:Class ; 
+        rdfs:subClassOf :Stay ;
+        owl:differentFrom :ShorttermStay;
+        rdfs:label "Langer Aufenthalt"@de ,
+                   "Longterm Stay"@en ;
+        rdfs:comment "The stay at the destination of a main journey."@en .
+
+### ShorttermStay ###
+:ShorttermStayStay rdf:type owl:Class ; 
+        rdfs:subClassOf :Stay ;
+        rdfs:label "Kurzer Aufenthalt"@de ,
+                   "Shortterm Stay"@en ;
+        rdfs:comment "A shorterm stay at the destination of a main journey."@en .
+
+#######################
+### written sources ###
+
+### Insert manuscript >>> check beol! ###
+:Manuscript rdf:type owl:Class;
+        rdfs:label "Manuskrip"@de ,
+                "Manuscript"@en ;
+        rdfs:comment "Represents a manuscript."@en .
+
+
+### TravelDiary ###
+:TravelDiary rdf:type owl:Class ;
+        rdfs:subClassOf :Manuscript; # beol:manuscript ;
+        rdfs:label "Reisetagebuch"@de ,
+                "Travel Diary"@en ;
+        rdfs:comment "Represents a travel diary."@en .
+
+### Itinerary ###
+:Itinerary rdf:type owl:Class ;
+        rdfs:subClassOf :Manuscript; 
+        rdfs:label ""@de ,
+                ""@en ;
+        rdfs:comment ""@en .
+
+### Ethnography ###
+:Ethnography rdf:type owl:Class ;
+        rdfs:subClassOf :Manuscript; 
+        rdfs:label "Reisetagebuch"@de ,
+                "Travel Diary"@en ;
+        rdfs:comment "Represents a travel diary."@en .
+
+
+### Sensastion ### subClassOf dbo:Senses or an instance of // :(has)Sensation :hasComment xsd:string
+
+# sensory: dbo:Sense
+# impressions
+# notices / describes / observes {Person observes from afar}
+# sees / smells / touches / hears / tastes
+# smell
+# taste
+# sound 
+# visiting
+# seeing
+# getting lost
+# getsLost > subexcursion
+# takes
+# creates
+# hear/listen
+# participates
+# hasEncounter
+# hasParticipant
+# exchanges
+# documented
+# buys xsd:string or object > hasCost >schema:name
+# picksUp
+# delivers
+
+#documentation
+    # Image > description or resource
+    # Sketch > 
+    # Video
+    # Audio
+
+# altrecation
+# interaction
+# exchange
+# attempts
+# stops
+# delay
+# builds
+# weather
+# passed away in / dies > in Location
+# receipt
+
+
+# _:b1 rdf:type rdf:Statement ;
+# 	   rdf:subject :Jack ;
+#      rdf:predicate :killed ;
+# 	   rdf:object :Paul .
+
+# nodekind rdf:statement?
+# datatype property
+
+#Infrastructure subClassOf
+
+
+### accordingTo ### range: rdf triple
+:accordingTo rdf:type owl:ObjectProperty ;
+        rdfs:label "ist Informationsquelle"@de ,
+                   "is source of information"@en ;
+        rdfs:comment "Represents the source of information."@en .
+
+###!! trip:hasAccommodation(Type) > and then accommodation has a type?
+:hasAccommodation rdf:type owl:ObjectProperty ;
+        rdfs:label "Art der Unterkunft"@de ,
+                   "accommodation type"@en ;
+        rdfs:comment """Represents the type of an accommodation."""@en .
+
+### !! hasActivity ### :Activity or xsd:string
+:hasActivity rdf:type owl:ObjectProperty ;
+        rdfs:label "Hat eine Aktivität"@de ,
+                   "Has an activity"@en ;
+         rdfs:comment """Represents an activity."""@en . 
+
+###!! has Alternative Name ### xsd:string
+:hasAlternativeName rdf:type owl:ObjectProperty ;
+        rdfs:label "Alternativer Name"@de ,
+                   "Alternative name"@en ;
+        rdfs:comment """Represents alternative name."""@en .
+
+### has Cost ###
+:hasCost rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf currency:hasPrice ;
+        rdfs:label "Kosten"@de ,
+                   "Cost"@en ;
+        rdfs:comment """Represents the cost."""@en .
+
+### has currency ###
+:hasCurrency rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf currency:hasCurrency ;
+        rdfs:label "Währung"@de ,
+                   "Currency"@en ;
+        rdfs:comment """Represents the currency of a payment."""@en .
+
+
+### hasComment ###
+:hasComment rdf:type owl:ObjectProperty ;
+        rdfs:label "Kommentar"@de ,
+                   "Comment"@en ;
+        rdfs:comment """Represents a human readable comment."""@en .
+
+### has Date ###
+:hasDate rdf:type owl:ObjectProperty ;
+       # rdfs:subPropertyOf dcterms:date ; # take away >> belongs to shacl xsd:date?
+        rdfs:label "Datum"@de ,
+                   "Date"@en ;
+        rdfs:comment """Represents the date, can be an interval."""@en .
+
+### has Destination ###
+:hasDestination rdf:type owl:ObjectProperty ;
+        rdfs:label "hat Reiseziel"@de ,
+                   "has destination"@en ;
+        rdfs:comment """Represents the destination of a one day excursion."""@en .
+
+### has Discipline ###
+:hasDiscipline rdf:type owl:ObjectProperty ;
+        rdfs:label "hat Disziplin"@de ,
+                   "has discipline"@en ;
+        rdfs:comment """Represents the discipline of an academic field."""@en .
+
+### hasEmployment ##
+:hasEmployment rdf:type owl:ObjectProperty ;
+        rdfs:label "Besitzt Anstellung"@de , #zuvor nur Anstellung > nicht gleiche Bedeutung?
+                   "Has employment"@en ;
+        rdfs:comment """Represents employment."""@en .
+
+##!! employment type?? ##
+
+### has Employer ### 
+:hasEmployer rdf:type owl:ObjectProperty ; 
+        rdfs:label "hat Vorgesetze Person"@de , # hat vorgesetze:n
+                   "has boss"@en ; #employer
+        rdfs:comment """Represents a employer-employee relation."""@en .
+
+### !!
+:hasEmployee rdf:type owl:ObjectProperty;
+        owl:inverseOf :hasEmployer .
+
+### hasEncounter
+:hasEncounter rdf:type owl:ObjectProperty ;
+        rdfs:label "Begegnung"@de ,
+                   "Encounter"@en ;
+        rdfs:comment """Represents an encounter of two or more people."""@en .
+
+
+### hasExcursion
+:hasExcursion rdf:type owl:ObjectProperty ;
+        rdfs:label "Ausflug"@de ,
+                   "Excursion"@en ;
+        rdfs:comment """Represents an excursion."""@en .
+
+### has sub excursion 
+:hasSubExcursion rdf:type owl:ObjectProperty ;
+        rdfs:label "Exkursions-Teil"@de ,
+                   "Sub excursion"@en ;
+        rdfs:comment """Represents a part of an excursion."""@en .
+
+### has Geoname ID 
+:hasGeonameID rdf:type owl:ObjectProperty ;
+        rdfs:label "GeonameID"@de ,
+                   "GeonameID"@en ;
+        rdfs:comment """Represents the geoname ID of a location."""@en .
+
+### has name xsd:string ##!! add class?
+:hasName rdf:type owl:ObjectProperty ;
+        owl:sameAs schema:name;
+        rdfs:label "Name"@de ,
+                   "Name"@en ;
+        rdfs:comment """Represents the name of an entity."""@en .
+
+### has occurence 
+:hasOccurrence rdf:type owl:ObjectProperty ;
+        rdfs:label "Geschehnis"@de ,
+                   "Occurrence"@en ;
+        rdfs:comment """Represents an occurrence type."""@en .
+
+### hasOwner
+:hasOwner rdf:type owl:ObjectProperty ;
+        rdfs:label "Besitzer:in"@de ,
+                   "Owner"@en ;
+        rdfs:comment """Represents the owner of something."""@en .
+
+### has Participant :Person
+:hasParticipant rdf:type owl:ObjectProperty ;
+        rdfs:label "Teilnehmer*in"@de ,
+                   "Participant"@en ;
+        rdfs:comment """Represents a participant in an activity."""@en .
+
+
+### has salary ####
+:hasSalary rdf:type owl:ObjectProperty ;
+        rdfs:label "hat Gehalt"@de ,
+                   "has Salary"@en ;
+        rdfs:comment """Represents the salary of an employment."""@en .
+
+
+### has sighted ### !! alway Person?
+:hasSighted rdf:type owl:ObjectProperty ;
+        rdfs:label "hat gesichtet"@de ,
+                   "has sighted"@en ;
+        rdfs:comment """Represents the sighting of a person"""@en .
+
+### has start location ###
+:hasStartLocation rdf:type owl:ObjectProperty ;
+        rdfs:label "Startort"@de ,
+                   "Starting place of a trip"@en ;
+        rdfs:comment """Represents the starting place of a trip."""@en .
+
+### has stay range :stay? > specific lovation? is stay needed or only has stay ###
+:hasStay rdf:type owl:ObjectProperty ;
+        rdfs:label "hat Aufenthalt."@de ,
+                   "has Stay"@en ;
+        rdfs:comment """Represents a Stay at a specific location."""@en.
+
+### has street name xsd:string### schema:address
+:hasAddress rdf:type owl:ObjectProperty ;
+         rdfs:label "hat einen Strassennamen"@de ,
+                    "has a street address"@en ;
+         rdfs:comment """Represents a link to a street address."""@en.
+
+#### or introduce xyz schema:streetAdress 
+
+### has student ###
+:hasStudent rdf:type owl:ObjectProperty ;
+        rdfs:label "Student*in"@de ,
+                   "Student"@en ;
+        rdfs:comment """Represents a student."""@en .
+
+### !! 
+:hasTeacher rdf:type owl:ObjectProperty ;
+        owl:inverseOf :hasStudent .
+
+
+### hasSubJourneyTo ###
+:hasSubJourneyTo rdf:type owl:ObjectProperty ;
+        rdfs:label "hat Reiseetappe"@de ,
+                   "has subjourney to"@en ;
+        rdfs:comment """Represents the destination of a travel stage."""@en .
+
+### has transit order ### hint xsd:int?
+:hasTransitOrder rdf:type owl:ObjectProperty ;
+        rdfs:label "Reihenfolge der Durchreise"@de ,
+                   "Order of transit route."@en ;
+        rdfs:comment """Represents the order in which one passes through different locations on a journey."""@en .
+
+### hasWikiLink
+:hasWikiLink rdf:type owl:ObjectProperty ;
+        rdfs:label "hat link zu einer Wikidata Seite"@de ,
+                   "has a link to a wikidata page"@en ;
+        rdfs:comment """Represents a link to a wikidata page."""@en .
+
+### locatedAt
+:locatedAt rdf:type owl:ObjectProperty ;
+        rdfs:label "befindet sich in"@de ,
+                   "located at"@en;
+        rdfs:comment """Represents the location of an entity."""@en .
+
+### mentionedIn ##
+:mentionedIn rdf:type owl:ObjectProperty ;
+        rdfs:label "erwähnt in Region"@de ,
+                   "mentioned in region"@en ;
+        rdfs:comment """Represent the link to a text region in which something is mentioned."""@en .
+
+### route of travel ##
+:routeOfTravel rdf:type owl:ObjectProperty ;
+        rdfs:label "Reiseroute"@de ,
+                   "Route of Travel"@en ;
+        rdfs:comment """Represents the route the journey is on, such as a river."""@en .
+
+### stayedAt
+:stayedAt rdf:type owl:ObjectProperty ;
+        rdfs:label "hat übernachtet in"@de ,
+                   "stayed at"@en ;
+        rdfs:comment """Represents a stay at an accommodation."""@en .
+
+### transitThrough :Location
+:transitThrough rdf:type owl:ObjectProperty ;
+        rdfs:label "Durchreise"@de ,
+                   "Passing through"@en ;
+        rdfs:comment """Represents the location one passes through on a journey."""@en .
+
+
+### trip:travelled
+:travelled rdf:type owl:ObjectProperty ;
+        rdfs:label "reiste"@de ,
+                   "travelled"@en ;
+        rdfs:comment """Represents a trip."""@en .
+
+######## additional properties ######
+
+### hasText // or hastranscription from beol
+:hasText rdf:type owl:ObjectProperty;
+    rdfs:label  ""@de,
+                ""@en;
+    rdfs:comment ""@en. 
+
+### :livedIn [person lives in location possibly accomodation]
+:livedIn rdf:type owl:ObjectProperty;
+    rdfs:label  ""@de,
+                ""@en;
+    rdfs:comment ""@en. 
+
+
+### was at ###
+:wasAt rdf:type owl:ObjectProperty;
+    rdfs:label  ""@de,
+                ""@en;
+    rdfs:comment ""@en. 
+
+
+### has reference to ###
+:hasReferenceTo rdf:type owl:ObjectProperty;
+    rdfs:label  ""@de,
+                ""@en;
+    rdfs:comment ""@en. 
+
+# ### has wiki ### wikidata representation
+# :hasWiki rdf:type owl:ObjectProperty;
+#     rdfs:label  ""@de,
+#                 ""@en;
+#     rdfs:comment ""@en.
+
+# ### hasIAFIdentifier
+# :hasIAFIdentifier rdf:type owl:ObjectProperty;
+#     rdfs:label  ""@de,
+#                 ""@en;
+#     rdfs:comment ""@en. 
+
+# ### hasStandoffLink
+# :hasStandoffLink rdf:type owl:ObjectProperty;
+#     rdfs:label  ""@de,
+#                 ""@en;
+#     rdfs:comment ""@en. 
+
+# ### link to ###
+# :linkTo rdf:type owl:ObjectProperty;
+#     rdfs:label  ""@de,
+#                 ""@en;
+#     rdfs:comment ""@en. 
+
+# ### start char ###
+# :startChar rdf:type owl:ObjectProperty;
+#     rdfs:label  ""@de,
+#                 ""@en;
+#     rdfs:comment ""@en. 
+
+# ### end char ###
+# :endChar rdf:type owl:ObjectProperty;
+#     rdfs:label  ""@de,
+#                 ""@en;
+#     rdfs:comment ""@en. 
+
+# ### markup type ###
+# :markUpType rdf:type owl:ObjectProperty;
+#     rdfs:label  ""@de,
+#                 ""@en;
+#     rdfs:comment ""@en. 
+
