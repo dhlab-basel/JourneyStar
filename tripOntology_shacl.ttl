@@ -121,3 +121,31 @@ ex:LocationShape a sh:NodeShape  ;
         sh:path schema:adress;
         sh:datatype xsd:string;
     ] .
+
+
+ex:StayShape a sh:NodeShape  ;
+    sh:targetClass :Stay ;
+    sh:property 
+    [
+        sh:path :Location ;
+        sh:maxCount 1 ;
+        #sh:languageIn ("en" "de" ) ;
+    ] ,
+    [
+        sh:path :arrival ;
+        #sh:minCount 1 ;
+        sh:datatype xsd:dateTime ; ## add here or add in hasNameShape that it must be schema:name > xsd:string
+    ] ,
+    [
+        sh:path :departure ;
+       # sh:minCount 1 ;
+        sh:datatype xsd:dateTime ; 
+    ] ,
+	[
+        sh:path :hasAccommodation ;
+        sh:datatype :AccommodationShape ;
+    ],
+	[
+        sh:path :hasComment ;
+        sh:datatype xsd:string ;
+    ] .

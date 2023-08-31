@@ -12,8 +12,6 @@
                                        owl:versionInfo "v.1.0" .
 
 
-## Classes ###
-
 ### Person ###
 
 :Person rdf:type owl:Class ;
@@ -23,21 +21,21 @@
     rdfs:comment "Represents a Person."@en .
 
 
-    # hasParent inverseOf isParentOf
+# hasParent inverseOf isParentOf
 :hasParent rdf:type owl:ObjectProperty; #ObjectProperty
     owl:inverseOf :isParentOf;
     rdfs:label  ""@de,
                 ""@en;
     rdfs:comment ""@en.
 
-    ### isParentOf
+### isParentOf
 :isParentOf rdf:type owl:ObjectProperty; 
     owl:inverseOf :hasParent;
     rdfs:label  ""@de,
                 ""@en;
     rdfs:comment ""@en.
 
-    # participatedIn range :Activity
+### participatedIn range :Activity
 :hasParticipant rdf:type owl:ObjectProperty;
         rdfs:label ""@de,
                 ""@en;
@@ -69,99 +67,13 @@
                 ""@en;
     rdfs:comment ""@en.
 
-# other xsd:literal / or resource? both 
+# other xsd:string > schema:gender GenderType or string
 :other rdf:type owl:DatatypeProperty; #ObjectProperty
-    rdfs:label  ""@de,
-                ""@en;
+    rdfs:label  "Weiteres"@de,
+                "Other"@en;
     rdfs:comment ""@en.
 
 ### :hasSensation ### :hasComment
-
-
-ex:PersonShape a sh:NodeShape  ;
-    sh:targetClass :Person ;
-    sh:property [
-        sh:path schema:givenName ;
-       # sh:minCount 1 ;
-        sh:languageIn ("en" "de") ;
-        sh:datatype xsd:string;
-    ] ,
-    [
-        sh:path schema:familyName ;
-       # sh:minCount 1 ;
-        sh:datatype xsd:string ;
-    ] ,
-    [
-        sh:path schema:name;
-       # sh:minCount 1 ;
-        sh:datatype xsd:string ;
-    ],
-    [
-        sh:path owl:sameAs;
-        sh:datatype xsd:integer; # sh:nodekind sh:IRI
-    ],
-    [
-        sh:path :gnd;
-        sh:datatype xsd:string;
-    ],
-    [
-        sh:path schema:gender;
-        sh:in (schema:Female schema:Male :otherShape)
-    ],
-    [
-        sh:path schema:birthDate ;
-       # sh:minCount 1 ;
-        # sh:maxCount 1 ;
-        sh:datatype xsd:date ;
-    ],
-    [
-        sh:path :hasDisability;
-        sh:datatype xsd:string;
-    ], 
-    [
-        sh:path :hasParent;
-        sh:datatype schema:Person;
-    ] , 
-    [
-        sh:path :livedIn;
-        sh:datatype :Location;
-    ] , 
-    [
-        sh:path :bornIn;
-        sh:datatype :Location;
-    ],
-    [
-        sh:path schema:knows;
-        sh:in (:Location :Person :OtherShape) ; # :Person :Route 
-    ],
-    [
-        sh:path :nationality;
-        sh:datatype xsd:string;
-    ],
-    [
-        sh:path :hasSighted;
-        sh:in (:Architecuture :Landscape :occurence :Person ex:otherShape);
-    ], 
-    [
-        sh:path :travelledTo;
-        sh:datatype :LocationShape;
-    ], 
-    [
-        sh:path :trades;
-        sh:nodeKind sh:BlankNodeOrIRIOrLiteral;
-    ], 
-    [
-        sh:path :hasEmployment;
-        sh:datatype :Employment;
-    ],
-     [
-        sh:path :hasParticipatedIn;
-        sh:datatype :ActivityShape;
-    ],
-     [
-        sh:path :hasSighted;
-        sh:in (:ArchitectureShape );
-    ].
 
 ### Location ###
 :Location rdf:type owl:Class ; 
@@ -169,39 +81,6 @@ ex:PersonShape a sh:NodeShape  ;
         rdfs:label  "Ort"@de,
                     "Location"@en;
         rdfs:comment "A class defining a location"@en .
-
-### shacl Location ###
-ex:LocationShape a sh:NodeShape  ;
-    sh:targetClass trip:Location ;
-    sh:property 
-    [
-        sh:path :hasGeonameID ;
-        sh:maxCount 1 ;
-      #  sh:languageIn ("en" "de" ) ;
-    ] ,
-    [
-        sh:path schema:name ;
-        sh:minCount 1 ;
-        sh:datatype xsd:string ; ## add here or add in hasNameShape that it must be schema:name > xsd:string
-    ] ,
-    [
-        sh:path :hasWikiLink ;
-       # sh:minCount 1 ;
-        sh:datatype xsd:URL ; ##!!!
-    ] ,
-	  [
-        sh:path :hasAlternativeName ;
-        sh:datatype xsd:string ;
-    ],
-	  [
-        sh:path :hasComment ;
-        sh:datatype xsd:string ;
-    ], 
-    [
-        sh:path schema:adress;
-        sh:datatype xsd:string;
-    ] .
-
 
 ### Landscape ###
 :Landscape rdf:type owl:Class ; 
@@ -231,32 +110,26 @@ ex:LocationShape a sh:NodeShape  ;
 ### Accommodation ###
 :Accommodation rdf:type owl:Class ;
         rdfs:subClassOf :Architecture ;
-
         rdfs:label "Unterkunft"@de ,
                    "accommodation"@en ;
-
         rdfs:comment "A resource representing an accommodation."@en .
-
 
 ### Journey  ###
 :Journey rdf:type owl:Class ;
-        owl:differentFrom :Excursion; ###!! not right example
+        owl:differentFrom :Excursion; 
         rdfs:label "Reise"@de ,
                 "Journey"@en ;
         rdfs:comment "A journey from one place to another."@en .
 
-:hasStop rdf:Type owl:ObjectProperty;
-        rdfs:label ""@de,
-                    ""@en;
-        rdfs:comment "A Stop while on the journey from one place to another"@en.
+### OR travel ###
+:Travel rdf:type owl:Class ;
+        rdfs:subClassOf dbo:Travel;
+        rdfs:label "Reise"@de ,
+                "Travel"@en ;
+        rdfs:comment "A travel from one place to another."@en .
 
-# ex:JourneyShape
-
-### Excursion ###
-:Excursion rdf:type owl:Class ;
-        rdfs:label "Excursion"@de ,
-                "Exkursion"@en ;
-        rdfs:comment "An excursion from a location to another location and back."@en .
+#dbr:Mode_of_transport
+#dbr:Ship dbr:Boat dbr:Pedestrian dbr:Cycling dbr:
 
 ### Transportation ### 
 :Transportation rdf:type owl:Class ;
@@ -276,38 +149,22 @@ ex:LocationShape a sh:NodeShape  ;
 # schema:Train a :MeanOfTransportation .
 # schema:Plane a :MeanOfTransportation .
 
+:hasStop rdf:Type owl:ObjectProperty;
+        rdfs:label ""@de,
+                    ""@en;
+        rdfs:comment "A Stop while on the journey from one place to another"@en.
+
+### Excursion ###
+:Excursion rdf:type owl:Class ;
+        rdfs:label "Excursion"@de ,
+                "Exkursion"@en ;
+        rdfs:comment "An excursion from a location to another location and back."@en .
+
 ### Stay ###
 :Stay rdf:type owl:Class ; 
         rdfs:label "Aufenthalt"@de,
                     "Stay"@en;
         rdfs:comment "A stay during a journey of undetermined amount of time"@en .
-
-ex:StayShape a sh:NodeShape  ;
-    sh:targetClass :Stay ;
-    sh:property 
-    [
-        sh:path :Location ;
-        sh:maxCount 1 ;
-        #sh:languageIn ("en" "de" ) ;
-    ] ,
-    [
-        sh:path :arrival ;
-        #sh:minCount 1 ;
-        sh:datatype xsd:dateTime ; ## add here or add in hasNameShape that it must be schema:name > xsd:string
-    ] ,
-    [
-        sh:path :departure ;
-       # sh:minCount 1 ;
-        sh:datatype xsd:dateTime ; 
-    ] ,
-	[
-        sh:path :hasAccommodation ;
-        sh:datatype :AccommodationShape ;
-    ],
-	[
-        sh:path :hasComment ;
-        sh:datatype xsd:string ;
-    ] .
 
 ### LongtermStay ###
 :LongtermStayStay rdf:type owl:Class ; 
@@ -381,7 +238,7 @@ ex:StayShape a sh:NodeShape  ;
 # picksUp  ### + ###
 # delivers  ### + ###
 
-#documentation  ### + ###
+#documentation  ### + ###  schema:documentation > CreativeWork or URL
     # Image > description or resource  ### + ###
     # Sketch >  ### + ###
     # Video
@@ -409,8 +266,7 @@ ex:StayShape a sh:NodeShape  ;
 
 #Infrastructure subClassOf
 
-
-### accordingTo ### range: rdf triple
+### accordingTo ### range: rdf triple >> rdf:statement?
 :accordingTo rdf:type owl:ObjectProperty ;
         rdfs:label "ist Informationsquelle"@de ,
                    "is source of information"@en ;
@@ -582,7 +438,7 @@ ex:StayShape a sh:NodeShape  ;
                    "Student"@en ;
         rdfs:comment """Represents a student."""@en .
 
-### !! 
+###  
 :hasTeacher rdf:type owl:ObjectProperty ;
         owl:inverseOf :hasStudent .
 
@@ -599,7 +455,7 @@ ex:StayShape a sh:NodeShape  ;
                    "Order of transit route."@en ;
         rdfs:comment """Represents the order in which one passes through different locations on a journey."""@en .
 
-### hasWikiLink
+### hasWikiLink ### dbo:WikiPageID ?
 :hasWikiLink rdf:type owl:ObjectProperty ;
         rdfs:label "hat link zu einer Wikidata Seite"@de ,
                    "has a link to a wikidata page"@en ;
@@ -641,8 +497,6 @@ ex:StayShape a sh:NodeShape  ;
         rdfs:label "reiste"@de ,
                    "travelled"@en ;
         rdfs:comment """Represents a trip."""@en .
-
-######## additional properties ######
 
 ### hasText // or hastranscription from beol
 :hasText rdf:type owl:ObjectProperty;
