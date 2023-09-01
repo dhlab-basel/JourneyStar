@@ -1,16 +1,15 @@
 @prefix schema: <https://schema.org/> .
-@prefix ex: <http://example.com/ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <http://www.mysemantics.com/ontology/trip/> .
 
-
-ex:PersonShape a sh:NodeShape  ;
+:PersonShape a sh:NodeShape  ;
     sh:targetClass :Person ;
     sh:property [
         sh:path schema:givenName ;
        # sh:minCount 1 ;
         sh:languageIn ("en" "de") ;
-        sh:datatype xsd:string;
+        sh:datatype xsd:string ;
     ] ,
     [
         sh:path schema:familyName ;
@@ -18,114 +17,106 @@ ex:PersonShape a sh:NodeShape  ;
         sh:datatype xsd:string ;
     ] ,
     [
-        sh:path schema:name;
-       # sh:minCount 1 ;
+        sh:path schema:name ;
+        sh:minCount 1 ;
         sh:datatype xsd:string ;
     ],
     [
-        sh:path owl:sameAs;
-        sh:datatype xsd:integer; # sh:nodekind sh:IRI
+        sh:path owl:sameAs ;
+        sh:datatype xsd:anyURI ;
     ],
     [
-        sh:path :gnd;
-        sh:datatype xsd:string;
+        sh:path :gnd ;
+        sh:datatype xsd:string ;
     ],
     [
-        sh:path schema:gender;
-        sh:in (schema:Female schema:Male :otherShape)
+        sh:path schema:gender ;
+        sh:in (schema:Female schema:Male)
     ],
     [
         sh:path schema:birthDate ;
-       # sh:minCount 1 ;
-        # sh:maxCount 1 ;
+        sh:minCount 1 ; # every person should have exactly one birthdate
+        sh:maxCount 1 ;
         sh:datatype xsd:date ;
     ],
     [
-        sh:path :hasDisability;
-        sh:datatype xsd:string;
-    ], 
-    [
-        sh:path :hasParent;
-        sh:datatype schema:Person;
-    ] , 
-    [
-        sh:path :livedIn;
-        sh:datatype :Location;
-    ] , 
-    [
-        sh:path :bornIn;
-        sh:datatype :Location;
+        sh:path :hasDisability ;
+        sh:datatype xsd:string ;
     ],
     [
-        sh:path schema:knows;
-        sh:in (:Location :Person :OtherShape) ; # :Person :Route 
+        sh:path :hasParent ;
+        sh:node :PersonShape ;
+    ] ,
+    [
+        sh:path :livedIn ;
+        sh:node :LocationShape ;
+    ] ,
+    [
+        sh:path schema:birthPlace ;
+        sh:node :LocationShape ;
     ],
     [
-        sh:path :nationality;
-        sh:datatype xsd:string;
+        sh:path schema:knows ; # the object of schema:knows should be a resource of type :Location or :Person
+        sh:or ([sh:class :Location ] ,
+               [sh:class :Person ]) ;
+    ],
+    [
+        sh:path :nationality ;
+        sh:datatype xsd:string ;
     ],
     [
         sh:path :hasSighted;
-        sh:in (:Architecuture :Landscape :occurence :Person ex:otherShape);
-    ], 
+        sh:or ([sh:class :Architecuture ] ,  # if you want to just define the range of property without asking it to be validated against a shape, then use sh:class
+               [sh:class :Landscape ] ,
+               [sh:class :Occurence ] ,
+               [sh:class :Person ]) ;
+    ],
     [
-        sh:path :travelledTo;
-        sh:datatype :LocationShape;
-    ], 
+        sh:path :travelledTo ;
+        sh:node :LocationShape ;
+    ],
     [
-        sh:path :trades;
-        sh:nodeKind sh:BlankNodeOrIRIOrLiteral;
-    ], 
-    [
-        sh:path :hasEmployment;
-        sh:datatype :Employment;
+        sh:path :hasEmployment ;
+        sh:class schema:Occupation ;
     ],
      [
-        sh:path :hasParticipatedIn;
-        sh:datatype :ActivityShape;
-    ],
-     [
-        sh:path :hasSighted;
-        sh:in (:ArchitectureShape );
-    ].
+        sh:path :participatedIn ;
+        sh:node :ActivityShape ;
+    ] .
 
 
-### shacl Location ###
-ex:LocationShape a sh:NodeShape  ;
+### Shape for Class Location ###
+:LocationShape a sh:NodeShape  ;
     sh:targetClass trip:Location ;
-    sh:property 
+    sh:property
     [
         sh:path :hasGeonameID ;
         sh:maxCount 1 ;
-      #  sh:languageIn ("en" "de" ) ;
+        sh:minCount 1 ;
     ] ,
     [
         sh:path schema:name ;
         sh:minCount 1 ;
-        sh:datatype xsd:string ; ## add here or add in hasNameShape that it must be schema:name > xsd:string
+        sh:datatype xsd:string ;
     ] ,
     [
         sh:path :hasWikiLink ;
-       # sh:minCount 1 ;
-        sh:datatype xsd:URL ; ##!!!
+        sh:minCount 1 ;
+        sh:datatype xsd:anyURI ;
     ] ,
 	  [
         sh:path :hasAlternativeName ;
         sh:datatype xsd:string ;
     ],
-	  [
-        sh:path :hasComment ;
-        sh:datatype xsd:string ;
-    ], 
     [
-        sh:path schema:adress;
+        sh:path schema:address;
         sh:datatype xsd:string;
     ] .
 
 
-ex:StayShape a sh:NodeShape  ;
+:StayShape a sh:NodeShape  ;
     sh:targetClass :Stay ;
-    sh:property 
+    sh:property
     [
         sh:path :Location ;
         sh:maxCount 1 ;
@@ -139,13 +130,35 @@ ex:StayShape a sh:NodeShape  ;
     [
         sh:path :departure ;
        # sh:minCount 1 ;
-        sh:datatype xsd:dateTime ; 
+        sh:datatype xsd:dateTime ;
     ] ,
-	[
+	  [
         sh:path :hasAccommodation ;
         sh:datatype :AccommodationShape ;
     ],
-	[
+	  [
         sh:path :hasComment ;
         sh:datatype xsd:string ;
     ] .
+
+
+### TODO: Add node shapes for all classes defined in the Ontology
+
+##########################################
+#### Property shapes for RDF-star triples
+##########################################
+
+:accordingToPropertyShape
+    	a sh:PropertyShape ;
+    	sh:path :accordingTo ;
+    	sh:description "Represents the person who is source of a fact." ;
+    	sh:node :PersonShape .
+
+
+:mentionedInPropertyShape
+    	a sh:PropertyShape ;
+    	sh:path :mentionedIn ;
+    	sh:description "Represents the document that is source of a fact." ;
+    	sh:node :DocumentShape . # define the DocumenShape
+
+#TODO: define property shapes for all properties with an object that is a triple
