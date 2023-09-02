@@ -364,7 +364,12 @@
         sh:path :hasOwner ;
         sh:class :Person
 	sh:minCount 1;
-    ] . 
+    ] ,
+	 [
+        sh:path :hasText ;
+        sh:datatype xsd:string ;
+    ] .
+
 
 ### Shape for Class Travel Diary ###
 :TravelDiartyShape a sh:NodeShape  ;
@@ -395,7 +400,11 @@
         sh:path :hasOwner ;
         sh:class :Person
 	sh:minCount 1;
-    ] . 
+    ], 
+	 [
+        sh:path :hasText ;
+        sh:datatype xsd:string ;
+    ] .
 
 
 
