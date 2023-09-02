@@ -156,63 +156,62 @@
 :hasParent rdf:type owl:ObjectProperty;
     rdfs:domain :Person ;
     rdfs:range :Person ;
-    rdfs:label  ""@de,
-                ""@en;
-    rdfs:comment ""@en.
+    rdfs:label  "Hat Vater"@de,
+                "Has parent"@en;
+    rdfs:comment "A person who has parent."@en.
 
 ### isParentOf
 :isParentOf rdf:type owl:ObjectProperty;
     owl:inverseOf :hasParent;
-    rdfs:label  ""@de,
-                ""@en;
-    rdfs:comment ""@en.
+    rdfs:label  "Ist Vater"@de,
+                "Is parent"@en;
+    rdfs:comment "Someone who is parent of someone else."@en.
 
 ### participatedIn
 :participatedIn rdf:type owl:ObjectProperty ;
     rdfs:domain :Person ;
     rdfs:range :Activity ;
-    rdfs:label "re"@de,
-                "ewf"@en;
-    rdfs:comment "eefweg"@en.
+    rdfs:label "Mitwirken"@de,
+                "Participate"@en;
+    rdfs:comment "Someone who participate in an activity."@en.
 
 ### hasParticipant
 :hasParticipant rdf:type owl:ObjectProperty ;
     owl:inverseOf :participatedIn ; # for inverse properties there is no need to define domain and range
-    rdfs:label ""@de,
-                ""@en;
-    rdfs:comment ""@en.
+    rdfs:label "hat ein Teilnehmer"@de,
+                "Has participant"@en;
+    rdfs:comment "Some activity which has someone as participant"@en.
 
 
 ### visited  #range is defined in shacl shapes, we leave it empty for RDFS validation
 :visited rdf:type owl:ObjectProperty;
     rdfs:domain :Person ;
-    rdfs:label ""@de,
-                ""@en;
+    rdfs:label "Besuchen"@de,
+                "Visit"@en;
     rdfs:comment "physical presence"@en.
 
 ### hasSighted
 :hasSighted rdf:type owl:ObjectProperty;  #range is defined in shacl shapes, we leave it empty for RDFS validation
     rdfs:domain :Person ;
-    rdfs:label ""@de,
-                ""@en;
-    rdfs:comment "short glance"@en.
+    rdfs:label "schauen"@de,
+                "Sight"@en;
+    rdfs:comment "Short glance"@en.
 
 ### lived In
 :livedInIn rdf:type owl:ObjectProperty;
      rdfs:domain :Person
      rdfs:range :Location ;
-        rdfs:label ""@de,
-                ""@en;
-    rdfs:comment "long residence in a place"@en.
+        rdfs:label "Leben"@de,
+                   "Live"@en;
+    rdfs:comment "Long residence in a place"@en.
 
 
 ## hasStop
 :hasStop rdf:Type owl:ObjectProperty ; ### domain: rdf triple
         rdfs:range :Location ;
-        rdfs:label ""@de,
-                    ""@en;
+        rdfs:label "Haben hallstelle"@de,
+                    "Has stop"@en;
         rdfs:comment "A Stop while on the journey from one place to another"@en.
-
 
 
 ### accordingTo ### domain: rdf triple
@@ -440,4 +439,4 @@
     rdfs:range xsd:string ;
     rdfs:label  "Text"@de,
                 "Text"@en;
-    rdfs:comment "Represnets the actual text of a content."@en.
+    rdfs:comment "Represents the actual text of a content."@en.
