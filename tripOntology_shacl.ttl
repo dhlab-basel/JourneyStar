@@ -141,6 +141,265 @@
         sh:datatype xsd:string ;
     ] .
 
+### Shape for Class Architecture ###
+
+:ArchitectureShape a sh:NodeShape  ;
+    sh:targetClass :Architecture ;
+    sh:property
+    [
+        sh:path :Architecture ;
+        sh:maxCount 1 ;
+        #sh:languageIn ("en" "de" ) ;
+    ] ,
+         [
+        sh:path :hasGeonameID ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+    ],
+	  [
+        sh:path :hasAdress ;
+        sh:datatype xsd:string ;
+    ] ,
+          [
+        sh:path schema:name ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+    ] .  
+
+### Shape for Class Activity ###
+
+:ActivityShape a sh:NodeShape  ;
+    sh:targetClass :Activity ;
+    sh:property
+    [
+        sh:path :Activity ;
+        sh:maxCount 1 ;
+        #sh:languageIn ("en" "de" ) ;
+    ] ,
+         [
+        sh:path :hasActivity ;
+        sh:minCount 1 ;
+    ],
+	  [
+        sh:path :hasParticipant ;
+	sh:minCount 1; 
+        
+    ] ,
+          [
+        sh:path schema:name ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+    ] .  
+### Shape for Class Landscape ###
+
+:LandscapeShape a sh:NodeShape  ;
+    sh:targetClass :Landscape ;
+    sh:property
+    [
+        sh:path :Landscape ;
+        sh:maxCount 1 ;
+        #sh:languageIn ("en" "de" ) ;
+    ] ,
+         [
+        sh:path :hasSighted ;
+        sh:minCount 1 ;
+    ],
+         [
+        sh:path schema:name ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+    ] .  
+
+### Shape for Class Activity ###
+
+:ActivityShape a sh:NodeShape  ;
+    sh:targetClass :Activity ;
+    sh:property
+    [
+        sh:path :Activity ;
+        sh:maxCount 1 ;
+        #sh:languageIn ("en" "de" ) ;
+    ] ,
+         [
+        sh:path :hasActivity ;
+        sh:minCount 1 ;
+    ],
+	  [
+        sh:path :hasParticipant ;
+	sh:minCount 1; 
+        
+    ] ,
+          [
+        sh:path schema:name ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+    ] .  
+### Shape for Class Settlement ###
+
+:SettlementShape a sh:NodeShape  ;
+    sh:targetClass :Settlement ;
+    sh:property
+    [
+        sh:path :Settlement ;
+        sh:maxCount 1 ;
+        #sh:languageIn ("en" "de" ) ;
+    ] ,
+    [
+        sh:path :arrival ;
+        #sh:minCount 1 ;
+        sh:datatype xsd:dateTime ; ## add here or add in hasNameShape that it must be schema:name > xsd:string
+    ] ,
+    [
+        sh:path :departure ;
+       # sh:minCount 1 ;
+        sh:datatype xsd:dateTime ;
+    ] ,
+	  [
+        sh:path :hasAccommodation ;
+        sh:datatype :AccommodationShape ;
+    ],
+	  [
+        sh:path :hasComment ;
+        sh:datatype xsd:string ;
+    ] .
+
+### Shape for Class Journey ###
+:JourneyShape a sh:NodeShape  ;
+    sh:targetClass :Journey ;
+    sh:property
+    [
+        sh:path :Journey ;
+        sh:maxCount 1 ;
+        #sh:languageIn ("en" "de" ) ;
+    ] ,
+    [
+        sh:path :arrival ;
+        #sh:minCount 1 ;
+        sh:datatype xsd:dateTime ; 
+    [
+        sh:path :departure ;
+       # sh:minCount 1 ;
+        sh:datatype xsd:dateTime ;
+    ] ,
+	  [
+        sh:path :hasParticipant ;
+        sh:class :Person
+	sh:minCount 1 ;
+    ],
+	  [
+        sh:path :hasComment ;
+        sh:datatype xsd:string ;
+    ] ,
+	 [
+        sh:path :visited ;
+        sh:class :Location , 
+	         :Architecture;
+    ] . 
+
+	    ### Shape for Class Transportation ###
+:TransportationShape a sh:NodeShape  ;
+    sh:targetClass :Transportation ;
+    sh:property
+    [
+        sh:path :Transportation ;
+        sh:maxCount 1 ;
+        #sh:languageIn ("en" "de" ) ;
+    ] ,
+    [
+        sh:path :arrival ;
+        #sh:minCount 1 ;
+        sh:datatype xsd:dateTime ; 
+    [
+        sh:path :departure ;
+       # sh:minCount 1 ;
+        sh:datatype xsd:dateTime ;
+    ] ,
+	  [
+        sh:path :hasParticipant ;
+        sh:class :Person
+	sh:minCount 1 ;
+    ],
+	  [
+        sh:path :hasDestination ;
+        sh:class :Location, 
+	         :Settlement,
+	         :Acommodation;
+    ] ,
+	 [
+        sh:path :hasStop ;
+        sh:class :Location ;
+	         
+    ] ,
+	[ 
+	 sh:path :transitThrough ;
+         sh:class :Location ;
+    ] .
+
+### Shape for Class Manuscript ###
+:ManuscriptShape a sh:NodeShape  ;
+    sh:targetClass :Manuscript ;
+    sh:property
+    [
+        sh:path :Manuscript ;
+        sh:maxCount 1 ;
+        #sh:languageIn ("en" "de" ) ;
+    ] ,
+    [
+        sh:path schema:name ;
+        #sh:minCount 1 ;
+        #sh:languageIn ("en" "de" ) ; 
+    [
+        sh:path :hasAlternativeName ;
+         #sh:minCount 1 ;
+         #sh:languageIn ("en" "de" );
+    ] ,
+	  [
+        sh:path :hasDate ;
+        sh:datatype xsd:dateTime;
+	  [
+        sh:path :hasComment ;
+        sh:datatype xsd:string ;
+    ] ,
+	 [
+        sh:path :hasOwner ;
+        sh:class :Person
+	sh:minCount 1;
+    ] . 
+
+### Shape for Class Travel Diary ###
+:TravelDiartyShape a sh:NodeShape  ;
+    sh:targetClass :TravelDiary ;
+    sh:property
+     [
+        sh:path :TravelDiary ;
+        sh:maxCount 1 ;
+        #sh:languageIn ("en" "de" ) ;
+    ] ,
+    [
+        sh:path schema:name ;
+        #sh:minCount 1 ;
+        #sh:languageIn ("en" "de" ) ; 
+    [
+        sh:path :hasAlternativeName ;
+         #sh:minCount 1 ;
+         #sh:languageIn ("en" "de" );
+    ] ,
+	  [
+        sh:path :hasDate ;
+        sh:datatype xsd:dateTime;
+	  [
+        sh:path :hasComment ;
+        sh:datatype xsd:string ;
+    ] ,
+	 [
+        sh:path :hasOwner ;
+        sh:class :Person
+	sh:minCount 1;
+    ] . 
+
+
+
+
 
 ### TODO: Add node shapes for all classes defined in the Ontology
 
