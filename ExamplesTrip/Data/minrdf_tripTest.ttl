@@ -116,6 +116,11 @@
     owl:sameAs dbr:Marrakesh;
     :hasGeonameID "6547285".
 
+:Morocco a :Location;
+    schema:name "Morocco"@en;
+    owl:sameAs dbr:Morocco;
+    :hasGeonameID "2542007".
+
 
 
 #####################################
@@ -159,34 +164,34 @@
 
 :Journey_2018_03 a :Journey ;
     :hasStartLocation :Zurich;
-    :hasDestination :Marrakech .
+    :hasDestination :Morocco .
 
 <<:Journey_2018_03 :hasStartLocation :Zurich >> :hasDeparture "2018-03-10T08:00:00"^^xsd:dateTime .
-<<:Journey_2018_03 :hasDestination :Marrakech >> :hasArrival "2018-03-18T14:00:00"^^xsd:dateTime .
+<<:Journey_2018_03 :hasDestination :Morocco >> :hasArrival "2018-03-14T14:00:00"^^xsd:dateTime .
 
-### Sub Journey 1 ZH-Barcelona ###
+### Stage Journey 1 ZH-Barcelona ###
 ##################################
 
-:Journey_2018_03 :hasSubJourney :SubJour1 .
-<<:Journey_2018_03 :hasSubJourney :SubJour1>> :hasStartDate "2018-03-10"^^xsd:date .
-<<:Journey_2018_03 :hasSubJourney :SubJour1>> :hasEndDate "2018-03-13"^^xsd:date .
+:Journey_2018_03 :hasStage :Stage1 .
+<<:Journey_2018_03 :hasStage :Stage1>> :hasStartDate "2018-03-10"^^xsd:date .
+<<:Journey_2018_03 :hasStage :Stage1>> :hasEndDate "2018-03-13"^^xsd:date .
 
-:SubJour1 a :Journey;
+:Stage1 a :Journey;
     :hasStartLocation :Zurich;
     :hasDestination :Barcelona ;
     :hasTransit :Paris;
     :hasTransport :Train . 
 
- << :SubJour1 :hasStartLocation :Zurich >> :hasDeparture "2018-03-10T08:00:00"^^xsd:dateTime .
- << :SubJour1 :hasStartLocation :Barcelona >> :hasArrival "2018-03-10T22:00:00"^^xsd:dateTime .
+ << :Stage1 :hasStartLocation :Zurich >> :hasDeparture "2018-03-10T08:00:00"^^xsd:dateTime .
+ << :Stage1 :hasStartLocation :Barcelona >> :hasArrival "2018-03-10T22:00:00"^^xsd:dateTime .
 
-<< :SubJour1 :hasTransport :Train >> :hasCost "120" .
-<< << :SubJour1 :hasTransport :Train >> :hasCost "120" >> currency:Euro .
+<< :Stage1 :hasTransport :Train >> :hasCost "120" .
+<< << :Stage1 :hasTransport :Train >> :hasCost "120" >> currency:Euro .
 
-#<< << :SubJour1 :ModeOfTransport "Train" >> :nr "x20" >> :hasTransit dbr:Paris .
-#<< << << :SubJour1 :ModeOfTransport "Train" >> :nr "x20" >> :hasTransit dbr:Paris >> :hasTime "2001-10-26T21:32:52"^^xsd:dateTime .
+#<< << :Stage1 :ModeOfTransport "Train" >> :nr "x20" >> :hasTransit dbr:Paris .
+#<< << << :Stage1 :ModeOfTransport "Train" >> :nr "x20" >> :hasTransit dbr:Paris >> :hasTime "2001-10-26T21:32:52"^^xsd:dateTime .
 
-:SubJour1 :hasActivity :SightSeeingSagradaFamilia1 .
+:Stage1 :hasActivity :SightSeeingSagradaFamilia1 .
 
 :SightSeeingSagradaFamilia1 a :SightSeeing ;
     :sightingOf dbr:Sagrada_Família;
@@ -198,62 +203,62 @@
     :hasDescription "Entering Sagrada Familia felt like stepping into a realm of divine artistry. The sun's gentle rays painted vibrant hues on the ornate stained glass, illuminating the sacred space. Massive columns rose like ancient trees, supporting the heavens above. Every detail, from intricately carved facades to delicate interior patterns, whispered tales of Gaudí's genius.Leaving, I carried a sense of awe that words could barely capture.".
 
 
-# :SubJour1 :hasParticipant :LeaD , :AdrianaM .
-:SubJour1 :hasStay :StaySubJour1 .
+# :Stage1 :hasParticipant :LeaD , :AdrianaM .
+:Stage1 :hasStay :StayStage1 .
 
-:StaySubJour1 a :Stay ;
+:StayStage1 a :Stay ;
     :hasAccommodation :HotelBarca .
 
-<< :StaySubJour1 :hasAccommodation :HotelBarca >> :hasCost "240" .    
-<< << :StaySubJour1 :hasAccommodation :HotelBarca >> :hasCost "240" >> :hasCurrency currency:Euro .    
+<< :StayStage1 :hasAccommodation :HotelBarca >> :hasCost "240" .    
+<< << :StayStage1 :hasAccommodation :HotelBarca >> :hasCost "240" >> :hasCurrency currency:Euro .    
 
 # :HotelBarca a :Accommodation; ## added on top
 #             :hasOwner :LucaB .
 # :LeaD :knows :LucaB .
 
 
-### Sub Journey 2 Barcelona–Tangier ###
+### Stage Journey 2 Barcelona–Tangier ###
 #######################################
 
-:Journey_2018_03 :hasSubJourney :SubJour2 .
+:Journey_2018_03 :hasStage :Stage2 .
 
-<<:Journey_2018_03 :hasSubJourney :SubJour2>> :hasStartDate "2018-03-13"^^xsd:date .
-<<:Journey_2018_03 :hasSubJourney :SubJour2>> :hasEndDate "2018-03-15"^^xsd:date . 
+<<:Journey_2018_03 :hasStage :Stage2>> :hasStartDate "2018-03-13"^^xsd:date .
+<<:Journey_2018_03 :hasStage :Stage2>> :hasEndDate "2018-03-15"^^xsd:date . 
 
-:SubJour2 a :Journey;
+:Stage2 a :Journey;
     :hasStartLocation :Barcelona;
     # :hasDeparture "2018-03-13T09:00:00"^^xsd:dateTime ;
     # :hasArrival "2018-03-14T14:00:00"^^xsd:dateTime ;
     :hasDestination :Tangier ;
     :hasTransport :Ferry .
 
- << :SubJour2 :hasStartLocation :Barcelona >> :hasDeparture "2018-03-13T09:00:00"^^xsd:dateTime .
- << :SubJour2 :hasStartLocation :Tangier >> :hasArrival "2018-03-14T14:00:00"^^xsd:dateTime .
+ << :Stage2 :hasStartLocation :Barcelona >> :hasDeparture "2018-03-13T09:00:00"^^xsd:dateTime .
+ << :Stage2 :hasStartLocation :Tangier >> :hasArrival "2018-03-14T14:00:00"^^xsd:dateTime .
 
-<< :SubJour2 :hasTransport :Ferry >> :hasCost "150" .
-<< << :SubJour2 :hasTransport :Ferry >> :hasCost "150" >> :hasCurrency currency:Euro.
+<< :Stage2 :hasTransport :Ferry >> :hasCost "150" .
+<< << :Stage2 :hasTransport :Ferry >> :hasCost "150" >> :hasCurrency currency:Euro.
 
-# :SubJour2 :hasParticipant :LeaD , :AdrianaM .
-:SubJour2 :hasStay :StaySubJour2 .
+# :Stage2 :hasParticipant :LeaD , :AdrianaM .
+:Stage2 :hasStay :StayStage2 .
 
-:StaySubJour2 a :Stay ;
+:StayStage2 a :Stay ;
     :hasAccommodation :AirBnBTangier .
 
 # :AirBnBTangier a :Accommodation . ## added on top
 
-<< :StaySubJour2 :hasAccommodation :AirBnBTangier >> :hasCost "1040" .    
-<< << :StaySubJour2 :hasAccommodation :AirBnBTangier >> :hasCost "1040" >>:hasCurrency currency:MoroccanDirham .    
+<< :StayStage2 :hasAccommodation :AirBnBTangier >> :hasCost "1040" .    
+<< << :StayStage2 :hasAccommodation :AirBnBTangier >> :hasCost "1040" >>:hasCurrency currency:MoroccanDirham .    
 
 
-### Sub Journey 3 Tangier-Rabat ###
+### Stage Journey 3 Tangier-Rabat ###
 ###################################
 
 
-:Journey_2018_03 :hasSubJourney :SubJour3 .
-<< :Journey_2018_03 :hasSubJourney :SubJour3>> :hasStartDate "2018-03-15"^^xsd:date .
-<< :Journey_2018_03 :hasSubJourney :SubJour3>> :hasEndDate "2018-03-18"^^xsd:date.
+:Journey_2018_03 :hasStage :Stage3 .
+<< :Journey_2018_03 :hasStage :Stage3>> :hasStartDate "2018-03-15"^^xsd:date .
+<< :Journey_2018_03 :hasStage :Stage3>> :hasEndDate "2018-03-18"^^xsd:date.
 
-:SubJour3 a :Journey;
+:Stage3 a :Journey;
     :hasStartLocation :Tangier;
     # :hasDeparture "2018-03-15T08:00:00"^^xsd:dateTime ;
     # :hasArrival "2018-03-15T12:00:00"^^xsd:dateTime ;
@@ -261,58 +266,58 @@
     :hasTransport :Car .
 
  
-<< :SubJour3 :hasStartLocation :Tangier>> :hasDeparture "2018-03-15T08:00:00"^^xsd:dateTime .
-<< :SubJour3 :hasDestination :Rabat>>  :hasArrival "2018-03-15T12:00:00"^^xsd:dateTime .
+<< :Stage3 :hasStartLocation :Tangier>> :hasDeparture "2018-03-15T08:00:00"^^xsd:dateTime .
+<< :Stage3 :hasDestination :Rabat>>  :hasArrival "2018-03-15T12:00:00"^^xsd:dateTime .
 
 
-<< :SubJour3 :hasTransport :Car >> :hasCost "300" .
-<< << :SubJour3 :hasTransport :Car >> :hasCost "300" >> :hasCurrency currency:MoroccanDirham.
-<< << << :SubJour3 :hasTransport :Car >> :hasCost "300" >> :hasCurrency currency:MoroccanDirham >> :hasDescription "Fuel".
+<< :Stage3 :hasTransport :Car >> :hasCost "300" .
+<< << :Stage3 :hasTransport :Car >> :hasCost "300" >> :hasCurrency currency:MoroccanDirham.
+<< << << :Stage3 :hasTransport :Car >> :hasCost "300" >> :hasCurrency currency:MoroccanDirham >> :hasDescription "Fuel".
 
-# :SubJour3 :hasParticipant :LeaD .
+# :Stage3 :hasParticipant :LeaD .
 
-:SubJour3 :hasStay :StaySubJour3 .
+:Stage3 :hasStay :StayStage3 .
 
-:StaySubJour3 a :Stay ;
+:StayStage3 a :Stay ;
     :hasAccommodation :HotelRabat .
 
 # :HotelRabat a :Accommodation. ## added on top
 
 
-<< :StaySubJour3 :hasAccommodation :HotelRabat  >> :hasCost "1000" .    
-<< << :StaySubJour3 :hasAccommodation :HotelRabat  >> :hasCost "1000" >> :hasCurrency currency:MoroccanDirham .   
+<< :StayStage3 :hasAccommodation :HotelRabat  >> :hasCost "1000" .    
+<< << :StayStage3 :hasAccommodation :HotelRabat  >> :hasCost "1000" >> :hasCurrency currency:MoroccanDirham .   
 
 
-### Sub Journey 4 Rabat–Marakech ###
+### Stage Journey 4 Rabat–Marakech ###
 ####################################
 
-:Journey_2018_03 :hasSubJourney :SubJour4 .
+:Journey_2018_03 :hasStage :Stage4 .
 
-<<:Journey_2018_03 :hasSubJourney :SubJour4>> :hasStartDate "2018-03-18"^^xsd:date . 
-<<:Journey_2018_03 :hasSubJourney :SubJour4>> :hasEndDate "2018-03-22"^^xsd:date. 
+<<:Journey_2018_03 :hasStage :Stage4>> :hasStartDate "2018-03-18"^^xsd:date . 
+<<:Journey_2018_03 :hasStage :Stage4>> :hasEndDate "2018-03-22"^^xsd:date. 
 
-:SubJour4 a :Journey;
+:Stage4 a :Journey;
     :hasStartLocation :Rabat;
     # :hasDeparture "2018-03-18T08:00:00"^^xsd:dateTime ; ## or as rdfstar
     # :hasArrival "2018-03-18T16:00:00"^^xsd:dateTime ; ## or as rdfstar
     :hasDestination :Marrakech ;
     :hasTransport :Car .
 
-<< :SubJour4 :hasStartLocation :Rabat>> :hasDeparture "2018-03-18T08:00:00"^^xsd:dateTime .
-<< :SubJour3 :hasDestination :Marrakech>>  :hasArrival "2018-03-18T16:00:00"^^xsd:dateTime .
+<< :Stage4 :hasStartLocation :Rabat>> :hasDeparture "2018-03-18T08:00:00"^^xsd:dateTime .
+<< :Stage3 :hasDestination :Marrakech>>  :hasArrival "2018-03-18T16:00:00"^^xsd:dateTime .
 
-<< :SubJour4 :hasTransport :Car>> :hasCost "500" .
-<< << :SubJour4 :hasTransport :Car >> :hasCost "500" >> :hasCurrency  currency:MoroccanDirham.
+<< :Stage4 :hasTransport :Car>> :hasCost "500" .
+<< << :Stage4 :hasTransport :Car >> :hasCost "500" >> :hasCurrency  currency:MoroccanDirham.
 
-# :SubJour4 :hasParticipant :LeaD .
-:SubJour4 :hasStay :StaySubJour4 .
+# :Stage4 :hasParticipant :LeaD .
+:Stage4 :hasStay :StayStage4 .
 
-:StaySubJour4 a :Stay ;
+:StayStage4 a :Stay ;
     :hasAccommodation :HotelMarrakech .
 
 # :HotelMarrakech a :Accommodation . ## added on top
 
-<< :StaySubJour4 :hasAccommodation :HotelMarrakech >> :hasCost "1000" .    
-<< << :StaySubJour4 :hasAccommodation :HotelMarrakech>> :hasCost "1000" >> :hasCurrency  currency:MoroccanDirham .   
+<< :StayStage4 :hasAccommodation :HotelMarrakech >> :hasCost "1000" .    
+<< << :StayStage4 :hasAccommodation :HotelMarrakech>> :hasCost "1000" >> :hasCurrency  currency:MoroccanDirham .   
 
 # Add Excursion || Add Dining Activity

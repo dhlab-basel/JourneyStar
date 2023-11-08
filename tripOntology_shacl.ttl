@@ -1,14 +1,29 @@
-@prefix schema: <https://schema.org/> .
-@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix currencyA: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix currency: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/>.
+@prefix schema: <https://schema.org/> .
 @prefix : <http://www.mysemantics.com/ontology/trip/> .
+@prefix dbr: <http://dbpedia.org/resource/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@base <http://www.mysemantics.com/> .
+
+### PersonShape ###
+################################
 
 :PersonShape a sh:NodeShape  ;
     sh:targetClass :Person ;
     sh:property [
+        sh:path schema:name ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+    ],
+    [
         sh:path schema:givenName ;
-       # sh:minCount 1 ;
-        sh:languageIn ("en" "de") ;
+        #sh:minCount 1 ;
         sh:datatype xsd:string ;
     ] ,
     [
@@ -17,91 +32,70 @@
         sh:datatype xsd:string ;
     ] ,
     [
-        sh:path schema:name ;
-        sh:minCount 1 ;
-        sh:datatype xsd:string ;
-    ],
-    [
-        sh:path owl:sameAs ;
-        sh:datatype xsd:anyURI ;
-    ],
-    [
-        sh:path :gnd ;
-        sh:datatype xsd:string ;
-    ],
-    [
         sh:path schema:gender ;
-        sh:in (schema:Female schema:Male)
-    ],
+        #sh:minCount 1;
+        sh:or ([sh:datatype xsd:string]
+                [sh:in ( schema:Female schema:Male )]);
+    ] ,
     [
         sh:path schema:birthDate ;
-        sh:minCount 1 ; # every person should have exactly one birthdate
-        sh:maxCount 1 ;
+        sh:maxCount 1 ; 
         sh:datatype xsd:date ;
-    ],
-    [
-        sh:path :hasDisability ;
-        sh:datatype xsd:string ;
-    ],
-    [
-        sh:path :hasParent ;
-        sh:node :PersonShape ;
-    ] ,
-    [
-        sh:path :livedIn ;
-        sh:node :LocationShape ;
-    ] ,
+    ]
+    ,
     [
         sh:path schema:birthPlace ;
+        sh:maxCount 1;
         sh:node :LocationShape ;
     ],
     [
         sh:path schema:knows ; # the object of schema:knows should be a resource of type :Location or :Person
-        sh:or ([sh:class :Location ] ,
+        sh:or ([sh:class :Location ]
                [sh:class :Person ]) ;
     ],
     [
-        sh:path :nationality ;
-        sh:datatype xsd:string ;
-    ],
-    [
-        sh:path :hasSighted;
-        sh:or ([sh:class :Architecuture ] ,  # if you want to just define the range of property without asking it to be validated against a shape, then use sh:class
-               [sh:class :Landscape ] ,
-               [sh:class :Occurence ] ,
-               [sh:class :Person ]) ;
-    ],
-    [
-        sh:path :travelledTo ;
-        sh:node :LocationShape ;
-    ],
-    [
-        sh:path :hasEmployment ;
-        sh:class schema:Occupation ;
+        sh:path :hasJourney ;
+        sh:node :JourneyShape ;
     ],
      [
         sh:path :participatedIn ;
-        sh:node :ActivityShape ;
+        sh:or ([sh:class :Activity ;] 
+                [sh:class :Travel;]);
+     ] , 
+    [
+        sh:path :hasDescription;
+        sh:node :TextContentShape ;
+    ], 
+    [
+        sh:path :hasGnd;
+        sh:datatype xsd:anyURI ;
+    ],
+    [
+        sh:path :hasWikiLink;
+        sh:datatype xsd:anyUri;
     ] .
 
-
 ### Shape for Class Location ###
+################################
+
 :LocationShape a sh:NodeShape  ;
-    sh:targetClass trip:Location ;
+    sh:targetClass :Location ;
     sh:property
     [
-        sh:path :hasGeonameID ;
-        sh:maxCount 1 ;
-        sh:minCount 1 ;
+    sh:path :hasGeonameID ;
+       sh:maxCount 1 ;
+       # sh:minCount 1 ;
+       sh:datatype xsd:anyURI;
     ] ,
     [
         sh:path schema:name ;
         sh:minCount 1 ;
+        #sh:languageIn ("en" "de" "fr" "es");
         sh:datatype xsd:string ;
     ] ,
     [
         sh:path :hasWikiLink ;
-        sh:minCount 1 ;
+       # sh:minCount 1 ;
         sh:datatype xsd:anyURI ;
     ] ,
 	  [
@@ -111,310 +105,314 @@
     [
         sh:path schema:address;
         sh:datatype xsd:string;
-    ] .
+    ] 
+    ,
+    [
+        sh:path :hasDescription;
+        sh:node :TextContentShape;
+    ] 
+    .
 
 
+### trip #### travel? ###
+:TripShape a sh:NodeShape  ;
+    sh:targetClass :Trip ;
+    sh:property
+    [
+        sh:path :hasDestination ;
+        #sh:maxCount 1 ;
+        sh:node :LocationShape;
+    ] ,
+      [
+        sh:path :hasStartLocation;
+        sh:node :LocationShape;
+    ],
+    [
+        sh:path :hasStartDate ;
+        #sh:minCount 1 ;
+        # sh:or ( [sh:datatype xsd:dateTime ]
+        #         [sh:datatype xsd:date ] 
+        #         [sh:datatype xsd:time ]);  
+        sh:node :hasStartDatePropertyShape; ###
+    ],
+    [
+        sh:path :hasEndDate ;
+        #sh:minCount 1 ;
+        # sh:or ( [sh:datatype xsd:dateTime ]
+        #         [sh:datatype xsd:date ] 
+        #         [sh:datatype xsd:time ]); 
+        sh:path :hasEndDatePropertyShape;
+    ],
+    [
+        sh:path :hasTransport;
+        sh:class :ModeOfTransport;
+     ],
+	[
+        sh:path :hasDescription ;
+        sh:node :TextContentShape ;
+    ], 
+    [
+        sh:path :hasActivity;
+        sh:node :ActivityShape;
+    ],
+    [
+        sh:path :hasTransit;
+        sh:node :LocationShape;
+    ].
+
+
+### Journey ####
+:JourneyShape a sh:NodeShape  ;
+    sh:targetClass :Journey;
+    sh:property
+    [
+        sh:path :hasDestination ;
+        #sh:minCount 1 ;
+        # sh:severity sh:Warning;
+        # sh:message "At least one destination must be provided"@en;
+        sh:node :LocationShape;
+    ] ,
+      [
+        sh:path :hasStartLocation;
+        sh:node :LocationShape;
+    ],
+    [
+        sh:path :hasStartDate ;
+        #sh:minCount 1 ;
+        sh:datatype xsd:date ; 
+    ],
+    [
+        sh:path :hasEndDate ;
+        #sh:minCount 1 ;
+        sh:datatype xsd:date; 
+    ],
+    [
+        sh:path :hasTransport;
+        sh:class :ModeOfTransport;
+     ],
+	[
+        sh:path :hasDescription ;
+        sh:node :TextContentShape ;
+    ],
+    [
+        sh:path :hasStay ;
+        sh:node :StayShape;
+    ],
+    [
+        sh:path :hasStage;
+        sh:class :JourneyShape; 
+    ],
+    [
+        sh:path :hasIntermediateDestination;
+        sh:node :Locationshape;
+    ], 
+    [
+        sh:path :hasActivity;
+        sh:node :ActivityShape;
+    ],
+    [
+        sh:path :hasTransit;
+        sh:node :LocationShape;
+    ].
+
+##### Excursion #######
+:ExcursionShape a sh:NodeShape  ;
+    sh:targetClass :Excursion ;
+    sh:property
+    [
+        sh:path :hasDestination ;
+        sh:node :LocationShape;
+        sh:severity sh:Info;
+        sh:message "An excursion is specified by returning back to the location of departure after visiting a different location"@en;
+    ], 
+    [
+        sh:path :hasDeparture ;
+        sh:or ( [sh:datatype xsd:dateTime ]
+                [sh:datatype xsd:date ] 
+                [sh:datatype xsd:time ]) ; 
+    ],
+    [
+        sh:path :hasTransport; 
+        sh:class :ModeOfTransport;
+     ],
+	[
+        sh:path :hasDescription ;
+        sh:node :TextContentShape ; 
+    ], 
+    [
+        sh:path :hasActivity;
+        sh:node :ActivityShape;
+    ],
+    [
+        sh:path :hasTransit;
+        sh:node :LocationShape;
+    ].
+
+
+### Shape for Class Stay ###
+################################
 :StayShape a sh:NodeShape  ;
     sh:targetClass :Stay ;
-    sh:property
+    sh:property 
     [
-        sh:path :Location ;
-        sh:maxCount 1 ;
-        #sh:languageIn ("en" "de" ) ;
-    ] ,
-    [
-        sh:path :arrival ;
+        sh:path :hasArrival ;
         #sh:minCount 1 ;
-        sh:datatype xsd:dateTime ; ## add here or add in hasNameShape that it must be schema:name > xsd:string
+        sh:datatype xsd:dateTime ; 
     ] ,
     [
-        sh:path :departure ;
+        sh:path :hasDeparture ;
        # sh:minCount 1 ;
         sh:datatype xsd:dateTime ;
     ] ,
-	  [
+	[
         sh:path :hasAccommodation ;
         sh:datatype :AccommodationShape ;
     ],
-	  [
-        sh:path :hasComment ;
-        sh:datatype xsd:string ;
-    ] .
-
-### Shape for Class Architecture ###
-
-:ArchitectureShape a sh:NodeShape  ;
-    sh:targetClass :Architecture ;
-    sh:property
     [
-        sh:path :Architecture ;
-        sh:maxCount 1 ;
-        #sh:languageIn ("en" "de" ) ;
-    ] ,
-         [
-        sh:path :hasGeonameID ;
-        sh:maxCount 1 ;
-        sh:minCount 1 ;
+        sh:path :hasActivity;
+        sh:node :ActivityShape;
     ],
-	  [
-        sh:path :hasAdress ;
-        sh:datatype xsd:string ;
-    ] ,
-          [
-        sh:path schema:name ;
-        sh:minCount 1 ;
-        sh:datatype xsd:string ;
-    ] .  
-
-### Shape for Class Activity ###
-
-:ActivityShape a sh:NodeShape  ;
-    sh:targetClass :Activity ;
-    sh:property
     [
-        sh:path :Activity ;
-        sh:maxCount 1 ;
-        #sh:languageIn ("en" "de" ) ;
-    ] ,
-         [
-        sh:path :hasActivity ;
-        sh:minCount 1 ;
+        sh:path :hasExcursion;
+        sh:node :ExcursionShape;
     ],
-	  [
-        sh:path :hasParticipant ;
-	sh:minCount 1; 
-        
-    ] ,
-          [
-        sh:path schema:name ;
-        sh:minCount 1 ;
-        sh:datatype xsd:string ;
-    ] .  
-### Shape for Class Landscape ###
-
-:LandscapeShape a sh:NodeShape  ;
-    sh:targetClass :Landscape ;
-    sh:property
-    [
-        sh:path :Landscape ;
-        sh:maxCount 1 ;
-        #sh:languageIn ("en" "de" ) ;
-    ] ,
-         [
-        sh:path :hasSighted ;
-        sh:minCount 1 ;
-    ],
-         [
-        sh:path schema:name ;
-        sh:minCount 1 ;
-        sh:datatype xsd:string ;
-    ] .  
-
-### Shape for Class Activity ###
-
-:ActivityShape a sh:NodeShape  ;
-    sh:targetClass :Activity ;
-    sh:property
-    [
-        sh:path :Activity ;
-        sh:maxCount 1 ;
-        #sh:languageIn ("en" "de" ) ;
-    ] ,
-         [
-        sh:path :hasActivity ;
-        sh:minCount 1 ;
-    ],
-	  [
-        sh:path :hasParticipant ;
-	sh:minCount 1; 
-        
-    ] ,
-          [
-        sh:path schema:name ;
-        sh:minCount 1 ;
-        sh:datatype xsd:string ;
-    ] .  
-### Shape for Class Settlement ###
-
-:SettlementShape a sh:NodeShape  ;
-    sh:targetClass :Settlement ;
-    sh:property
-    [
-        sh:path :Settlement ;
-        sh:maxCount 1 ;
-        #sh:languageIn ("en" "de" ) ;
-    ] ,
-    [
-        sh:path :arrival ;
-        #sh:minCount 1 ;
-        sh:datatype xsd:dateTime ; ## add here or add in hasNameShape that it must be schema:name > xsd:string
-    ] ,
-    [
-        sh:path :departure ;
-       # sh:minCount 1 ;
-        sh:datatype xsd:dateTime ;
-    ] ,
-	  [
-        sh:path :hasAccommodation ;
-        sh:datatype :AccommodationShape ;
-    ],
-	  [
-        sh:path :hasComment ;
-        sh:datatype xsd:string ;
-    ] .
-
-### Shape for Class Journey ###
-:JourneyShape a sh:NodeShape  ;
-    sh:targetClass :Journey ;
-    sh:property
-    [
-        sh:path :Journey ;
-        sh:maxCount 1 ;
-        #sh:languageIn ("en" "de" ) ;
-    ] ,
-    [
-        sh:path :arrival ;
-        #sh:minCount 1 ;
-        sh:datatype xsd:dateTime ; 
-    [
-        sh:path :departure ;
-       # sh:minCount 1 ;
-        sh:datatype xsd:dateTime ;
-    ] ,
-	  [
-        sh:path :hasParticipant ;
-        sh:class :Person
-	sh:minCount 1 ;
-    ],
-	  [
-        sh:path :hasComment ;
-        sh:datatype xsd:string ;
-    ] ,
-	 [
-        sh:path :visited ;
-        sh:class :Location , 
-	         :Architecture;
-    ] . 
-
-	    ### Shape for Class Transportation ###
-:TransportationShape a sh:NodeShape  ;
-    sh:targetClass :Transportation ;
-    sh:property
-    [
-        sh:path :Transportation ;
-        sh:maxCount 1 ;
-        #sh:languageIn ("en" "de" ) ;
-    ] ,
-    [
-        sh:path :arrival ;
-        #sh:minCount 1 ;
-        sh:datatype xsd:dateTime ; 
-    [
-        sh:path :departure ;
-       # sh:minCount 1 ;
-        sh:datatype xsd:dateTime ;
-    ] ,
-	  [
-        sh:path :hasParticipant ;
-        sh:class :Person
-	sh:minCount 1 ;
-    ],
-	  [
-        sh:path :hasDestination ;
-        sh:class :Location, 
-	         :Settlement,
-	         :Acommodation;
-    ] ,
-	 [
-        sh:path :hasStop ;
-        sh:class :Location ;
-	         
-    ] ,
 	[ 
-	 sh:path :transitThrough ;
-         sh:class :Location ;
-    ] .
+        sh:path :hasDescription;
+        sh:node :TextContentShape;
+    ].
 
-### Shape for Class Manuscript ###
-:ManuscriptShape a sh:NodeShape  ;
-    sh:targetClass :Manuscript ;
+####### Accommodation ########
+:AccommodationShape a sh:NodeShape;
+    sh:targetClass :Accommodation;
     sh:property
     [
-        sh:path :Manuscript ;
-        sh:maxCount 1 ;
-        #sh:languageIn ("en" "de" ) ;
-    ] ,
+        sh:path :hasOwner;
+        sh:class :Person; # Or Business Entity
+    ],
     [
-        sh:path schema:name ;
-        #sh:minCount 1 ;
-        #sh:languageIn ("en" "de" ) ; 
+        sh:path schema:name;
+        sh:datatype xsd:string;
+    ],
     [
-        sh:path :hasAlternativeName ;
-         #sh:minCount 1 ;
-         #sh:languageIn ("en" "de" );
-    ] ,
-	  [
-        sh:path :hasDate ;
-        sh:datatype xsd:dateTime;
-	  [
-        sh:path :hasComment ;
-        sh:datatype xsd:string ;
-    ] ,
-	 [
-        sh:path :hasOwner ;
-        sh:class :Person
-	sh:minCount 1;
-    ] ,
-	 [
-        sh:path :hasText ;
-        sh:datatype xsd:string ;
+        sh:path schema:adress;
+        sh:datatype xsd:string;
+    ],
+    [
+        sh:path :hasDescription;
+        sh:node :TextContentShape;
     ] .
 
-
-### Shape for Class Travel Diary ###
-:TravelDiartyShape a sh:NodeShape  ;
-    sh:targetClass :TravelDiary ;
+####### Activity ########
+:ActivityShape a sh:NodeShape;
+    sh:targetClass :Activity;
     sh:property
-     [
-        sh:path :TravelDiary ;
-        sh:maxCount 1 ;
-        #sh:languageIn ("en" "de" ) ;
-    ] ,
     [
-        sh:path schema:name ;
-        #sh:minCount 1 ;
-        #sh:languageIn ("en" "de" ) ; 
+        sh:path :hasParticipant;
+        sh:class :PersonShape;
+    ],
     [
-        sh:path :hasAlternativeName ;
-         #sh:minCount 1 ;
-         #sh:languageIn ("en" "de" );
-    ] ,
-	  [
-        sh:path :hasDate ;
-        sh:datatype xsd:dateTime;
-	  [
-        sh:path :hasComment ;
-        sh:datatype xsd:string ;
-    ] ,
-	 [
-        sh:path :hasOwner ;
-        sh:class :Person
-	sh:minCount 1;
+        sh:path schema:name;
+        sh:minCount 1;
+        sh:datatype xsd:string;
+    ],
+    [
+        sh:path :start ;
+        sh:or ( [sh:datatype xsd:dateTime ]
+                [sh:datatype xsd:date ] 
+                [sh:datatype xsd:time ]);
     ], 
-	 [
-        sh:path :hasText ;
-        sh:datatype xsd:string ;
+    [
+        sh:path :end ;
+        sh:or ( [sh:datatype xsd:dateTime ]
+                [sh:datatype xsd:date ] 
+                [sh:datatype xsd:time ]);
+    ], 
+    [
+        sh:path sh:hasDescription;
+        sh:node sh:TextContentShape;
+    ] .
+
+####### SightSeeing ########
+:SightSeeingShape a sh:NodeShape;
+    sh:targetClass :SightSeeing;
+    sh:property
+    [
+        sh:path :sightingOf;
+        sh:or (
+            [sh:datatype xsd:anyURI]
+            [sh:datatype xsd:string]
+        );
+    ].
+
+####### Dining ########
+:DiningShape a sh:NodeShape;
+    sh:targetClass :Dining;
+    sh:property
+    [
+        sh:path :mealType;
+        sh:datatype xsd:string;
+    ],
+    [
+        sh:path :cuisine ;
+        sh:datatype xsd:string;
+    ].
+
+####### Entertainment ########
+:EntertainmentShape a sh:NodeShape;
+    sh:targetClass :Entertainment;
+    sh:property
+    [
+        sh:path :entertainmentType ;
+        sh:datatype xsd:string;
+    ],
+    [
+        sh:path :cuisine ;
+        sh:datatype xsd:string;
+    ].
+
+
+####### mode of transport ########
+:ModeOfTransportShape a sh:NodeShape;
+    sh:targetClass :ModeOfTransport;
+    sh:property
+    [   sh:path :hasDescription;
+        sh:node :TextContentShape;
     ] .
 
 
+#### DOCUMENTS ####
+### Document ###
+:DocumentShape a sh:NodeShape  ;
+    sh:targetClass :Document ;
+    sh:property
+    [
+        sh:path :hasTextContent ;
+        sh:node :TextContentShape;
+    ], 
+    [
+        sh:path :hasDate ;
+        sh:or ( [sh:datatype xsd:dateTime ]
+                [sh:datatype xsd:date ]
+                [sh:datatype xsd:gYear ]) ; 
+    ],
+	[
+        sh:path :hasDescription ;
+        sh:node :TextContentShape ; #sh:class TextContent
+    ].
 
 
+### Text Content ###
+:TextContentShape a sh:NodeShape;
+    sh:targetClass :TextContent;
+    sh:property
+    [
+        sh:path :hasText;
+        sh:datatype xsd:string;
+    ].
 
-### TODO: Add node shapes for all classes defined in the Ontology
 
-##########################################
-#### Property shapes for RDF-star triples
-##########################################
+##############################################################
+##############################################################
 
 :accordingToPropertyShape
     	a sh:PropertyShape ;
@@ -429,4 +427,164 @@
     	sh:description "Represents the document that is source of a fact." ;
     	sh:node :DocumentShape . # define the DocumenShape
 
-#TODO: define property shapes for all properties with an object that is a triple
+
+#############
+###  hasStartLocation ###
+:hasStartLocationPropertyShape
+    	a sh:PropertyShape ;
+    	sh:path :hasStartLocation ;
+    	sh:description "Represents the start location of a trip." ;
+    	sh:node :LocationShape .
+
+###  hasDestination ###
+:hasDestinationPropertyShape
+    	a sh:PropertyShape ;
+    	sh:path :hasDestination ;
+    	sh:description "Represents the destination of a trip." ;
+    	sh:node :LocationShape . 
+
+# hasArrival
+:hasArrivalPropertyShape 
+    a sh:PropertyShape ;
+    sh:path :hasArrivalDateTime;
+    sh:description "Represents the moment of arrival.";
+    sh:or ( [sh:datatype xsd:dateTime ]
+                [sh:datatype xsd:date ] 
+                [sh:datatype xsd:time ]) .
+
+# hasDeparture
+:hasDeparturePropertyShape 
+    a sh:PropertyShape ;
+    sh:path :hasDepartureDateTime;
+    sh:description "Represents a moment of departure.";
+    sh:or ( [sh:datatype xsd:dateTime ]
+                [sh:datatype xsd:date ] 
+                [sh:datatype xsd:time ]) .
+###  hasStart ###
+:hasStartDatePropertyShape
+    	a sh:PropertyShape ;
+    	sh:path :hasStartDate ;
+    	sh:description "Represents the start of an event" ;
+    	sh:or ( [sh:datatype xsd:dateTime ]
+                [sh:datatype xsd:date ] 
+                [sh:datatype xsd:time ]) . 
+
+###  hasEnd ###
+:hasEndPropertyShape
+    	a sh:PropertyShape ;
+    	sh:path :hasEnd ;
+    	sh:description "Represents the temporal end of an event." ;
+    	sh:or ( [sh:datatype xsd:dateTime ]
+                [sh:datatype xsd:date ] 
+                [sh:datatype xsd:time ]) .
+
+###  Date ###
+:hasDatePropertyShape
+    	a sh:PropertyShape ;
+    	sh:path :hasTime ;
+    	sh:description "Represents a time." ;
+    	sh:or ( [sh:datatype xsd:dateTime ]
+                [sh:datatype xsd:date ] 
+                [sh:datatype xsd:gYear ]) . 
+
+###  time ###
+:hasTimePropertyShape
+    	a sh:PropertyShape ;
+    	sh:path :hasTime ;
+    	sh:description "Represents a time." ;
+    	sh:or ( [sh:datatype xsd:dateTime ]
+                [sh:datatype xsd:time ]) . 
+
+#### or just :time :date
+
+### has subjourneyto ###
+:hasIntermediateDestinationPropertyShape
+    	a sh:PropertyShape ;
+    	sh:path :hasIntermediateDestination ;
+    	sh:description "Represents a subjourney to a location." ;
+    	sh:node :LocationShape . 
+
+### has subjourney ###
+:hasStagePropertyShape
+    	a sh:PropertyShape ;
+    	sh:path :hasStage ;
+    	sh:description "Represents a subjourney." ;
+    	sh:node :JourneyShape . 
+
+### has Transport ###
+:hasTransportPropertyShape
+    	a sh:PropertyShape ;
+    	sh:path :hasTransport ;
+    	sh:description "Represents the mode of transport." ;
+        sh:class :ModeOfTransport. 
+
+### has stay ###
+:hasStayPropertyShape
+    a sh:PropertyShape;
+    sh:path :hasStay;
+    sh:description "Represents a stay on a journey.";
+    sh:node :StayShape . #sh:class :Stay
+
+### has activity ###
+:hasActivityPropertyShape
+    a sh:PropertyShape;
+    sh:path :hasActivity;
+    sh:description "Represents activity during a stay.";
+    sh:node :ActivityShape . #sh:class :Activity
+
+### has transit ###
+:hasTransitPropertyShape
+    a sh:ProperyShape;
+    sh:path :hasTransit;
+    sh:description "Represents a transit location during journey.";
+    sh:node :LocationShape .
+
+### hasCost ###
+:hasCostPropertyShape
+    a sh:PropertyShape;
+    sh:path :hasCost;
+    sh:description "Represents the monetary cost of something.";
+    # sh:node currency:hasPrice;
+    sh:datatype xsd:string.
+
+### currency ###
+:hasCurrencyPropertyShape
+    a sh:PropertyShape;
+    sh:path :hasCurrency;
+    sh:description "Represents the currency of money.";
+    #sh:class currency:currency .
+    sh:datatype xsd:string.
+
+
+### hasDescription ### or here sh:node
+:hasDescriptionPropertyShape
+    a sh:PropertyShape;
+    sh:path :hasDescription;
+    sh:description "Represents a description.";
+    sh:node :TextContentShape .
+    #sh:datatype xsd:string.
+
+
+#### excursion? ##
+:hasTextPropertyShape
+     a sh:PropertyShape ;
+    sh:path :hasText;
+    sh:description "Represents the text of a text content shape";
+    sh:datatype xsd:string.
+
+
+### nr ###
+:nrPropertyShape
+    a sh:PropertyShape;
+    sh:path :nr;
+    sh:description "Represents the number of something.";
+    sh:datatype xsd:string.
+
+# ###########
+# #time sh:path schema:knows ; # the object of schema:knows should be a resource of type :Location or :Person
+#         sh:or ([sh:datatype xsd:dateTime ]
+#                [sh:datatype xsd:date ]
+                #[sh:datatype xsd:time ]) ;
+
+
+

@@ -116,6 +116,11 @@
     owl:sameAs dbr:Marrakesh;
     :hasGeonameID "6547285".
 
+:Morocco a :Location;
+    schema:name "Morocco"@en;
+    owl:sameAs dbr:Morocco;
+    :hasGeonameID "2542007".
+
 
 
 #####################################
@@ -157,55 +162,55 @@
 
 :Journey_2018_03 a :Journey ;
     :hasStartLocation :Zurich;
-    :hasDestination :Marrakech .
+    :hasDestination :Morocco .
 
 << :SofiaM :hasJourney :Journey_2018_03 >> :hasStartDate "2018-03-10"^^xsd:date .
 << :SofiaM :hasJourney :Journey_2018_03 >> :hasEndDate "2018-03-22"^^xsd:date.
 
 << :Journey_2018_03 :hasStartLocation :Zurich >> :hasDeparture "2018-03-10T08:00:00"^^xsd:dateTime .
-<< :Journey_2018_03 :hasStartLocation :Marrakech >> :hasArrival "2018-03-10T22:00:00"^^xsd:dateTime .
+<< :Journey_2018_03 :hasStartDestination :Morocco >> :hasArrival "2018-03-14T14:00:00"^^xsd:dateTime .
 
 
 ### Sub Journey to Barcelona #####
 ##################################
-<< :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Barcelona .
+<< :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Barcelona .
 
-<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Barcelona >> :hasStartLocation :Zurich.
+<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Barcelona >> :hasStartLocation :Zurich.
 
-<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Barcelona >> :hasStartLocation :Zurich >> :hasDeparture "2018-03-10T08:00:00"^^xsd:dateTime.
+<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Barcelona >> :hasStartLocation :Zurich >> :hasDeparture "2018-03-10T08:00:00"^^xsd:dateTime.
 
-<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Barcelona >> :hasTransport :Train. 
+<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Barcelona >> :hasTransport :Train. 
 
-<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Barcelona >> :hasTransport :Train>> :hasTransit :Paris. 
-# OR << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Barcelona >> :hasTransit :Paris .
+<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Barcelona >> :hasTransport :Train>> :hasTransit :Paris. 
+# OR << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Barcelona >> :hasTransit :Paris .
 
-<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Barcelona >> :hasTransport :Train>> :hasCost "120".
+<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Barcelona >> :hasTransport :Train>> :hasCost "120".
 
-<< << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Barcelona >> :MeanOfTransportation :Train>> :hasCost "120" >> :hasCurrency currency:Euro.
+<< << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Barcelona >> :MeanOfTransportation :Train>> :hasCost "120" >> :hasCurrency currency:Euro.
 
-<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Barcelona >> :hasArrival "2018-03-10T22:00:00"^^xsd:dateTime .
+<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Barcelona >> :hasArrival "2018-03-10T22:00:00"^^xsd:dateTime .
 
-<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Barcelona >> :hasStay :StaySubJour1 .
+<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Barcelona >> :hasStay :IntStay1 .
 
-:StaySubJour1 a :Stay .
+:IntStay1 a :Stay .
 
 
-<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Barcelona >> :hasStay :StaySubJour1 >> :hasAccommodation :HotelBarca .
+<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Barcelona >> :hasStay :IntStay1 >> :hasAccommodation :HotelBarca .
 
-<< << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Barcelona >> :hasStay :StaySubJour1 >> :hasAccommodation :HotelBarca >> :hasCost "240" .
+<< << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Barcelona >> :hasStay :IntStay1 >> :hasAccommodation :HotelBarca >> :hasCost "240" .
 
-<< << << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Barcelona >> :hasStay :StaySubJour1 >> :hasAccommodation :HotelBarca >> :hasCost "240" >> :hasCurrency currency:Euro .
+<< << << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Barcelona >> :hasStay :IntStay1 >> :hasAccommodation :HotelBarca >> :hasCost "240" >> :hasCurrency currency:Euro .
 
 ## OR if too much rdf
-# << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Barcelona >> :hasStay :StaySubJour1 .
-# :StaySubJour1 a :Stay ;
+# << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Barcelona >> :hasStay :IntStay1 .
+# :IntStay1 a :Stay ;
 #     :hasAccommodation :HotelBarca .
 
-# << :StaySubJour1 :hasAccommodation :HotelBarca >> :hasCost "240" .    
-# << << :StaySubJour1 :hasAccommodation :HotelBarca >> :hasCost "240" >> :hasCurrency currency:Euro .   
+# << :IntStay1 :hasAccommodation :HotelBarca >> :hasCost "240" .    
+# << << :IntStay1 :hasAccommodation :HotelBarca >> :hasCost "240" >> :hasCurrency currency:Euro .   
 
 ##sightseeing activity ##
-<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Barcelona >> :hasActivity :SightSeeingSagradaFamilia1.
+<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Barcelona >> :hasActivity :SightSeeingSagradaFamilia1.
 
 :SightSeeingSagradaFamilia1 a :SightSeeing ;
     :sightingOf dbr:Sagrada_Família;
@@ -221,94 +226,94 @@
 ### Sub Journey to Tangier ###
 #######################################
 
-<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Tangier >> :hasStartLocation :Barcelona.
+<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Tangier >> :hasStartLocation :Barcelona.
 
-<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Tangier >> :hasStartLocation :Barcelona >> :hasDeparture "2018-03-13T09:00:00"^^xsd:dateTime.
+<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Tangier >> :hasStartLocation :Barcelona >> :hasDeparture "2018-03-13T09:00:00"^^xsd:dateTime.
 
-<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Tangier >> :hasArrival "2018-03-14T14:00:00"^^xsd:dateTime.
-
-
-<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Tangier >> :hasTransport :Ferry. 
-
-<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Tangier >> :hasTransport :Ferry>> :hasCost "150".
-
-<< << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Tangier >> :hasTransport :Ferry>> :hasCost "150" >> :hasCurrency currency:Euro.
+<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Tangier >> :hasArrival "2018-03-14T14:00:00"^^xsd:dateTime.
 
 
-<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Tangier >> :hasStay :StaySubJour2 .
+<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Tangier >> :hasTransport :Ferry. 
 
-<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Tangier >> :hasStay :StaySubJour2 >> :hasAccommodation :AirBnBTangier .
+<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Tangier >> :hasTransport :Ferry>> :hasCost "150".
 
-:StaySubJour2 a :Stay .
+<< << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Tangier >> :hasTransport :Ferry>> :hasCost "150" >> :hasCurrency currency:Euro.
 
-<< << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Tangier >> :hasStay :StaySubJour2 >> :hasAccommodation :AirBnBTangier>> :hasCost "1040" .
 
-<< << << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Tangier >> :hasStay :StaySubJour2 >> :hasAccommodation :AirBnBTangier>> :hasCost "1400" >> :hasCurrency currency:MoroccanDirham .
+<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Tangier >> :hasStay :IntStay2 .
+
+<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Tangier >> :hasStay :IntStay2 >> :hasAccommodation :AirBnBTangier .
+
+:IntStay2 a :Stay .
+
+<< << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Tangier >> :hasStay :IntStay2 >> :hasAccommodation :AirBnBTangier>> :hasCost "1040" .
+
+<< << << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Tangier >> :hasStay :IntStay2 >> :hasAccommodation :AirBnBTangier>> :hasCost "1400" >> :hasCurrency currency:MoroccanDirham .
 
 # other way
-# :StaySubJour2 a :Stay ;
+# :IntStay2 a :Stay ;
 #    :hasAccommodation :AirBnBTangier .
-# << :StaySubJour2 :hasAccommodation :AirBnBTangier >> :hasCost "1040" .    
-# << << :StaySubJour2 :hasAccommodation :AirBnBTangier >> :hasCost "1040" >> :hasCurrency currency:MoroccanDirham  .    
+# << :IntStay2 :hasAccommodation :AirBnBTangier >> :hasCost "1040" .    
+# << << :IntStay2 :hasAccommodation :AirBnBTangier >> :hasCost "1040" >> :hasCurrency currency:MoroccanDirham  .    
 
 
 
 ### Sub Journey to Rabat ###
 ############################
 
-<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Rabat >> :hasStartLocation :Tangier.
-<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Rabat >> :hasStartLocation :Tangier >> :hasDeparture "2018-03-15T08:00:00"^^xsd:dateTime.
-<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Rabat >> :hasArrival "2018-03-15T12:00:00"^^xsd:dateTime.
+<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Rabat >> :hasStartLocation :Tangier.
+<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Rabat >> :hasStartLocation :Tangier >> :hasDeparture "2018-03-15T08:00:00"^^xsd:dateTime.
+<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Rabat >> :hasArrival "2018-03-15T12:00:00"^^xsd:dateTime.
 
-<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Tangier >> :hasTransport :Car. 
-<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Tangier >> :hasTransport :Car>> :hasCost "300".
-<< << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Tangier >> :hasTransport :Car>> :hasCost "300" >> :hasCurrency currency:MoroccanDirham .
-<< << << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Tangier >> :hasTransport :Car>> :hasCost "300" >> :hasCurrency currency:MoroccanDirham >> :hasDescription "For Fuel".
+<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Tangier >> :hasTransport :Car. 
+<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Tangier >> :hasTransport :Car>> :hasCost "300".
+<< << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Tangier >> :hasTransport :Car>> :hasCost "300" >> :hasCurrency currency:MoroccanDirham .
+<< << << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Tangier >> :hasTransport :Car>> :hasCost "300" >> :hasCurrency currency:MoroccanDirham >> :hasDescription "For Fuel".
 
-<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Rabat >> :hasStay :StaySubJour3 .
+<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Rabat >> :hasStay :IntStay3 .
 
 
-:StaySubJour3 a :Stay;
+:IntStay3 a :Stay;
     :hasAccommodation :HotelRabat .
 
-<< :StaySubJour3 :hasAccommodation :HotelRabat >> :hasCost "1000" .
-<< << :StaySubJour3 :hasAccommodation :HotelRabat >> :hasCost "1000" >> :hasCurrency currency:MoroccanDirham.
+<< :IntStay3 :hasAccommodation :HotelRabat >> :hasCost "1000" .
+<< << :IntStay3 :hasAccommodation :HotelRabat >> :hasCost "1000" >> :hasCurrency currency:MoroccanDirham.
 
 ## testing other way
-# :StaySubJour3 a :Stay .
-# << << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Tangier >> :hasStay :StaySubJour3 >> :hasAccommodation :HotelRabat>> :hasCost "1000" .
-# << << << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Tangier >> :hasStay :StaySubJour3 >> :hasAccommodation :HotelRabat>> :hasCost "1000" >> :hasCurrency currency:MoroccanDirham .
+# :IntStay3 a :Stay .
+# << << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Tangier >> :hasStay :IntStay3 >> :hasAccommodation :HotelRabat>> :hasCost "1000" .
+# << << << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Tangier >> :hasStay :IntStay3 >> :hasAccommodation :HotelRabat>> :hasCost "1000" >> :hasCurrency currency:MoroccanDirham .
 
 
 ### Sub Journey to Marrakech ###
 ###############################
 
-<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Marrakech >> :hasStartLocation :Rabat.
-<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Marrakech >> :hasStartLocation :Rabat >> :hasDeparture "2018-03-18T09:00:00"^^xsd:dateTime.
-<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Marrakech >> :hasArrival "2018-03-18T14:00:00"^^xsd:dateTime.
+<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Marrakech >> :hasStartLocation :Rabat.
+<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Marrakech >> :hasStartLocation :Rabat >> :hasDeparture "2018-03-18T09:00:00"^^xsd:dateTime.
+<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Marrakech >> :hasArrival "2018-03-18T14:00:00"^^xsd:dateTime.
 
 
-<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Marrakech >> :hasTransport :Car. 
-<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Marrakech >> :hasTransport :Car>> :hasCost "500".
-<< << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Marrakech >> :hasTransport :Car>> :hasCost "500" >> :hasCurrency currency:MoroccanDirham .
-<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Marrakech >> :hasStay :StaySubJour4 .
+<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Marrakech >> :hasTransport :Car. 
+<< << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Marrakech >> :hasTransport :Car>> :hasCost "500".
+<< << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Marrakech >> :hasTransport :Car>> :hasCost "500" >> :hasCurrency currency:MoroccanDirham .
+<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Marrakech >> :hasStay :IntStay4 .
 
-:StaySubJour4 a :Stay;
+:IntStay4 a :Stay;
     :hasAccommodation :HotelMarrakech .
 
-<< :StaySubJour4 :hasAccommodation :HotelMarrakech >> :hasCost "1040" .
-<< << :StaySubJour4 :hasAccommodation :HotelMarrakech >> :hasCost "1040" >> :hasCurrency currency:MoroccanDirham.
+<< :IntStay4 :hasAccommodation :HotelMarrakech >> :hasCost "1040" .
+<< << :IntStay4 :hasAccommodation :HotelMarrakech >> :hasCost "1040" >> :hasCurrency currency:MoroccanDirham.
 
-# :StaySubJour4 a :Stay .
-# << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Marrakech >> :hasStay :StaySubJour4 >> :hasAccommodation :HotelMarrakech .
-# << << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Marrakech >> :hasStay :StaySubJour4 >> :hasAccommodation :HotelMarrakech >> :hasCost "1040" .
-# << << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Marrakech >> :hasStay :StaySubJour4 :hasAccommodation :HotelMarrakech >> :hasCost "1040"  >> :hasCurrency currency:MoroccanDirham.
+# :IntStay4 a :Stay .
+# << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Marrakech >> :hasStay :IntStay4 >> :hasAccommodation :HotelMarrakech .
+# << << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Marrakech >> :hasStay :IntStay4 >> :hasAccommodation :HotelMarrakech >> :hasCost "1040" .
+# << << << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Marrakech >> :hasStay :IntStay4 :hasAccommodation :HotelMarrakech >> :hasCost "1040"  >> :hasCurrency currency:MoroccanDirham.
 
 
 ############# Journey Back to Zurich #######
-# << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Zurich .
-# << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Zurich >> :hasStartLocation :Marrakech.
-# << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Zurich >> :hasStartLocation :Marrakech >> :hasDeparture "2018-03-22T10:00:00"^^xsd:dateTime.
-# << << :SofiaM :hasJourney :Journey_2018_03 >> :hasSubJourneyTo :Zurich >> :hasArrival "2018-03-22T14:00:00"^^xsd:dateTime.
+# << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Zurich .
+# << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Zurich >> :hasStartLocation :Marrakech.
+# << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Zurich >> :hasStartLocation :Marrakech >> :hasDeparture "2018-03-22T10:00:00"^^xsd:dateTime.
+# << << :SofiaM :hasJourney :Journey_2018_03 >> :hasIntermediateDestination :Zurich >> :hasArrival "2018-03-22T14:00:00"^^xsd:dateTime.
 
 

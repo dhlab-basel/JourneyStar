@@ -164,15 +164,9 @@
         rdfs:comment "Represents an additional description."@en .
 
 
-
-
 ##################
 ### Predicates ###
 ##################
-
-
-### locality ###
-#### transit ontology: https://vocab.org/transit/ ###
 
 ### hasStartLocation
 :hasStartLocation rdf:type owl:ObjectProperty ;
@@ -239,34 +233,36 @@
 
 
 ### hasSubJourneyTo
-:hasSubJourneyTo rdf:type owl:ObjectProperty ;
+:hasIntermediateDestination rdf:type owl:ObjectProperty ;
         #rdfs:domain :Travel; / rdf:Triple
         rdfs:range :Location ;
-        rdfs:label "hat Reiseetappe"@de ,
-                   "has subjourney to"@en ;
-        rdfs:comment """Represents the destination of a travel stage."""@en .
+        rdfs:label "hat Zwischenstation"@de ,
+                   "has intermediate destination"@en ;
+        rdfs:comment """Represents an intermediate destination during a journey."""@en .
 
 
 ### hasSubJourney 
-:hasSubJourney rdf:type owl:ObjectProperty ;
+:hasStage rdf:type owl:ObjectProperty ;
         #rdfs:domain :Travel; rdf:Triple
         rdfs:range :Journey ;
-        rdfs:label "hat Reiseetappe"@de ,
-                   "has subjourney"@en ;
-        rdfs:comment """Represents the destination of a travel stage."""@en .
-
+        rdfs:label "hat Etappe"@de ,
+                   "has stage"@en ;
+        rdfs:comment """Represents a stage of a journey."""@en .
 
 ### activity predicates ###
+
 # :sightingOf
 :sightingOf rdf:type owl:ObjectProperty ; #owl:ObjectProperty
         rdfs:label "Besichtigung von"@de ,
                    "sighting of"@en ;
         rdfs:comment """Represents the target sighted during a sightseeing activity."""@en .
+
 # :mealType
 :mealType rdf:type owl:ObjectProperty ; #owl:ObjectProperty
         rdfs:label "Mahlzeit typ"@de ,
                    "meal type"@en ;
         rdfs:comment """Represents the type of meal during a dining activity."""@en .
+
 # :cuisine
 :cuisine rdf:type owl:ObjectProperty ; #owl:ObjectProperty
         rdfs:label "Küche"@de ,
@@ -278,7 +274,6 @@
         rdfs:label "Unterhaltungsart"@de ,
                    "entertainement type"@en ;
         rdfs:comment """Represents the type of entertainment of an entertainment activity."""@en .
-
     
 ### hasStay
 :hasStay rdf:type owl:ObjectProperty ;
@@ -303,7 +298,6 @@
                    "has activity"@en ;
         rdfs:comment """Represents an activity during a trip."""@en .
 
-
 ### hasCost
 :hasCost rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf currencyA:hasPrice ;
@@ -315,9 +309,6 @@
 
 ### has Currency
 :hasCurrency rdf:type owl:ObjectProperty ;
-       #rdfs:subPropertyOf currency:hasCurrency ;
-       #rdfs:domain rdf:Triple;
-        # rdfs:range currency:Currency ; #currency:Currency
         rdfs:label "Währung"@de ,
                    "Currency"@en ;
         rdfs:comment """Represents the currency of a payment."""@en .
@@ -353,7 +344,7 @@
 
 ### hasTextContent
 :hasTextContent rdf:type owl:ObjectProperty;
-#     rdfs:domain :Document ;
+        #rdfs:domain :Document ;
     rdfs:range :TextContent ;
     rdfs:label  "Text-Inhalt"@de,
                 "Text Content"@en;
@@ -434,7 +425,6 @@
 ### Weather ###
 
 ### travel group? ### group people if present at multiple events or journeys?
-
 # :hasWeatherConditions
 
 # ### Settlement ###
@@ -452,15 +442,5 @@
 #         rdfs:comment "A class defining a location as a primary defined as natural landscape contrary to the sub class settlement"@en .
 
 
-# ### Activity descriptions
-# ### hasSighted ###
-# :hasSighted rdf:type owl:ObjectProperty;
-#         rdfs:label "hat Reiseetappe"@de ,
-#                    "has subjourney"@en ;
-#         rdfs:comment """Glanced at > can happen from within a mean of transport."""@en .
-
-# ### hasSighted ###
-# :hasVisited rdf:type owl:ObjectProperty;
-#         rdfs:label "hat Reiseetappe"@de ,
-#                    "has subjourney"@en ;
-#         rdfs:comment """Represents the destination of a travel stage."""@en .
+### locality ###
+#### transit ontology: https://vocab.org/transit/ ###
