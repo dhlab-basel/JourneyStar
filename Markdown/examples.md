@@ -12,6 +12,7 @@
 # Trip Ontology | RDF-Star application
 
 ### The trip ontology we are about to present, offers multiple ways of applying different complexities of metadata by making use of state of the art [Rdf-star](https://www.w3.org/2022/08/rdf-star-wg-charter/) technology. Disclaimer: data used to illustrate the application of the trip ontology is inspired but only loosely accurate to an actual journey…dates and personas have been created with the help of chatGPT.
+# An example
 
 # INTRODUCING THE VOCABULARY
 # Classes
