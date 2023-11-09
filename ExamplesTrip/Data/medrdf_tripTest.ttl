@@ -27,7 +27,7 @@
 
 :AdrianaM a :Person;
     schema:name "Adriana Martin";
-    schema:givenName "Adriana"@de;
+    schema:givenName "Adriana";
     schema:familyName "Martin";
     schema:gender schema:Female;
     schema:birthDate "1989-11-14"^^xsd:date;
@@ -35,7 +35,7 @@
 
 :LucaB a :Person;
     schema:name "Luca Bianchi";
-    schema:givenName "Luca"@de;
+    schema:givenName "Luca";
     schema:familyName "Bianchi";
     schema:gender schema:Male;
     schema:birthDate "1988-07-15"^^xsd:date;
@@ -43,7 +43,7 @@
 
 :CarmenG a :Person;
     schema:name "Carmen Garcia";
-    schema:givenName "Carmen"@de;
+    schema:givenName "Carmen";
     schema:familyName "Garcia";
     schema:gender "Non-Binary";
     schema:birthDate "1982-06-05"^^xsd:date;

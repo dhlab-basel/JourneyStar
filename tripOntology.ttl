@@ -35,7 +35,7 @@
         rdfs:comment "A class defining a location"@en .
 
 
-## add location nature? desert>> vulcano >> glacier 
+## add location nature? desert>> vulcano >> glacer 
 
 ### Trip ###
 :Trip rdf:type owl:Class ;
@@ -298,6 +298,13 @@
                    "has activity"@en ;
         rdfs:comment """Represents an activity during a trip."""@en .
 
+### hasOccurrence
+:hasOccurrence rdf:type owl:ObjectProperty ;
+        rdfs:range :TextContent;
+        rdfs:label "hat Ereignis"@de ,
+                   "has occurrace"@en ;
+        rdfs:comment """Represents an occurrance a journey."""@en .
+
 ### hasCost
 :hasCost rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf currencyA:hasPrice ;
@@ -316,7 +323,7 @@
 ### has transport
 :hasTransport rdf:type owl:ObjectProperty ;
         #rdfs:domain :Travel ; #rdf:triple
-        rdfs:range :MeanOfTransportion ;
+        rdfs:range :ModeOfTransportion ;
         rdfs:label "hat Transport"@de ,
                    "has transport"@en ;
         rdfs:comment """Represents the transport used during a trip."""@en .

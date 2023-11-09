@@ -68,7 +68,7 @@
     ], 
     [
         sh:path :hasGnd;
-        sh:datatype xsd:anyURI ;
+        sh:datatype xsd:string ;
     ],
     [
         sh:path :hasWikiLink;
@@ -85,7 +85,7 @@
     sh:path :hasGeonameID ;
        sh:maxCount 1 ;
        # sh:minCount 1 ;
-       sh:datatype xsd:anyURI;
+       sh:datatype xsd:string;
     ] ,
     [
         sh:path schema:name ;
@@ -103,15 +103,14 @@
         sh:datatype xsd:string ;
     ],
     [
-        sh:path schema:address;
+        sh:path schema:adress;
         sh:datatype xsd:string;
     ] 
     ,
     [
         sh:path :hasDescription;
         sh:node :TextContentShape;
-    ] 
-    .
+    ] .
 
 
 ### trip #### travel? ###
@@ -192,7 +191,7 @@
      ],
 	[
         sh:path :hasDescription ;
-        sh:node :TextContentShape ;
+        sh:node :TextContentShape ; #or hasTextPropertyShape
     ],
     [
         sh:path :hasStay ;
@@ -470,13 +469,31 @@
                 [sh:datatype xsd:time ]) . 
 
 ###  hasEnd ###
-:hasEndPropertyShape
+:hasEndDatePropertyShape
     	a sh:PropertyShape ;
     	sh:path :hasEnd ;
     	sh:description "Represents the temporal end of an event." ;
     	sh:or ( [sh:datatype xsd:dateTime ]
                 [sh:datatype xsd:date ] 
                 [sh:datatype xsd:time ]) .
+
+# ###  :start ###
+# :startDatePropertyShape
+#     	a sh:PropertyShape ;
+#     	sh:path :startDate ;
+#     	sh:description "Represents the start of an activity" ;
+#     	sh:or ( [sh:datatype xsd:dateTime ]
+#                 [sh:datatype xsd:date ] 
+#                 [sh:datatype xsd:time ]) . 
+
+# ###  hasEnd ###
+# :startPropertyShape
+#     	a sh:PropertyShape ;
+#     	sh:path :end ;
+#     	sh:description "Represents the temporal end of an activity." ;
+#     	sh:or ( [sh:datatype xsd:dateTime ]
+#                 [sh:datatype xsd:date ] 
+#                 [sh:datatype xsd:time ]) .
 
 ###  Date ###
 :hasDatePropertyShape
@@ -532,6 +549,13 @@
     sh:description "Represents activity during a stay.";
     sh:node :ActivityShape . #sh:class :Activity
 
+### has occurence ###
+:hasOccurrencePropertyShape
+    a sh:PropertyShape;
+    sh:path :hasOccurrence;
+    sh:description "Represents an occurence as metadata of a journey.";
+    sh:node :TextContentShape . 
+
 ### has transit ###
 :hasTransitPropertyShape
     a sh:ProperyShape;
@@ -552,7 +576,7 @@
     a sh:PropertyShape;
     sh:path :hasCurrency;
     sh:description "Represents the currency of money.";
-    #sh:class currency:currency .
+    #sh:class currency:currency . ## ASK 
     sh:datatype xsd:string.
 
 
