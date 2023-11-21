@@ -186,7 +186,7 @@
  << :Stage1 :hasStartLocation :Barcelona >> :hasArrival "2018-03-10T22:00:00"^^xsd:dateTime .
 
 << :Stage1 :hasTransport :Train >> :hasCost "120" .
-<< << :Stage1 :hasTransport :Train >> :hasCost "120" >> currency:Euro .
+<< << :Stage1 :hasTransport :Train >> :hasCost "120" >> :hasCurrency currency:Euro .
 
 #<< << :Stage1 :ModeOfTransport "Train" >> :nr "x20" >> :hasTransit dbr:Paris .
 #<< << << :Stage1 :ModeOfTransport "Train" >> :nr "x20" >> :hasTransit dbr:Paris >> :hasTime "2001-10-26T21:32:52"^^xsd:dateTime .
@@ -247,7 +247,7 @@
 # :AirBnBTangier a :Accommodation . ## added on top
 
 << :StayStage2 :hasAccommodation :AirBnBTangier >> :hasCost "1040" .    
-<< << :StayStage2 :hasAccommodation :AirBnBTangier >> :hasCost "1040" >>:hasCurrency currency:MoroccanDirham .    
+<< << :StayStage2 :hasAccommodation :AirBnBTangier >> :hasCost "1040" >> :hasCurrency currency:MoroccanDirham .    
 
 
 ### Stage Journey 3 Tangier-Rabat ###

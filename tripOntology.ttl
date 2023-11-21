@@ -57,7 +57,7 @@
         owl:differentFrom :Journey;
         rdfs:label "Excursion"@de ,
                 "Exkursion"@en ;
-        rdfs:comment "Represents an excursion during a stay to a location and back to the location of departure."@en .
+        rdfs:comment "Represents an excursion during to a location and back to the location of departure."@en .
 
 ### Stay ###
 :Stay rdf:type owl:Class ;
@@ -162,6 +162,13 @@
         rdfs:label "Beschreibung"@de ,
                 "description"@en ;
         rdfs:comment "Represents an additional description."@en .
+
+### Occurence ###
+:Occurence rdf:type owl:Class;
+        owl:subClassOf :TextContent ;
+        rdfs:label      "Ereignis"@de,
+                        "Occurrence"@en;
+        rdfs:comment "Represents an occurence during a journey or event." .
 
 
 ##################
@@ -302,7 +309,7 @@
 :hasOccurrence rdf:type owl:ObjectProperty ;
         rdfs:range :TextContent;
         rdfs:label "hat Ereignis"@de ,
-                   "has occurrace"@en ;
+                   "has occurrence"@en ;
         rdfs:comment """Represents an occurrance a journey."""@en .
 
 ### hasCost
@@ -344,7 +351,7 @@
 
 ### hasDescription 
 :hasDescription rdf:type owl:ObjectProperty;
-        rdfs:range :TextContent ; 
+        #rdfs:range :TextContent ; 
         rdfs:label "hat Beschreibung"@de ,
                    "has description"@en ;
         rdfs:comment """Represents additional description"""@en .

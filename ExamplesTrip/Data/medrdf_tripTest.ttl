@@ -1,6 +1,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex: <http://example.com/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix currencyA: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
 @prefix currency: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/>.
@@ -169,7 +170,7 @@
 
 :Journey_2018_03 a :Journey ;
     :hasStartLocation :Zurich;
-    :hasDestination :Marrakech .
+    :hasDestination :Morocco .
 
 << :Journey_2018_03 :hasStartLocation :Zurich >> :hasDeparture "2018-03-10T08:00:00"^^xsd:dateTime .
 << :Journey_2018_03 :hasDestination :Morocco >> :hasArrival "2018-03-10T22:00:00"^^xsd:dateTime .
@@ -177,7 +178,7 @@
 ### Stage Journey 1 ZH-Barcelona ###
 ##################################
 
-<< :SofiaM :hasJourney :Journey_2018_03 >> :hasStage :StageJour1 .
+<< :SofiaM :hasJourney :Journey_2018_03 >> :hasStage :Stage1 .
 
 :Stage1 a :Journey;
     :hasStartLocation :Zurich;
@@ -190,7 +191,7 @@
 
 << :Stage1 :hasTransport :Train >> :hasTransit :Paris .
 << :Stage1 :hasTransport :Train >> :hasCost "120" .
-<< << :Stage1 :hasTransport :Train >> :hasCost "120">> :hasCurrency currency:Euro .
+<< << :Stage1 :hasTransport :Train >> :hasCost "120">> :hasCurrency currency:Euro . #"Euro" 
 
 # :Stage1 :hasParticipant :LeaD , :AdrianaM .
 
@@ -220,13 +221,13 @@
 
 
 
-### Sub Journey 2 Barcelona–Tangier ###
+### Stage2 Barcelona–Tangier ###
 #######################################
 
 << :SofiaM :hasJourney :Journey_2018_03 >> :hasStage :Stage2 .
 
 << << :SofiaM :hasJourney :Journey_2018_03 >> :hasStage :Stage2 >> :hasStartDate "2018-03-13"^^xsd:date .
-<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasStage :Stage2>> :hasEndDate "2018-03-15"^^xsd:date . 
+<< << :SofiaM :hasJourney :Journey_2018_03 >> :hasStage :Stage2 >> :hasEndDate "2018-03-15"^^xsd:date . 
 
 :Stage2 a :Journey;
     :hasStartLocation :Barcelona;
@@ -236,16 +237,13 @@
 << :Stage2 :hasStartLocation :Barcelona >> :hasDeparture "2018-03-13T09:00:00"^^xsd:dateTime .
 << :Stage2 :hasDestination :Tangier >> :hasArrival "2018-03-14T14:00:00"^^xsd:dateTime .
 << :Stage2 :hasTransport :Ferry >> :hasCost "150" .
-## OR << << :Stage2 :hasStartLocation :Barcelona >> :hasTransport :Ferry >> :hasDeparture "2018-03-13T09:00:00"^^xsd:dateTime .
 << << :Stage2 :hasTransport :Ferry >> :hasCost "150" >> :hasCurrency currency:Euro.
 
-# :Stage2 :hasParticipant :LeaD , :AdrianaM .
 :Stage2 :hasStay :StayStage2 .
 
 :StayStage2 a :Stay ;
     :hasAccommodation :AirBnBTangier .
 
-# :AirBnBTangier a :Accommodation . ## added on top
 
 << :StayStage2 :hasAccommodation :AirBnBTangier >> :hasCost "1040" .    
 << << :StayStage2 :hasAccommodation :AirBnBTangier >> :hasCost "1040" >> :hasCurrency currency:MoroccanDirham .    
