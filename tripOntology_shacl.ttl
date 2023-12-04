@@ -54,7 +54,7 @@
         sh:node :LocationShape ;
     ],
     [
-        sh:path schema:knows ; # the object of schema:knows should be a resource of type :Location or :Person
+        sh:path schema:knows ;
         sh:or ([sh:class trip-onto:Location ]
                [sh:class trip-onto:Person ]) ;
     ],
@@ -74,7 +74,6 @@
     [
         sh:path trip-onto:hasWikiLink ;
         sh:maxCount 1 ;
-        sh:datatype xsd:anyURI ;
     ] .
 
 ### Shape for Class Location ###
@@ -85,6 +84,7 @@
     sh:property
     [
         sh:path trip-onto:hasGeonameID ;
+        sh:maxCount 1 ;
         sh:datatype xsd:string ;
     ] ,
     [
@@ -94,32 +94,8 @@
     ] ,
     [
         sh:path trip-onto:hasWikiLink ;
-        sh:datatype xsd:anyURI ;
-    ] ,
-    [
-        sh:path schema:adress ;
-        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
     ] .
-
-
-### Shape for Class Trip ###
-################################
-:TripShape a sh:NodeShape  ;
-    sh:targetClass trip-onto:Trip ;
-    sh:property
-    [
-        sh:path trip-onto:meanOfTransportation;
-        sh:or ( [sh:datatype xsd:anyURI ]
-                [sh:datatype xsd:string ]) ;
-    ],
-    [
-        sh:path trip-onto:hasActivity ;
-        sh:node :ActivityShape ;
-    ],
-    [
-        sh:path trip-onto:hasTransitFrom ;
-        sh:node :LocationShape ;
-    ].
 
 
 ### Shape for Class Journey ###
@@ -134,10 +110,6 @@
     [
         sh:path trip-onto:hasStage ;
         sh:node :JourneyShape ;
-    ] ,
-    [
-        sh:path trip-onto:hasIntermediateDestination ;
-        sh:node :Locationshape ;
     ] .
 
 ### Shape for Class Excursion ###
@@ -161,10 +133,6 @@
 	  [
         sh:path trip-onto:hasAccommodation ;
         sh:datatype :AccommodationShape ;
-    ] ,
-    [
-        sh:path trip-onto:hasActivity ;
-        sh:node :ActivityShape ;
     ] ,
     [
         sh:path trip-onto:hasExcursion ;
@@ -203,7 +171,8 @@
         sh:path trip-onto:hasLocation;
         sh:or ( [sh:datatype xsd:string ]
                 [sh:class trip-onto:Location ]
-                [sh:datatype xsd:anyURI ]) ;
+                [sh:datatype xsd:anyURI ]
+                [sh:nodeKind sh:IRI ]) ;
     ] .
 
 ### Shape for Class SightSeeing ###
@@ -215,7 +184,8 @@
         sh:path trip-onto:sightingOf;
         sh:minCount 1 ;
         sh:or ([sh:datatype xsd:anyURI ]
-            [sh:datatype xsd:string ]);
+                [sh:nodeKind sh:IRI]
+                [sh:datatype xsd:string ]);
     ].
 
 ### Shape for Class Dining ###
@@ -280,14 +250,16 @@
 :accordingToPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf trip-onto:accordingTo ;
-    	sh:node :PersonShape .
+    	sh:or ([sh:node :PersonShape]
+    	        [sh:nodeKind sh:IRI]) .
 
 ### Shape for Property mentionedIn ###
 ################################
 :mentionedInPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf trip-onto:mentionedIn ;
-    	sh:node :EntryShape .
+    	sh:or ([sh:node :EntryShape]
+    	        [sh:nodeKind sh:IRI]) .
 
 ### Shape for Property hasDescription ###
 ################################
@@ -301,13 +273,15 @@
 :hasStartLocationPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf trip-onto:hasStartLocation ;
-    	sh:node :LocationShape .
+    	sh:or ([sh:class trip-onto:Location]
+    	        [sh:nodeKind sh:IRI]) .
 
 ###  hasDestination ###
 :hasDestinationPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf trip-onto:hasDestination ;
-    	sh:node :LocationShape .
+    	sh:or ([sh:class trip-onto:Location]
+    	        [sh:nodeKind sh:IRI]) .
 
 # hasArrival
 :hasArrivalPropertyShape
@@ -345,14 +319,17 @@
 :meanOfTransportationShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf trip-onto:meanOfTransportation ;
-      sh:or ( [sh:datatype xsd:anyURI ]
+        sh:or ( [sh:datatype xsd:anyURI ]
+              [sh:nodeKind sh:IRI ]
               [sh:datatype xsd:string ]) .
 
 ### hasIntermediateDestination###
 :hasIntermediateDestinationPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf trip-onto:hasIntermediateDestination ;
-    	sh:node :LocationShape .
+    	sh:or ([sh:node :Locationshape]
+                [sh:nodeKind sh:IRI]
+                [sh:datatype xsd:anyURI]) .
 
 ### hasStage ###
 :hasStagePropertyShape
@@ -364,13 +341,13 @@
 :hasStayPropertyShape
     a sh:NodeShape;
     sh:targetObjectsOf trip-onto:hasStay;
-    sh:node :StayShape . #sh:class :Stay
+    sh:node :StayShape .
 
 ### has activity ###
 :hasActivityPropertyShape
     a sh:NodeShape;
     sh:targetObjectsOf trip-onto:hasActivity;
-    sh:node :ActivityShape . #sh:class :Activity
+    sh:node :ActivityShape .
 
 ### has occurence ###
 :hasOccurrencePropertyShape
@@ -381,8 +358,10 @@
 ### has transit ###
 :hasTransitPropertyShape
     a sh:NodeShape;
-    sh:targetObjectsOf trip-onto:hasTransit;
-    sh:node :LocationShape .
+    sh:targetObjectsOf trip-onto:hasTransitFrom;
+    sh:or ([sh:node :LocationShape ]
+            [sh:nodeKind sh:IRI]
+            [sh:datatype xsd:anyURI]).
 
 ### hasCost ###
 :hasCostPropertyShape
@@ -396,10 +375,12 @@
     a sh:NodeShape;
     sh:targetObjectsOf trip-onto:hasCurrency;
     sh:or ( [sh:datatype xsd:string ]
-            [sh:datatype xsd:anyURI]) .
+            [sh:datatype xsd:anyURI]
+            [sh:nodeKind sh:IRI ]) .
 
 ### wikilink ###
 :hasWikiLinkPropertyShape
     a sh:NodeShape;
     sh:targetObjectsOf trip-onto:hasWikiLink;
-    sh:datatype xsd:anyURI.
+    sh:or ([sh:nodeKind sh:IRI]
+            [sh:datatype xsd:anyURI]).

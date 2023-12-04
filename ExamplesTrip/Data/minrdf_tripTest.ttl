@@ -152,7 +152,7 @@
 :Stage1 a trip-onto:Journey;
     trip-onto:hasStartLocation :Zurich;
     trip-onto:hasDestination :Barcelona ;
-    trip-onto:hasTransit :Paris;
+    trip-onto:hasTransitFrom :Paris;
     trip-onto:meanOfTransportation dbr:Train .
 
  << :Stage1 :hasStartLocation :Zurich >> :hasDeparture "2018-03-10T08:00:00"^^xsd:dateTime .
@@ -161,7 +161,7 @@
 << :Stage1 trip-onto:meanOfTransportation dbr:Train >> trip-onto:hasCost 120 .
 << << :Stage1 trip-onto:meanOfTransportation dbr:Train >> trip-onto:hasCost 120 >> :hasCurrency currency:Euro .
 
-<< :Stage1 trip-onto:meanOfTransportation dbr:Train >> trip-onto:hasTransit dbr:Paris .
+<< :Stage1 trip-onto:meanOfTransportation dbr:Train >> trip-onto:hasTransitFrom dbr:Paris .
 
 :Stage1 trip-onto:hasActivity :SightSeeingSagradaFamilia1 .
 
@@ -224,7 +224,7 @@
 :Stage3 a :Journey;
     trip-onto:hasStartLocation :Tangier;
     trip-onto:hasDestination :Rabat ;
-    trip-onto:hasTransport dbr:Car .
+    trip-onto:meanOfTransportation dbr:Car .
 
 
 << :Stage3 trip-onto:hasStartLocation :Tangier>> trip-onto:hasDeparture "2018-03-15T08:00:00"^^xsd:dateTime .

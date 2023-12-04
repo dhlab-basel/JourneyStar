@@ -149,7 +149,6 @@
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasLocation
 :hasLocation rdf:type owl:ObjectProperty ;
-        rdfs:range :Location ;
         rdfs:label "hat ort"@de ,
                    "has  location"@en ;
         rdfs:comment "The location of an activity."@en .
@@ -158,7 +157,6 @@
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasStartLocation
 :hasStartLocation rdf:type owl:ObjectProperty ;
         rdfs:subPropertyOf :hasLocation ;
-        rdfs:range :Location ;
         rdfs:label "Startort"@de ,
                    "has start location"@en ;
         rdfs:comment "The start location of a journey/excursion."@en .
@@ -166,7 +164,6 @@
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasDestination
 :hasDestination rdf:type owl:ObjectProperty ;
         rdfs:subPropertyOf :hasLocation ;
-        rdfs:range :Location ;
         rdfs:label "hat Reiseziel"@de ,
                    "has destination"@en ;
         rdfs:comment "The destination of an journey/excursion."@en .
@@ -226,8 +223,6 @@
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasIntermediateDestination
 :hasIntermediateDestination rdf:type owl:ObjectProperty ;
-        #rdfs:domain :Travel; / rdf:Triple
-        rdfs:range :Location ;
         rdfs:label "hat Zwischenstation"@de ,
                    "has intermediate destination"@en ;
         rdfs:comment "An intermediate destination during a journey."@en .
@@ -244,7 +239,6 @@
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasExcursion
 :hasExcursion rdf:type owl:ObjectProperty ;
         rdfs:subPropertyOf :hasActivity ;
-        rdfs:range :Excursion ;
         rdfs:label "hat Ausflug"@de ,
                    "has excursion"@en ;
         rdfs:comment "An excursion a person undertakes."@en .
@@ -297,8 +291,6 @@
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasCost
 :hasCost rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf currencyA:hasPrice ;
-        #rdfs:domain rdf:Triple;
-        rdfs:range xsd:float ;
         rdfs:label "kostet"@de ,
                    "has cost"@en ;
         rdfs:comment "The cost of an activity, transport, or accomodation."@en .
@@ -324,21 +316,18 @@
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasParticipant
 :hasParticipant rdf:type owl:ObjectProperty;
         owl:inverseOf :participatedIn;
-        rdfs:range :Person ;
         rdfs:label "Hat Partizipant:in"@de ,
                    "has Participant"@en ;
         rdfs:comment "The participant(s) of an activity"@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#mentionedIn
 :mentionedIn rdf:type owl:ObjectProperty;
-        rdfs:range :Entry ;
         rdfs:label "erwähnt in"@de ,
                    "mentioned in"@en ;
         rdfs:comment "Link to the entry containing the info."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasDescription
 :hasDescription rdf:type owl:DatatypeProperty;
-        rdfs:range xsd:string ;
         rdfs:label "Beschreibung"@de ,
                    "Description"@en ;
         rdfs:comment "Extra text description."@en .
@@ -346,7 +335,6 @@
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#accordingTo
 :accordingTo rdf:type owl:ObjectProperty;
-        rdfs:range :Entry ;
         rdfs:label "Laut"@de ,
                    "According To"@en ;
         rdfs:comment "Link to the person who narrated the info."@en .
@@ -370,7 +358,6 @@
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasWikiLink
 :hasWikiLink rdf:type owl:DatatypeProperty ;
-        rdfs:range xsd:anyURI ;
         rdfs:label "hat link zu einer Wikidata Seite"@de ,
                    "has a link to a wikidata page"@en ;
         rdfs:comment "A link to a wikidata page."@en .
