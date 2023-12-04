@@ -206,7 +206,6 @@
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasActivity
 :hasActivity rdf:type owl:ObjectProperty ;
-        rdfs:range :Activity;
         rdfs:label "hat Aktivität"@de ,
                    "has activity"@en ;
         rdfs:comment "An activity a person undertakes."@en .
@@ -215,7 +214,6 @@
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasJourney
 :hasJourney rdf:type owl:ObjectProperty ;
         rdfs:subPropertyOf :hasActivity ;
-        rdfs:range :Journey ;
         rdfs:label "hat Reise"@de ,
                    "has journey"@en ;
         rdfs:comment "A journey a person undertakes."@en .
@@ -230,7 +228,6 @@
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasStage
 :hasStage rdf:type owl:ObjectProperty ;
-        rdfs:range :Journey ;
         rdfs:label "hat Etappe"@de ,
                    "has stage"@en ;
         rdfs:comment "A stage of a journey."@en .
@@ -269,15 +266,12 @@
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasStay
 :hasStay rdf:type owl:ObjectProperty ;
-        rdfs:range :Stay ;
         rdfs:label "hat Aufenthalt"@de ,
                    "has Stay"@en ;
         rdfs:comment "A stay at a specific location during a Journey. Does not apply for excursion."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasAccommodation
 :hasAccommodation rdf:type owl:ObjectProperty ;
-        # rdfs:domain :Stay ;
-        rdfs:range :Accommodation ;
         rdfs:label "hat Unterkunft"@de ,
                    "has Accommodation"@en ;
         rdfs:comment "The accommodation of a stay."@en .
@@ -343,15 +337,12 @@
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasTextContent
 :hasTextContent rdf:type owl:ObjectProperty;
         #rdfs:domain :Document ;
-    rdfs:range :TextContent ;
     rdfs:label  "Text-Inhalt"@de,
                 "Text Content"@en;
     rdfs:comment "The text content of an entry in a diary."@en.
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasText
 :hasText rdf:type owl:DatatypeProperty;
-    rdfs:domain :TextContent ;
-    rdfs:range xsd:string ;
     rdfs:label  "hat Text"@de,
                 "has text"@en;
     rdfs:comment "The actual text of a text content."@en.
@@ -364,16 +355,12 @@
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasGnd
 :hasGnd rdf:type owl:DatatypeProperty ;
-        rdfs:domain :Person ;
-        rdfs:range xsd:string ;
         rdfs:label "hat GND nummer"@de ,
                    "has gnd"@en ;
         rdfs:comment "GND number of a person"@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasGeonameID
 :hasGeonameID rdf:type owl:DatatypeProperty ;
-        rdfs:domain :Location ;
-        rdfs:range xsd:string ;
         rdfs:label "GeonameID"@de ,
                    "GeonameID"@en ;
         rdfs:comment "The geoname ID of a location."@en .

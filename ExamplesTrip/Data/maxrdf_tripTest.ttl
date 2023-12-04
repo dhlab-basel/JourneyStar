@@ -147,7 +147,7 @@
 
 << << :SofiaM trip-onto:hasJourney :Journey_2018_03 >> trip-onto:hasIntermediateDestination :Barcelona >> trip-onto:meanOfTransportation dbr:Train.
 
-<< << :SofiaM trip-onto:hasJourney :Journey_2018_03 >> trip-onto:hasIntermediateDestination :Barcelona >> trip-onto:hasTransit :Paris .
+<< << :SofiaM trip-onto:hasJourney :Journey_2018_03 >> trip-onto:hasIntermediateDestination :Barcelona >> trip-onto:hasTransitFrom :Paris .
 
 << << << :SofiaM trip-onto:hasJourney :Journey_2018_03 >> trip-onto:hasIntermediateDestination :Barcelona >> trip-onto:meanOfTransportation dbr:Train >> trip-onto:hasCost 120.
 

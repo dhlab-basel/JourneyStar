@@ -51,7 +51,7 @@
     [
         sh:path schema:birthPlace ;
         sh:maxCount 1;
-        sh:node :LocationShape ;
+        sh:nodeKind sh:IRI ;
     ],
     [
         sh:path schema:knows ;
@@ -60,7 +60,7 @@
     ],
     [
         sh:path trip-onto:hasJourney ;
-        sh:node :JourneyShape ;
+        sh:class trip-onto:Journey ;
     ],
     [
         sh:path trip-onto:participatedIn ;
@@ -97,21 +97,6 @@
         sh:maxCount 1 ;
     ] .
 
-
-### Shape for Class Journey ###
-################################
-:JourneyShape a sh:NodeShape  ;
-    sh:targetClass trip-onto:Journey ;
-    sh:property
-    [
-        sh:path trip-onto:hasStay ;
-        sh:node :StayShape ;
-    ] ,
-    [
-        sh:path trip-onto:hasStage ;
-        sh:node :JourneyShape ;
-    ] .
-
 ### Shape for Class Excursion ###
 ################################
 :ExcursionShape a sh:NodeShape  ;
@@ -132,14 +117,15 @@
     sh:property
 	  [
         sh:path trip-onto:hasAccommodation ;
-        sh:datatype :AccommodationShape ;
+        sh:or ([sh:class trip-onto:Accommodation]
+               [sh:nodeKind sh:IRI]) ;
     ] ,
     [
         sh:path trip-onto:hasExcursion ;
         sh:node :ExcursionShape ;
     ] .
 
-### Shape for Class Accomodation ###
+### Shape for Class Accommodation ###
 ################################
 :AccommodationShape a sh:NodeShape ;
     sh:targetClass trip-onto:Accommodation ;
@@ -161,7 +147,7 @@
     sh:property
     [
         sh:path trip-onto:hasParticipant;
-        sh:node :PersonShape;
+        sh:nodeKind sh:IRI;
     ] ,
     [
         sh:path schema:name;
@@ -220,6 +206,7 @@
     sh:property
     [
         sh:path trip-onto:hasTextContent ;
+        sh:minCount 1 ;
         sh:node :TextContentShape;
     ],
     [
@@ -237,6 +224,7 @@
     sh:property
     [
         sh:path trip-onto:hasText;
+        sh:minCount 1 ;
         sh:datatype xsd:string;
     ].
 
@@ -327,7 +315,15 @@
 :hasIntermediateDestinationPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf trip-onto:hasIntermediateDestination ;
-    	sh:or ([sh:node :Locationshape]
+    	sh:or ([sh:class trip-onto:Location]
+                [sh:nodeKind sh:IRI]
+                [sh:datatype xsd:anyURI]) .
+
+### hasParticipant ###
+:hasParticipantPropertyShape
+    	a sh:NodeShape ;
+    	sh:targetObjectsOf trip-onto:hasParticipant ;
+    	sh:or ([sh:class trip-onto:Person]
                 [sh:nodeKind sh:IRI]
                 [sh:datatype xsd:anyURI]) .
 
@@ -335,19 +331,20 @@
 :hasStagePropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf trip-onto:hasStage ;
-    	sh:node :JourneyShape .
+    	sh:class trip-onto:Journey .
 
 ### has stay ###
 :hasStayPropertyShape
     a sh:NodeShape;
     sh:targetObjectsOf trip-onto:hasStay;
+    sh:class trip-onto:Stay ;
     sh:node :StayShape .
 
 ### has activity ###
 :hasActivityPropertyShape
     a sh:NodeShape;
     sh:targetObjectsOf trip-onto:hasActivity;
-    sh:node :ActivityShape .
+    sh:class trip-onto:Activity .
 
 ### has occurence ###
 :hasOccurrencePropertyShape

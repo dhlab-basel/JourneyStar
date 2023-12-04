@@ -145,16 +145,16 @@
 :Stage1 a trip-onto:Journey;
     trip-onto:hasStartLocation :Zurich;
     trip-onto:hasDestination :Barcelona ;
-    trip-onto:hasTransport dbr:Train ;
+    trip-onto:meanOfTransportation dbr:Train ;
     trip-onto:hasParticipant :LeaD , :AdrianaM ;
 
 << :Stage1 trip-onto:hasStartLocation :Zurich >> trip-onto:hasDeparture "2018-03-10T08:00:00"^^xsd:dateTime .
 << :Stage1 trip-onto:hasDestination :Barcelona >> trip-onto:hasArrival "2018-03-10T22:00:00"^^xsd:dateTime .
 
 
-<< :Stage1 trip-onto:hasTransport :Train >> trip-onto:hasTransit :Paris .
-<< :Stage1 trip-onto:hasTransport :Train >> trip-onto:hasCost 120 .
-<< << :Stage1 trip-onto:hasTransport :Train >> trip-onto:hasCost 120>> trip-onto:hasCurrency currency:Euro .
+<< :Stage1 trip-onto:meanOfTransportation :Train >> trip-onto:hasTransitFrom :Paris .
+<< :Stage1 trip-onto:meanOfTransportation :Train >> trip-onto:hasCost 120 .
+<< << :Stage1 trip-onto:meanOfTransportation :Train >> trip-onto:hasCost 120>> trip-onto:hasCurrency currency:Euro .
 
 
 :Stage1 trip-onto:hasStay :StayStage1 .
@@ -190,12 +190,12 @@
 :Stage2 a trip-onto:Journey;
     trip-onto:hasStartLocation :Barcelona;
     trip-onto:hasDestination :Tangier ;
-    trip-onto:hasTransport dbr:Ferry .
+    trip-onto:meanOfTransportation dbr:Ferry .
 
 << :Stage2 trip-onto:hasStartLocation :Barcelona >> trip-onto:hasDeparture "2018-03-13T09:00:00"^^xsd:dateTime .
 << :Stage2 trip-onto:hasDestination :Tangier >> trip-onto:hasArrival "2018-03-14T14:00:00"^^xsd:dateTime .
-<< :Stage2 trip-onto:hasTransport dbr:Ferry >> trip-onto:hasCost 150 .
-<< << :Stage2 trip-onto:hasTransport dbr:Ferry >> trip-onto:hasCost 150 >> trip-onto:hasCurrency currency:Euro.
+<< :Stage2 trip-onto:meanOfTransportation dbr:Ferry >> trip-onto:hasCost 150 .
+<< << :Stage2 trip-onto:meanOfTransportation dbr:Ferry >> trip-onto:hasCost 150 >> trip-onto:hasCurrency currency:Euro.
 
 :Stage2 trip-onto:hasStay :StayStage2 .
 
@@ -218,15 +218,15 @@
 :Stage3 a trip-onto:Journey;
     trip-onto:hasStartLocation :Tangier;
     trip-onto:hasDestination :Rabat ;
-    trip-onto:hasTransport dbr:Car .
+    trip-onto:meanOfTransportation dbr:Car .
 
 
 
 << :Stage3 trip-onto:hasStartLocation :Tangier >> trip-onto:hasDeparture "2018-03-15T08:00:00"^^xsd:dateTime .
 << :Stage3 trip-onto:hasDestination :Rabat >> trip-onto:hasArrival "2018-03-15T12:00:00"^^xsd:dateTime .
-<< :Stage3 trip-onto:hasTransport dbr:Car >> trip-onto:hasCost 300 .
-<< << :Stage3 trip-onto:hasTransport dbr:Car >> trip-onto:hasCost 300 >> trip-onto:hasDescription "For Fuel".
-<< << :Stage3 trip-onto:hasTransport dbr:Car >> trip-onto:hasCost 300 >> trip-onto:hasCurrency currency:MoroccanDirham.
+<< :Stage3 trip-onto:meanOfTransportation dbr:Car >> trip-onto:hasCost 300 .
+<< << :Stage3 trip-onto:meanOfTransportation dbr:Car >> trip-onto:hasCost 300 >> trip-onto:hasDescription "For Fuel".
+<< << :Stage3 trip-onto:meanOfTransportation dbr:Car >> trip-onto:hasCost 300 >> trip-onto:hasCurrency currency:MoroccanDirham.
 
 :Stage3 trip-onto:hasParticipant :LeaD , :AdrianaM .
 :Stage3 trip-onto:hasStay :StayStage3 .
@@ -249,14 +249,14 @@
 :Stage4 a trip-onto:Journey;
     trip-onto:hasStartLocation :Rabat;
     trip-onto:hasDestination :Marrakech ;
-    trip-onto:hasTransport dbr:Car .
+    trip-onto:meanOfTransportation dbr:Car .
 
 << :Stage4 trip-onto:hasStartLocation :Rabat >> trip-onto:hasDeparture "2018-03-18T08:00:00"^^xsd:dateTime .
 
 << :Stage4 trip-onto:hasDestination :Marrakech >> trip-onto:hasArrival "2018-03-18T16:00:00"^^xsd:dateTime .
 
-<< :Stage4 trip-onto:hasTransport dbr:Car >> trip-onto:hasCost 500 .
-<< << :Stage4 trip-onto:hasTransport dbr:Car >> trip-onto:hasCost 500 >> trip-onto:hasCurrency currency:MoroccanDirham.
+<< :Stage4 trip-onto:meanOfTransportation dbr:Car >> trip-onto:hasCost 500 .
+<< << :Stage4 trip-onto:meanOfTransportation dbr:Car >> trip-onto:hasCost 500 >> trip-onto:hasCurrency currency:MoroccanDirham.
 
 :Stage4 trip-onto:hasParticipant :LeaD , :AdrianaM .
 
