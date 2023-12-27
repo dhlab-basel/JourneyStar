@@ -10,7 +10,7 @@
 @prefix trip: <http://ontology.eil.utoronto.ca/icity/Trip/Trip> .
 @prefix trip-onto: <http://www.dhlab.unibas.ch/ontology/trip-onto#> .
 @prefix : <http://www.dhlab.unibas.ch/ontology/trip-onto#> .
-@base <http://www.dhlab.unibas.ch.com/ontology/trip-onto#> .
+@base <http://www.dhlab.unibas.ch/ontology/trip-onto#> .
 
 <http://www.dhlab.unibas.ch/ontology/trip-onto> rdf:type owl:Ontology ;
                                        rdfs:comment "An RDF-star-based ontology to capture concepts reported in travel diaries." ;
