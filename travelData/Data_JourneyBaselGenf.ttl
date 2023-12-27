@@ -8,8 +8,8 @@
 @prefix wdt: <https://wikidata.org/> .
 @prefix dbr: <http://dbpedia.org/resource/> .
 @prefix trip-onto: <http://www.dhlab.unibas.ch/ontology/trip-onto#> .
-@prefix : <http://www.dhlab.unibas.ch.com/data/trip-data#> .
-@base <http://www.dhlab.unibas.ch.com/data/trip-data#> .
+@prefix : <http://www.dhlab.unibas.ch.com/data/JBernoulliReisebuechlein#> .
+@base <http://www.dhlab.unibas.ch.com/data/JBernoulliReisebuechlein#> .
 
 # Data – Reise von Basel nach Genf
 
