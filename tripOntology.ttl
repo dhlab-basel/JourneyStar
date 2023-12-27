@@ -9,7 +9,6 @@
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix trip: <http://ontology.eil.utoronto.ca/icity/Trip/Trip> .
 @prefix trip-onto: <http://www.dhlab.unibas.ch/ontology/trip-onto#> .
-@prefix : <http://www.dhlab.unibas.ch/ontology/trip-onto#> .
 @base <http://www.dhlab.unibas.ch/ontology/trip-onto#> .
 
 <http://www.dhlab.unibas.ch/ontology/trip-onto> rdf:type owl:Ontology ;
@@ -23,7 +22,7 @@
 ################################
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#Person ###
-:Person rdf:type owl:Class ;
+trip-onto:Person rdf:type owl:Class ;
     rdfs:subClassOf schema:Person;
     rdfs:label "Person"@de ,
                 "Person"@en ;
@@ -31,14 +30,14 @@
 
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#Activity ###
-:Activity rdf:type owl:Class ;
+trip-onto:Activity rdf:type owl:Class ;
         rdfs:subClassOf trip:activity ;
         rdfs:label "Aktivität"@de,
                     "Activity"@en ;
         rdfs:comment "An activity involves movement and has duration."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#Location ###
-:Location rdf:type owl:Class ;
+trip-onto:Location rdf:type owl:Class ;
         rdfs:subclassOf dbo:Place ;
         rdfs:label  "Ort"@de,
                     "Location"@en;
@@ -47,36 +46,36 @@
 
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#Trip
-:Trip rdf:type owl:Class ;
-        rdfs:subClassOf :Activity , trip:trip ;
+trip-onto:Trip rdf:type owl:Class ;
+        rdfs:subClassOf trip-onto:Activity , trip:trip ;
         rdfs:label "Reisen"@de ,
                 "Trip"@en ;
         rdfs:comment "A person's movement between two locations."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#Journey
-:Journey rdf:type owl:Class ;
-        rdfs:subClassOf :Trip ;
-        owl:differentFrom :Excursion ;
+trip-onto:Journey rdf:type owl:Class ;
+        rdfs:subClassOf trip-onto:Trip ;
+        owl:differentFrom trip-onto:Excursion ;
         rdfs:label "Reise"@de ,
                 "Journey"@en ;
         rdfs:comment "A journey is a trip from one place to another."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#Excursion
-:Excursion rdf:type owl:Class ;
-        rdfs:subClassOf :Trip , trip:tour ;
-        owl:differentFrom :Journey;
+trip-onto:Excursion rdf:type owl:Class ;
+        rdfs:subClassOf trip-onto:Trip , trip:tour ;
+        owl:differentFrom trip-onto:Journey;
         rdfs:label "Excursion"@de ,
                 "Exkursion"@en ;
         rdfs:comment "An excursion is a circular trip to a location and back lasting less than a day."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#Stay ###
-:Stay rdf:type owl:Class ;
+trip-onto:Stay rdf:type owl:Class ;
         rdfs:label "Aufenthalt"@de,
                     "Stay"@en;
         rdfs:comment "A stay is residence in a certain place during a journey."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#Accommodation ###
-:Accommodation rdf:type owl:Class ;
+trip-onto:Accommodation rdf:type owl:Class ;
         rdfs:subClassOf dbo:Building , dbo:Shelter ;
         rdfs:label "Unterkunft"@de ,
                    "Accommodation"@en ;
@@ -84,38 +83,38 @@
 
 
 # http://www.dhlab.unibas.ch/ontology/trip-onto#SightSeeing #
-:SightSeeing rdf:type owl:Class;
-        rdfs:subClassOf :Activity;
+trip-onto:SightSeeing rdf:type owl:Class;
+        rdfs:subClassOf trip-onto:Activity;
         rdfs:label "Sehenswürdigkeit"@de,
                     "sightseeing"@en;
         rdfs:comment "Sightseeing is a short activity to visit a landmark, attraction etc."@en .
 
 
 # http://www.dhlab.unibas.ch/ontology/trip-onto#Entertainment #
-:Entertainment rdf:type owl:Class;
-        rdfs:subClassOf :Activity;
+trip-onto:Entertainment rdf:type owl:Class;
+        rdfs:subClassOf trip-onto:Activity;
         rdfs:label "Unterhaltung"@de,
                     "entertainement"@en;
         rdfs:comment "An entertainment is a leisure activity such as theater performance."@en .
 
 # http://www.dhlab.unibas.ch/ontology/trip-onto#Visit #
-:Visit rdf:type owl:Class;
-        rdfs:subClassOf :Activity;
+trip-onto:Visit rdf:type owl:Class;
+        rdfs:subClassOf trip-onto:Activity;
         rdfs:label "Aktivität"@de,
                     "Activity"@en;
         rdfs:comment "A visit is meeting of a person in a location."@en .
 
 
 # http://www.dhlab.unibas.ch/ontology/trip-onto#Dining #
-:Dining rdf:type owl:Class;
-        rdfs:subClassOf :Activity;
+trip-onto:Dining rdf:type owl:Class;
+        rdfs:subClassOf trip-onto:Activity;
         rdfs:label "Essen"@de,
                     "dinning"@en;
         rdfs:comment "A dining is an activity to consume food with or without company."@en .
 
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#Occurence ###
-:Occurence rdf:type owl:Class ;
+trip-onto:Occurence rdf:type owl:Class ;
         rdfs:label  "Ereignis"@de,
                     "Occurrence"@en;
         rdfs:comment "An occurence during a journey natural (eg. earthquake, fire) or unnatural (eg. ship-wreck, flight-delay)." .
@@ -126,19 +125,19 @@
 
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#TravelDiary ###
-:TravelDiary rdf:type owl:Class ;
+trip-onto:TravelDiary rdf:type owl:Class ;
         rdfs:label "Reisetagebuch"@de ,
                 "Travel Diary"@en ;
         rdfs:comment "A travel diary."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#Entry ###
-:Entry rdf:type owl:Class ;
+trip-onto:Entry rdf:type owl:Class ;
         rdfs:label "Dokument"@de ,
                 "Document"@en ;
         rdfs:comment "An entry in a diary."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#TextContent ###
-:TextContent rdf:type owl:Class ;
+trip-onto:TextContent rdf:type owl:Class ;
         rdfs:label "Text-Inhalt"@de ,
                 "Text Content"@en ;
         rdfs:comment "The text content of an entry."@en .
@@ -148,225 +147,225 @@
 ##################
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasLocation
-:hasLocation rdf:type owl:ObjectProperty ;
+trip-onto:hasLocation rdf:type owl:ObjectProperty ;
         rdfs:label "hat ort"@de ,
                    "has  location"@en ;
         rdfs:comment "The location of an activity."@en .
 
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasStartLocation
-:hasStartLocation rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf :hasLocation ;
+trip-onto:hasStartLocation rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf trip-onto:hasLocation ;
         rdfs:label "Startort"@de ,
                    "has start location"@en ;
         rdfs:comment "The start location of a journey/excursion."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasDestination
-:hasDestination rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf :hasLocation ;
+trip-onto:hasDestination rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf trip-onto:hasLocation ;
         rdfs:label "hat Reiseziel"@de ,
                    "has destination"@en ;
         rdfs:comment "The destination of an journey/excursion."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasDate ###
-:hasDate rdf:type owl:DatatypeProperty ;
+trip-onto:hasDate rdf:type owl:DatatypeProperty ;
         rdfs:label "Datum"@de ,
                    "Date"@en ;
         rdfs:comment "A date."@en .
 
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasStartDate ###
-:hasStartDate rdf:type owl:DatatypeProperty ;
+trip-onto:hasStartDate rdf:type owl:DatatypeProperty ;
         rdfs:label "Start Datum"@de ,
                    "Start date"@en ;
         rdfs:comment "The start of an activity."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasEndDate
-:hasEndDate rdf:type owl:DatatypeProperty ;
+trip-onto:hasEndDate rdf:type owl:DatatypeProperty ;
         rdfs:label "Ende"@de ,
                    "has end date"@en ;
         rdfs:comment "The end of an activity."@en .
 
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasArrival
-:hasArrival rdf:type owl:DatatypeProperty ;
-        rdfs:subPropertyOf :hasEndDate ;
+trip-onto:hasArrival rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf trip-onto:hasEndDate ;
         rdfs:label "hat Ankunft"@de ,
                    "has arrival"@en ;
         rdfs:comment "The arrival date and/or time of a journey or excursion."@en .
 
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasDeparture
-:hasDeparture rdf:type owl:DatatypeProperty ;
-        rdfs:subPropertyOf :hasStartDate ;
+trip-onto:hasDeparture rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf trip-onto:hasStartDate ;
         rdfs:label "hat Abfahrt"@de ,
                    "has departure"@en ;
         rdfs:comment "The departure date and/or time of a journey or excursion."@en .
 
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasActivity
-:hasActivity rdf:type owl:ObjectProperty ;
+trip-onto:hasActivity rdf:type owl:ObjectProperty ;
         rdfs:label "hat Aktivität"@de ,
                    "has activity"@en ;
         rdfs:comment "An activity a person undertakes."@en .
 
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasJourney
-:hasJourney rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf :hasActivity ;
+trip-onto:hasJourney rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf trip-onto:hasActivity ;
         rdfs:label "hat Reise"@de ,
                    "has journey"@en ;
         rdfs:comment "A journey a person undertakes."@en .
 
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasIntermediateDestination
-:hasIntermediateDestination rdf:type owl:ObjectProperty ;
+trip-onto:hasIntermediateDestination rdf:type owl:ObjectProperty ;
         rdfs:label "hat Zwischenstation"@de ,
                    "has intermediate destination"@en ;
         rdfs:comment "An intermediate destination during a journey."@en .
 
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasStage
-:hasStage rdf:type owl:ObjectProperty ;
+trip-onto:hasStage rdf:type owl:ObjectProperty ;
         rdfs:label "hat Etappe"@de ,
                    "has stage"@en ;
         rdfs:comment "A stage of a journey."@en .
 
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasExcursion
-:hasExcursion rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf :hasActivity ;
+trip-onto:hasExcursion rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf trip-onto:hasActivity ;
         rdfs:label "hat Ausflug"@de ,
                    "has excursion"@en ;
         rdfs:comment "An excursion a person undertakes."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#sightingOf
-:sightingOf rdf:type owl:Property ;
+trip-onto:sightingOf rdf:type owl:Property ;
         rdfs:label "Besichtigung von"@de ,
                    "sighting of"@en ;
         rdfs:comment "The sighted object during a sightseeing activity."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#mealType
-:mealType rdf:type owl:DatatypeProperty ;
+trip-onto:mealType rdf:type owl:DatatypeProperty ;
         rdfs:label "Mahlzeit typ"@de ,
                    "meal type"@en ;
         rdfs:comment "The type of a meal during a dining activity."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#cuisine
-:cuisine rdf:type owl:DatatypeProperty ;
+trip-onto:cuisine rdf:type owl:DatatypeProperty ;
         rdfs:label "Küche"@de ,
                    "cuisine"@en ;
         rdfs:comment "The type of cuisine of a dining activity."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#entertainementType
-:entertainmentType rdf:type owl:DatatypeProperty ;
+trip-onto:entertainmentType rdf:type owl:DatatypeProperty ;
         rdfs:label "Unterhaltungsart"@de ,
                    "entertainement type"@en ;
         rdfs:comment "The type of entertainment of an entertainment activity."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasStay
-:hasStay rdf:type owl:ObjectProperty ;
+trip-onto:hasStay rdf:type owl:ObjectProperty ;
         rdfs:label "hat Aufenthalt"@de ,
                    "has Stay"@en ;
         rdfs:comment "A stay at a specific location during a Journey. Does not apply for excursion."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasAccommodation
-:hasAccommodation rdf:type owl:ObjectProperty ;
+trip-onto:hasAccommodation rdf:type owl:ObjectProperty ;
         rdfs:label "hat Unterkunft"@de ,
                    "has Accommodation"@en ;
         rdfs:comment "The accommodation of a stay."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasOccurrence
-:hasOccurrence rdf:type owl:DatatypeProperty ;
+trip-onto:hasOccurrence rdf:type owl:DatatypeProperty ;
         rdfs:label "hat Ereignis"@de ,
                    "has occurrence"@en ;
         rdfs:comment "An occurrance during an activity."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasCost
-:hasCost rdf:type owl:DatatypeProperty ;
+trip-onto:hasCost rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf currencyA:hasPrice ;
         rdfs:label "kostet"@de ,
                    "has cost"@en ;
         rdfs:comment "The cost of an activity, transport, or accomodation."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasCurrency
-:hasCurrency rdf:type owl:ObjectProperty ;
+trip-onto:hasCurrency rdf:type owl:ObjectProperty ;
         rdfs:label "Währung"@de ,
                    "Currency"@en ;
         rdfs:comment "The currency of a payment."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#meanOfTransportation
-:meanOfTransportation rdf:type owl:DatatypeProperty ;
+trip-onto:meanOfTransportation rdf:type owl:DatatypeProperty ;
         rdfs:label "Transportmittel"@de ,
                    "Mean of Transport"@en ;
         rdfs:comment "The mean of transportation."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#participatedIn
-:participatedIn rdf:type owl:ObjectProperty;
+trip-onto:participatedIn rdf:type owl:ObjectProperty;
         rdfs:label "Nimmt Teil an"@de ,
                    "participated in"@en ;
         rdfs:comment "An activity a person participated in"@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasParticipant
-:hasParticipant rdf:type owl:ObjectProperty;
-        owl:inverseOf :participatedIn;
+trip-onto:hasParticipant rdf:type owl:ObjectProperty;
+        owl:inverseOf trip-onto:participatedIn;
         rdfs:label "Hat Partizipant:in"@de ,
                    "has Participant"@en ;
         rdfs:comment "The participant(s) of an activity"@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#mentionedIn
-:mentionedIn rdf:type owl:ObjectProperty;
+trip-onto:mentionedIn rdf:type owl:ObjectProperty;
         rdfs:label "erwähnt in"@de ,
                    "mentioned in"@en ;
         rdfs:comment "Link to the entry containing the info."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasDescription
-:hasDescription rdf:type owl:DatatypeProperty;
+trip-onto:hasDescription rdf:type owl:DatatypeProperty;
         rdfs:label "Beschreibung"@de ,
                    "Description"@en ;
         rdfs:comment "Extra text description."@en .
 
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#accordingTo
-:accordingTo rdf:type owl:ObjectProperty;
+trip-onto:accordingTo rdf:type owl:ObjectProperty;
         rdfs:label "Laut"@de ,
                    "According To"@en ;
         rdfs:comment "Link to the person who narrated the info."@en .
 
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasTextContent
-:hasTextContent rdf:type owl:ObjectProperty;
+trip-onto:hasTextContent rdf:type owl:ObjectProperty;
         #rdfs:domain :Document ;
     rdfs:label  "Text-Inhalt"@de,
                 "Text Content"@en;
     rdfs:comment "The text content of an entry in a diary."@en.
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasText
-:hasText rdf:type owl:DatatypeProperty;
+trip-onto:hasText rdf:type owl:DatatypeProperty;
     rdfs:label  "hat Text"@de,
                 "has text"@en;
     rdfs:comment "The actual text of a text content."@en.
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasWikiLink
-:hasWikiLink rdf:type owl:DatatypeProperty ;
+trip-onto:hasWikiLink rdf:type owl:DatatypeProperty ;
         rdfs:label "hat link zu einer Wikidata Seite"@de ,
                    "has a link to a wikidata page"@en ;
         rdfs:comment "A link to a wikidata page."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasGnd
-:hasGnd rdf:type owl:DatatypeProperty ;
+trip-onto:hasGnd rdf:type owl:DatatypeProperty ;
         rdfs:label "hat GND nummer"@de ,
                    "has gnd"@en ;
         rdfs:comment "GND number of a person"@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasGeonameID
-:hasGeonameID rdf:type owl:DatatypeProperty ;
+trip-onto:hasGeonameID rdf:type owl:DatatypeProperty ;
         rdfs:label "GeonameID"@de ,
                    "GeonameID"@en ;
         rdfs:comment "The geoname ID of a location."@en .
 
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasTransit
-:hasTransitFrom rdf:type owl:DatatypeProperty ;
+trip-onto:hasTransitFrom rdf:type owl:DatatypeProperty ;
         rdfs:label "Transit von"@de ,
                    "Transit from"@en ;
         rdfs:comment "The transit from a location."@en .

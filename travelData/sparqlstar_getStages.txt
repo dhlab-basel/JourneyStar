@@ -1,0 +1,22 @@
+PREFIX trip-onto: <http://www.dhlab.unibas.ch/ontology/trip-onto#>
+PREFIX schema: <https://schema.org/>
+PREFIX : <http://www.dhlab.unibas.ch/data/JBReisebuechlein#>
+SELECT ?From ?To ?startDate ?endDate ?Transportation ?Accomodation
+WHERE {
+   ?journey a trip-onto:Journey .
+    BIND(<http://rdfh.ch/0801/GcXDoaZgRu6E2scC77h6gw> AS ?entryIRI)
+    BIND (<< ?person trip-onto:hasJourney ?journey>> AS ?journeyTriple)
+    ?journeyTriple trip-onto:mentionedIn ?entry .
+    ?journeyTriple trip-onto:hasStage ?stage .
+    BIND(<<?journeyTriple trip-onto:hasStage ?stage>> AS ?stageTriple)
+    ?stage trip-onto:hasStartLocation ?From .
+    ?stageTriple trip-onto:hasEndDate ?endDate .
+    ?stageTriple trip-onto:hasStartDate ?startDate .
+    ?stage trip-onto:hasDestination ?To .
+    ?stage trip-onto:meanOfTransportation ?Transportation .
+    OPTIONAL {
+    ?stage trip-onto:hasStay ?stay  .
+    ?stay trip-onto:hasAccommodation ?accomodationRes .
+    ?accomodationRes schema:name ?Accomodation .
+    }
+}

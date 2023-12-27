@@ -10,8 +10,6 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix trip-shacl: <http://www.dhlab.unibas.ch/shacl/trip-shacl#> .
 @prefix trip-onto: <http://www.dhlab.unibas.ch/ontology/trip-onto#> .
-@prefix : <http://www.dhlab.unibas.ch/shacl/trip-shacl/> .
-
 
 
 # ##############################################################
@@ -22,7 +20,7 @@
 ### Shape for Class Person ###
 ################################
 
-:PersonShape a sh:NodeShape  ;
+trip-shacl:PersonShape a sh:NodeShape  ;
     sh:targetClass trip-onto:Person ;
     sh:property [
         sh:path schema:name ;
@@ -79,7 +77,7 @@
 ### Shape for Class Location ###
 ################################
 
-:LocationShape a sh:NodeShape  ;
+trip-shacl:LocationShape a sh:NodeShape  ;
     sh:targetClass trip-onto:Location ;
     sh:property
     [
@@ -99,7 +97,7 @@
 
 ### Shape for Class Excursion ###
 ################################
-:ExcursionShape a sh:NodeShape  ;
+trip-shacl:ExcursionShape a sh:NodeShape  ;
     sh:targetClass trip-onto:Excursion ;
     sh:property
     [
@@ -112,7 +110,7 @@
 
 ### Shape for Class Stay ###
 ################################
-:StayShape a sh:NodeShape  ;
+trip-shacl:StayShape a sh:NodeShape  ;
     sh:targetClass trip-onto:Stay ;
     sh:property
 	  [
@@ -122,12 +120,12 @@
     ] ,
     [
         sh:path trip-onto:hasExcursion ;
-        sh:node :ExcursionShape ;
+        sh:node trip-shacl:ExcursionShape ;
     ] .
 
 ### Shape for Class Accommodation ###
 ################################
-:AccommodationShape a sh:NodeShape ;
+trip-shacl:AccommodationShape a sh:NodeShape ;
     sh:targetClass trip-onto:Accommodation ;
     sh:property
     [
@@ -142,7 +140,7 @@
 
 ### Shape for Class Activity ###
 ################################
-:ActivityShape a sh:NodeShape;
+trip-shacl:ActivityShape a sh:NodeShape;
     sh:targetClass trip-onto:Activity;
     sh:property
     [
@@ -163,7 +161,7 @@
 
 ### Shape for Class SightSeeing ###
 ################################
-:SightSeeingShape a sh:NodeShape;
+trip-shacl:SightSeeingShape a sh:NodeShape;
     sh:targetClass trip-onto:SightSeeing;
     sh:property
     [
@@ -176,7 +174,7 @@
 
 ### Shape for Class Dining ###
 ################################
-:DiningShape a sh:NodeShape;
+trip-shacl:DiningShape a sh:NodeShape;
     sh:targetClass trip-onto:Dining;
     sh:property
     [
@@ -190,7 +188,7 @@
 
 ### Shape for Class Entertainment ###
 ################################
-:EntertainmentShape a sh:NodeShape;
+trip-shacl:EntertainmentShape a sh:NodeShape;
     sh:targetClass trip-onto:Entertainment ;
     sh:property
     [
@@ -201,13 +199,13 @@
 
 ### Shape for Class Entry ###
 ################################
-:EntryShape a sh:NodeShape  ;
+trip-shacl:EntryShape a sh:NodeShape  ;
     sh:targetClass trip-onto:Entry ;
     sh:property
     [
         sh:path trip-onto:hasTextContent ;
         sh:minCount 1 ;
-        sh:node :TextContentShape;
+        sh:node trip-shacl:TextContentShape;
     ],
     [
         sh:path trip-onto:hasDate ;
@@ -219,7 +217,7 @@
 
 ### Shape for Class TextContent ###
 ################################
-:TextContentShape a sh:NodeShape;
+trip-shacl:TextContentShape a sh:NodeShape;
     sh:targetClass trip-onto:TextContent;
     sh:property
     [
@@ -235,44 +233,45 @@
 
 ### Shape for  accordingTo ###
 ################################
-:accordingToPropertyShape
+trip-shacl:accordingToPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf trip-onto:accordingTo ;
-    	sh:or ([sh:node :PersonShape]
+    	sh:or ([sh:node trip-shacl:PersonShape]
     	        [sh:nodeKind sh:IRI]) .
 
 ### Shape for Property mentionedIn ###
 ################################
-:mentionedInPropertyShape
+trip-shacl:mentionedInPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf trip-onto:mentionedIn ;
-    	sh:or ([sh:node :EntryShape]
+    	sh:or ([sh:node trip-shacl:EntryShape]
     	        [sh:nodeKind sh:IRI]) .
 
 ### Shape for Property hasDescription ###
 ################################
-:hasDescriptionPropertyShape
+trip-shacl:hasDescriptionPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf trip-onto:hasDescription ;
-    	sh:datatype xsd:string .
+    	sh:or ([ sh:datatype xsd:string ]
+             [ sh:nodeKind sh:IRI ]) .
 
 ### Shape for Property hasStartLocation ###
 ################################
-:hasStartLocationPropertyShape
+trip-shacl:hasStartLocationPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf trip-onto:hasStartLocation ;
     	sh:or ([sh:class trip-onto:Location]
     	        [sh:nodeKind sh:IRI]) .
 
 ###  hasDestination ###
-:hasDestinationPropertyShape
+trip-shacl:hasDestinationPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf trip-onto:hasDestination ;
     	sh:or ([sh:class trip-onto:Location]
     	        [sh:nodeKind sh:IRI]) .
 
 # hasArrival
-:hasArrivalPropertyShape
+trip-shacl:hasArrivalPropertyShape
     a sh:NodeShape ;
     sh:targetObjectsOf trip-onto:hasArrival;
     sh:or ( [sh:datatype xsd:dateTime ]
@@ -280,7 +279,7 @@
                 [sh:datatype xsd:time ]) .
 
 # hasDeparture
-:hasDeparturePropertyShape
+trip-shacl:hasDeparturePropertyShape
     a sh:NodeShape ;
     sh:targetObjectsOf trip-onto:hasDeparture;
     sh:or ( [sh:datatype xsd:dateTime ]
@@ -288,7 +287,7 @@
                 [sh:datatype xsd:time ]) .
 
 ###  hasStartDate ###
-:hasStartDatePropertyShape
+trip-shacl:hasStartDatePropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf trip-onto:hasStartDate ;
     	sh:or ( [sh:datatype xsd:dateTime ]
@@ -296,7 +295,7 @@
                 [sh:datatype xsd:time ]) .
 
 ###  hasEndDate ###
-:hasEndDatePropertyShape
+trip-shacl:hasEndDatePropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf trip-onto:hasEndDate ;
     	sh:or ( [sh:datatype xsd:dateTime ]
@@ -304,7 +303,7 @@
                 [sh:datatype xsd:time ]) .
 
 ###  meanOfTransportation ###
-:meanOfTransportationShape
+trip-shacl:meanOfTransportationShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf trip-onto:meanOfTransportation ;
         sh:or ( [sh:datatype xsd:anyURI ]
@@ -312,7 +311,7 @@
               [sh:datatype xsd:string ]) .
 
 ### hasIntermediateDestination###
-:hasIntermediateDestinationPropertyShape
+trip-shacl:hasIntermediateDestinationPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf trip-onto:hasIntermediateDestination ;
     	sh:or ([sh:class trip-onto:Location]
@@ -320,7 +319,7 @@
                 [sh:datatype xsd:anyURI]) .
 
 ### hasParticipant ###
-:hasParticipantPropertyShape
+trip-shacl:hasParticipantPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf trip-onto:hasParticipant ;
     	sh:or ([sh:class trip-onto:Person]
@@ -328,47 +327,47 @@
                 [sh:datatype xsd:anyURI]) .
 
 ### hasStage ###
-:hasStagePropertyShape
+trip-shacl:hasStagePropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf trip-onto:hasStage ;
     	sh:class trip-onto:Journey .
 
 ### has stay ###
-:hasStayPropertyShape
+trip-shacl:hasStayPropertyShape
     a sh:NodeShape;
     sh:targetObjectsOf trip-onto:hasStay;
     sh:class trip-onto:Stay ;
-    sh:node :StayShape .
+    sh:node trip-shacl:StayShape .
 
 ### has activity ###
-:hasActivityPropertyShape
+trip-shacl:hasActivityPropertyShape
     a sh:NodeShape;
     sh:targetObjectsOf trip-onto:hasActivity;
     sh:class trip-onto:Activity .
 
 ### has occurence ###
-:hasOccurrencePropertyShape
+trip-shacl:hasOccurrencePropertyShape
     a sh:NodeShape;
     sh:targetObjectsOf trip-onto:hasOccurrence;
     sh:datatype xsd:string .
 
 ### has transit ###
-:hasTransitPropertyShape
+trip-shacl:hasTransitPropertyShape
     a sh:NodeShape;
     sh:targetObjectsOf trip-onto:hasTransitFrom;
-    sh:or ([sh:node :LocationShape ]
+    sh:or ([sh:node trip-shacl:LocationShape ]
             [sh:nodeKind sh:IRI]
             [sh:datatype xsd:anyURI]).
 
 ### hasCost ###
-:hasCostPropertyShape
+trip-shacl:hasCostPropertyShape
     a sh:NodeShape;
     sh:targetObjectsOf trip-onto:hasCost;
     sh:or ( [sh:datatype xsd:float ]
             [sh:datatype xsd:integer ]).
 
 ### currency ###
-:hasCurrencyPropertyShape
+trip-shacl:hasCurrencyPropertyShape
     a sh:NodeShape;
     sh:targetObjectsOf trip-onto:hasCurrency;
     sh:or ( [sh:datatype xsd:string ]
@@ -376,7 +375,7 @@
             [sh:nodeKind sh:IRI ]) .
 
 ### wikilink ###
-:hasWikiLinkPropertyShape
+trip-shacl:hasWikiLinkPropertyShape
     a sh:NodeShape;
     sh:targetObjectsOf trip-onto:hasWikiLink;
     sh:or ([sh:nodeKind sh:IRI]
