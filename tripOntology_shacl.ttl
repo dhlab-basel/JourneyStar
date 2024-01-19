@@ -8,8 +8,8 @@
 @prefix dbr: <http://dbpedia.org/resource/> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix trip-shacl: <http://www.dhlab.unibas.ch/shacl/trip-shacl#> .
-@prefix trip-onto: <http://www.dhlab.unibas.ch/ontology/trip-onto#> .
+@prefix trip-shacl: <http://journeyStar.dhlab.ch/shacl/trip-shacl#> .
+@prefix trip-onto: <http://journeyStar.dhlab.ch/ontology/trip-onto#> .
 
 
 # ##############################################################
@@ -230,6 +230,13 @@ trip-shacl:TextContentShape a sh:NodeShape;
 # ##############################################################
 ## Shapes for Star Properties
 # ##############################################################
+
+### Shape for hasWikiLink ###
+################################
+trip-shacl:hasWikiLinkPropertyShape
+    	a sh:NodeShape ;
+    	sh:targetObjectsOf trip-onto:hasWikiLink ;
+    	sh:datatype sh:IRI .
 
 ### Shape for  accordingTo ###
 ################################

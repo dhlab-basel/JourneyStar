@@ -1,18 +1,24 @@
-PREFIX trip-onto: <http://www.dhlab.unibas.ch/ontology/trip-onto#>
+PREFIX trip-onto: <http://journeyStar.dhlab.ch/ontology/trip-onto#>
 PREFIX schema: <https://schema.org/>
-PREFIX : <http://www.dhlab.unibas.ch/data/JBReisebuechlein#>
-SELECT ?From ?To ?startDate ?endDate ?Transportation ?Accomodation
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?From ?FromIri ?To ?ToIri ?startDate ?endDate ?Transportation ?Accomodation
 WHERE {
    ?journey a trip-onto:Journey .
     BIND(<http://rdfh.ch/0801/GcXDoaZgRu6E2scC77h6gw> AS ?entryIRI)
     BIND (<< ?person trip-onto:hasJourney ?journey>> AS ?journeyTriple)
-    ?journeyTriple trip-onto:mentionedIn ?entry .
+    ?journeyTriple trip-onto:mentionedIn ?entryIRI .
     ?journeyTriple trip-onto:hasStage ?stage .
     BIND(<<?journeyTriple trip-onto:hasStage ?stage>> AS ?stageTriple)
-    ?stage trip-onto:hasStartLocation ?From .
+    ?stage trip-onto:hasStartLocation ?FromLocation .
+    ?FromLocation schema:name ?FromName .
+    ?FromLocation owl:sameAs ?FromIri .
+    BIND(STR(?FromName) As ?From)
     ?stageTriple trip-onto:hasEndDate ?endDate .
     ?stageTriple trip-onto:hasStartDate ?startDate .
-    ?stage trip-onto:hasDestination ?To .
+    ?stage trip-onto:hasDestination ?ToLocation .
+    ?ToLocation owl:sameAs ?ToIri .
+    ?ToLocation schema:name ?ToName .
+    BIND(STR(?ToName) As ?To)
     ?stage trip-onto:meanOfTransportation ?Transportation .
     OPTIONAL {
     ?stage trip-onto:hasStay ?stay  .

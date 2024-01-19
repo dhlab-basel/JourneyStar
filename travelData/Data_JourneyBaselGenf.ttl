@@ -5,84 +5,25 @@
 @prefix currencyA: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
 @prefix currency: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/>.
 @prefix schema: <https://schema.org/> .
-@prefix wdt: <https://wikidata.org/> .
+@prefix wd: <http://www.wikidata.org/entity/> .
 @prefix dbr: <http://dbpedia.org/resource/> .
-@prefix trip-onto: <http://www.dhlab.unibas.ch/ontology/trip-onto#> .
-@prefix : <http://www.dhlab.unibas.ch/data/JBReisebuechlein#> .
-@base <http://www.dhlab.unibas.ch/data/JBReisebuechlein#> .
+@prefix trip-onto: <http://journeyStar.dhlab.ch/ontology/trip-onto#> .
+@prefix : <http://journeyStar.dhlab.ch/data/JBReisebuechlein#> .
+@base <http://journeyStar.dhlab.ch/data/JBReisebuechlein#> .
 
 # Data – Reise von Basel nach Genf
-
-# Cities
-
-#Basel
-:Basel a trip-onto:Location;
-    schema:name "Basel"@de;
-    owl:sameAs wdt:Q78 .
-
-# Liestal
-:Liestal a trip-onto:Location;
-    schema:name "Liestal"@de;
-    owl:sameAs wdt:Q68972 .
-
-# Waldenburg
-:Waldenburg a trip-onto:Location;
-    schema:name "Waldenburg"@de;
-    owl:sameAs wdt:Q67092 .
-
-# Solothurn
-:Solothurn a trip-onto:Location;
-    schema:name "Solothurn"@de;
-    owl:sameAs wdt:Q11929 .
-
-# Biel
-:Biel a trip-onto:Location;
-    schema:name "Biel"@de;
-    owl:sameAs wdt:Q1034 .
-
-# Avenches
-:Avenches a trip-onto:Location;
-    schema:name "Avenches"@de;
-    owl:sameAs wdt:Q43236 .
-
-# Lausanne
-:Lausanne a trip-onto:Location;
-    schema:name "Lausanne"@de;
-    owl:sameAs wdt:Q807.
-
-# Coppet
-:Coppet a trip-onto:Location;
-    schema:name "Coppet"@de;
-    owl:sameAs wdt:Q57097.
-
-# Genf
-:Genf a trip-onto:Location;
-    schema:name "Genf"@de;
-    owl:sameAs wdt:Q71.
-
-
-# Person
-:JacobBernoulli a trip-onto:Person;
-    schema:name "Jacob Bernoulli";
-    schema:givenName "Jacob";
-    schema:familyName "Bernoulli";
-    owl:sameAs <http://rdfh.ch/0801/AnFe12m7SPaQBCAo-RiKjg> .
-
-
-# meanOfTransportation
-:Horse owl:sameAs wdt:Q726 .
-
-# Trip-Onto Data
-:JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf.
-
-# mentioned in Entry 1 of Reisbüchlein, using entry IRI
-<< :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:mentionedIn <http://rdfh.ch/0801/GcXDoaZgRu6E2scC77h6gw> .
 
 # Journey
 :JourneyBaselGenf a trip-onto:Journey ;
     trip-onto:hasStartLocation :Basel;
     trip-onto:hasDestination :Genf ;
     trip-onto:hasDescription "Journey from Basel to Geneva with a long stay in Geneva.".
+
+# Trip-Onto Data
+:JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf.
+
+# mentioned in Entry 1 of Reisbüchlein, using entry IRI
+<< :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:mentionedIn <http://rdfh.ch/0801/GcXDoaZgRu6E2scC77h6gw> .
 
 << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStartDate "1676-08-20"^^xsd:date .
 << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasEndDate "1678-05-08"^^xsd:date.

@@ -1,0 +1,173 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix dbr: <http://dbpedia.org/resource/> .
+@prefix trip-onto: <http://journeyStar.dhlab.ch/ontology/trip-onto#> .
+@prefix : <http://journeyStar.dhlab.ch/data/JBReisebuechlein#> .
+@base <http://journeyStar.dhlab.ch/data/JBReisebuechlein#> .
+# Cities
+
+#Basel
+:Basel a trip-onto:Location;
+    schema:name "Basel"@de;
+    trip-onto:hasWikiLink  wd:Q78 ;
+    owl:sameAs  <http://rdfh.ch/0801/0BAmzHl7RTm0exfcGTkruA> .
+
+# Liestal
+:Liestal a trip-onto:Location;
+    schema:name "Liestal"@de;
+    trip-onto:hasWikiLink  wd:Q68972 ;
+    owl:sameAs <http://rdfh.ch/0801/hs0da8GWTYSqUVMjGK2f3w> .
+
+# Waldenburg
+:Waldenburg a trip-onto:Location;
+    schema:name "Waldenburg"@de;
+    trip-onto:hasWikiLink  wd:Q68972 ;
+    owl:sameAs <http://rdfh.ch/0801/C93spyWTRqOY8iPqH5jw_g> .
+
+# Solothurn
+:Solothurn a trip-onto:Location;
+    schema:name "Solothurn"@de;
+    trip-onto:hasWikiLink  wd:Q68965 ;
+    owl:sameAs <http://rdfh.ch/0801/X6xGb_awS02BfFwydNlKpg>  .
+
+# Biel
+:Biel a trip-onto:Location;
+    schema:name "Biel/Bienne"@de;
+    trip-onto:hasWikiLink  wd:Q1034 ;
+    owl:sameAs  <http://rdfh.ch/0801/8U_1ziXISwK1kytE0bp_Tg>.
+
+# Avenches
+:Avenches a trip-onto:Location;
+    schema:name "Avenches"@de;
+    trip-onto:hasWikiLink wd:Q43236 ;
+    owl:sameAs <http://rdfh.ch/0801/wnGZK3VcT6O8QcPNF3daeg> .
+
+# Lausanne
+:Lausanne a trip-onto:Location;
+    schema:name "Lausanne"@de;
+    trip-onto:hasWikiLink wd:Q807 ;
+    owl:sameAs <http://rdfh.ch/0801/J2yD10kPSa-j_pBQj0YVKg> .
+
+# Coppet
+:Coppet a trip-onto:Location;
+    schema:name "Coppet"@de;
+    trip-onto:hasWikiLink wd:Q57097 ;
+    owl:sameAs <http://rdfh.ch/0801/Ai3asFLoTDWgLdCRaMlA7Q> .
+
+# Genf
+:Genf a trip-onto:Location;
+    schema:name "Genf"@de;
+    trip-onto:hasWikiLink wd:Q71 ;
+    owl:sameAs <http://rdfh.ch/0801/PYJEoAx6SCCUJkuomrGYyw> .
+
+# Lyon
+:Lyon a trip-onto:Location;
+    schema:name "Lyon"@de;
+    trip-onto:hasWikiLink wd:Q456 ;
+    owl:sameAs <http://rdfh.ch/0801/Y343ot3lQX2LPSmOFe75sA> .
+
+# Chatillon
+:Chatillon-en-Michaille a trip-onto:Location;
+    schema:name "Châtillon-en-Michaille"@de;
+    trip-onto:hasWikiLink wd:Q182134 ;
+    owl:sameAs <http://rdfh.ch/0801/-4fknp2xT_Sms4Mkt13GHA> .
+
+# Collonges
+:Collonges a trip-onto:Location;
+    schema:name "Collonges"@de;
+    trip-onto:hasWikiLink wd:Q244714 ;
+    owl:sameAs <http://rdfh.ch/0801/8i_rVIyoS_GYfNNy16kk1w> .
+
+# Cormoz
+:Cormoz a trip-onto:Location;
+    schema:name "Cormoz"@de;
+    trip-onto:hasWikiLink wd:Q669003 ;
+    owl:sameAs <http://rdfh.ch/0801/S2eWasgiTaqshRqw04rKxg> .
+
+# Cerdon
+:Cerdon a trip-onto:Location;
+    schema:name "Cerdon"@de;
+    trip-onto:hasWikiLink wd:Q243107 ;
+    owl:sameAs <http://rdfh.ch/0801/W4v-pa3cQUKmJoklNe_eRQ> .
+
+# Château-Gaillard
+:Chateau-Gaillard a trip-onto:Location;
+    schema:name "Château-Gaillard"@de;
+    trip-onto:hasWikiLink wd:Q503257 ;
+    owl:sameAs <http://rdfh.ch/0801/GIzQLqPjShq9G1VQlQKZ9A> .
+
+# Montluel
+:Montluel a trip-onto:Location;
+    schema:name "Montluel"@de;
+    trip-onto:hasWikiLink wd:Q239858 ;
+    owl:sameAs <http://rdfh.ch/0801/-Q-A-aAEQMC_TeLCUhYkDQ> .
+
+# Clermont-Ferrand
+:ClermontFerrand a trip-onto:Location;
+    schema:name "Clermont-Ferrand"@de;
+    trip-onto:hasWikiLink wd:Q42168 ;
+    owl:sameAs <http://rdfh.ch/0801/SW5I-OURSTOCI6nQsJns3w> .
+# Nervieux
+:Nervieux a trip-onto:Location;
+    schema:name "Nervieux"@de;
+    trip-onto:hasWikiLink wd:Q1116468 ;
+    owl:sameAs <http://rdfh.ch/0801/tHNoa0MkQxizKclMFN5g3g> .
+
+# Thiers
+:Thiers a trip-onto:Location;
+    schema:name "Thiers"@de;
+    trip-onto:hasWikiLink wd:Q217174 ;
+    owl:sameAs <http://rdfh.ch/0801/_7bGclM4Quif7Iqny71Mew> .
+
+# Saint-Germain-Laval
+:SaintGermainLaval a trip-onto:Location;
+    schema:name "Saint-Germain-Laval"@de;
+    trip-onto:hasWikiLink wd:Q1109521 ;
+    owl:sameAs <http://rdfh.ch/0801/JY7-cM5QQqCtTljVC6rSgQ> .
+
+# Saint-Martin-la-Sauveté
+:SaintMartinLaSauvete a trip-onto:Location;
+    schema:name "Saint-Martin-la-Sauveté"@de;
+    trip-onto:hasWikiLink wd:Q1106049 ;
+    owl:sameAs <http://rdfh.ch/0801/vA5PPF6ZQnyimRcodHNOfQ> .
+
+# La Pau
+:LaPau a trip-onto:Location;
+    schema:name "La Pau"@de;
+    trip-onto:hasWikiLink wd:Q1427150 ;
+    owl:sameAs <http://rdfh.ch/0801/6mORvZDXTFWLrJVMUn2zRw> .
+
+# Lezoux
+:Lezoux a trip-onto:Location;
+    schema:name "Lezoux"@de;
+    trip-onto:hasWikiLink wd:Q1221375 ;
+    owl:sameAs <http://rdfh.ch/0801/xfsS_U7IQ-Os9kO7NxFeDw> .
+
+# Nedde
+:Nedde a trip-onto:Location;
+    schema:name "Nedde"@de;
+    trip-onto:hasWikiLink wd:Q1076518 ;
+    owl:sameAs <http://rdfh.ch/0801/EIbap56GRr244BeIN_Wnsw> .
+
+#La Lignière
+:LaLiniere a trip-onto:Location;
+    schema:name "La Lignière"@de;
+    trip-onto:hasWikiLink wd:Q772083 ;
+    owl:sameAs <http://rdfh.ch/0801/ioPhQ900RKieQkvepk8pSw> .
+
+#Ceyssat
+:Ceyssat a trip-onto:Location;
+    schema:name "Ceyssat"@de;
+    trip-onto:hasWikiLink wd:Q304440 ;
+    owl:sameAs <http://rdfh.ch/0801/XtCu_rBtTqWHnvl_Fa6BLw> .
+
+
+#Gelles
+:Gelles a trip-onto:Location;
+    schema:name "Gelles"@de;
+    trip-onto:hasWikiLink wd:Q1098338 ;
+    owl:sameAs <http://rdfh.ch/0801/syIyY2k1TTasc2UzIcD-kA> .

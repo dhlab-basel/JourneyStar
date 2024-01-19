@@ -8,10 +8,10 @@
 @prefix dbr: <http://dbpedia.org/resource/> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix trip: <http://ontology.eil.utoronto.ca/icity/Trip/Trip> .
-@prefix trip-onto: <http://www.dhlab.unibas.ch/ontology/trip-onto#> .
-@base <http://www.dhlab.unibas.ch/ontology/trip-onto#> .
+@prefix trip-onto: <http://journeyStar.dhlab.ch/ontology/trip-onto#> .
+@base <http://journeyStar.dhlab.ch/ontology/trip-onto#> .
 
-<http://www.dhlab.unibas.ch/ontology/trip-onto> rdf:type owl:Ontology ;
+<http://journeyStar.dhlab.ch/ontology/trip-onto> rdf:type owl:Ontology ;
                                        rdfs:comment "An RDF-star-based ontology to capture concepts reported in travel diaries." ;
                                        owl:versionInfo "v.1.0" .
 
@@ -146,10 +146,16 @@ trip-onto:TextContent rdf:type owl:Class ;
 ### Predicates ###
 ##################
 
+### http://www.dhlab.unibas.ch/ontology/trip-onto#hasWikiLink
+trip-onto:hasLocation rdf:type owl:ObjectProperty ;
+        rdfs:label "hat Wikilink"@de ,
+                   "has Wikilink"@en ;
+        rdfs:comment "Link to the representation of the resource on Wikidata."@en .
+
 ### http://www.dhlab.unibas.ch/ontology/trip-onto#hasLocation
 trip-onto:hasLocation rdf:type owl:ObjectProperty ;
         rdfs:label "hat ort"@de ,
-                   "has  location"@en ;
+                   "has location"@en ;
         rdfs:comment "The location of an activity."@en .
 
 
