@@ -83,5 +83,5 @@ Below, you can see an excerpt of the ontology graph representing the `trip-onto:
 
 ***
 ## Accommodation
-An accommodation can mean anything [Unterkunft bis Unterschlupf]@de from tent to hotel.
+An accommodation can mean any kind of shelter that can be used to spend a night in during a journey; such as hotel, hostel, rented room, tent, cave, etc.
 ![Alt text](ontology_graphs/onto9.png)
