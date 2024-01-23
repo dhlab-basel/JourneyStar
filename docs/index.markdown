@@ -34,8 +34,8 @@ The `trip-onto:Location` is an OWL class representing a location/place such as a
 ![Alt text](ontology_graphs/location.png)
 
 The ranges of the properties of this class are defined in the corresponding SHACL node shape: `trip-shacl:LocationShape`.
-***
 
+***
 ## PERSON
 The `trip-onto:Person` is an OWL class (as a subclass of `schema:Person`) representing a person who undertakes a journey. Some of the OWL object and datatype properties that have this class as their `rdfs:domain` are shown in this picture with their corresponding `rdfs:range`.
 
@@ -71,15 +71,17 @@ The `trip-onto:Excursion` is an OWL class that represents a short round trip a p
 ```
 trip-onto:Journey owl:differentFrom trip-onto:Excursion
 ```
-trip-onto:Excursion is defined by returning to the location of departure without having a stay. A journey including a stay or happening during another or main-journey would make use of trip-onto:hasSubJourney instead of `trip-onto:hasJourney`.
-
-![Alt text](ontology_graphs/excursion.png)
-
+`trip-onto:Excursion` is used to represent short round trip that does not contain overnight stays.
 
 ***
 ## Stay
-A stay is defined by staying in a trip-onto:Location for at least one night up onto a undefined amount of time. A stay >> :hasAccommodation >> :hasActivity?
+The class `trip-onto:Stay` represents an overnight stay in an accommodation which is represented using `trip-onto:Accommodation` class. The cost of the accommodation can be added to the edge representing `:hasAccommodation` using RDF-star and the predicate `hasCost`. There is a SHACL property shape defined to ensure that the object value of this predicate is a numerical value. Additionally, the currency type can be added to the edge representing `hasCost` using RDF-star so that not only the cost of the accommodation, can be stored, the currency of the amount is also stored with it. The currency types can be found in the [currency data graph](https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/).
+
+Below, you can see an excerpt of the ontology graph representing the `trip-onto:Stay` class and its accompanying metadata, and expected object values for each predicate.
+
 ![Alt text](ontology_graphs/onto8.png)
+
+***
 ## Accommodation
 An accommodation can mean anything [Unterkunft bis Unterschlupf]@de from tent to hotel.
 ![Alt text](ontology_graphs/onto9.png)
@@ -90,23 +92,6 @@ domain: hasTransport
 * Ferry
 * Train
 * Ship
-*
-
-## Manuscript
-### Travel Diary
-
-## Document
-![Alt text](ontology_graphs/onto10.png)
-
-## Text Content
-### Description
-
-* to has text?
-* draw the workflow around the document shape
-
-# PropertyShapes
-
-<!--  -->
 
 # Different levels of rdf* application
 
@@ -138,68 +123,6 @@ The in the lowest amount via rdf* added metadata is
 
 ## High amount of rdf star application
 ![Alt text](other/rdf_LEVELS_v4_2310304.png)
-
-
-</br>
-</br>
-
-# Shacl-Shape Data Validation
-
-
-
-<style>
-.elements {
-  margin-top: 50px; /* Adds 20 pixels of margin at the bottom of all elements with class 'elements' */
-}
-</style>
-
-<!-- <div class=elements style="width: 100%; height: 25vw; overflow: auto; position: relative;"> -->
-
-  <!-- Content that exceeds the dimensions of the div will be scrollable -->
-
- <!-- <img src="rdf_LEVELS_v4_2310304.png" alt="Description of the image" style="width: 100% ; height: 100%; object-fit: contain;">
-  <img src="rdf_LEVELS_v4_2310304.png" alt="Description of the image" style="width: 100% ; height: 100%; object-fit: contain;"> -->
-<!--
-<div class="elements" style="width: 100%; height: 50vw; overflow: auto; position: relative;">
-  <!-- Content that exceeds the dimensions of the div will be scrollable -->
-  <!-- <img src="rdf_LEVELS_v4_2310304.png" alt="Description of the image" style="width: 100%; height: auto; object-fit: contain;">
-  <img src="rdf_LEVELS_v4_2310304.png" alt="Description of the image" style="width: 100%; height: auto; object-fit: contain;">
-</div> --> -->
-
-
-<!-- </div> -->
-
-<!-- This is a comment in Markdown. It won't be visible in the rendered output. -->
-
-<!-- # ENLARGENING
-
-<style>
-.scrollable-div {
-  width: 300px;
-  height: 200px;
-  overflow: auto; /* Enable scrollbars if content overflows the specified dimensions */
-}
-
-.enlargening-lens {
-  overflow: hidden;
-  width: 100%; /* Set width to 100% to fill the scrollable div */
-  height: 100%; /* Set height to 100% to fill the scrollable div */
-}
-
-.enlargening-lens img {
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.enlargening-lens:hover img {
-  transform: scale(1.5);
-}
-
-
-</style>
-<div class="enlargening-lens">
-<img src="rdf_LEVELS_v4_2310304.png" alt="Description of the image">
-</div> -->
 
 
 # SPARQL*
