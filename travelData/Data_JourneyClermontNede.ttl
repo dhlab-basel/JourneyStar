@@ -1,0 +1,65 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix currencyA: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix currency: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/>.
+@prefix schema: <https://schema.org/> .
+@prefix wdt: <http://www.wikidata.org/entity/> .
+@prefix dbr: <http://dbpedia.org/resource/> .
+@prefix trip-onto: <http://journeyStar.dhlab.ch/ontology/trip-onto#> .
+@prefix : <http://journeyStar.dhlab.ch/data/JBReisebuechlein#> .
+@base <http://journeyStar.dhlab.ch/data/JBReisebuechlein#> .
+
+# Data – Reise von Clermont nach Nedde
+
+# Journey
+:JourneyClermontNedde a trip-onto:Journey ;
+    trip-onto:hasStartLocation :ClermontFerrand  ;
+    trip-onto:hasDestination :Nedde ;
+    trip-onto:hasDescription "Jacob Bernoulli's Journey from Clermont-Ferrand to Nedde in 1678; with a long stay in Nedde.".
+
+# Trip-Onto Data
+:JacobBernoulli trip-onto:hasJourney :JourneyClermontNedde .
+
+# mentioned in Entry 6 of Reisbüchlein, using entry IRI
+<< :JacobBernoulli trip-onto:hasJourney :JourneyClermontNedde >> trip-onto:mentionedIn <http://rdfh.ch/0801/2UQQ3bHhSyaakr6neD8-1Q> .
+<< :JacobBernoulli trip-onto:hasJourney :JourneyClermontNedde >> trip-onto:hasStartDate "1678-05-19"^^xsd:date .
+<< :JacobBernoulli trip-onto:hasJourney :JourneyClermontNedde >> trip-onto:hasEndDate "1679-06-30"^^xsd:date.
+
+<< :JourneyClermontNedde trip-onto:hasStartLocation :ClermontFerrand >> trip-onto:hasDeparture "1678-05-19"^^xsd:date .
+<< :JourneyClermontNedde trip-onto:hasDestination :Nedde >> trip-onto:hasArrival "1678-05-20"^^xsd:dateTime .
+
+# Stages
+#1
+:StageClermontLaLiniere a trip-onto:Journey;
+    trip-onto:hasStartLocation :ClermontFerrand;
+    trip-onto:hasDestination :LaLiniere ;
+    trip-onto:hasTransit :Ceyssat , :Gelles ;
+    trip-onto:meanOfTransportation :Horse .
+
+<< :JacobBernoulli trip-onto:hasJourney :JourneyClermontNedde >> trip-onto:hasStage :StageClermontLaLiniere .
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyClermontNedde >> trip-onto:hasStage :StageClermontLaLiniere >> trip-onto:hasStartDate "1678-05-19"^^xsd:date.
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyClermontNedde >> trip-onto:hasStage :StageClermontLaLiniere >> trip-onto:hasEndDate "1678-05-20"^^xsd:date.
+
+# mentioned in Page 58 of Reisebuechlein, using page IRI
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyClermontNedde >> trip-onto:hasStage :StageClermontLaLiniere >> trip-onto:mentionedIn <http://rdfh.ch/0801/eD64X6s7SYeZeQvn58mNMw> .
+
+<< :StageClermontLaLiniere trip-onto:hasStartLocation :ClermontFerrand >> trip-onto:hasDeparture "1678-05-19"^^xsd:date .
+<< :StageClermontLaLiniere trip-onto:hasDestination :LaLiniere >> trip-onto:hasArrival "1678-05-19"^^xsd:date .
+
+#2
+:StageLaLiniereNedde a trip-onto:Journey;
+    trip-onto:hasStartLocation :LaLiniere;
+    trip-onto:hasDestination :Nedde ;
+    trip-onto:meanOfTransportation :Horse .
+
+<< :JacobBernoulli trip-onto:hasJourney :JourneyClermontNedde >> trip-onto:hasStage :StageLaLiniereNedde .
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyClermontNedde >> trip-onto:hasStage :StageLaLiniereNedde >> trip-onto:hasStartDate "1678-05-20"^^xsd:date.
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyClermontNedde >> trip-onto:hasStage :StageLaLiniereNedde >> trip-onto:hasEndDate "1679-06-30"^^xsd:date.
+
+# mentioned in Page 58, 59 of Reisebuechlein, using page IRI
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyClermontNedde >> trip-onto:hasStage :StageLaLiniereNedde >> trip-onto:mentionedIn <http://rdfh.ch/0801/eD64X6s7SYeZeQvn58mNMw>, <http://rdfh.ch/0801/QcqgScAVRTGtv9MfWNvJBA> .
+
+<< :StageLaLiniereNedde trip-onto:hasStartLocation :LaLiniere >> trip-onto:hasDeparture "1678-05-20"^^xsd:date .
+<< :StageLaLiniereNedde trip-onto:hasDestination :Nedde >> trip-onto:hasArrival "1678-05-20"^^xsd:date .

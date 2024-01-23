@@ -1,24 +1,17 @@
 
-<!-- static png -->
-<!-- ![Alt text](<Element 5 Kopie.png>) -->
+# Trip Ontology
 
-<!-- animated gif -->
-![Alt text](IMG_0496.GIF)
+ The Trip Ontology, `trip-onto` is an [Rdf-star](https://www.w3.org/2022/08/rdf-star-wg-charter/) based ontology to represent complex metadata-oriented travel data. This ontology is developed at the [Digital Humanities Lab](https://dhlab.philhist.unibas.ch/) of the University of Basel and is made openly accessible for projects who wish to create knowledge graphs from travel data, historical or modern. The resulting RDF-star based knowledge graphs can be stored in triplestores which support RDF-star such as [GraphDB](https://graphdb.ontotext.com/) and the graph can be then efficiently queried using [SPARQL-star](https://w3c.github.io/rdf-star/cg-spec/editors_draft.html).
 
-<!-- ## Trip-ontology BOT -->
+ This ontology contains definition of classes and properties necessary to represent travel data as an RDF graph. It contains structures (explained with examples) to add metadata information to the edges of the graph using RDF-star technology to comprehensively represent the complexity of the travel data.  
 
 
-
-# Trip Ontology | RDF-Star application
-
-### The trip ontology we are about to present, offers multiple ways of applying different complexities of metadata by making use of state of the art [Rdf-star](https://www.w3.org/2022/08/rdf-star-wg-charter/) technology. Disclaimer: data used to illustrate the application of the trip ontology is inspired but only loosely accurate to an actual journey…dates and personas have been created with the help of chatGPT.
-# An example
 
 # INTRODUCING THE VOCABULARY
 # Classes
 
 ## **PERSON**
-a trip:Person is a rdfs:subClassOf schema:Person 
+a trip:Person is a rdfs:subClassOf schema:Person
 ![Alt text](ontology_graphs/onto.png)
 
 Ex: schema:gender as can be seen in [shacl shapes file](../tripOntology_shacl.ttl)
@@ -51,7 +44,7 @@ Trip serves as parent class of trip:Journey and trip:Excursion. It represents th
 ## Stay
 A stay is defined by staying in a trip:Location for at least one night up onto a undefined amount of time. A stay >> :hasAccommodation >> :hasActivity?
 ![Alt text](ontology_graphs/onto8.png)
-## Accommodation 
+## Accommodation
 An accommodation can mean anything [Unterkunft bis Unterschlupf]@de from tent to hotel.
 ![Alt text](ontology_graphs/onto9.png)
 
@@ -59,9 +52,9 @@ An accommodation can mean anything [Unterkunft bis Unterschlupf]@de from tent to
 :hasActivity :Activity can either be placed on the edge of a graph or directly attached to a :Journey or :Stay .
 ![Alt text](ontology_graphs/onto6.png)
 ![Alt text](ontology_graphs/onto7.png)
-<!-- * :Sight-Seeing 
+<!-- * :Sight-Seeing
 * :Entertainment
-* :Visit 
+* :Visit
 * :Dining -->
 
 ## Mode of Transport
@@ -69,8 +62,8 @@ the trip:ModeOfTransport is a rdfs:subClass of schema:ModeOfTransport
 domain: hasTransport  
 * Ferry
 * Train
-* Ship 
-* 
+* Ship
+*
 
 ## Manuscript
 ### Travel Diary
@@ -82,7 +75,7 @@ domain: hasTransport
 ### Description
 
 * to has text?
-* draw the workflow around the document shape 
+* draw the workflow around the document shape
 
 # PropertyShapes
 
@@ -91,7 +84,7 @@ domain: hasTransport
 # Different levels of rdf* application
 
 ## Low rdf star application
-The in the lowest amount via rdf* added metadata is 
+The in the lowest amount via rdf* added metadata is
 ![Alt text](other/rdf_LEVELS_v4_2310302.png)
 </br>
 </br>
@@ -136,10 +129,10 @@ The in the lowest amount via rdf* added metadata is
 <!-- <div class=elements style="width: 100%; height: 25vw; overflow: auto; position: relative;"> -->
 
   <!-- Content that exceeds the dimensions of the div will be scrollable -->
- 
+
  <!-- <img src="rdf_LEVELS_v4_2310304.png" alt="Description of the image" style="width: 100% ; height: 100%; object-fit: contain;">
   <img src="rdf_LEVELS_v4_2310304.png" alt="Description of the image" style="width: 100% ; height: 100%; object-fit: contain;"> -->
-<!-- 
+<!--
 <div class="elements" style="width: 100%; height: 50vw; overflow: auto; position: relative;">
   <!-- Content that exceeds the dimensions of the div will be scrollable -->
   <!-- <img src="rdf_LEVELS_v4_2310304.png" alt="Description of the image" style="width: 100%; height: auto; object-fit: contain;">
@@ -191,7 +184,7 @@ prefix onto:<http://www.ontotext.com/>
 select ?subject ?predicate ?object
 
 {
-    ?subject a <http://www.mysemantics.com/ontology/trip/SightSeeing> . 
+    ?subject a <http://www.mysemantics.com/ontology/trip/SightSeeing> .
     ?subject ?predicate ?object.
 }
 

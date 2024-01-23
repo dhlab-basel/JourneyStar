@@ -1,0 +1,29 @@
+PREFIX trip-onto: <http://journeyStar.dhlab.ch/ontology/trip-onto#>
+PREFIX schema: <https://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ofn:<http://www.ontotext.com/sparql/functions/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?From ?FromIri ?To ?ToIri ?Departure ?Arrival ?EndDate ?DurationOfStayInDays
+WHERE {
+    BIND (<< ?person trip-onto:hasJourney ?journey>> AS ?journeyTriple)
+    BIND(<http://rdfh.ch/0801/GcXDoaZgRu6E2scC77h6gw> AS ?entryIRI)
+    ?journeyTriple trip-onto:mentionedIn ?entryIRI .
+    ?journey trip-onto:hasStartLocation ?FromLocation .
+    ?FromLocation owl:sameAs ?FromIri .
+    ?FromLocation schema:name ?FromName .
+    BIND(STR(?FromName) AS ?From)
+    BIND(<< ?journey trip-onto:hasStartLocation ?FromLocation >> AS ?startStatement)
+    ?journey trip-onto:hasDestination ?ToLocation .
+    ?ToLocation schema:name ?ToName .
+    ?ToLocation owl:sameAs ?ToIri .
+    BIND(STR(?ToName) AS ?To)
+    ?startStatement trip-onto:hasStartDate ?Departure .
+    BIND(<< ?journey trip-onto:hasDestination ?ToLocation >> AS ?arrivalStatement)
+    ?arrivalStatement trip-onto:hasArrival ?Arrival .
+    ?journeyTriple trip-onto:hasEndDate ?EndDate .
+    BIND(ofn:days-from-duration(?EndDate-?Arrival) AS ?duration_d)
+    BIND(ofn:years-from-duration(?EndDate-?Arrival) AS ?duration_y)
+    BIND(ofn:months-from-duration(?EndDate-?Arrival) AS ?duration_m)
+    BIND(?duration_y *365+ ?duration_m*12 + ?duration_d AS ?DurationOfStayInDays)
+
+}

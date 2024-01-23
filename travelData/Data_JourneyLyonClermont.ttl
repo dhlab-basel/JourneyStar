@@ -1,0 +1,101 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix currencyA: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix currency: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/>.
+@prefix schema: <https://schema.org/> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix dbr: <http://dbpedia.org/resource/> .
+@prefix trip-onto: <http://journeyStar.dhlab.ch/ontology/trip-onto#> .
+@prefix : <http://journeyStar.dhlab.ch/data/JBReisebuechlein#> .
+@base <http://journeyStar.dhlab.ch/data/JBReisebuechlein#> .
+
+# Data – Reise von Lyon nach Clermont
+
+# Journey
+:JourneyLyonClermont a trip-onto:Journey ;
+    trip-onto:hasStartLocation :Lyon ;
+    trip-onto:hasDestination :ClermontFerrand ;
+    trip-onto:hasDescription "Jacob Bernoulli's Journey from Lyon to Clermont-Ferrand in 1678; with a few days stay in Clermont.".
+
+# Trip-Onto Data
+:JacobBernoulli trip-onto:hasJourney :JourneyLyonClermont .
+
+# mentioned in Entry 6 of Reisbüchlein, using entry IRI
+<< :JacobBernoulli trip-onto:hasJourney :JourneyLyonClermont >> trip-onto:mentionedIn <http://rdfh.ch/0801/gc5ay-xFTvm3nDeCnpLPWw> .
+<< :JacobBernoulli trip-onto:hasJourney :JourneyLyonClermont >> trip-onto:hasStartDate "1678-05-15"^^xsd:date .
+<< :JacobBernoulli trip-onto:hasJourney :JourneyLyonClermont >> trip-onto:hasEndDate "1678-05-19"^^xsd:date.
+
+<< :JourneyLyonClermont trip-onto:hasStartLocation :Lyon >> trip-onto:hasDeparture "1678-05-15"^^xsd:date .
+<< :JourneyLyonClermont trip-onto:hasDestination :ClermontFerrand >> trip-onto:hasArrival "1678-05-17"^^xsd:dateTime .
+
+
+# Stages
+#1
+:StageLyonNervieux a trip-onto:Journey;
+    trip-onto:hasStartLocation :Lyon;
+    trip-onto:hasDestination :Nervieux ;
+    trip-onto:meanOfTransportation :Horse .
+
+<< :JacobBernoulli trip-onto:hasJourney :JourneyLyonClermont >> trip-onto:hasStage :StageLyonNervieux .
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyLyonClermont >> trip-onto:hasStage :StageLyonNervieux >> trip-onto:hasStartDate "1678-05-15"^^xsd:date.
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyLyonClermont >> trip-onto:hasStage :StageLyonNervieux >> trip-onto:hasEndDate "1678-05-16"^^xsd:date.
+
+# mentioned in Page 52 of Reisebuechlein, using page IRI
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyLyonClermont >> trip-onto:hasStage :StageLyonNervieux >> trip-onto:mentionedIn <http://rdfh.ch/0801/CFXHRKzrRqKQ-q0e4o-GqQ> .
+
+<< :StageGenfChatillon trip-onto:hasStartLocation :Lyon >> trip-onto:hasDeparture "1678-05-15"^^xsd:date .
+<< :StageGenfChatillon trip-onto:hasDestination :Nervieux >> trip-onto:hasArrival "1678-05-15"^^xsd:date .
+
+#2
+:StageNervieuxThiers a trip-onto:Journey;
+    trip-onto:hasStartLocation :Nervieux;
+    trip-onto:hasDestination :Thiers ;
+    trip-onto:hasTransitFrom :SaintGermainLaval, :SaintMartinLaSauvete, :LaPau;
+    trip-onto:meanOfTransportation :Horse .
+
+<< :JacobBernoulli trip-onto:hasJourney :JourneyLyonClermont >> trip-onto:hasStage :StageNervieuxThiers .
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyLyonClermont >> trip-onto:hasStage :StageNervieuxThiers >> trip-onto:hasStartDate "1678-05-16"^^xsd:date.
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyLyonClermont >> trip-onto:hasStage :StageNervieuxThiers >> trip-onto:hasEndDate "1678-05-17"^^xsd:date.
+
+# mentioned in Page 52, 53 of Reisebuechlein, using page IRI
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyLyonClermont >> trip-onto:hasStage :StageNervieuxThiers >> trip-onto:mentionedIn <http://rdfh.ch/0801/CFXHRKzrRqKQ-q0e4o-GqQ> , <http://rdfh.ch/0801/8oKbbE6wTW6feQO2Ntr8ZA>.
+
+<< :StageNervieuxThiers trip-onto:hasStartLocation :Nervieux >> trip-onto:hasDeparture "1678-05-16"^^xsd:date .
+<< :StageNervieuxThiers trip-onto:hasDestination :Thiers >> trip-onto:hasArrival "1678-05-16"^^xsd:date .
+
+#Stay
+:StageNervieuxThiers trip-onto:hasStay :StayStageNervieuxThiers .
+
+:StayStageNervieuxThiers a trip-onto:Stay ;
+    trip-onto:hasAccommodation :ThiersChappeauRouge .
+
+:ThiersChappeauRouge a trip-onto:Accommodation ;
+    schema:name "Chappeau Rouge" .
+
+#3
+:StageThiersClermont a trip-onto:Journey ;
+    trip-onto:hasStartLocation :Thiers ;
+    trip-onto:hasDestination :ClermontFerrand ;
+    trip-onto:hasTransitFrom :Lezoux ;
+    trip-onto:meanOfTransportation :Horse .
+
+<< :JacobBernoulli trip-onto:hasJourney :JourneyLyonClermont >> trip-onto:hasStage :StageThiersClermont .
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyLyonClermont >> trip-onto:hasStage :StageThiersClermont >> trip-onto:hasStartDate "1678-05-17"^^xsd:date.
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyLyonClermont >> trip-onto:hasStage :StageThiersClermont >> trip-onto:hasEndDate "1678-05-19"^^xsd:date.
+
+# mentioned in Page 53 of Reisebuechlein, using page IRI
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyLyonClermont >> trip-onto:hasStage :StageThiersClermont >> trip-onto:mentionedIn <http://rdfh.ch/0801/8oKbbE6wTW6feQO2Ntr8ZA> .
+
+<< :StageThiersClermont trip-onto:hasStartLocation :Thiers >> trip-onto:hasDeparture "1678-05-17"^^xsd:date .
+<< :StageThiersClermont trip-onto:hasDestination :ClermontFerrand >> trip-onto:hasArrival "1678-05-17"^^xsd:date .
+
+:StageThiersClermont trip-onto:hasStay :StayStageThiersClermont .
+
+:StayStageThiersClermont a trip-onto:Stay ;
+    trip-onto:hasAccommodation :LaCroixDOrClermont .
+
+:LaCroixDOrClermont a trip-onto:Accommodation ;
+    schema:name "la croix d'or" ;
+    trip-onto:hasLocation :ClermontFerrand .

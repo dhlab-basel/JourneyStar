@@ -1,0 +1,118 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix currencyA: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix currency: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/>.
+@prefix schema: <https://schema.org/> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix dbr: <http://dbpedia.org/resource/> .
+@prefix trip-onto: <http://journeyStar.dhlab.ch/ontology/trip-onto#> .
+@prefix : <http://journeyStar.dhlab.ch/data/JBReisebuechlein#> .
+@base <http://journeyStar.dhlab.ch/data/JBReisebuechlein#> .
+
+# Data – Reise von Genf nach Lyon
+
+# Journey
+:JourneyGenfLyon a trip-onto:Journey ;
+    trip-onto:hasStartLocation :Genf;
+    trip-onto:hasDestination :Lyon ;
+    trip-onto:hasDescription "Jacob Bernoulli's Journey from Geneva to Lyon in 1678; with a few days stay in Lyon and excursions.".
+
+# Trip-Onto Data
+:JacobBernoulli trip-onto:hasJourney :JourneyGenfLyon .
+
+# mentioned in Entry 4 of Reisbüchlein, using entry IRI
+<< :JacobBernoulli trip-onto:hasJourney :JourneyGenfLyon >> trip-onto:mentionedIn <http://rdfh.ch/0801/Jam7hOWoTuG7FOGdp22Isw> .
+<< :JacobBernoulli trip-onto:hasJourney :JourneyGenfLyon >> trip-onto:hasStartDate "1678-05-08"^^xsd:date .
+<< :JacobBernoulli trip-onto:hasJourney :JourneyGenfLyon >> trip-onto:hasEndDate "1678-05-15"^^xsd:date.
+
+<< :JourneyGenfLyon trip-onto:hasStartLocation :Genf >> trip-onto:hasDeparture "1678-05-08"^^xsd:date .
+<< :JourneyGenfLyon trip-onto:hasDestination :Lyon >> trip-onto:hasArrival "1678-05-15"^^xsd:dateTime .
+
+# Stages
+#1
+:StageGenfChatillon a trip-onto:Journey;
+    trip-onto:hasStartLocation :Genf;
+    trip-onto:hasDestination :Chatillon-en-Michaille ;
+    trip-onto:hasTransitFrom :Collonges;
+    trip-onto:meanOfTransportation :Horse .
+
+<< :JacobBernoulli trip-onto:hasJourney :JourneyGenfLyon >> trip-onto:hasStage :StageGenfChatillon .
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyGenfLyon >> trip-onto:hasStage :StageGenfChatillon >> trip-onto:hasStartDate "1678-05-08"^^xsd:date.
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyGenfLyon >> trip-onto:hasStage :StageGenfChatillon >> trip-onto:hasEndDate "1678-05-09"^^xsd:date.
+
+# mentioned in Page 42 of Reisebuechlein, using page IRI
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyGenfLyon >> trip-onto:hasStage :StageGenfChatillon >> trip-onto:mentionedIn <http://rdfh.ch/0801/z8cw-HTWT5G0RPpSOyxJgQ> .
+
+<< :StageGenfChatillon trip-onto:hasStartLocation :Genf >> trip-onto:hasDeparture "1678-05-08"^^xsd:date .
+<< :StageGenfChatillon trip-onto:hasDestination :Chatillon-en-Michaille >> trip-onto:hasArrival "1678-05-08"^^xsd:date .
+
+# Dining
+:StageGenfChatillon trip-onto:hasActivity :StageGenfChatillon_dining .
+
+:StageGenfChatillon_dining a trip-onto:Dining ;
+    trip-onto:hasLocation "à l'escu de France".
+
+<< :StageGenfChatillon trip-onto:hasActivity :StageGenfChatillon_dining >> trip-onto:hasCost 0.25 .
+<< << :StageGenfChatillon trip-onto:hasActivity :StageGenfChatillon_dining >> trip-onto:hasCost 0.25 >> trip-onto:hasCurrency "Rchthl".
+
+#2
+:StageChatillonCormoz a trip-onto:Journey;
+    trip-onto:hasStartLocation :Chatillon-en-Michaille;
+    trip-onto:hasDestination :Cormoz ;
+    trip-onto:hasTransitFrom :Cerdon, :Chateau-Gaillard;
+    trip-onto:meanOfTransportation :Horse .
+
+
+<< :JacobBernoulli trip-onto:hasJourney :JourneyGenfLyon >> trip-onto:hasStage :StageChatillonCormoz .
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyGenfLyon >> trip-onto:hasStage :StageChatillonCormoz >> trip-onto:hasStartDate "1678-05-09"^^xsd:date.
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyGenfLyon >> trip-onto:hasStage :StageChatillonCormoz >> trip-onto:hasEndDate "1678-05-10"^^xsd:date.
+
+# mentioned in Page 43 of Reisebuechlein, using page IRI
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyGenfLyon >> trip-onto:hasStage :StageChatillonCormoz >> trip-onto:mentionedIn <http://rdfh.ch/0801/8ydTjdf-QwaNeBDJSQ3FzQ> .
+
+<< :StageChatillonCormoz trip-onto:hasStartLocation :Chatillon-en-Michaille >> trip-onto:hasDeparture "1678-05-09T09:00:00"^^xsd:dateTime .
+<< :StageChatillonCormoz trip-onto:hasDestination :Cormoz >> trip-onto:hasArrival "1678-05-09"^^xsd:date .
+
+# Dining
+:StageChatillonCormoz trip-onto:hasActivity :StageChatillonCormoz_dining .
+
+:StageChatillonCormoz_dining a trip-onto:Dining ;
+    trip-onto:mealType "Lunch" ;
+    trip-onto:hasLocation "à la croix rouge in Cerdon".
+
+#3
+:StageCormozLyon a trip-onto:Journey;
+    trip-onto:hasStartLocation :Cormoz;
+    trip-onto:hasDestination :Lyon ;
+    trip-onto:hasTransitFrom :Montluel ;
+    trip-onto:meanOfTransportation :Horse, :Boat .
+
+
+<< :JacobBernoulli trip-onto:hasJourney :JourneyGenfLyon >> trip-onto:hasStage :StageCormozLyon .
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyGenfLyon >> trip-onto:hasStage :StageCormozLyon >> trip-onto:hasStartDate "1678-05-10"^^xsd:date.
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyGenfLyon >> trip-onto:hasStage :StageCormozLyon >> trip-onto:hasEndDate "1678-05-15"^^xsd:date.
+
+# mentioned in Page 44 of Reisebuechlein, using page IRI
+<< << :JacobBernoulli trip-onto:hasJourney :JourneyGenfLyon >> trip-onto:hasStage :StageCormozLyon >> trip-onto:mentionedIn <http://rdfh.ch/0801/e3IH9WLDQZeXNhqKbC6Tkw> .
+
+<< :StageCormozLyon trip-onto:hasStartLocation :Cormoz >> trip-onto:hasDeparture "1678-05-10"^^xsd:date.
+<< :StageCormozLyon trip-onto:hasDestination :Lyon >> trip-onto:hasArrival "1678-05-10"^^xsd:date .
+
+# Dining
+
+:StageCormozLyon_lunch a trip-onto:Dining ;
+    trip-onto:mealType "Lunch" .
+
+:StageCormozLyon_dinner a trip-onto:Dining ;
+    trip-onto:mealType "Dinner" ;
+    trip-onto:hasLocation "au parc aux terreaux" .
+
+:StageCormozLyon trip-onto:hasActivity :StageCormozLyon_lunch, :StageCormozLyon_dinner .
+
+<< :StageCormozLyon trip-onto:hasActivity :StageCormozLyon_lunch >> trip-onto:hasCost 0.25 .
+<< << :StageCormozLyon trip-onto:hasActivity :StageCormozLyon_lunch >> trip-onto:hasCost 0.25 >> trip-onto:hasCurrency "Rchthl".
+
+<< :StageCormozLyon trip-onto:hasActivity :StageCormozLyon_dinner >> trip-onto:hasCost 0.25 .
+<< << :StageCormozLyon trip-onto:hasActivity :StageCormozLyon_dinner >> trip-onto:hasCost 0.25 >> trip-onto:hasCurrency "Rchthl".
