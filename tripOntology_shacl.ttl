@@ -231,12 +231,12 @@ trip-shacl:TextContentShape a sh:NodeShape;
 ## Shapes for Star Properties
 # ##############################################################
 
-### Shape for hasWikiLink ###
+### Shape for calendar ###
 ################################
-trip-shacl:hasWikiLinkPropertyShape
+trip-shacl:calendarPropertyShape
     	a sh:NodeShape ;
-    	sh:targetObjectsOf trip-onto:hasWikiLink ;
-    	sh:datatype sh:IRI .
+    	sh:targetObjectsOf trip-onto:calendar ;
+    	sh:in ("JULIAN" "GREGORIAN" "ISLAMIC") .
 
 ### Shape for  accordingTo ###
 ################################
