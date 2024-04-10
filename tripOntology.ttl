@@ -7,7 +7,8 @@
 @prefix schema: <https://schema.org/> .
 @prefix dbr: <http://dbpedia.org/resource/> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
-@prefix trip: <http://ontology.eil.utoronto.ca/icity/Trip/Trip> .
+@prefix trip: <http://ontology.eil.utoronto.ca/icity/Trip/> .
+@prefix activity: <http://ontology.eil.utoronto.ca/icity/Activity/> .
 @prefix trip-onto: <http://journeyStar.dhlab.ch/ontology/trip-onto#> .
 @base <http://journeyStar.dhlab.ch/ontology/trip-onto#> .
 
@@ -31,7 +32,7 @@ trip-onto:Person rdf:type owl:Class ;
 
 ### http://journeyStar.dhlab.ch/ontology/trip-onto#Activity ###
 trip-onto:Activity rdf:type owl:Class ;
-        rdfs:subClassOf trip:activity ;
+        rdfs:subClassOf activity:Activity ;
         rdfs:label "Aktivität"@de,
                     "Activity"@en ;
         rdfs:comment "An activity involves movement and has duration."@en .
@@ -47,7 +48,7 @@ trip-onto:Location rdf:type owl:Class ;
 
 ### http://journeyStar.dhlab.ch/ontology/trip-onto#Trip
 trip-onto:Trip rdf:type owl:Class ;
-        rdfs:subClassOf trip-onto:Activity , trip:trip ;
+        rdfs:subClassOf trip-onto:Activity , trip:Trip ;
         rdfs:label "Reisen"@de ,
                 "Trip"@en ;
         rdfs:comment "A person's movement between two locations."@en .
@@ -62,7 +63,7 @@ trip-onto:Journey rdf:type owl:Class ;
 
 ### http://journeyStar.dhlab.ch/ontology/trip-onto#Excursion
 trip-onto:Excursion rdf:type owl:Class ;
-        rdfs:subClassOf trip-onto:Trip , trip:tour ;
+        rdfs:subClassOf trip-onto:Trip , trip:Tour ;
         owl:differentFrom trip-onto:Journey;
         rdfs:label "Excursion"@de ,
                 "Exkursion"@en ;
@@ -145,12 +146,6 @@ trip-onto:TextContent rdf:type owl:Class ;
 ##################
 ### Predicates ###
 ##################
-
-### http://journeyStar.dhlab.ch/ontology/trip-onto#hasWikiLink
-trip-onto:hasLocation rdf:type owl:ObjectProperty ;
-        rdfs:label "hat Wikilink"@de ,
-                   "has Wikilink"@en ;
-        rdfs:comment "Link to the representation of the resource on Wikidata."@en .
 
 ### http://journeyStar.dhlab.ch/ontology/trip-onto#hasLocation
 trip-onto:hasLocation rdf:type owl:ObjectProperty ;
@@ -251,7 +246,7 @@ trip-onto:hasExcursion rdf:type owl:ObjectProperty ;
         rdfs:comment "An excursion a person undertakes."@en .
 
 ### http://journeyStar.dhlab.ch/ontology/trip-onto#sightingOf
-trip-onto:sightingOf rdf:type owl:Property ;
+trip-onto:sightingOf rdf:type owl:DatatypeProperty ;
         rdfs:label "Besichtigung von"@de ,
                    "sighting of"@en ;
         rdfs:comment "The sighted object during a sightseeing activity."@en .
@@ -287,7 +282,7 @@ trip-onto:hasAccommodation rdf:type owl:ObjectProperty ;
         rdfs:comment "The accommodation of a stay."@en .
 
 ### http://journeyStar.dhlab.ch/ontology/trip-onto#hasOccurrence
-trip-onto:hasOccurrence rdf:type owl:DatatypeProperty ;
+trip-onto:hasOccurrence rdf:type owl:ObjectProperty ;
         rdfs:label "hat Ereignis"@de ,
                    "has occurrence"@en ;
         rdfs:comment "An occurrance during an activity."@en .
@@ -306,7 +301,7 @@ trip-onto:hasCurrency rdf:type owl:ObjectProperty ;
         rdfs:comment "The currency of a payment."@en .
 
 ### http://journeyStar.dhlab.ch/ontology/trip-onto#meanOfTransportation
-trip-onto:meanOfTransportation rdf:type owl:DatatypeProperty ;
+trip-onto:meanOfTransportation rdf:type owl:ObjectProperty ;
         rdfs:label "Transportmittel"@de ,
                    "Mean of Transport"@en ;
         rdfs:comment "The mean of transportation."@en .
@@ -346,7 +341,6 @@ trip-onto:accordingTo rdf:type owl:ObjectProperty;
 
 ### http://journeyStar.dhlab.ch/ontology/trip-onto#hasTextContent
 trip-onto:hasTextContent rdf:type owl:ObjectProperty;
-        #rdfs:domain :Document ;
     rdfs:label  "Text-Inhalt"@de,
                 "Text Content"@en;
     rdfs:comment "The text content of an entry in a diary."@en.
@@ -376,7 +370,7 @@ trip-onto:hasGeonameID rdf:type owl:DatatypeProperty ;
         rdfs:comment "The geoname ID of a location."@en .
 
 ### http://journeyStar.dhlab.ch/ontology/trip-onto#hasTransit
-trip-onto:hasTransitFrom rdf:type owl:DatatypeProperty ;
+trip-onto:hasTransitFrom rdf:type owl:ObjectProperty ;
         rdfs:label "Transit von"@de ,
                    "Transit from"@en ;
         rdfs:comment "The transit from a location."@en .
