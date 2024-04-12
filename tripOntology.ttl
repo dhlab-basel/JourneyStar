@@ -10,6 +10,7 @@
 @prefix trip: <http://ontology.eil.utoronto.ca/icity/Trip/> .
 @prefix activity: <http://ontology.eil.utoronto.ca/icity/Activity/> .
 @prefix trip-onto: <http://journeyStar.dhlab.ch/ontology/trip-onto#> .
+@prefix : <http://journeyStar.dhlab.ch/resource/> .
 @base <http://journeyStar.dhlab.ch/ontology/trip-onto#> .
 
 <http://journeyStar.dhlab.ch/ontology/trip-onto> rdf:type owl:Ontology ;
@@ -39,7 +40,7 @@ trip-onto:Activity rdf:type owl:Class ;
 
 ### http://journeyStar.dhlab.ch/ontology/trip-onto#Location ###
 trip-onto:Location rdf:type owl:Class ;
-        rdfs:subclassOf dbo:Place ;
+        rdfs:subclassOf dbo:Place , schema:Place ;
         rdfs:label  "Ort"@de,
                     "Location"@en;
         rdfs:comment "A location on plant earth with a coordinate."@en .
@@ -50,7 +51,7 @@ trip-onto:Location rdf:type owl:Class ;
 trip-onto:Trip rdf:type owl:Class ;
         rdfs:subClassOf trip-onto:Activity , trip:Trip ;
         rdfs:label "Reisen"@de ,
-                "Trip"@en ;
+                    "Trip"@en ;
         rdfs:comment "A person's movement between two locations."@en .
 
 ### http://journeyStar.dhlab.ch/ontology/trip-onto#Journey
@@ -59,7 +60,7 @@ trip-onto:Journey rdf:type owl:Class ;
         owl:differentFrom trip-onto:Excursion ;
         rdfs:label "Reise"@de ,
                 "Journey"@en ;
-        rdfs:comment "A journey is a trip from one place to another."@en .
+        rdfs:comment "A more than one day long journey from one place to another."@en .
 
 ### http://journeyStar.dhlab.ch/ontology/trip-onto#Excursion
 trip-onto:Excursion rdf:type owl:Class ;

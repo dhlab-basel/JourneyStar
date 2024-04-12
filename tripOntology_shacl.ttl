@@ -119,8 +119,8 @@ trip-shacl:StayShape a sh:NodeShape  ;
                [sh:nodeKind sh:IRI]) ;
     ] ,
     [
-        sh:path trip-onto:hasExcursion ;
-        sh:node trip-shacl:ExcursionShape ;
+        sh:path trip-onto:hasActivity ;
+        sh:node trip-shacl:ActivityShape ;
     ] .
 
 ### Shape for Class Accommodation ###
@@ -136,6 +136,13 @@ trip-shacl:AccommodationShape a sh:NodeShape ;
     [
         sh:path schema:adress ;
         sh:datatype xsd:string ;
+    ] ,
+    [
+        sh:path trip-onto:hasLocation;
+        sh:or ( [sh:datatype xsd:string ]
+                [sh:class trip-onto:Location ]
+                [sh:datatype xsd:anyURI ]
+                [sh:nodeKind sh:IRI ]) ;
     ] .
 
 ### Shape for Class Activity ###
@@ -150,6 +157,7 @@ trip-shacl:ActivityShape a sh:NodeShape;
     [
         sh:path schema:name;
         sh:datatype xsd:string;
+        sh:minCount 1;
     ] ,
     [
         sh:path trip-onto:hasLocation;
@@ -343,20 +351,19 @@ trip-shacl:hasStagePropertyShape
 trip-shacl:hasStayPropertyShape
     a sh:NodeShape;
     sh:targetObjectsOf trip-onto:hasStay;
-    sh:class trip-onto:Stay ;
     sh:node trip-shacl:StayShape .
 
 ### has activity ###
 trip-shacl:hasActivityPropertyShape
     a sh:NodeShape;
     sh:targetObjectsOf trip-onto:hasActivity;
-    sh:class trip-onto:Activity .
+    sh:node trip-onto:ActivityShape .
 
 ### has occurence ###
 trip-shacl:hasOccurrencePropertyShape
     a sh:NodeShape;
     sh:targetObjectsOf trip-onto:hasOccurrence;
-    sh:datatype xsd:string .
+    sh:class trip-onto:Occurence .
 
 ### has transit ###
 trip-shacl:hasTransitPropertyShape
