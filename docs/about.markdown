@@ -15,3 +15,4 @@ The current ontology is a more generic and extended form of an ontology, develop
 - [Dr. Sepideh Alassi](https://dhlab.philhist.unibas.ch/en/persons/sepideh-alassi/), Project-Lead
 - Ann Karimi Kern, assistant
 - [Dr. Soledad Castaño Santos](https://iberoromanistik.philhist.unibas.ch/de/personen/soledad-castano-santos/), volunteer
+- Nora Olivia Ammann, former student assistant

@@ -8,12 +8,12 @@ permalink: /Data/
 
 ## Low rdf star application
 The in the lowest amount via rdf* added metadata is
-![Alt text](other/rdf_LEVELS_v4_2310302.png)
+![Alt text](images/rdf_LEVELS_v4_2310302.png)
 </br>
 </br>
 
 ## Medium rdf star application
-![Alt text](other/rdf_LEVELS_v4_2310303.png)
+![Alt text](images/rdf_LEVELS_v4_2310303.png)
 </br>
 </br>
 
@@ -33,4 +33,4 @@ The in the lowest amount via rdf* added metadata is
 
 
 ## High amount of rdf star application
-![Alt text](other/rdf_LEVELS_v4_2310304.png)
+![Alt text](images/rdf_LEVELS_v4_2310304.png)
