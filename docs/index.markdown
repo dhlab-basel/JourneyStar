@@ -24,14 +24,14 @@ and predicates needed to represent travel accounts as linked open data. Since
 RDF-star makes embedding triples directly within other triples possible, we can
 represent the core statements with their metadata as an annotated triples where
 the core triples take the subject or object positions. In the ontology, we have
-definied properties for this that can be used for annotated triples.
+defined properties for this that can be used for annotated triples.
 
 To keep this ontology generic, we have employed the existing ontologies and
 extended the existing definitions of the classes and properties in other
 ontologies such as [schema](https://schema.org/) and [Trip](http://ontology.eil.utoronto.ca/icity/Trip/Trip)
 through defining subclasses. The ontology serialized in Turtle can be found [here](https://github.com/dhlab-basel/trip-ontology/blob/main/tripOntology.ttl).
 
-This ontology has the prefix `trip-onto` and the namespace `http://journeyStar.dhlab.ch/ontology/trip-onto#`.
+This ontology has the prefix `trip-onto` and the namespace `http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#`.
 
 ```
 <http://journeyStar.dhlab.ch/ontology/trip-onto> rdf:type owl:Ontology ;
@@ -55,30 +55,31 @@ Below we describe a few main classes and properties of this ontology with a few 
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix trip: <http://ontology.eil.utoronto.ca/icity/Trip/> .
 @prefix activity: <http://ontology.eil.utoronto.ca/icity/Activity/> .
-@prefix trip-onto: <http://journeyStar.dhlab.ch/ontology/trip-onto#> .
-@prefix trip-shacl: <http://journeyStar.dhlab.ch/shacl/trip-shacl#> .
-@prefix : <http://journeyStar.dhlab.ch/resource/> .
-@base <http://journeyStar.dhlab.ch/ontology/trip-onto#> .
+@prefix js: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#> .
+@prefix : <http://journey-star.dhlab.unibas.ch/data/JourneyStar#> .
 ```
 
 # Classes
 ***
 ## Location
-The `trip-onto:Location` is an OWL class representing a location/place such as a city, lake, mountain, village, etc. which have geo-coordinates and preferably a GeonameID (from [Geonames database](https://www.geonames.org/), retrievable also from Wikidata) so that they can be uniquely identified.
+The `js:Location` is an OWL class representing a location/place such as a city,
+lake, mountain, village, etc. which have geo-coordinates and preferably a
+GeonameID (from [Geonames database](https://www.geonames.org/), retrievable also
+ from Wikidata) so that they can be uniquely identified.
 
 ```
-IRI: <http://journeyStar.dhlab.ch/ontology/trip-onto#Location>
+IRI: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Location>
 has super class:
       dbo:Place   
       schema:Pace
 
 is domain of:
-      trip-onto:hasGeonameID  (max cardinality 1, range: xsd:string)
-      trip-onto:hasWikiLink   (max cardinality 1, range: IRI)
+      js:hasGeonameID  (max cardinality 1, range: xsd:string)
+      js:hasWikiLink   (max cardinality 1, range: IRI)
       schema:name     (range: xsd:string, permitted language tags "en", "de", "fr", "es")
 
 Corresponding SHACL node shape:
-      trip-shacl:LocationShape
+      js-shacl:LocationShape
 ```
 Below, you can see an example of an RDF representation of a location:
 
@@ -86,10 +87,11 @@ Below, you can see an example of an RDF representation of a location:
 
 ***
 ## PERSON
-The `trip-onto:Person` is an OWL class representing a person who undertakes a journey or is involved in a journey (such as: hotel owner, waiter/waitress, travel companion, etc.).
+The `js:Person` is an OWL class representing a person who undertakes a journey or
+ is involved in a journey (such as: hotel owner, waiter/waitress, travel companion, etc.).
 
 ```
-IRI: <http://journeyStar.dhlab.ch/ontology/trip-onto#Person>
+IRI: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Person>
 has super class:
       schema:Person
 
@@ -100,125 +102,166 @@ is domain of:
       schema:gender (restricted to schema:Male, schema:Female, and xsd:string)
       schema:birthDate (max cardinality 1, range: xsd:date)
       schema:birthPlace (max cardinality 1, range: IRI)
-      schema:knows (range trip-onto:Person, trip-onto:Location)  
-      trip-onto:hasJourney (range trip-onto:Journey)
-      trip-onto:participatedIn (range trip-onto:Activity)
-      trip-onto:hasGnd (max cardinality 1, range: xsd:string)
+      schema:knows (range js:Person, js:Location)  
+      js:participatedIn (range js:Event)
+      js:hasGnd (max cardinality 1, range: xsd:string)
 
 Corresponding SHACL node shape:
-      trip-shacl:PersonShape
+      js-shacl:PersonShape
 ```
 
 Below, you can see an example of an RDF representation of a person:
 
 ![Person Representation](images/person_example.png)
 
+***
+## Event
+The `js:Event` is a general OWL class describing an an event in a real world with
+spatiotemporal data and participants. An event can be an activity such as a journey,
+ sightseeing, excursion, dining, etc, or an occurrence such as encounter with a person,
+ or even a natural phenomena.
+
+```
+IRI: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Event>
+
+is domain of:
+      js:hasParticipant (range IRI)
+      js:hasLocation (range: xsd:string, js:Location, xsd:anyURI, IRI)
+      js:hasDate (range: xsd:date, xsd:dateTime)
+
+
+Corresponding SHACL node shape:
+      js-shacl:EventShape
+```
+
+There are various classes that are defined as subclass of the `js:Event` each with their specific predicates, for example:
+- `js:Activity` that has predicates to describe the a physical activity such as a movement.
+- `js:Occurrence` with properties to describe an occurrence.
+- `js:NaturalPhenomena` representing a natural phenomena.
+
 
 ***
 ## Activity
-The `trip-onto:Activity` is a general OWL class describing an activity a person undertakes, this can be a journey, sightseeing, excursion, dining, etc.
+The `js:Activity` is a general OWL class describing an activity a person undertakes, this can be a journey, sightseeing, excursion, dining, etc.
 
 ```
-IRI: <http://journeyStar.dhlab.ch/ontology/trip-onto#Activity>
+IRI: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Activity>
 has super class:
-      activity:Activity
+      activity:Activity, js:Event
 
 is domain of:
       schema:name   (min cardinality 1, range: xsd:string)
-      trip-onto:hasParticipant (range IRI)
-      trip-onto:hasLocation (range: xsd:string, trip-onto:Location, xsd:anyURI, IRI)
+      js:hasCost (max cardinality 1, range: xsd:decimal)
 
 Corresponding SHACL node shape:
-      trip-shacl:ActivityShape
+      js-shacl:ActivityShape
 ```
 
-There are various classes that are defined as subclass of the `trip-onto:Activity` each with their specific predicates, for example:
-- `trip-onto:Dining` that has predicates to describe the cusine and type of the meals.
-- `trip-onto:Sightseeing` with properties to describe the building or monument.
-- `trip-onto:Trip` representing a movement from one place to another.
+There are various classes that are defined as subclass of the `js:Activity` each with their specific predicates, for example:
+- `js:Dining` that has predicates to describe the cuisine and type of the meals.
+- `js:Sightseeing` with properties to describe the building or monument.
+- `js:Trip` representing a movement from one place to another.
 
 ***
 ## Dining
-The `trip-onto:Dining` is a general OWL class describing the act of dining during a journey.
+The `js:Dining` is a general OWL class describing the act of dining during a journey.
 
 ```
-IRI: <http://journeyStar.dhlab.ch/ontology/trip-onto#Dining>
+IRI: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Dining>
 has super class:
-      trip-onto:Activity
+      js:Activity
 
 is domain of:
-      trip-onto:mealType (range: xsd:string)
-      trip-onto:cuisine (range: xsd:string)
+      js:mealType (range: xsd:string)
+      js:cuisine (range: xsd:string)
 
 Corresponding SHACL node shape:
-      trip-shacl:DiningShape
+      js-shacl:DiningShape
 ```
 
-Below, you can see an example of an RDF representation of a dining activity:
+<!-- Below, you can see an example of an RDF representation of a dining activity: -->
 
-![Dining Representation](images/activity.png)
+<!-- ![Dining Representation](images/activity.png) -->
 
 ***
 ## SightSeeing
-The `trip-onto:SightSeeing` is a general OWL class describing the act of sight-seeing during a journey.
+The `js:SightSeeing` is a general OWL class describing the act of sight-seeing during a journey.
 
 ```
-IRI: <http://journeyStar.dhlab.ch/ontology/trip-onto#SightSeeing>
+IRI: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#SightSeeing>
 has super class:
-      trip-onto:Activity
+      js:Activity
 
 is domain of:
-      trip-onto:sightingOf (min cardinality 1, range: xsd:string, IRI, or xsd:anyURI)
+      js:sightingOf (min cardinality 1, range: xsd:string, IRI, or xsd:anyURI)
 
 Corresponding SHACL node shape:
-      trip-shacl:SightSeeingShape
+      js-shacl:SightSeeingShape
 ```
-
-The date and time of the sightseeing event are metadata information that can be added to the edges of the graph with `trip-onto:hasStartDate` and `trip-onto:hasEndDate`.
 
 ***
 ## Journey
-The `trip-onto:Journey` is an OWL class that represents a journey a person undertakes from place A to place B. This journey can be a long one lasting for months or a short one for a few days.
+The `js:Journey` is an OWL class that represents a journey a person undertakes
+from place A to place B. This journey can be a long one lasting for months or a
+short one for a few days.
 
 ```
-IRI: <http://journeyStar.dhlab.ch/ontology/trip-onto#Journey>
+IRI: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Journey>
 has super class:
       trip:Trip
-      trip-onto:Activity
+      js:Activity
 
-different from:
-      trip-onto:Journey
+is domain of:
+      js:origin (min cardinality 1, range: IRI or xsd:anyURI)
+      js:destination (min cardinality 1, range: IRI or xsd:anyURI)
+      js:startDate (max cardinality 1, range: xsd:date , xsd:dateTime)
+      js:endDate (max cardinality 1, range: xsd:date , xsd:dateTime)
+      js:hasActivity (range: js:Activity)
+      js:hasStay (range: js:Stay)
+      js:meanOfTransportation (range: range: IRI or xsd:anyURI)
+      js:transitThrough (range: range: IRI or xsd:anyURI)
+
+Corresponding SHACL node shape:
+      js-shacl:JourneyShape
+
 ```
 
-There are metadata information accompanying the travel information, for example when we say person X went from A to B, there is a metadata information about the time the person left location A (start date of the journey) and the time, person ends his journey (end date). Similarly, the exact time of departure and arrival are also metadata information about a journey, along with other information such as accommodation, mean of transportation, stages of the
-journey, etc. The metadata statements are added to the edges of the graph as RDF-star triples; see example below:
+There are metadata information accompanying the travel information, for example
+when we say person X went from A to B, there is a metadata information about the
+time the person left location A (departure date) and the time, person arrives to the destination (arrival date).
+These meta-level information can be added to the edges of the graph representing
+the origin and destination, respectively through predicates `js:arrivalDate` and `js:departureDate`.
 
 <!-- ![Alt text](ontology_graphs/journey.png) -->
 
-_**Note:** The predicates of the star (annotated) triples, do not have domain restriction, and can be used with subjects of any type, even a triple!_
+_**Note:** The predicates of the star (annotated) triples, such as `js:arrivalDate` and `js:departureDate`, do not have domain restriction, and can be used with subjects of any type, even a triple!_
 
 ***
 ## Excursion
-The `trip-onto:Excursion` is an OWL class that represents a short (one day) round trip a person undertakes to and from the place A. This class is distinct from `trip-onto:Journey` and that the origin and destination of this kind of trip are the same without overnight stay.
+The `js:Excursion` is an OWL class that represents a short (one day) round trip
+a person undertakes without overnight stay. This class is distinct from `js:Journey` in that the
+origin and destination of this kind of trip is the same.
 
 ```
-IRI: <http://journeyStar.dhlab.ch/ontology/trip-onto#Excursion>
+IRI: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Excursion>
 has super class:
       trip:Trip
 
 different from:
-      trip-onto:Journey
+      js:Journey
 
 Corresponding SHACL node shape:
-      trip-shacl:ExcursionShape
+      js-shacl:ExcursionShape
 ```
 
 ***
 ## Accommodation
-The class `trip-onto:Accommodation` represents an accommodation. It can be any kind of shelter used to spend a night in during a journey; such as hotel, hostel, rented room, tent, cave, etc.
+The class `js:Accommodation` represents an accommodation. It can be any kind of
+shelter used to spend a night in during a journey; such as hotel, hostel, rented
+ room, tent, cave, etc.
 
 ```
-IRI: <http://journeyStar.dhlab.ch/ontology/trip-onto#Accommodation>
+IRI: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Accommodation>
 has super class:
       dbo:Building
       dbo:Shelter
@@ -226,28 +269,35 @@ has super class:
 is domain of:
       schema:name (min cardinality 1, range: xsd:string)
       schema:adress (range: xsd:string)
-      trip-onto:hasLocation (range: xsd:string, trip-onto:Location, xsd:anyURI, IRI)
+      js:hasLocation (range: xsd:string, js:Location, xsd:anyURI, IRI)
 
 Corresponding SHACL node shape:
-      trip-shacl:AccommodationShape
+      js-shacl:AccommodationShape
 ```
 
 ***
 ## Stay
-The class `trip-onto:Stay` represents an overnight stay in a location in an accommodation which is represented by a resource of type `trip-onto:Accommodation` class.
+The class `js:Stay` represents an overnight stay in a location in an accommodation
+which is represented by a resource of type `js:Accommodation` class.
 
 ```
-IRI: <http://journeyStar.dhlab.ch/ontology/trip-onto#Stay>
+IRI: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Stay>
+has super class:
+    js:Activity
 
 is domain of:
-      trip-onto:hasAccommodation (range:  trip-onto:Accommodation or any IRI)
-      trip-onto:hasActivity (range: trip-onto:Activity)
+      js:hasAccommodation (range:  js:Accommodation or any IRI)
+      js:startDate (max cardinality 1, range: xsd:date or xsd:dateTime)
+      js:endDate (max cardinality 1, range: xsd:date or xsd:dateTime)
 
 Corresponding SHACL node shape:
-      trip-shacl:StayShape
+      js-shacl:StayShape
 ```
 
-The cost of the accommodation can be added to the edge of the graph representing `:hasAccommodation` using RDF-star with the predicate `hasCost`. Additionally, the currency type can be added to the edge representing `hasCost` using RDF-star so that not only the cost of the accommodation, can be stored, the currency of the amount is also stored with it. The currency types can be found in the [currency data graph](https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/).
+Additionally, the currency type can be added to the edge representing `js:hasCost`
+ using RDF-star so that not only the cost of the accommodation, can be stored,
+ the currency of the amount is also stored with it. The currency types can be
+ found in the [currency data graph](https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/).
 
-Below, you can see an example of the RDF-star representation of a stay:
-![Stay Representation](images/stay_example.png)
+<!-- Below, you can see an example of the RDF-star representation of a stay:
+![Stay Representation](images/stay_example.png) -->

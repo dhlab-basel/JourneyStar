@@ -18,10 +18,10 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Trip Ontology
+title: JourneyStar Ontology
 email: sepideh.alassi@unibas.ch
 description: An ontology to represent travel data as an RDF-star graph.
-baseurl: "/trip-ontology" # the subpath of your site, e.g. /blog
+baseurl: "/journeyStar" # the subpath of your site, e.g. /blog
 url: "https://github.com/dhlab-basel" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: se_alassi
 github_username:  SepidehAlassi
