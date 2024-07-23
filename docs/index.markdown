@@ -2,11 +2,34 @@
 layout: home
 ---
 
- The Trip Ontology, `trip-onto`, is an [Rdf-star](https://www.w3.org/2022/08/rdf-star-wg-charter/) based ontology to represent complex metadata-oriented travel data (historical or modern). This ontology contains definition of classes and properties necessary to represent travel data as an RDF graph. It contains structures (explained with examples) to add metadata information to the edges of the graph using RDF-star technology to comprehensively represent the complexity of the travel data. The resulting RDF-star based knowledge graphs can be stored in triplestores which support RDF-star such as [GraphDB](https://graphdb.ontotext.com/) and the graph can be then efficiently queried using [SPARQL-star](https://w3c.github.io/rdf-star/cg-spec/editors_draft.html). To verify the data and ensure the consistency of the data with the ontology, SHACL node and property shapes are defined and made openly-accessible along with the ontology. You can find the ontology, and SHACL graphs, both serialized in Turtle format, with various usage examples [here](https://github.com/dhlab-basel/trip-ontology/).
+ `JourneyStar`, is an [Rdf-star](https://www.w3.org/2022/08/rdf-star-wg-charter/)-based
+  ontology to represent complex metadata-oriented travel data (historical or modern).
+   This ontology contains definition of classes and properties necessary to represent
+   travel data with all its associated metadata as a knowledge graph.
+   The meta-level information can be added to the the edges of the graph using
+   RDF-star technology to comprehensively represent the complexity of the travel data.
+   We have illustrated use-case of the ontology constructs through multiple examples.
+   The resulting RDF-star based knowledge graphs can be stored in triplestores
+   which support RDF-star such as [GraphDB](https://graphdb.ontotext.com/) and
+   the graph can be then efficiently queried using [SPARQL-star](https://w3c.github.io/rdf-star/cg-spec/editors_draft.html).
+   To verify the data and ensure the consistency of the data with the ontology,
+   SHACL node and property shapes are defined and made openly-accessible along
+   with the ontology. You can find the ontology, and SHACL graphs, both
+   serialized in Turtle format, with various usage examples [here](https://github.com/dhlab-basel/JourneyStar).
 
 # Description of the Ontology
 
- The Trip Ontology, `trip-onto`, is an OWL ontology that contains description of various RDF classes and predicates needed to represent travel information as RDF data. Some of the predicates are described so that they can be used to create RDF-star statements to attach information to the edges of the graph. To keep this ontology generic, we have employed the existing ontologies and extended the existing definitions of the classes and properties in other ontologies such as [schema](https://schema.org/) and [trip](http://ontology.eil.utoronto.ca/icity/Trip/Trip) through defining subclasses and adding more constructs necessary to comprehensively represent travel data with their associated metadata. This ontology serialized in Turtle can be found [here](https://github.com/dhlab-basel/trip-ontology/blob/main/tripOntology.ttl).
+`JourneyStar`, is an OWL ontology that contains description of various classes
+and predicates needed to represent travel accounts as linked open data. Since
+RDF-star makes embedding triples directly within other triples possible, we can
+represent the core statements with their metadata as an annotated triples where
+the core triples take the subject or object positions. In the ontology, we have
+definied properties for this that can be used for annotated triples.
+
+To keep this ontology generic, we have employed the existing ontologies and
+extended the existing definitions of the classes and properties in other
+ontologies such as [schema](https://schema.org/) and [Trip](http://ontology.eil.utoronto.ca/icity/Trip/Trip)
+through defining subclasses. The ontology serialized in Turtle can be found [here](https://github.com/dhlab-basel/trip-ontology/blob/main/tripOntology.ttl).
 
 This ontology has the prefix `trip-onto` and the namespace `http://journeyStar.dhlab.ch/ontology/trip-onto#`.
 
