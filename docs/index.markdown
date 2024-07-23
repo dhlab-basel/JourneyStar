@@ -31,11 +31,11 @@ extended the existing definitions of the classes and properties in other
 ontologies such as [schema](https://schema.org/) and [Trip](http://ontology.eil.utoronto.ca/icity/Trip/Trip)
 through defining subclasses. The ontology serialized in Turtle can be found [here](https://github.com/dhlab-basel/trip-ontology/blob/main/tripOntology.ttl).
 
-This ontology has the prefix `trip-onto` and the namespace `http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#`.
+This ontology has the prefix `js` and the namespace `http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#`.
 
 ```
-<http://journeyStar.dhlab.ch/ontology/trip-onto> rdf:type owl:Ontology ;
-                                       rdfs:comment "An RDF-star-based ontology to capture concepts reported in travel diaries." ;
+<http://journey-star.dhlab.unibas.ch/ontology/JourneyStar> rdf:type owl:Ontology ;
+                                       rdfs:comment "An RDF-star-based ontology to represent travel data." ;
                                        owl:versionInfo "v.1.0" .
 ```
 
