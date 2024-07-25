@@ -137,28 +137,13 @@ js:NaturalPhenomena rdf:type owl:Class ;
                     "Natural Phenomena"@en;
         rdfs:comment "A natural phenomena (eg. earthquake, fire)." .
 
-######################
-## Documents / Text ##
-######################
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Currency ###
+js:Currency rdf:type owl:Class ;
+        rdfs:subClassOf dbo:Currency: ;
+        rdfs:label  "Währung"@de,
+                    "Currency"@en;
+        rdfs:comment "A class representing a currency associated with a monetary value." .
 
-
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#TravelDiary ###
-js:TravelDiary rdf:type owl:Class ;
-        rdfs:label "Reisetagebuch"@de ,
-                "Travel Diary"@en ;
-        rdfs:comment "A travel diary."@en .
-
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Entry ###
-js:Entry rdf:type owl:Class ;
-        rdfs:label "Dokument"@de ,
-                "Document"@en ;
-        rdfs:comment "An entry in a diary."@en .
-
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#TextContent ###
-js:TextContent rdf:type owl:Class ;
-        rdfs:label "Text-Inhalt"@de ,
-                "Text Content"@en ;
-        rdfs:comment "The text content of an entry."@en .
 
 ##################
 ### Predicates ###
@@ -348,19 +333,6 @@ js:accordingTo rdf:type owl:ObjectProperty;
                    "According To"@en ;
         rdfs:comment "Link to the person who narrated the info."@en .
 
-
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasTextContent
-js:hasTextContent rdf:type owl:ObjectProperty;
-    rdfs:label  "Text-Inhalt"@de,
-                "Text Content"@en;
-    rdfs:comment "The text content of an entry in a diary."@en.
-
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasText
-js:hasText rdf:type owl:DatatypeProperty;
-    rdfs:label  "hat Text"@de,
-                "has text"@en;
-    rdfs:comment "The actual text of a text content."@en.
-
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasWikiLink
 js:hasWikiLink rdf:type owl:DatatypeProperty ;
         rdfs:label "hat link zu einer Wikidata Seite"@de ,
@@ -375,12 +347,31 @@ js:hasGnd rdf:type owl:DatatypeProperty ;
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasGeonameID
 js:hasGeonameID rdf:type owl:DatatypeProperty ;
-        rdfs:label "GeonameID"@de ,
-                   "GeonameID"@en ;
-        rdfs:comment "The geoname ID of a location."@en .
+                rdfs:label "GeonameID"@de ,
+                           "GeonameID"@en ;
+                rdfs:comment "The geoname ID of a location."@en .
 
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasTransit
-js:hasTransitFrom rdf:type owl:ObjectProperty ;
-        rdfs:label "Transit von"@de ,
-                   "Transit from"@en ;
-        rdfs:comment "The transit from a location."@en .
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#transitThrough
+js:transitThrough rdf:type owl:ObjectProperty ;
+                  rdfs:label "Transit durch"@de ,
+                             "Transit through"@en ;
+                  rdfs:comment "The transit through a location."@en .
+
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasSubunit
+js:hasSubunit rdf:type owl:ObjectProperty ;
+              rdfs:label "Untereinheit"@de ,
+                          "Subunit"@en ;
+              rdfs:comment "Subunit of a currency."@en .
+
+
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#value
+js:value rdf:type owl:ObjectProperty ;
+              rdfs:label "Wert"@de ,
+                         "Value"@en ;
+              rdfs:comment "Monetary worth of a currency with respect to its subunit."@en .
+
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#alternativeName
+js:alternativeName rdf:type owl:ObjectProperty ;
+              rdfs:label "alternativer Name"@de ,
+                         "alternative Name"@en ;
+              rdfs:comment "Other names used."@en .
