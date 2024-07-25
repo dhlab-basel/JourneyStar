@@ -83,7 +83,7 @@ Corresponding SHACL node shape:
 ```
 Below, you can see an example of an RDF representation of a location:
 
-![Location Representation](images/location_example.png)
+![Location Representation](docs/images/location_example.png)
 
 ***
 ## PERSON
@@ -112,7 +112,7 @@ Corresponding SHACL node shape:
 
 Below, you can see an example of an RDF representation of a person:
 
-![Person Representation](images/person_example.png)
+![Person Representation](docs/images/person_example.png)
 
 ***
 ## Event

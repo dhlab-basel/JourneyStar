@@ -121,8 +121,8 @@ js:Dining rdf:type owl:Class;
         rdfs:comment "A dining is an activity to consume food with or without company."@en .
 
 
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Occurence ###
-js:Occurence rdf:type owl:Class ;
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Occurrence ###
+js:Occurrence rdf:type owl:Class ;
         rdfs:subClassOf js:Event ;
         rdfs:label  "Ereignis"@de,
                     "Occurrence"@en;

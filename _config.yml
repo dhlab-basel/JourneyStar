@@ -25,7 +25,6 @@ baseurl: "/JourneyStar" # the subpath of your site, e.g. /blog
 url: "https://github.com/dhlab-basel" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: se_alassi
 github_username:  SepidehAlassi
-source: docs
 # Build settings
 theme: minima
 plugins:
