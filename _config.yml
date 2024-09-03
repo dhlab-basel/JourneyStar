@@ -21,7 +21,7 @@
 title: JourneyStar Ontology
 email: sepideh.alassi@unibas.ch
 description: An ontology to represent travel data as an RDF-star graph.
-baseurl: "/JourneyStar" # the subpath of your site, e.g. /blog
+baseurl: '' # the subpath of your site, e.g. /blog
 url: "https://github.com/dhlab-basel" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: se_alassi
 github_username:  SepidehAlassi
