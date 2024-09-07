@@ -18,23 +18,17 @@
                                        owl:versionInfo "v.1.0" .
 
 
-
 ################################
 ### Classes ###
 ################################
+
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Person ###
 js:Person rdf:type owl:Class ;
     rdfs:subClassOf schema:Person;
     rdfs:label "Person"@de ,
-                "Person"@en ;
+               "Person"@en ;
     rdfs:comment "A person."@en .
-
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Event ###
-js:Event rdf:type owl:Class ;
-        rdfs:label "Event"@de,
-                    "Event"@en ;
-        rdfs:comment "A class representing a real-world event."@en .
 
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Location ###
@@ -45,43 +39,78 @@ js:Location rdf:type owl:Class ;
         rdfs:comment "A location on plant earth with a coordinate."@en .
 
 
-
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Activity ###
 js:Activity rdf:type owl:Class ;
         rdfs:subClassOf activity:Activity , js:Event ;
         rdfs:label "Aktivität"@de,
-                    "Activity"@en ;
+                   "Activity"@en ;
         rdfs:comment "An activity involves movement and has duration."@en .
+
+
+# http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#SightSeeing #
+js:SightSeeing rdf:type owl:Class;
+        rdfs:subClassOf js:Activity;
+        rdfs:label "Sehenswürdigkeit"@de,
+                   "Sightseeing"@en;
+        rdfs:comment "Sightseeing is a short activity to visit a landmark, attraction etc."@en .
+
+
+# http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Entertainment #
+js:Entertainment rdf:type owl:Class;
+        rdfs:subClassOf js:Activity;
+        rdfs:label "Unterhaltung"@de,
+                   "Entertainment"@en;
+        rdfs:comment "An entertainment is a leisure activity such as theater performance."@en .
+
+
+# http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Visit #
+js:Visit rdf:type owl:Class;
+        rdfs:subClassOf js:Activity;
+        rdfs:label "Aktivität"@de,
+                   "Activity"@en;
+        rdfs:comment "A visit is meeting of a person in a location."@en .
+
+
+# http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Dining #
+js:Dining rdf:type owl:Class;
+        rdfs:subClassOf js:Activity;
+        rdfs:label "Essen"@de,
+                   "Dinning"@en;
+        rdfs:comment "A dining is an activity to consume food with or without company."@en .
 
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Trip
 js:Trip rdf:type owl:Class ;
         rdfs:subClassOf js:Activity , trip:Trip ;
         rdfs:label "Reisen"@de ,
-                    "Trip"@en ;
+                   "Trip"@en ;
         rdfs:comment "A person's movement between two locations."@en .
+
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Journey
 js:Journey rdf:type owl:Class ;
         rdfs:subClassOf js:Trip ;
         owl:differentFrom js:Excursion ;
         rdfs:label "Reise"@de ,
-                "Journey"@en ;
+                   "Journey"@en ;
         rdfs:comment "A more than one day long journey from one place to another."@en .
+
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Excursion
 js:Excursion rdf:type owl:Class ;
         rdfs:subClassOf js:Trip , trip:Tour ;
         owl:differentFrom js:Journey;
         rdfs:label "Excursion"@de ,
-                "Exkursion"@en ;
+                   "Exkursion"@en ;
         rdfs:comment "An excursion is a circular trip to a location and back lasting less than a day."@en .
+
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Stay ###
 js:Stay rdf:type owl:Class ;
         rdfs:label "Aufenthalt"@de,
-                    "Stay"@en;
+                   "Stay"@en;
         rdfs:comment "A stay is residence in a certain place during a journey."@en .
+
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Accommodation ###
 js:Accommodation rdf:type owl:Class ;
@@ -90,58 +119,35 @@ js:Accommodation rdf:type owl:Class ;
                    "Accommodation"@en ;
         rdfs:comment "An accommodation of a stay."@en .
 
-# http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#SightSeeing #
-js:SightSeeing rdf:type owl:Class;
-        rdfs:subClassOf js:Activity;
-        rdfs:label "Sehenswürdigkeit"@de,
-                    "sightseeing"@en;
-        rdfs:comment "Sightseeing is a short activity to visit a landmark, attraction etc."@en .
 
-
-# http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Entertainment #
-js:Entertainment rdf:type owl:Class;
-        rdfs:subClassOf js:Activity;
-        rdfs:label "Unterhaltung"@de,
-                    "entertainement"@en;
-        rdfs:comment "An entertainment is a leisure activity such as theater performance."@en .
-
-# http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Visit #
-js:Visit rdf:type owl:Class;
-        rdfs:subClassOf js:Activity;
-        rdfs:label "Aktivität"@de,
-                    "Activity"@en;
-        rdfs:comment "A visit is meeting of a person in a location."@en .
-
-
-# http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Dining #
-js:Dining rdf:type owl:Class;
-        rdfs:subClassOf js:Activity;
-        rdfs:label "Essen"@de,
-                    "dinning"@en;
-        rdfs:comment "A dining is an activity to consume food with or without company."@en .
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Event ###
+js:Event rdf:type owl:Class ;
+        rdfs:label "Event"@de,
+                   "Event"@en ;
+        rdfs:comment "A class representing a real-world event."@en .
 
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Occurrence ###
 js:Occurrence rdf:type owl:Class ;
         rdfs:subClassOf js:Event ;
-        rdfs:label  "Ereignis"@de,
-                    "Occurrence"@en;
+        rdfs:label "Ereignis"@de,
+                   "Occurrence"@en;
         rdfs:comment "An occurence during a journey (eg. encounters, ship-wreck, flight-delay)." .
-
 
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#NaturalPhenomena ###
 js:NaturalPhenomena rdf:type owl:Class ;
         rdfs:subClassOf js:Event ;
-        rdfs:label  "Naturphänomen"@de,
-                    "Natural Phenomena"@en;
+        rdfs:label "Naturphänomen"@de,
+                   "Natural Phenomena"@en;
         rdfs:comment "A natural phenomena (eg. earthquake, fire)." .
+
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Currency ###
 js:Currency rdf:type owl:Class ;
         rdfs:subClassOf dbo:Currency: ;
-        rdfs:label  "Währung"@de,
-                    "Currency"@en;
+        rdfs:label "Währung"@de,
+                   "Currency"@en;
         rdfs:comment "A class representing a currency associated with a monetary value." .
 
 
@@ -155,11 +161,6 @@ js:hasLocation rdf:type owl:ObjectProperty ;
                    "has location"@en ;
         rdfs:comment "The location of an activity."@en .
 
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#calendar
-js:calendar rdf:type owl:ObjectProperty ;
-        rdfs:label "calendar"@de ,
-                   "calendar"@en ;
-        rdfs:comment "The calendar of a date."@en .
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#origin
 js:origin rdf:type owl:ObjectProperty ;
@@ -168,12 +169,21 @@ js:origin rdf:type owl:ObjectProperty ;
                    "has start location"@en ;
         rdfs:comment "The start location of a journey/excursion."@en .
 
+
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#destination
 js:destination rdf:type owl:ObjectProperty ;
         rdfs:subPropertyOf js:hasLocation ;
         rdfs:label "hat Reiseziel"@de ,
                    "has destination"@en ;
         rdfs:comment "The destination of an journey/excursion."@en .
+
+
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#calendar
+js:calendar rdf:type owl:ObjectProperty ;
+        rdfs:label "Kalender"@de ,
+                   "calendar"@en ;
+        rdfs:comment "The calendar of a date."@en .
+
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasDate ###
 js:hasDate rdf:type owl:DatatypeProperty ;
@@ -184,31 +194,32 @@ js:hasDate rdf:type owl:DatatypeProperty ;
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#startDate ###
 js:startDate rdf:type owl:DatatypeProperty ;
-        rdfs:label "Start Datum"@de ,
+        rdfs:label "Startdatum"@de ,
                    "Start date"@en ;
         rdfs:comment "The start of an activity."@en .
 
+
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#endDate
 js:endDate rdf:type owl:DatatypeProperty ;
-        rdfs:label "Ende"@de ,
+        rdfs:label "Enddatum"@de ,
                    "has end date"@en ;
         rdfs:comment "The end of an activity."@en .
-
-
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#arrivalDate
-js:arrivalDate rdf:type owl:DatatypeProperty ;
-        rdfs:subPropertyOf js:endDate ;
-        rdfs:label "hat Ankunft"@de ,
-                   "has arrival"@en ;
-        rdfs:comment "The arrival date and/or time of a journey or excursion."@en .
 
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#departureDate
 js:departureDate rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf js:startDate ;
-        rdfs:label "hat Abfahrt"@de ,
-                   "has departure"@en ;
+        rdfs:label "hat Abfahrtsdatum"@de ,
+                   "has departure date"@en ;
         rdfs:comment "The departure date and/or time of a journey or excursion."@en .
+
+
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#arrivalDate
+js:arrivalDate rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf js:endDate ;
+        rdfs:label "hat Ankunftsdatum"@de ,
+                   "has arrival date"@en ;
+        rdfs:comment "The arrival date and/or time of a journey or excursion."@en .
 
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasActivity
@@ -218,6 +229,14 @@ js:hasActivity rdf:type owl:ObjectProperty ;
         rdfs:comment "An activity a person undertakes."@en .
 
 
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasExcursion
+js:hasExcursion rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf js:hasActivity ;
+        rdfs:label "hat Ausflug"@de ,
+                   "has excursion"@en ;
+        rdfs:comment "An excursion a person undertakes."@en .
+
+
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasParticipant
 js:hasParticipant rdf:type owl:ObjectProperty ;
         rdfs:subPropertyOf js:hasActivity ;
@@ -225,16 +244,18 @@ js:hasParticipant rdf:type owl:ObjectProperty ;
                    "has participant"@en ;
         rdfs:comment "A participant of an event."@en .
 
+
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#participatedIn
 js:participatedIn rdf:type owl:ObjectProperty ;
         owl:inverseOf js:hasParticipant ;
         rdfs:label "Teilnahme an"@de ,
-                   "participance in"@en ;
+                   "participation in"@en ;
         rdfs:comment "Represents a participation in an event."@en .
+
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasIntermediateDestination
 js:hasIntermediateDestination rdf:type owl:ObjectProperty ;
-        rdfs:label "hat Zwischenstation"@de ,
+        rdfs:label "hat Zwischenziel"@de ,
                    "has intermediate destination"@en ;
         rdfs:comment "An intermediate destination during a journey."@en .
 
@@ -246,18 +267,12 @@ js:hasStage rdf:type owl:ObjectProperty ;
         rdfs:comment "A stage of a journey."@en .
 
 
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasExcursion
-js:hasExcursion rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf js:hasActivity ;
-        rdfs:label "hat Ausflug"@de ,
-                   "has excursion"@en ;
-        rdfs:comment "An excursion a person undertakes."@en .
-
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#sightingOf
 js:sightingOf rdf:type owl:DatatypeProperty ;
-        rdfs:label "Besichtigung von"@de ,
+        rdfs:label "Sichtung von"@de ,
                    "sighting of"@en ;
         rdfs:comment "The sighted object during a sightseeing activity."@en .
+
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#mealType
 js:mealType rdf:type owl:DatatypeProperty ;
@@ -265,17 +280,20 @@ js:mealType rdf:type owl:DatatypeProperty ;
                    "meal type"@en ;
         rdfs:comment "The type of a meal during a dining activity."@en .
 
+
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#cuisine
 js:cuisine rdf:type owl:DatatypeProperty ;
         rdfs:label "Küche"@de ,
                    "cuisine"@en ;
         rdfs:comment "The type of cuisine of a dining activity."@en .
 
+
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#entertainementType
 js:entertainmentType rdf:type owl:DatatypeProperty ;
         rdfs:label "Unterhaltungsart"@de ,
-                   "entertainement type"@en ;
+                   "entertainment type"@en ;
         rdfs:comment "The type of entertainment of an entertainment activity."@en .
+
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasStay
 js:hasStay rdf:type owl:ObjectProperty ;
@@ -283,17 +301,20 @@ js:hasStay rdf:type owl:ObjectProperty ;
                    "has Stay"@en ;
         rdfs:comment "A stay at a specific location during a Journey. Does not apply for excursion."@en .
 
+
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasAccommodation
 js:hasAccommodation rdf:type owl:ObjectProperty ;
         rdfs:label "hat Unterkunft"@de ,
                    "has Accommodation"@en ;
         rdfs:comment "The accommodation of a stay."@en .
 
+
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasOccurrence
 js:hasOccurrence rdf:type owl:ObjectProperty ;
         rdfs:label "hat Ereignis"@de ,
                    "has occurrence"@en ;
-        rdfs:comment "An occurrance during an activity."@en .
+        rdfs:comment "An occurrence during an activity."@en .
+
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasCost
 js:hasCost rdf:type owl:DatatypeProperty ;
@@ -302,23 +323,27 @@ js:hasCost rdf:type owl:DatatypeProperty ;
                    "has cost"@en ;
         rdfs:comment "The cost of an activity, transport, or accomodation."@en .
 
+
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasCurrency
 js:hasCurrency rdf:type owl:ObjectProperty ;
         rdfs:label "Währung"@de ,
                    "Currency"@en ;
         rdfs:comment "The currency of a payment."@en .
 
+
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#meanOfTransportation
 js:meanOfTransportation rdf:type owl:ObjectProperty ;
         rdfs:label "Transportmittel"@de ,
-                   "Mean of Transport"@en ;
+                   "Mean of transportation"@en ;
         rdfs:comment "The mean of transportation."@en .
+
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#mentionedIn
 js:mentionedIn rdf:type owl:ObjectProperty;
         rdfs:label "erwähnt in"@de ,
                    "mentioned in"@en ;
         rdfs:comment "Link to the entry containing the info."@en .
+
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasDescription
 js:hasDescription rdf:type owl:DatatypeProperty;
@@ -329,9 +354,10 @@ js:hasDescription rdf:type owl:DatatypeProperty;
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#accordingTo
 js:accordingTo rdf:type owl:ObjectProperty;
-        rdfs:label "Laut"@de ,
-                   "According To"@en ;
+        rdfs:label "gemäss"@de ,
+                   "according to"@en ;
         rdfs:comment "Link to the person who narrated the info."@en .
+
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasWikiLink
 js:hasWikiLink rdf:type owl:DatatypeProperty ;
@@ -339,11 +365,13 @@ js:hasWikiLink rdf:type owl:DatatypeProperty ;
                    "has a link to a wikidata page"@en ;
         rdfs:comment "A link to a wikidata page."@en .
 
+
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasGnd
 js:hasGnd rdf:type owl:DatatypeProperty ;
-        rdfs:label "hat GND nummer"@de ,
+        rdfs:label "hat GND Nummer"@de ,
                    "has gnd"@en ;
         rdfs:comment "GND number of a person"@en .
+
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasGeonameID
 js:hasGeonameID rdf:type owl:DatatypeProperty ;
@@ -351,16 +379,18 @@ js:hasGeonameID rdf:type owl:DatatypeProperty ;
                            "GeonameID"@en ;
                 rdfs:comment "The geoname ID of a location."@en .
 
+
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#transitThrough
 js:transitThrough rdf:type owl:ObjectProperty ;
                   rdfs:label "Transit durch"@de ,
                              "Transit through"@en ;
                   rdfs:comment "The transit through a location."@en .
 
+
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasSubunit
 js:hasSubunit rdf:type owl:ObjectProperty ;
               rdfs:label "Untereinheit"@de ,
-                          "Subunit"@en ;
+                         "Subunit"@en ;
               rdfs:comment "Subunit of a currency."@en .
 
 
@@ -370,8 +400,9 @@ js:value rdf:type owl:ObjectProperty ;
                          "Value"@en ;
               rdfs:comment "Monetary worth of a currency with respect to its subunit."@en .
 
+
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#alternativeName
 js:alternativeName rdf:type owl:ObjectProperty ;
               rdfs:label "alternativer Name"@de ,
-                         "alternative Name"@en ;
+                         "alternative name"@en ;
               rdfs:comment "Other names used."@en .
