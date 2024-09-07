@@ -90,6 +90,7 @@ js-shacl:LocationShape a sh:NodeShape  ;
     [
         sh:path js:hasWikiLink ;
         sh:maxCount 1 ;
+        sh:datatype xsd:anyURI ;
     ] .
 
 ### Shape for Class Excursion ###
@@ -183,13 +184,13 @@ js-shacl:ActivityShape a sh:NodeShape;
     sh:property
     [
         sh:path schema:name;
-        sh:datatype xsd:string;
         sh:minCount 1;
+        sh:datatype xsd:string;
     ] ,
     [
         sh:path js:hasCost ;
-        sh:datatype xsd:decimal;
         sh:maxCount 1;
+        sh:datatype xsd:decimal;
     ] .
 
 ### Shape for Class Journey ###
@@ -203,33 +204,33 @@ js-shacl:JourneyShape a sh:NodeShape;
     ] ,
     [
         sh:path js:origin;
+        sh:minCount 1;
         sh:or ( [sh:datatype xsd:string ]
                 [sh:class js:Location ]
                 [sh:datatype xsd:anyURI ]
                 [sh:nodeKind sh:IRI ]) ;
-        sh:minCount 1;
     ] ,
     [
         sh:path js:destination;
+        sh:minCount 1;
         sh:or ( [sh:datatype xsd:string ]
                 [sh:class js:Location ]
                 [sh:datatype xsd:anyURI ]
                 [sh:nodeKind sh:IRI ]) ;
-        sh:minCount 1;
     ] ,
     [
         sh:path js:startDate ;
+        sh:maxCount 1;
         sh:or ( [sh:datatype xsd:dateTime ]
                 [sh:datatype xsd:date ]
                 [sh:datatype xsd:gYear ]) ;
-        sh:maxCount 1;
     ] ,
     [
         sh:path js:endDate ;
+        sh:maxCount 1;
         sh:or ( [sh:datatype xsd:dateTime ]
                 [sh:datatype xsd:date ]
                 [sh:datatype xsd:gYear ]) ;
-        sh:maxCount 1;
     ] ,
     [
         sh:path js:hasActivity ;
