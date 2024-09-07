@@ -3,14 +3,11 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix currencyA: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
-@prefix currency: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/>.
 @prefix schema: <https://schema.org/> .
-@prefix dbr: <http://dbpedia.org/resource/> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix trip: <http://ontology.eil.utoronto.ca/icity/Trip/> .
 @prefix activity: <http://ontology.eil.utoronto.ca/icity/Activity/> .
 @prefix js: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#> .
-@prefix : <http://journey-star.dhlab.unibas.ch/data/JourneyStar#> .
 @base <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#> .
 
 <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar> rdf:type owl:Ontology ;
@@ -145,7 +142,7 @@ js:NaturalPhenomena rdf:type owl:Class ;
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Currency ###
 js:Currency rdf:type owl:Class ;
-        rdfs:subClassOf dbo:Currency: ;
+        rdfs:subClassOf dbo:Currency ;
         rdfs:label "Währung"@de,
                    "Currency"@en;
         rdfs:comment "A class representing a currency associated with a monetary value." .
