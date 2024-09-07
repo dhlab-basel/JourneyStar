@@ -68,6 +68,7 @@ js-shacl:PersonShape a sh:NodeShape  ;
     [
         sh:path js:hasWikiLink ;
         sh:maxCount 1 ;
+        sh:datatype xsd:anyURI ;
     ] .
 
 ### Shape for Class Location ###
@@ -102,7 +103,6 @@ js-shacl:ExcursionShape a sh:NodeShape  ;
         sh:severity sh:Violation ;
         sh:message "An excursion is specified by returning back to the location of departure after visiting a different location"@en;
     ] .
-
 
 ### Shape for Class Stay ###
 ################################
@@ -273,7 +273,6 @@ js-shacl:EntertainmentShape a sh:NodeShape;
         sh:datatype xsd:string;
     ] .
 
-
 ### Shape for Class Currency ###
 ################################
 js-shacl:CurrencyShape a sh:NodeShape;
@@ -295,6 +294,7 @@ js-shacl:CurrencyShape a sh:NodeShape;
         sh:path js:alternativeName;
         sh:datatype xsd:string;
     ] .
+
 
 # ##############################################################
 ## Shapes for Star Properties
@@ -449,7 +449,6 @@ js-shacl:TransitPropertyShape
      a sh:NodeShape;
      sh:targetObjectsOf js:value;
      sh:datatype xsd:decimal .
-
 
 ### hasCost ###
 js-shacl:hasCostPropertyShape
