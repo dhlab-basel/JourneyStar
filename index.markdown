@@ -86,7 +86,7 @@ Below, you can see an example of an RDF representation of a location:
 ![Location Representation](docs/images/location_example.png)
 
 ***
-## PERSON
+## Person
 The `js:Person` is an OWL class representing a person who undertakes a journey or
  is involved in a journey (such as: hotel owner, waiter/waitress, travel companion, etc.).
 
