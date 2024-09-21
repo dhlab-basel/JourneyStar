@@ -5,7 +5,7 @@
 @prefix schema: <https://schema.org/> .
 @prefix dbr: <http://dbpedia.org/resource/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix js-shacl: <http://journey-star.dhlab.unibas.ch/shacl/trip-shacl#> .
+@prefix js-shacl: <http://journey-star.dhlab.unibas.ch/shacl/js-shacl#> .
 @prefix js: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#> .
 
 

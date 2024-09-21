@@ -56,6 +56,7 @@ Below we describe a few main classes and properties of this ontology with a few 
 @prefix trip: <http://ontology.eil.utoronto.ca/icity/Trip/> .
 @prefix activity: <http://ontology.eil.utoronto.ca/icity/Activity/> .
 @prefix js: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#> .
+@prefix js-shacl: <http://journey-star.dhlab.unibas.ch/shacl/js-shacl#> .
 @prefix : <http://journey-star.dhlab.unibas.ch/data/JourneyStar#> .
 ```
 
