@@ -6,14 +6,14 @@
 @prefix currency: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/>.
 @prefix schema: <https://schema.org/> .
 @prefix dbr: <http://dbpedia.org/resource/> .
-@prefix trip-onto: <http://www.dhlab.unibas.ch/ontology/trip-onto#> .
-@prefix : <http://www.dhlab.unibas.ch.com/data/trip-data#> .
-@base <http://www.dhlab.unibas.ch.com/data/trip-data#> .
+@prefix js: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#> .
+@prefix : <http://journeyStar.dhlab.ch/data/JBReisebuechlein#> .
+@base <http://journeyStar.dhlab.ch/data/JBReisebuechlein#> .
 
 ######################
 ### People ###########
 
-:SofiaM a trip-onto:Person;
+:SofiaM a js:Person;
     schema:name "Sofia Müller";
     schema:givenName "Sofia";
     schema:familyName "Müller";
@@ -21,7 +21,7 @@
     schema:birthDate "1985-03-20"^^xsd:date ;
     schema:birthPlace :Zurich .
 
-:AdrianaM a trip-onto:Person;
+:AdrianaM a js:Person;
     schema:name "Adriana Martin";
     schema:givenName "Adriana";
     schema:familyName "Martin";
@@ -29,7 +29,7 @@
     schema:birthDate "1989-11-14"^^xsd:date;
     schema:birthPlace :Zurich .
 
-:LucaB a trip-onto:Person;
+:LucaB a js:Person;
     schema:name "Luca Bianchi";
     schema:givenName "Luca";
     schema:familyName "Bianchi";
@@ -37,7 +37,7 @@
     schema:birthDate "1988-07-15"^^xsd:date;
     schema:birthPlace :Zurich .
 
-:CarmenG a trip-onto:Person;
+:CarmenG a js:Person;
     schema:name "Carmen Garcia";
     schema:givenName "Carmen";
     schema:familyName "Garcia";
@@ -45,7 +45,7 @@
     schema:birthDate "1982-06-05"^^xsd:date;
     schema:birthPlace :Barcelona .
 
-:LeaD a trip-onto:Person;
+:LeaD a js:Person;
     schema:name "Léa Dubois";
     schema:givenName "Léa";
     schema:familyName "Dubois";
@@ -53,7 +53,7 @@
     schema:birthDate "1990-10-25"^^xsd:date;
     schema:birthPlace :Paris .
 
-:OskarH a trip-onto:Person;
+:OskarH a js:Person;
     schema:name "Oskar Hansen";
     schema:givenName "Oskar";
     schema:familyName "Hansen";
@@ -66,61 +66,61 @@
 ################################
 ### Accommodation ##############
 
-:HotelBarca a trip-onto:Accommodation ;
+:HotelBarca a js:Accommodation ;
     schema:name "Hotel Barcelona" .
 
-:AirBnBTangier a trip-onto:Accommodation ;
+:AirBnBTangier a js:Accommodation ;
     schema:name "Air Bnb Tangier".
 
-:HotelRabat a trip-onto:Accommodation ;
+:HotelRabat a js:Accommodation ;
     schema:name "Hotel Rabat" .
 
-:HotelMarrakech a trip-onto:Accommodation ;
+:HotelMarrakech a js:Accommodation ;
     schema:name "Hotel Marrakech" .
 
 
 #####################################
 #### Instances of locations #########
 
-:Zurich a trip-onto:Location;
+:Zurich a js:Location;
     schema:name "Zurich"@en;
     owl:sameAs dbr:Zürich;
-    trip-onto:hasGeonameID "2657896" .
+    js:hasGeonameID "2657896" .
 
-:Berlin a trip-onto:Location;
+:Berlin a js:Location;
     schema:name "Berlin"@en;
     owl:sameAs dbr:Berlin;
-    trip-onto:hasGeonameID "2950159" .
+    js:hasGeonameID "2950159" .
 
-:Barcelona a trip-onto:Location;
+:Barcelona a js:Location;
     schema:name "Barcelona"@en;
     owl:sameAs dbr:Barcelona;
-    trip-onto:hasGeonameID "3128760".
+    js:hasGeonameID "3128760".
 
-:Paris a trip-onto:Location;
+:Paris a js:Location;
     schema:name "Paris"@en;
     owl:sameAs dbr:Paris;
-    trip-onto:hasGeonameID "2988507".
+    js:hasGeonameID "2988507".
 
-:Rabat a trip-onto:Location;
+:Rabat a js:Location;
     schema:name "Rabat"@en;
     owl:sameAs dbr:Rabat;
-    trip-onto:hasGeonameID "2538475".
+    js:hasGeonameID "2538475".
 
-:Tangier a trip-onto:Location;
+:Tangier a js:Location;
     schema:name "Tanger"@en;
     owl:sameAs dbr:Tangier;
-    trip-onto:hasGeonameID "2530335" .
+    js:hasGeonameID "2530335" .
 
-:Marrakech a trip-onto:Location;
+:Marrakech a js:Location;
     schema:name "Marrakech"@en;
     owl:sameAs dbr:Marrakesh;
-    trip-onto:hasGeonameID "6547285".
+    js:hasGeonameID "6547285".
 
-:Morocco a trip-onto:Location;
+:Morocco a js:Location;
     schema:name "Morocco"@en;
     owl:sameAs dbr:Morocco;
-    trip-onto:hasGeonameID "2542007".
+    js:hasGeonameID "2542007".
 
 
 ############################
@@ -131,159 +131,159 @@
 ### Journey_2018_03 ###
 ###################
 
-:SofiaM trip-onto:hasJourney :Journey_2018_03 .
-<< :SofiaM trip-onto:hasJourney :Journey_2018_03 >> trip-onto:hasStartDate "2018-03-10"^^xsd:date .
-<< :SofiaM trip-onto:hasJourney :Journey_2018_03 >> trip-onto:hasEndDate "2018-03-22"^^xsd:date.
+:SofiaM js:hasJourney :Journey_2018_03 .
+<< :SofiaM js:hasJourney :Journey_2018_03 >> js:hasStartDate "2018-03-10"^^xsd:date .
+<< :SofiaM js:hasJourney :Journey_2018_03 >> js:hasEndDate "2018-03-22"^^xsd:date.
 
-:Journey_2018_03 a trip-onto:Journey ;
-    trip-onto:hasStartLocation :Zurich;
-    trip-onto:hasDestination :Morocco .
+:Journey_2018_03 a js:Journey ;
+    js:hasStartLocation :Zurich;
+    js:hasDestination :Morocco .
 
-<<:Journey_2018_03 trip-onto:hasStartLocation :Zurich >> trip-onto:hasDeparture "2018-03-10T08:00:00"^^xsd:dateTime .
-<<:Journey_2018_03 trip-onto:hasDestination :Morocco >> trip-onto:hasArrival "2018-03-14T14:00:00"^^xsd:dateTime .
+<<:Journey_2018_03 js:hasStartLocation :Zurich >> js:hasDeparture "2018-03-10T08:00:00"^^xsd:dateTime .
+<<:Journey_2018_03 js:hasDestination :Morocco >> js:hasArrival "2018-03-14T14:00:00"^^xsd:dateTime .
 
 ### Stage Journey 1 ZH-Barcelona ###
 ##################################
 
-:Journey_2018_03 trip-onto:hasStage :Stage1 .
-<<:Journey_2018_03 trip-onto:hasStage :Stage1>> trip-onto:hasStartDate "2018-03-10"^^xsd:date .
-<<:Journey_2018_03 trip-onto:hasStage :Stage1>> trip-onto:hasEndDate "2018-03-13"^^xsd:date .
+:Journey_2018_03 js:hasStage :Stage1 .
+<<:Journey_2018_03 js:hasStage :Stage1>> js:hasStartDate "2018-03-10"^^xsd:date .
+<<:Journey_2018_03 js:hasStage :Stage1>> js:hasEndDate "2018-03-13"^^xsd:date .
 
-:Stage1 a trip-onto:Journey;
-    trip-onto:hasStartLocation :Zurich;
-    trip-onto:hasDestination :Barcelona ;
-    trip-onto:hasTransitFrom :Paris;
-    trip-onto:meanOfTransportation dbr:Train .
+:Stage1 a js:Journey;
+    js:hasStartLocation :Zurich;
+    js:hasDestination :Barcelona ;
+    js:hasTransitFrom :Paris;
+    js:meanOfTransportation dbr:Train .
 
  << :Stage1 :hasStartLocation :Zurich >> :hasDeparture "2018-03-10T08:00:00"^^xsd:dateTime .
  << :Stage1 :hasStartLocation :Barcelona >> :hasArrival "2018-03-10T22:00:00"^^xsd:dateTime .
 
-<< :Stage1 trip-onto:meanOfTransportation dbr:Train >> trip-onto:hasCost 120 .
-<< << :Stage1 trip-onto:meanOfTransportation dbr:Train >> trip-onto:hasCost 120 >> :hasCurrency currency:Euro .
+<< :Stage1 js:meanOfTransportation dbr:Train >> js:hasCost 120 .
+<< << :Stage1 js:meanOfTransportation dbr:Train >> js:hasCost 120 >> :hasCurrency currency:Euro .
 
-<< :Stage1 trip-onto:meanOfTransportation dbr:Train >> trip-onto:hasTransitFrom dbr:Paris .
+<< :Stage1 js:meanOfTransportation dbr:Train >> js:hasTransitFrom dbr:Paris .
 
-:Stage1 trip-onto:hasActivity :SightSeeingSagradaFamilia1 .
+:Stage1 js:hasActivity :SightSeeingSagradaFamilia1 .
 
-:SightSeeingSagradaFamilia1 a trip-onto:SightSeeing ;
-    trip-onto:sightingOf dbr:Sagrada_Família;
-    trip-onto:hasParticipant :SofiaM;
-    trip-onto:hasParticipant :OskarH;
-    trip-onto:hasParticipant :AdrianaM;
-    trip-onto:hasStartDate "2018-03-11T14:00:00"^^xsd:dateTime ;
-    trip-onto:hasEndDate "2018-03-11T16:45:00"^^xsd:dateTime;
-    trip-onto:hasDescription "Entering Sagrada Familia felt like stepping into a realm of divine artistry. The sun's gentle rays painted vibrant hues on the ornate stained glass, illuminating the sacred space. Massive columns rose like ancient trees, supporting the heavens above. Every detail, from intricately carved facades to delicate interior patterns, whispered tales of Gaudí's genius.Leaving, I carried a sense of awe that words could barely capture.".
+:SightSeeingSagradaFamilia1 a js:SightSeeing ;
+    js:sightingOf dbr:Sagrada_Família;
+    js:hasParticipant :SofiaM;
+    js:hasParticipant :OskarH;
+    js:hasParticipant :AdrianaM;
+    js:hasStartDate "2018-03-11T14:00:00"^^xsd:dateTime ;
+    js:hasEndDate "2018-03-11T16:45:00"^^xsd:dateTime;
+    js:hasDescription "Entering Sagrada Familia felt like stepping into a realm of divine artistry. The sun's gentle rays painted vibrant hues on the ornate stained glass, illuminating the sacred space. Massive columns rose like ancient trees, supporting the heavens above. Every detail, from intricately carved facades to delicate interior patterns, whispered tales of Gaudí's genius.Leaving, I carried a sense of awe that words could barely capture.".
 
 
-:Stage1 trip-onto:hasParticipant :LeaD , :AdrianaM .
-:Stage1 trip-onto:hasStay :StayStage1 .
+:Stage1 js:hasParticipant :LeaD , :AdrianaM .
+:Stage1 js:hasStay :StayStage1 .
 
-:StayStage1 a trip-onto:Stay ;
-    trip-onto:hasAccommodation :HotelBarca .
+:StayStage1 a js:Stay ;
+    js:hasAccommodation :HotelBarca .
 
-<< :StayStage1 trip-onto:hasAccommodation :HotelBarca >> trip-onto:hasCost 240 .
-<< << :StayStage1 trip-onto:hasAccommodation :HotelBarca >> trip-onto:hasCost 240 >> trip-onto:hasCurrency currency:Euro .
+<< :StayStage1 js:hasAccommodation :HotelBarca >> js:hasCost 240 .
+<< << :StayStage1 js:hasAccommodation :HotelBarca >> js:hasCost 240 >> js:hasCurrency currency:Euro .
 
 ### Stage Journey 2 Barcelona–Tangier ###
 #######################################
 
-:Journey_2018_03 trip-onto:hasStage :Stage2 .
+:Journey_2018_03 js:hasStage :Stage2 .
 
-<<:Journey_2018_03 trip-onto:hasStage :Stage2>> trip-onto:hasStartDate "2018-03-13"^^xsd:date .
-<<:Journey_2018_03 trip-onto:hasStage :Stage2>> trip-onto:hasEndDate "2018-03-15"^^xsd:date .
+<<:Journey_2018_03 js:hasStage :Stage2>> js:hasStartDate "2018-03-13"^^xsd:date .
+<<:Journey_2018_03 js:hasStage :Stage2>> js:hasEndDate "2018-03-15"^^xsd:date .
 
-:Stage2 a trip-onto:Journey;
-    trip-onto:hasStartLocation :Barcelona;
-    trip-onto:hasDestination :Tangier ;
-    trip-onto:meanOfTransportation dbr:Ferry .
+:Stage2 a js:Journey;
+    js:hasStartLocation :Barcelona;
+    js:hasDestination :Tangier ;
+    js:meanOfTransportation dbr:Ferry .
 
- << :Stage2 trip-onto:hasStartLocation :Barcelona >> trip-onto:hasDeparture "2018-03-13T09:00:00"^^xsd:dateTime .
- << :Stage2 trip-onto:hasStartLocation :Tangier >> trip-onto:hasArrival "2018-03-14T14:00:00"^^xsd:dateTime .
+ << :Stage2 js:hasStartLocation :Barcelona >> js:hasDeparture "2018-03-13T09:00:00"^^xsd:dateTime .
+ << :Stage2 js:hasStartLocation :Tangier >> js:hasArrival "2018-03-14T14:00:00"^^xsd:dateTime .
 
-<< :Stage2 trip-onto:meanOfTransportation dbr:Ferry >> :hasCost 150 .
-<< << :Stage2 trip-onto:meanOfTransportation :Ferry >> :hasCost 150 >> trip-onto:hasCurrency currency:Euro.
+<< :Stage2 js:meanOfTransportation dbr:Ferry >> :hasCost 150 .
+<< << :Stage2 js:meanOfTransportation :Ferry >> :hasCost 150 >> js:hasCurrency currency:Euro.
 
-:Stage2 trip-onto:hasParticipant :LeaD , :AdrianaM .
-:Stage2 trip-onto:hasStay :StayStage2 .
+:Stage2 js:hasParticipant :LeaD , :AdrianaM .
+:Stage2 js:hasStay :StayStage2 .
 
-:StayStage2 a trip-onto:Stay ;
-    trip-onto:hasAccommodation :AirBnBTangier .
+:StayStage2 a js:Stay ;
+    js:hasAccommodation :AirBnBTangier .
 
-<< :StayStage2 trip-onto:hasAccommodation :AirBnBTangier >> trip-onto:hasCost 1040 .
-<< << :StayStage2 trip-onto:hasAccommodation :AirBnBTangier >> trip-onto:hasCost 1040 >> trip-onto:hasCurrency currency:MoroccanDirham .
+<< :StayStage2 js:hasAccommodation :AirBnBTangier >> js:hasCost 1040 .
+<< << :StayStage2 js:hasAccommodation :AirBnBTangier >> js:hasCost 1040 >> js:hasCurrency currency:MoroccanDirham .
 
 
 ### Stage Journey 3 Tangier-Rabat ###
 ###################################
 
 
-:Journey_2018_03 trip-onto:hasStage :Stage3 .
-<< :Journey_2018_03 trip-onto:hasStage :Stage3>> trip-onto:hasStartDate "2018-03-15"^^xsd:date .
-<< :Journey_2018_03 trip-onto:hasStage :Stage3>> trip-onto:hasEndDate "2018-03-18"^^xsd:date.
+:Journey_2018_03 js:hasStage :Stage3 .
+<< :Journey_2018_03 js:hasStage :Stage3>> js:hasStartDate "2018-03-15"^^xsd:date .
+<< :Journey_2018_03 js:hasStage :Stage3>> js:hasEndDate "2018-03-18"^^xsd:date.
 
 :Stage3 a :Journey;
-    trip-onto:hasStartLocation :Tangier;
-    trip-onto:hasDestination :Rabat ;
-    trip-onto:meanOfTransportation dbr:Car .
+    js:hasStartLocation :Tangier;
+    js:hasDestination :Rabat ;
+    js:meanOfTransportation dbr:Car .
 
 
-<< :Stage3 trip-onto:hasStartLocation :Tangier>> trip-onto:hasDeparture "2018-03-15T08:00:00"^^xsd:dateTime .
-<< :Stage3 trip-onto:hasDestination :Rabat>>  trip-onto:hasArrival "2018-03-15T12:00:00"^^xsd:dateTime .
+<< :Stage3 js:hasStartLocation :Tangier>> js:hasDeparture "2018-03-15T08:00:00"^^xsd:dateTime .
+<< :Stage3 js:hasDestination :Rabat>>  js:hasArrival "2018-03-15T12:00:00"^^xsd:dateTime .
 
 
-<< :Stage3 trip-onto:meanOfTransportation dbr:Car >> trip-onto:hasCost 300 .
-<< << :Stage3 trip-onto:meanOfTransportation dbr:Car >> trip-onto:hasCost 300 >> trip-onto:hasDescription "Fuel" .
-<< << :Stage3 trip-onto:meanOfTransportation dbr:Car >> trip-onto:hasCost 300 >> trip-onto:hasCurrency currency:MoroccanDirham.
+<< :Stage3 js:meanOfTransportation dbr:Car >> js:hasCost 300 .
+<< << :Stage3 js:meanOfTransportation dbr:Car >> js:hasCost 300 >> js:hasDescription "Fuel" .
+<< << :Stage3 js:meanOfTransportation dbr:Car >> js:hasCost 300 >> js:hasCurrency currency:MoroccanDirham.
 
-:Stage3 trip-onto:hasParticipant :LeaD .
+:Stage3 js:hasParticipant :LeaD .
 
-:Stage3 trip-onto:hasStay :StayStage3 .
+:Stage3 js:hasStay :StayStage3 .
 
-:StayStage3 a trip-onto:Stay ;
-    trip-onto:hasAccommodation :HotelRabat .
+:StayStage3 a js:Stay ;
+    js:hasAccommodation :HotelRabat .
 
 
-<< :StayStage3 trip-onto:hasAccommodation :HotelRabat  >> trip-onto:hasCost 1000 .
-<< << :StayStage3 trip-onto:hasAccommodation :HotelRabat  >> trip-onto:hasCost 1000 >> trip-onto:hasCurrency currency:MoroccanDirham .
+<< :StayStage3 js:hasAccommodation :HotelRabat  >> js:hasCost 1000 .
+<< << :StayStage3 js:hasAccommodation :HotelRabat  >> js:hasCost 1000 >> js:hasCurrency currency:MoroccanDirham .
 
 
 ### Stage Journey 4 Rabat–Marakech ###
 ####################################
 
-:Journey_2018_03 trip-onto:hasStage :Stage4 .
+:Journey_2018_03 js:hasStage :Stage4 .
 
-<<:Journey_2018_03 trip-onto:hasStage :Stage4>> trip-onto:hasStartDate "2018-03-18"^^xsd:date .
-<<:Journey_2018_03 trip-onto:hasStage :Stage4>> trip-onto:hasEndDate "2018-03-22"^^xsd:date.
+<<:Journey_2018_03 js:hasStage :Stage4>> js:hasStartDate "2018-03-18"^^xsd:date .
+<<:Journey_2018_03 js:hasStage :Stage4>> js:hasEndDate "2018-03-22"^^xsd:date.
 
-:Stage4 a trip-onto:Journey;
-    trip-onto:hasStartLocation :Rabat;
-    trip-onto:hasDestination :Marrakech ;
-    trip-onto:meanOfTransportation dbr:Car .
+:Stage4 a js:Journey;
+    js:hasStartLocation :Rabat;
+    js:hasDestination :Marrakech ;
+    js:meanOfTransportation dbr:Car .
 
-<< :Stage4 trip-onto:hasStartLocation :Rabat>> trip-onto:hasDeparture "2018-03-18T08:00:00"^^xsd:dateTime .
-<< :Stage3 trip-onto:hasDestination :Marrakech>>  trip-onto:hasArrival "2018-03-18T16:00:00"^^xsd:dateTime .
+<< :Stage4 js:hasStartLocation :Rabat>> js:hasDeparture "2018-03-18T08:00:00"^^xsd:dateTime .
+<< :Stage3 js:hasDestination :Marrakech>>  js:hasArrival "2018-03-18T16:00:00"^^xsd:dateTime .
 
-<< :Stage4 trip-onto:meanOfTransportation dbr:Car>> :hasCost 500 .
-<< << :Stage4 trip-onto:meanOfTransportation dbr:Car >> :hasCost 500 >> trip-onto:hasCurrency  currency:MoroccanDirham.
+<< :Stage4 js:meanOfTransportation dbr:Car>> :hasCost 500 .
+<< << :Stage4 js:meanOfTransportation dbr:Car >> :hasCost 500 >> js:hasCurrency  currency:MoroccanDirham.
 
-:Stage4 trip-onto:hasParticipant :LeaD .
-:Stage4 trip-onto:hasStay :StayStage4 .
+:Stage4 js:hasParticipant :LeaD .
+:Stage4 js:hasStay :StayStage4 .
 
-:StayStage4 a trip-onto:Stay ;
-    trip-onto:hasAccommodation :HotelMarrakech .
+:StayStage4 a js:Stay ;
+    js:hasAccommodation :HotelMarrakech .
 
-<< :StayStage4 trip-onto:hasAccommodation :HotelMarrakech >> trip-onto:hasCost 1000 .
-<< << :StayStage4 trip-onto:hasAccommodation :HotelMarrakech>> trip-onto:hasCost 1000 >> trip-onto:hasCurrency  currency:MoroccanDirham .
+<< :StayStage4 js:hasAccommodation :HotelMarrakech >> js:hasCost 1000 .
+<< << :StayStage4 js:hasAccommodation :HotelMarrakech>> js:hasCost 1000 >> js:hasCurrency  currency:MoroccanDirham .
 
 
 ############# Journey Back to Zurich #######
-:SofiaM trip-onto:hasJourney :Journey_2018_22 .
+:SofiaM js:hasJourney :Journey_2018_22 .
 
-:Journey_2018_22 a trip-onto:Journey ;
-    trip-onto:hasDestination :Zurich;
-    trip-onto:hasStartLocation :Marrakech .
+:Journey_2018_22 a js:Journey ;
+    js:hasDestination :Zurich;
+    js:hasStartLocation :Marrakech .
 
-<< :SofiaM trip-onto:hasJourney :Journey_2018_22 >> trip-onto:hasDeparture "2018-03-22T10:00:00"^^xsd:dateTime .
-<< :SofiaM trip-onto:hasJourney :Journey_2018_22 >> trip-onto:hasArrival "2018-03-22T14:00:00"^^xsd:dateTime .
+<< :SofiaM js:hasJourney :Journey_2018_22 >> js:hasDeparture "2018-03-22T10:00:00"^^xsd:dateTime .
+<< :SofiaM js:hasJourney :Journey_2018_22 >> js:hasArrival "2018-03-22T14:00:00"^^xsd:dateTime .
 
 # Add Excursion || Add Dining Activity

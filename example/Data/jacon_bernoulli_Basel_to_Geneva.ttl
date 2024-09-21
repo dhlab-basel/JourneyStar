@@ -7,302 +7,302 @@
 @prefix schema: <https://schema.org/> .
 @prefix wd: <http://www.wikidata.org/entity/> .
 @prefix dbr: <http://dbpedia.org/resource/> .
-@prefix trip-onto: <http://journeyStar.dhlab.ch/ontology/trip-onto#> .
+@prefix js: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#> .
 @prefix : <http://journeyStar.dhlab.ch/data/JBReisebuechlein#> .
 @base <http://journeyStar.dhlab.ch/data/JBReisebuechlein#> .
 
 # Data – Reise von Basel nach Genf
 
 # Journey
-:JourneyBaselGenf a trip-onto:Journey ;
-    trip-onto:hasStartLocation :Basel;
-    trip-onto:hasDestination :Genf ;
-    trip-onto:hasDescription "Journey from Basel to Geneva with a long stay in Geneva.".
+:JourneyBaselGenf a js:Journey ;
+    js:hasStartLocation :Basel;
+    js:hasDestination :Genf ;
+    js:hasDescription "Journey from Basel to Geneva with a long stay in Geneva.".
 
-# Trip-Onto Data
-:JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf.
+# JourneyStar Data
+:JacobBernoulli js:hasJourney :JourneyBaselGenf.
 
 # mentioned in Entry 1 of Reisbüchlein, using entry IRI
-<< :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:mentionedIn <http://rdfh.ch/0801/GcXDoaZgRu6E2scC77h6gw> .
+<< :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:mentionedIn <http://rdfh.ch/0801/GcXDoaZgRu6E2scC77h6gw> .
 
-<< :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStartDate "1676-08-20"^^xsd:date .
-<< :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasEndDate "1678-05-08"^^xsd:date.
-<< :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasDescription "Duration of stay in Geneva 20 months".
+<< :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStartDate "1676-08-20"^^xsd:date .
+<< :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasEndDate "1678-05-08"^^xsd:date.
+<< :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasDescription "Duration of stay in Geneva 20 months".
 
 
-<< :JourneyBaselGenf trip-onto:hasStartLocation :Basel >> trip-onto:hasDeparture "1676-08-20"^^xsd:date .
-<< :JourneyBaselGenf trip-onto:hasDestination :Genf >> trip-onto:hasArrival "1676-08-27"^^xsd:dateTime .
+<< :JourneyBaselGenf js:hasStartLocation :Basel >> js:hasDeparture "1676-08-20"^^xsd:date .
+<< :JourneyBaselGenf js:hasDestination :Genf >> js:hasArrival "1676-08-27"^^xsd:dateTime .
 
 ### Basel–Liestal###
 ##################################
 
-:StageBaselLiestal a trip-onto:Journey;
-    trip-onto:hasStartLocation :Basel;
-    trip-onto:hasDestination :Liestal ;
-    trip-onto:meanOfTransportation :Horse .
+:StageBaselLiestal a js:Journey;
+    js:hasStartLocation :Basel;
+    js:hasDestination :Liestal ;
+    js:meanOfTransportation :Horse .
 
-<< :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageBaselLiestal .
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageBaselLiestal >> trip-onto:hasStartDate "1676-08-20"^^xsd:date.
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageBaselLiestal >> trip-onto:hasEndDate "1676-08-21"^^xsd:date.
+<< :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageBaselLiestal .
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageBaselLiestal >> js:hasStartDate "1676-08-20"^^xsd:date.
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageBaselLiestal >> js:hasEndDate "1676-08-21"^^xsd:date.
 
 
 # mentioned in Page 13 of Reisebuechlein, using page IRI
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageBaselLiestal >> trip-onto:mentionedIn <http://rdfh.ch/0801/zcLJ81hdQFaH8Kq3kmcqCQ> .
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageBaselLiestal >> js:mentionedIn <http://rdfh.ch/0801/zcLJ81hdQFaH8Kq3kmcqCQ> .
 
-<< :StageBaselLiestal trip-onto:hasStartLocation :Basel >> trip-onto:hasDeparture "1676-08-20"^^xsd:date .
-<< :StageBaselLiestal trip-onto:hasDestination :Liestal >> trip-onto:hasArrival "1676-08-20"^^xsd:date .
+<< :StageBaselLiestal js:hasStartLocation :Basel >> js:hasDeparture "1676-08-20"^^xsd:date .
+<< :StageBaselLiestal js:hasDestination :Liestal >> js:hasArrival "1676-08-20"^^xsd:date .
 
 #Stay
-:StageBaselLiestal trip-onto:hasStay :StayStageBaselLiestal .
+:StageBaselLiestal js:hasStay :StayStageBaselLiestal .
 
-:StayStageBaselLiestal a trip-onto:Stay ;
-    trip-onto:hasAccommodation :Schluessel .
+:StayStageBaselLiestal a js:Stay ;
+    js:hasAccommodation :Schluessel .
 
-:Schluessel a trip-onto:Accommodation ;
+:Schluessel a js:Accommodation ;
     schema:name "Schlüssel" .
 
 # here: combined cost
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageBaselLiestal >> trip-onto:hasCost 2 .
-<< << << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageBaselLiestal >> trip-onto:hasCost 2 >> trip-onto:hasCurrency "Francken".
-<< << << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageBaselLiestal >> trip-onto:hasCost 2 >> trip-onto:hasDescription "Total cost of accomodation and dining.".
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageBaselLiestal >> js:hasCost 2 .
+<< << << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageBaselLiestal >> js:hasCost 2 >> js:hasCurrency "Francken".
+<< << << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageBaselLiestal >> js:hasCost 2 >> js:hasDescription "Total cost of accomodation and dining.".
 
 ### Stage Liestal–Waldenburg ###
 ##################################
 
-:StageLiestalWaldenburg a trip-onto:Journey;
-    trip-onto:hasStartLocation :Liestal;
-    trip-onto:hasDestination :Waldenburg ;
-    trip-onto:meanOfTransportation :Horse .
+:StageLiestalWaldenburg a js:Journey;
+    js:hasStartLocation :Liestal;
+    js:hasDestination :Waldenburg ;
+    js:meanOfTransportation :Horse .
 
-<< :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageLiestalWaldenburg .
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageLiestalWaldenburg >> trip-onto:hasStartDate "1676-08-21"^^xsd:date.
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageLiestalWaldenburg >> trip-onto:hasEndDate "1676-08-22"^^xsd:date.
+<< :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageLiestalWaldenburg .
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageLiestalWaldenburg >> js:hasStartDate "1676-08-21"^^xsd:date.
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageLiestalWaldenburg >> js:hasEndDate "1676-08-22"^^xsd:date.
 # mentioned in page 14, page IRI used
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageLiestalWaldenburg >> trip-onto:mentionedIn <http://rdfh.ch/0801/xNykPawcT36A5cEFSTSHKg> .
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageLiestalWaldenburg >> js:mentionedIn <http://rdfh.ch/0801/xNykPawcT36A5cEFSTSHKg> .
 
-<< :StageLiestalWaldenburg trip-onto:hasStartLocation :Liestal >> trip-onto:hasDeparture "1676-08-21"^^xsd:date .
-<< :StageLiestalWaldenburg trip-onto:hasDestination :Waldenburg >> trip-onto:hasArrival "1676-08-21"^^xsd:date .
+<< :StageLiestalWaldenburg js:hasStartLocation :Liestal >> js:hasDeparture "1676-08-21"^^xsd:date .
+<< :StageLiestalWaldenburg js:hasDestination :Waldenburg >> js:hasArrival "1676-08-21"^^xsd:date .
 
 #Stay
-:StageLiestalWaldenburg trip-onto:hasStay :StayStageLiestalWaldenburg .
+:StageLiestalWaldenburg js:hasStay :StayStageLiestalWaldenburg .
 
-:StayStageLiestalWaldenburg a trip-onto:Stay ;
-    trip-onto:hasAccommodation :WaldenburgSchloss .
+:StayStageLiestalWaldenburg a js:Stay ;
+    js:hasAccommodation :WaldenburgSchloss .
 
-:WaldenburgSchloss a trip-onto:Accommodation ;
+:WaldenburgSchloss a js:Accommodation ;
     schema:name "Waldenburg Schloss" .
 
 
 ### Stage Waldenburg-Solothurn###
 ##################################
-:StageWaldenburgSolothurn a trip-onto:Journey;
-    trip-onto:hasStartLocation :Waldenburg;
-    trip-onto:hasDestination :Solothurn ;
-    trip-onto:meanOfTransportation :Horse .
+:StageWaldenburgSolothurn a js:Journey;
+    js:hasStartLocation :Waldenburg;
+    js:hasDestination :Solothurn ;
+    js:meanOfTransportation :Horse .
 
-<< :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageWaldenburgSolothurn .
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageWaldenburgSolothurn >> trip-onto:hasStartDate "1676-08-22"^^xsd:date.
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageWaldenburgSolothurn >> trip-onto:hasEndDate "1676-08-23"^^xsd:date.
+<< :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageWaldenburgSolothurn .
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageWaldenburgSolothurn >> js:hasStartDate "1676-08-22"^^xsd:date.
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageWaldenburgSolothurn >> js:hasEndDate "1676-08-23"^^xsd:date.
 
 # mentioned in page 14, page IRI used
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageWaldenburgSolothurn >> trip-onto:mentionedIn <http://rdfh.ch/0801/xNykPawcT36A5cEFSTSHKg> .
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageWaldenburgSolothurn >> js:mentionedIn <http://rdfh.ch/0801/xNykPawcT36A5cEFSTSHKg> .
 
-<< :StageWaldenburgSolothurn trip-onto:hasStartLocation :Waldenburg >> trip-onto:hasDeparture "1676-08-22"^^xsd:date .
-<< :StageWaldenburgSolothurn trip-onto:hasDestination :Solothurn >> trip-onto:hasArrival "1676-08-22"^^xsd:date .
+<< :StageWaldenburgSolothurn js:hasStartLocation :Waldenburg >> js:hasDeparture "1676-08-22"^^xsd:date .
+<< :StageWaldenburgSolothurn js:hasDestination :Solothurn >> js:hasArrival "1676-08-22"^^xsd:date .
 
 #Stay
-:StageWaldenburgSolothurn trip-onto:hasStay :StayStageWaldenburgSolothurn .
+:StageWaldenburgSolothurn js:hasStay :StayStageWaldenburgSolothurn .
 
-:StayStageWaldenburgSolothurn a trip-onto:Stay ;
-    trip-onto:hasAccommodation :Cronen .
+:StayStageWaldenburgSolothurn a js:Stay ;
+    js:hasAccommodation :Cronen .
 
-:Cronen a trip-onto:Accommodation ;
+:Cronen a js:Accommodation ;
     schema:name "Cronen" .
 
 ### The region that contains the start of the description of Solothurn is added with its IRI.
-<< :StageWaldenburgSolothurn trip-onto:hasDestination :Solothurn >> :hasDescription <http://rdfh.ch/0801/cnwPZJ2aTDSLtPWwp1zACA> .
+<< :StageWaldenburgSolothurn js:hasDestination :Solothurn >> :hasDescription <http://rdfh.ch/0801/cnwPZJ2aTDSLtPWwp1zACA> .
 
 ### Stage Solothurn-Biel###
 ##################################
-:StageSolothurnBiel a trip-onto:Journey;
-    trip-onto:hasStartLocation :Solothurn;
-    trip-onto:hasDestination :Biel ;
-    trip-onto:meanOfTransportation :Horse .
+:StageSolothurnBiel a js:Journey;
+    js:hasStartLocation :Solothurn;
+    js:hasDestination :Biel ;
+    js:meanOfTransportation :Horse .
 
-<< :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageSolothurnBiel .
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageSolothurnBiel >> trip-onto:hasStartDate "1676-08-23"^^xsd:date.
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageSolothurnBiel >> trip-onto:hasEndDate "1676-08-24"^^xsd:date.
+<< :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageSolothurnBiel .
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageSolothurnBiel >> js:hasStartDate "1676-08-23"^^xsd:date.
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageSolothurnBiel >> js:hasEndDate "1676-08-24"^^xsd:date.
 
-<< :StageSolothurnBiel trip-onto:hasStartLocation :Solothurn >> trip-onto:hasDeparture "1676-08-23"^^xsd:date .
-<< :StageSolothurnBiel trip-onto:hasDestination :Biel >> trip-onto:hasArrival "1676-08-23"^^xsd:date .
+<< :StageSolothurnBiel js:hasStartLocation :Solothurn >> js:hasDeparture "1676-08-23"^^xsd:date .
+<< :StageSolothurnBiel js:hasDestination :Biel >> js:hasArrival "1676-08-23"^^xsd:date .
 
 #Stay
-:StageSolothurnBiel trip-onto:hasStay :StayStageSolothurnBiel .
+:StageSolothurnBiel js:hasStay :StayStageSolothurnBiel .
 
-:StayStageSolothurnBiel a trip-onto:Stay ;
-    trip-onto:hasAccommodation :WeissenCreuetz .
+:StayStageSolothurnBiel a js:Stay ;
+    js:hasAccommodation :WeissenCreuetz .
 
-:WeissenCreuetz a trip-onto:Accommodation ;
+:WeissenCreuetz a js:Accommodation ;
     schema:name "Weissen Creütz" .
 
 # here: combined cost
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageSolothurnBiel >> trip-onto:hasCost 5 .
-<< << << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageSolothurnBiel >> trip-onto:hasCost 5 >> trip-onto:hasCurrency "Francken".
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageSolothurnBiel >> js:hasCost 5 .
+<< << << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageSolothurnBiel >> js:hasCost 5 >> js:hasCurrency "Francken".
 
 #comment
-<< << << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageSolothurnBiel >> trip-onto:hasCost 5 >> trip-onto:hasDescription "Paid for others".
+<< << << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageSolothurnBiel >> js:hasCost 5 >> js:hasDescription "Paid for others".
 
 ### mentionedIn page 15, page IRI is used
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageSolothurnBiel >> trip-onto:mentionedIn <http://rdfh.ch/0801/GVg8b_JYSryLAPUj-1GWSw> .
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageSolothurnBiel >> js:mentionedIn <http://rdfh.ch/0801/GVg8b_JYSryLAPUj-1GWSw> .
 
 ### Stage Biel-Avenches###
 ##################################
 
-:StageBielAvenches a trip-onto:Journey;
-    trip-onto:hasStartLocation :Biel;
-    trip-onto:hasDestination :Avenches ;
-    trip-onto:meanOfTransportation :Horse .
+:StageBielAvenches a js:Journey;
+    js:hasStartLocation :Biel;
+    js:hasDestination :Avenches ;
+    js:meanOfTransportation :Horse .
 
-<< :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageBielAvenches .
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageBielAvenches >> trip-onto:hasStartDate "1676-08-24"^^xsd:date.
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageBielAvenches >> trip-onto:hasEndDate "1676-08-25"^^xsd:date.
+<< :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageBielAvenches .
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageBielAvenches >> js:hasStartDate "1676-08-24"^^xsd:date.
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageBielAvenches >> js:hasEndDate "1676-08-25"^^xsd:date.
 
-<< :StageBielAvenches trip-onto:hasStartLocation :Biel >> trip-onto:hasDeparture "1676-08-24"^^xsd:date .
-<< :StageBielAvenches trip-onto:hasDestination :Avenches >> trip-onto:hasArrival "1676-08-24"^^xsd:date .
+<< :StageBielAvenches js:hasStartLocation :Biel >> js:hasDeparture "1676-08-24"^^xsd:date .
+<< :StageBielAvenches js:hasDestination :Avenches >> js:hasArrival "1676-08-24"^^xsd:date .
 
 #Stay
-:StageBielAvenches trip-onto:hasStay :StayStageBielAvenches .
+:StageBielAvenches js:hasStay :StayStageBielAvenches .
 
-:StayStageBielAvenches a trip-onto:Stay ;
-    trip-onto:hasAccommodation :Pfauen .
+:StayStageBielAvenches a js:Stay ;
+    js:hasAccommodation :Pfauen .
 
-:Pfauen a trip-onto:Accommodation ;
+:Pfauen a js:Accommodation ;
     schema:name "Pfauen" .
 
 # here: combined cost
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageBielAvenches >> trip-onto:hasCost 16 .
-<< << << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageBielAvenches >> trip-onto:hasCost 16 >> trip-onto:hasCurrency "schweitzbz".
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageBielAvenches >> js:hasCost 16 .
+<< << << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageBielAvenches >> js:hasCost 16 >> js:hasCurrency "schweitzbz".
 
-<< << << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageBielAvenches >> trip-onto:hasCost 16 >> trip-onto:hasDescription "Total cost of accomodation and dining".
+<< << << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageBielAvenches >> js:hasCost 16 >> js:hasDescription "Total cost of accomodation and dining".
 
 ### mentionedIn page 16, page IRI is used
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageBielAvenches >> trip-onto:mentionedIn <http://rdfh.ch/0801/e4h3lbvlRVazAHR9Vgnlpw> .
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageBielAvenches >> js:mentionedIn <http://rdfh.ch/0801/e4h3lbvlRVazAHR9Vgnlpw> .
 
 ### Stage Avenches-Lausanne###
 ##################################
 
-:StageAvenchesLausanne a trip-onto:Journey;
-    trip-onto:hasStartLocation :Avenches;
-    trip-onto:hasDestination :Lausanne ;
-    trip-onto:meanOfTransportation :Horse .
+:StageAvenchesLausanne a js:Journey;
+    js:hasStartLocation :Avenches;
+    js:hasDestination :Lausanne ;
+    js:meanOfTransportation :Horse .
 
-<< :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageAvenchesLausanne .
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageAvenchesLausanne >> trip-onto:hasStartDate "1676-08-25"^^xsd:date.
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageAvenchesLausanne >> trip-onto:hasEndDate "1676-08-26"^^xsd:date.
+<< :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageAvenchesLausanne .
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageAvenchesLausanne >> js:hasStartDate "1676-08-25"^^xsd:date.
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageAvenchesLausanne >> js:hasEndDate "1676-08-26"^^xsd:date.
 
 
 
-<< :StageAvenchesLausanne trip-onto:hasStartLocation :Avenches >> trip-onto:hasDeparture "1676-08-25"^^xsd:date .
-<< :StageAvenchesLausanne trip-onto:hasDestination :Lausanne >> trip-onto:hasArrival "1676-08-25"^^xsd:date .
+<< :StageAvenchesLausanne js:hasStartLocation :Avenches >> js:hasDeparture "1676-08-25"^^xsd:date .
+<< :StageAvenchesLausanne js:hasDestination :Lausanne >> js:hasArrival "1676-08-25"^^xsd:date .
 
 #Stay
-:StageAvenchesLausanne trip-onto:hasStay :StayStageAvenchesLausanne .
+:StageAvenchesLausanne js:hasStay :StayStageAvenchesLausanne .
 
-:StayStageAvenchesLausanne a trip-onto:Stay ;
-    trip-onto:hasAccommodation :alOurs .
+:StayStageAvenchesLausanne a js:Stay ;
+    js:hasAccommodation :alOurs .
 
-:alOurs a trip-onto:Accommodation ;
+:alOurs a js:Accommodation ;
     schema:name "à l'ours" .
 
 # activity
-:StageAvenchesLausanne trip-onto:hasActivity :StageAvenchesLausanne_lunch .
+:StageAvenchesLausanne js:hasActivity :StageAvenchesLausanne_lunch .
 
-:StageAvenchesLausanne_lunch a trip-onto:Dining ;
-    trip-onto:mealType  "Lunch" ;
-    trip-onto:hasLocation "La maison de ville".
+:StageAvenchesLausanne_lunch a js:Dining ;
+    js:mealType  "Lunch" ;
+    js:hasLocation "La maison de ville".
 
-<< :StageAvenchesLausanne trip-onto:hasActivity :StageAvenchesLausanne_lunch >> trip-onto:hasCost 1 .
-<< << :StageAvenchesLausanne trip-onto:hasActivity :StageAvenchesLausanne_lunch >> trip-onto:hasCost 1 >> trip-onto:hasCurrency "Francken".
+<< :StageAvenchesLausanne js:hasActivity :StageAvenchesLausanne_lunch >> js:hasCost 1 .
+<< << :StageAvenchesLausanne js:hasActivity :StageAvenchesLausanne_lunch >> js:hasCost 1 >> js:hasCurrency "Francken".
 ### mentionedIn page 17, page IRI is used
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageAvenchesLausanne >> trip-onto:mentionedIn <http://rdfh.ch/0801/DHpF4ip3SbSdxm97CcEeNA> .
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageAvenchesLausanne >> js:mentionedIn <http://rdfh.ch/0801/DHpF4ip3SbSdxm97CcEeNA> .
 
 # activity
-:StageAvenchesLausanne trip-onto:hasActivity :StageAvenchesLausanne_dinner .
+:StageAvenchesLausanne js:hasActivity :StageAvenchesLausanne_dinner .
 
-:StageAvenchesLausanne_dinner a trip-onto:Dining;
-    trip-onto:mealType  "Dinner".
+:StageAvenchesLausanne_dinner a js:Dining;
+    js:mealType  "Dinner".
 
-<< :StageAvenchesLausanne trip-onto:hasActivity :StageAvenchesLausanne_dinner >> trip-onto:hasCost 17 .
-<< << :StageAvenchesLausanne trip-onto:hasActivity :StageAvenchesLausanne_dinner >> trip-onto:hasCost 17 >> trip-onto:hasCurrency "schweitzbz".
+<< :StageAvenchesLausanne js:hasActivity :StageAvenchesLausanne_dinner >> js:hasCost 17 .
+<< << :StageAvenchesLausanne js:hasActivity :StageAvenchesLausanne_dinner >> js:hasCost 17 >> js:hasCurrency "schweitzbz".
 
 
 ### Stage Lausanne-Coppet ###
 ##################################
 
-:StageLausanneCoppet a trip-onto:Journey;
-    trip-onto:hasStartLocation :Lausanne;
-    trip-onto:hasDestination :Coppet ;
-    trip-onto:meanOfTransportation :Horse .
+:StageLausanneCoppet a js:Journey;
+    js:hasStartLocation :Lausanne;
+    js:hasDestination :Coppet ;
+    js:meanOfTransportation :Horse .
 
-<< :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageLausanneCoppet .
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageLausanneCoppet >> trip-onto:hasStartDate "1676-08-26"^^xsd:date.
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageLausanneCoppet >> trip-onto:hasEndDate "1676-08-27"^^xsd:date.
+<< :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageLausanneCoppet .
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageLausanneCoppet >> js:hasStartDate "1676-08-26"^^xsd:date.
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageLausanneCoppet >> js:hasEndDate "1676-08-27"^^xsd:date.
 ### mentionedIn page 17, page IRI is used
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageLausanneCoppet >> trip-onto:mentionedIn <http://rdfh.ch/0801/DHpF4ip3SbSdxm97CcEeNA> .
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageLausanneCoppet >> js:mentionedIn <http://rdfh.ch/0801/DHpF4ip3SbSdxm97CcEeNA> .
 
-<< :StageLausanneCoppet trip-onto:hasStartLocation :Lausanne >> trip-onto:hasDeparture "1676-08-26"^^xsd:date .
-<< :StageLausanneCoppet trip-onto:hasDestination :Coppet >> trip-onto:hasArrival "1676-08-26"^^xsd:date .
-
-# activity
-:StageLausanneCoppet trip-onto:hasActivity :StageLausanneCoppet_lunch .
-
-:StageLausanneCoppet_lunch a trip-onto:Dining;
-    trip-onto:mealType  "Lunch".
-
-<< :StageAvenchesLausanne trip-onto:hasActivity :StageLausanneCoppet_lunch >> trip-onto:hasCost 12 .
-<< << :StageAvenchesLausanne trip-onto:hasActivity :StageLausanneCoppet_lunch >> trip-onto:hasCost 12 >> trip-onto:hasCurrency "schweitzbz".
+<< :StageLausanneCoppet js:hasStartLocation :Lausanne >> js:hasDeparture "1676-08-26"^^xsd:date .
+<< :StageLausanneCoppet js:hasDestination :Coppet >> js:hasArrival "1676-08-26"^^xsd:date .
 
 # activity
-:StageLausanneCoppet trip-onto:hasActivity :StageLausanneCoppet_dinner .
+:StageLausanneCoppet js:hasActivity :StageLausanneCoppet_lunch .
 
-:StageLausanneCoppet_dinner a trip-onto:Dining;
-    trip-onto:mealType  "Dinner".
+:StageLausanneCoppet_lunch a js:Dining;
+    js:mealType  "Lunch".
 
-<< :StageLausanneCoppet trip-onto:hasActivity :StageLausanneCoppet_dinner >> trip-onto:hasCost 19 .
-<< << :StageLausanneCoppet trip-onto:hasActivity :StageLausanneCoppet_dinner >> trip-onto:hasCost 19 >> trip-onto:hasCurrency "schweitzbz".
+<< :StageAvenchesLausanne js:hasActivity :StageLausanneCoppet_lunch >> js:hasCost 12 .
+<< << :StageAvenchesLausanne js:hasActivity :StageLausanneCoppet_lunch >> js:hasCost 12 >> js:hasCurrency "schweitzbz".
+
+# activity
+:StageLausanneCoppet js:hasActivity :StageLausanneCoppet_dinner .
+
+:StageLausanneCoppet_dinner a js:Dining;
+    js:mealType  "Dinner".
+
+<< :StageLausanneCoppet js:hasActivity :StageLausanneCoppet_dinner >> js:hasCost 19 .
+<< << :StageLausanneCoppet js:hasActivity :StageLausanneCoppet_dinner >> js:hasCost 19 >> js:hasCurrency "schweitzbz".
 
 #
 ### Stage Coppet-Genf ###
 ##################################
 
-<< :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageCoppetGenf .
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageCoppetGenf >> trip-onto:hasStartDate "1676-08-27"^^xsd:date.
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageCoppetGenf >> trip-onto:hasEndDate "1678-05-08"^^xsd:date.
-<< << :JacobBernoulli trip-onto:hasJourney :JourneyBaselGenf >> trip-onto:hasStage :StageCoppetGenf >> trip-onto:mentionedIn <http://rdfh.ch/0801/DHpF4ip3SbSdxm97CcEeNA>, <http://rdfh.ch/0801/CsdlPD0YRc2X9PZg2e59Jw> .
+<< :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageCoppetGenf .
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageCoppetGenf >> js:hasStartDate "1676-08-27"^^xsd:date.
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageCoppetGenf >> js:hasEndDate "1678-05-08"^^xsd:date.
+<< << :JacobBernoulli js:hasJourney :JourneyBaselGenf >> js:hasStage :StageCoppetGenf >> js:mentionedIn <http://rdfh.ch/0801/DHpF4ip3SbSdxm97CcEeNA>, <http://rdfh.ch/0801/CsdlPD0YRc2X9PZg2e59Jw> .
 
-:StageCoppetGenf a trip-onto:Journey;
-    trip-onto:hasStartLocation :Coppet;
-    trip-onto:hasDestination :Genf ;
-    trip-onto:meanOfTransportation :Horse .
+:StageCoppetGenf a js:Journey;
+    js:hasStartLocation :Coppet;
+    js:hasDestination :Genf ;
+    js:meanOfTransportation :Horse .
 
 # AK: check dates >> inconsistencies departure arrival
-<< :StageCoppetGenf trip-onto:hasStartLocation :Coppet >> trip-onto:hasDeparture "1676-08-27"^^xsd:date .
-<< :StageCoppetGenf trip-onto:hasDestination :Genf >> trip-onto:hasArrival "1676-08-27"^^xsd:date .
+<< :StageCoppetGenf js:hasStartLocation :Coppet >> js:hasDeparture "1676-08-27"^^xsd:date .
+<< :StageCoppetGenf js:hasDestination :Genf >> js:hasArrival "1676-08-27"^^xsd:date .
 
-:StageCoppetGenf trip-onto:hasStay :StayStageCoppetGenf .
+:StageCoppetGenf js:hasStay :StayStageCoppetGenf .
 
-:StayStageCoppetGenf a trip-onto:Stay;
-    trip-onto:hasAccommodation :TroisRois .
+:StayStageCoppetGenf a js:Stay;
+    js:hasAccommodation :TroisRois .
 
-:TroisRois a trip-onto:Accommodation;
+:TroisRois a js:Accommodation;
     schema:name "Trois rois" .
 
 
 # activity
-:StageCoppetGenf trip-onto:hasActivity :StageCoppetGenf_meal .
+:StageCoppetGenf js:hasActivity :StageCoppetGenf_meal .
 
-:StageCoppetGenf_meal a trip-onto:Dining;
-    trip-onto:hasDescription  "3 meals 1 Rchthl (upon arrival)".
+:StageCoppetGenf_meal a js:Dining;
+    js:hasDescription  "3 meals 1 Rchthl (upon arrival)".
 
 ### mentionedIn region text3 of page 17
-<< :StageCoppetGenf trip-onto:hasActivity :StageCoppetGenf_meal >> trip-onto:mentionedIn <http://rdfh.ch/0801/JAzTtpHsS0qKjH4TdM9WeQ> .
+<< :StageCoppetGenf js:hasActivity :StageCoppetGenf_meal >> js:mentionedIn <http://rdfh.ch/0801/JAzTtpHsS0qKjH4TdM9WeQ> .

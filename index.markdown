@@ -29,7 +29,7 @@ defined properties for this that can be used for annotated triples.
 To keep this ontology generic, we have employed the existing ontologies and
 extended the existing definitions of the classes and properties in other
 ontologies such as [schema](https://schema.org/) and [Trip](http://ontology.eil.utoronto.ca/icity/Trip/Trip)
-through defining subclasses. The ontology serialized in Turtle can be found [here](https://github.com/dhlab-basel/trip-ontology/blob/main/tripOntology.ttl).
+through defining subclasses. The ontology serialized in Turtle can be found [here](https://github.com/dhlab-basel/JourneyStar/blob/main/journeyStar.ttl).
 
 This ontology has the prefix `js` and the namespace `http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#`.
 
