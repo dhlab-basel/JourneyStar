@@ -20,7 +20,7 @@
 ################################
 
 
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Person ###
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Person
 js:Person rdf:type owl:Class ;
     rdfs:subClassOf schema:Person;
     rdfs:label "Person"@de ,
@@ -28,7 +28,7 @@ js:Person rdf:type owl:Class ;
     rdfs:comment "A person."@en .
 
 
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Location ###
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Location
 js:Location rdf:type owl:Class ;
         rdfs:subclassOf dbo:Place , schema:Place ;
         rdfs:label  "Ort"@de,
@@ -36,7 +36,30 @@ js:Location rdf:type owl:Class ;
         rdfs:comment "A location on plant earth with a coordinate."@en .
 
 
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Activity ###
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Event
+js:Event rdf:type owl:Class ;
+        rdfs:label "Event"@de,
+                   "Event"@en ;
+        rdfs:comment "A class representing a real-world event."@en .
+
+
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Occurrence
+js:Occurrence rdf:type owl:Class ;
+        rdfs:subClassOf js:Event ;
+        rdfs:label "Ereignis"@de,
+                   "Occurrence"@en;
+        rdfs:comment "An occurence during a journey (eg. encounters, ship-wreck, flight-delay)." .
+
+
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#NaturalPhenomena
+js:NaturalPhenomena rdf:type owl:Class ;
+        rdfs:subClassOf js:Event ;
+        rdfs:label "Naturphänomen"@de,
+                   "Natural Phenomena"@en;
+        rdfs:comment "A natural phenomena (eg. earthquake, fire)." .
+
+
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Activity
 js:Activity rdf:type owl:Class ;
         rdfs:subClassOf activity:Activity , js:Event ;
         rdfs:label "Aktivität"@de,
@@ -44,7 +67,7 @@ js:Activity rdf:type owl:Class ;
         rdfs:comment "An activity involves movement and has duration."@en .
 
 
-# http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#SightSeeing #
+# http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#SightSeeing
 js:SightSeeing rdf:type owl:Class;
         rdfs:subClassOf js:Activity;
         rdfs:label "Sehenswürdigkeit"@de,
@@ -52,7 +75,7 @@ js:SightSeeing rdf:type owl:Class;
         rdfs:comment "Sightseeing is a short activity to visit a landmark, attraction etc."@en .
 
 
-# http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Entertainment #
+# http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Entertainment
 js:Entertainment rdf:type owl:Class;
         rdfs:subClassOf js:Activity;
         rdfs:label "Unterhaltung"@de,
@@ -60,7 +83,7 @@ js:Entertainment rdf:type owl:Class;
         rdfs:comment "An entertainment is a leisure activity such as theater performance."@en .
 
 
-# http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Visit #
+# http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Visit
 js:Visit rdf:type owl:Class;
         rdfs:subClassOf js:Activity;
         rdfs:label "Aktivität"@de,
@@ -68,7 +91,7 @@ js:Visit rdf:type owl:Class;
         rdfs:comment "A visit is meeting of a person in a location."@en .
 
 
-# http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Dining #
+# http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Dining
 js:Dining rdf:type owl:Class;
         rdfs:subClassOf js:Activity;
         rdfs:label "Essen"@de,
@@ -102,14 +125,14 @@ js:Excursion rdf:type owl:Class ;
         rdfs:comment "An excursion is a circular trip to a location and back lasting less than a day."@en .
 
 
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Stay ###
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Stay
 js:Stay rdf:type owl:Class ;
         rdfs:label "Aufenthalt"@de,
                    "Stay"@en;
         rdfs:comment "A stay is residence in a certain place during a journey."@en .
 
 
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Accommodation ###
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Accommodation
 js:Accommodation rdf:type owl:Class ;
         rdfs:subClassOf dbo:Building , dbo:Shelter ;
         rdfs:label "Unterkunft"@de ,
@@ -117,30 +140,7 @@ js:Accommodation rdf:type owl:Class ;
         rdfs:comment "An accommodation of a stay."@en .
 
 
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Event ###
-js:Event rdf:type owl:Class ;
-        rdfs:label "Event"@de,
-                   "Event"@en ;
-        rdfs:comment "A class representing a real-world event."@en .
-
-
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Occurrence ###
-js:Occurrence rdf:type owl:Class ;
-        rdfs:subClassOf js:Event ;
-        rdfs:label "Ereignis"@de,
-                   "Occurrence"@en;
-        rdfs:comment "An occurence during a journey (eg. encounters, ship-wreck, flight-delay)." .
-
-
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#NaturalPhenomena ###
-js:NaturalPhenomena rdf:type owl:Class ;
-        rdfs:subClassOf js:Event ;
-        rdfs:label "Naturphänomen"@de,
-                   "Natural Phenomena"@en;
-        rdfs:comment "A natural phenomena (eg. earthquake, fire)." .
-
-
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Currency ###
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Currency
 js:Currency rdf:type owl:Class ;
         rdfs:subClassOf dbo:Currency ;
         rdfs:label "Währung"@de,
@@ -182,14 +182,14 @@ js:calendar rdf:type owl:ObjectProperty ;
         rdfs:comment "The calendar of a date."@en .
 
 
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasDate ###
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasDate
 js:hasDate rdf:type owl:DatatypeProperty ;
         rdfs:label "Datum"@de ,
                    "Date"@en ;
         rdfs:comment "A date."@en .
 
 
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#startDate ###
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#startDate
 js:startDate rdf:type owl:DatatypeProperty ;
         rdfs:label "Startdatum"@de ,
                    "Start date"@en ;
