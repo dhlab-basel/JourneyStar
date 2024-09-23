@@ -50,12 +50,12 @@ js-shacl:PersonShape a sh:NodeShape  ;
     ],
     [
         sh:path schema:knows ;
-        sh:or ([sh:class js:Location ]
-               [sh:class js:Person ]) ;
+        sh:or ([sh:node js-shacl:LocationShape]
+               [sh:node js-shacl:PersonShape]) ;
     ],
     [
         sh:path js:participatedIn ;
-        sh:class js:Activity ;
+        sh:node js-shacl:ActivityShape ;
     ] ,
     [
         sh:path js:hasGnd ;
@@ -109,7 +109,7 @@ js-shacl:StayShape a sh:NodeShape  ;
     sh:property
 	  [
         sh:path js:hasAccommodation ;
-        sh:or ([sh:class js:Accommodation]
+        sh:or ([sh:node js-shacl:AccommodationShape]
                [sh:nodeKind sh:IRI]) ;
     ] ,
     [
@@ -144,7 +144,7 @@ js-shacl:AccommodationShape a sh:NodeShape ;
     [
         sh:path js:hasLocation;
         sh:or ( [sh:datatype xsd:string ]
-                [sh:class js:Location ]
+                [sh:node js-shacl:LocationShape ]
                 [sh:datatype xsd:anyURI ]
                 [sh:nodeKind sh:IRI ]) ;
     ] .
@@ -156,14 +156,14 @@ js-shacl:EventShape a sh:NodeShape;
     sh:property
     [
         sh:path js:hasParticipant;
-        sh:or ( [sh:class js:Person ]
+        sh:or ( [sh:node js-shacl:PersonShape ]
                 [sh:datatype xsd:anyURI ]
                 [sh:nodeKind sh:IRI ]);
     ] ,
     [
         sh:path js:hasLocation;
         sh:or ( [sh:datatype xsd:string ]
-                [sh:class js:Location ]
+                [sh:node js-shacl:LocationShape ]
                 [sh:datatype xsd:anyURI ]
                 [sh:nodeKind sh:IRI ]) ;
     ] ,
@@ -203,7 +203,7 @@ js-shacl:JourneyShape a sh:NodeShape;
         sh:path js:origin;
         sh:minCount 1;
         sh:or ( [sh:datatype xsd:string ]
-                [sh:class js:Location ]
+                [sh:node js-shacl:LocationShape ]
                 [sh:datatype xsd:anyURI ]
                 [sh:nodeKind sh:IRI ]) ;
     ] ,
@@ -211,7 +211,7 @@ js-shacl:JourneyShape a sh:NodeShape;
         sh:path js:destination;
         sh:minCount 1;
         sh:or ( [sh:datatype xsd:string ]
-                [sh:class js:Location ]
+                [sh:node js-shacl:LocationShape ]
                 [sh:datatype xsd:anyURI ]
                 [sh:nodeKind sh:IRI ]) ;
     ] ,
@@ -338,7 +338,7 @@ js-shacl:hasDescriptionPropertyShape
 js-shacl:originPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:origin ;
-    	sh:or ([sh:class js:Location]
+    	sh:or ([sh:node js-shacl:LocationShape]
     	       [sh:nodeKind sh:IRI]) .
 
 ### Shape for Property destination ###
@@ -346,7 +346,7 @@ js-shacl:originPropertyShape
 js-shacl:destinationPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:destination ;
-    	sh:or ([sh:class js:Location]
+    	sh:or ([sh:node js-shacl:LocationShape]
              [sh:datatype xsd:anyURI]
     	       [sh:nodeKind sh:IRI]) .
 
@@ -398,7 +398,7 @@ js-shacl:meanOfTransportationShape
 js-shacl:hasIntermediateDestinationPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:hasIntermediateDestination ;
-    	sh:or ([sh:class js:Location]
+    	sh:or ([sh:node js-shacl:LocationShape]
              [sh:nodeKind sh:IRI]
              [sh:datatype xsd:anyURI]) .
 
@@ -406,7 +406,7 @@ js-shacl:hasIntermediateDestinationPropertyShape
 js-shacl:hasParticipantPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:hasParticipant ;
-    	sh:or ([sh:class js:Person]
+    	sh:or ([sh:node js-shacl:PersonShape]
              [sh:nodeKind sh:IRI]
              [sh:datatype xsd:anyURI]) .
 
@@ -414,7 +414,7 @@ js-shacl:hasParticipantPropertyShape
 js-shacl:hasStagePropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:hasStage ;
-    	sh:class js:Journey .
+    	sh:node js-shacl:JourneyShape .
 
 ### has stay ###
 js-shacl:hasStayPropertyShape
@@ -426,13 +426,13 @@ js-shacl:hasStayPropertyShape
 js-shacl:hasActivityPropertyShape
     a sh:NodeShape;
     sh:targetObjectsOf js:hasActivity;
-    sh:node js:ActivityShape .
+    sh:node js-shacl:ActivityShape .
 
 ### has occurence ###
 js-shacl:hasOccurrencePropertyShape
     a sh:NodeShape;
     sh:targetObjectsOf js:hasOccurrence;
-    sh:class js:Occurence .
+    sh:class js:Occurrence .
 
 ### transit through###
 js-shacl:TransitPropertyShape
@@ -459,10 +459,10 @@ js-shacl:hasCostPropertyShape
 js-shacl:hasCurrencyPropertyShape
     a sh:NodeShape;
     sh:targetObjectsOf js:hasCurrency;
-    sh:or ( [sh:datatype xsd:string ]
+    sh:or ( [sh:datatype xsd:string]
             [sh:datatype xsd:anyURI]
-            [sh:nodeKind sh:IRI ]
-            [sh:class js:Currency ]) .
+            [sh:nodeKind sh:IRI]
+            [sh:node js-shacl:CurrencyShape]) .
 
 ### wikilink ###
 js-shacl:hasWikiLinkPropertyShape

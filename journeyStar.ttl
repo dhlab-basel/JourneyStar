@@ -48,7 +48,7 @@ js:Occurrence rdf:type owl:Class ;
         rdfs:subClassOf js:Event ;
         rdfs:label "Ereignis"@de,
                    "Occurrence"@en;
-        rdfs:comment "An occurence during a journey (eg. encounters, ship-wreck, flight-delay)." .
+        rdfs:comment "An occurrence during a journey (eg. encounters, ship-wreck, flight-delay)." .
 
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#NaturalPhenomena
