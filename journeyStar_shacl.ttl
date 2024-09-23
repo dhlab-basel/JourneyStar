@@ -40,7 +40,9 @@ js-shacl:PersonShape a sh:NodeShape  ;
     [
         sh:path schema:birthDate ;
         sh:maxCount 1 ;
-        sh:datatype xsd:date ;
+        sh:or ( [sh:datatype xsd:dateTime ]
+                [sh:datatype xsd:date ]
+                [sh:datatype xsd:gYear ]) ;
     ]
     ,
     [
