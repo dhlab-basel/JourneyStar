@@ -89,7 +89,8 @@ js-shacl:LocationShape a sh:NodeShape  ;
     [
         sh:path js:hasWikiLink ;
         sh:maxCount 1 ;
-        sh:datatype xsd:anyURI ;
+        sh:or ([sh:datatype xsd:anyURI ]
+                [sh:nodeKind sh:IRI ]) ;
     ] .
 
 ### Shape for Class Excursion ###
@@ -471,7 +472,7 @@ js-shacl:hasWikiLinkPropertyShape
     a sh:NodeShape;
     sh:targetObjectsOf js:hasWikiLink;
     sh:or ([sh:nodeKind sh:IRI]
-           [sh:datatype xsd:anyURI]).
+           [sh:datatype xsd:anyURI]) .
 
 ### value ###
 js-shacl:valuePropertyShape

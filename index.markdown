@@ -76,8 +76,8 @@ has super class:
 
 is domain of:
       js:hasGeonameID  (max cardinality 1, range: xsd:string)
-      js:hasWikiLink   (max cardinality 1, range: IRI)
-      schema:name     (range: xsd:string, permitted language tags "en", "de", "fr", "es")
+      js:hasWikiLink   (max cardinality 1, range: IRI or xsd:anyURI)
+      schema:name      (min cardinality 1, range: xsd:string, permitted language tags "en", "de", "fr", "es")
 
 Corresponding SHACL node shape:
       js-shacl:LocationShape
