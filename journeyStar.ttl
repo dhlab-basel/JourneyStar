@@ -265,7 +265,7 @@ js:hasStage rdf:type owl:ObjectProperty ;
 
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#sightingOf
-js:sightingOf rdf:type owl:DatatypeProperty ;
+js:sightingOf rdf:type owl:ObjectProperty ;
         rdfs:label "Sichtung von"@de ,
                    "sighting of"@en ;
         rdfs:comment "The sighted object during a sightseeing activity."@en .
