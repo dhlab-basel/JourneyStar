@@ -428,7 +428,7 @@ js-shacl:hasActivityPropertyShape
     sh:targetObjectsOf js:hasActivity;
     sh:node js-shacl:ActivityShape .
 
-### has occurence ###
+### has occurrence ###
 js-shacl:hasOccurrencePropertyShape
     a sh:NodeShape;
     sh:targetObjectsOf js:hasOccurrence;
