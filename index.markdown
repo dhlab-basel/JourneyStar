@@ -29,7 +29,7 @@ defined properties for this that can be used for annotated triples.
 To keep this ontology generic, we have employed the existing ontologies and
 extended the existing definitions of the classes and properties in other
 ontologies such as [schema](https://schema.org/) and [Trip](http://ontology.eil.utoronto.ca/icity/Trip/Trip)
-through defining subclasses. The ontology serialized in Turtle can be found [here](https://github.com/dhlab-basel/trip-ontology/blob/main/tripOntology.ttl).
+through defining subclasses. The ontology serialized in Turtle can be found [here](https://github.com/dhlab-basel/JourneyStar/blob/main/journeyStar.ttl).
 
 This ontology has the prefix `js` and the namespace `http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#`.
 
@@ -56,6 +56,7 @@ Below we describe a few main classes and properties of this ontology with a few 
 @prefix trip: <http://ontology.eil.utoronto.ca/icity/Trip/> .
 @prefix activity: <http://ontology.eil.utoronto.ca/icity/Activity/> .
 @prefix js: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#> .
+@prefix js-shacl: <http://journey-star.dhlab.unibas.ch/shacl/js-shacl#> .
 @prefix : <http://journey-star.dhlab.unibas.ch/data/JourneyStar#> .
 ```
 
@@ -86,7 +87,7 @@ Below, you can see an example of an RDF representation of a location:
 ![Location Representation](docs/images/location_example.png)
 
 ***
-## PERSON
+## Person
 The `js:Person` is an OWL class representing a person who undertakes a journey or
  is involved in a journey (such as: hotel owner, waiter/waitress, travel companion, etc.).
 

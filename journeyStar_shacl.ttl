@@ -2,13 +2,10 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix currencyA: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
-@prefix currency: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/>.
 @prefix schema: <https://schema.org/> .
 @prefix dbr: <http://dbpedia.org/resource/> .
-@prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix js-shacl: <http://journey-star.dhlab.unibas.ch/shacl/trip-shacl#> .
+@prefix js-shacl: <http://journey-star.dhlab.unibas.ch/shacl/js-shacl#> .
 @prefix js: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#> .
 
 
@@ -68,6 +65,7 @@ js-shacl:PersonShape a sh:NodeShape  ;
     [
         sh:path js:hasWikiLink ;
         sh:maxCount 1 ;
+        sh:datatype xsd:anyURI ;
     ] .
 
 ### Shape for Class Location ###
@@ -89,6 +87,7 @@ js-shacl:LocationShape a sh:NodeShape  ;
     [
         sh:path js:hasWikiLink ;
         sh:maxCount 1 ;
+        sh:datatype xsd:anyURI ;
     ] .
 
 ### Shape for Class Excursion ###
@@ -102,7 +101,6 @@ js-shacl:ExcursionShape a sh:NodeShape  ;
         sh:severity sh:Violation ;
         sh:message "An excursion is specified by returning back to the location of departure after visiting a different location"@en;
     ] .
-
 
 ### Shape for Class Stay ###
 ################################
@@ -183,13 +181,13 @@ js-shacl:ActivityShape a sh:NodeShape;
     sh:property
     [
         sh:path schema:name;
-        sh:datatype xsd:string;
         sh:minCount 1;
+        sh:datatype xsd:string;
     ] ,
     [
         sh:path js:hasCost ;
-        sh:datatype xsd:decimal;
         sh:maxCount 1;
+        sh:datatype xsd:decimal;
     ] .
 
 ### Shape for Class Journey ###
@@ -203,33 +201,33 @@ js-shacl:JourneyShape a sh:NodeShape;
     ] ,
     [
         sh:path js:origin;
+        sh:minCount 1;
         sh:or ( [sh:datatype xsd:string ]
                 [sh:class js:Location ]
                 [sh:datatype xsd:anyURI ]
                 [sh:nodeKind sh:IRI ]) ;
-        sh:minCount 1;
     ] ,
     [
         sh:path js:destination;
+        sh:minCount 1;
         sh:or ( [sh:datatype xsd:string ]
                 [sh:class js:Location ]
                 [sh:datatype xsd:anyURI ]
                 [sh:nodeKind sh:IRI ]) ;
-        sh:minCount 1;
     ] ,
     [
         sh:path js:startDate ;
+        sh:maxCount 1;
         sh:or ( [sh:datatype xsd:dateTime ]
                 [sh:datatype xsd:date ]
                 [sh:datatype xsd:gYear ]) ;
-        sh:maxCount 1;
     ] ,
     [
         sh:path js:endDate ;
+        sh:maxCount 1;
         sh:or ( [sh:datatype xsd:dateTime ]
                 [sh:datatype xsd:date ]
                 [sh:datatype xsd:gYear ]) ;
-        sh:maxCount 1;
     ] ,
     [
         sh:path js:hasActivity ;
@@ -273,7 +271,6 @@ js-shacl:EntertainmentShape a sh:NodeShape;
         sh:datatype xsd:string;
     ] .
 
-
 ### Shape for Class Currency ###
 ################################
 js-shacl:CurrencyShape a sh:NodeShape;
@@ -295,6 +292,7 @@ js-shacl:CurrencyShape a sh:NodeShape;
         sh:path js:alternativeName;
         sh:datatype xsd:string;
     ] .
+
 
 # ##############################################################
 ## Shapes for Star Properties
@@ -449,7 +447,6 @@ js-shacl:TransitPropertyShape
      a sh:NodeShape;
      sh:targetObjectsOf js:value;
      sh:datatype xsd:decimal .
-
 
 ### hasCost ###
 js-shacl:hasCostPropertyShape
