@@ -357,7 +357,7 @@ js-shacl:arrivalDatePropertyShape
     sh:targetObjectsOf js:arrivalDate;
     sh:or ( [sh:datatype xsd:dateTime ]
             [sh:datatype xsd:date ]
-            [sh:datatype xsd:time ]) .
+            [sh:datatype xsd:gYear ]) .
 
 ### Shape for Property departureDate ###
 ################################
@@ -366,7 +366,7 @@ js-shacl:departureDatePropertyShape
     sh:targetObjectsOf js:departureDate;
     sh:or ( [sh:datatype xsd:dateTime ]
             [sh:datatype xsd:date ]
-            [sh:datatype xsd:time ]) .
+            [sh:datatype xsd:gYear ]) .
 
 ### Shape for Property startDate ###
 ################################
@@ -375,7 +375,7 @@ js-shacl:startDatePropertyShape
     	sh:targetObjectsOf js:startDate ;
     	sh:or ( [sh:datatype xsd:dateTime ]
               [sh:datatype xsd:date ]
-              [sh:datatype xsd:time ]) .
+              [sh:datatype xsd:gYear ]) .
 
 ### Shape for Property endDate ###
 ################################
@@ -384,7 +384,7 @@ js-shacl:endDatePropertyShape
     	sh:targetObjectsOf js:endDate ;
     	sh:or ( [sh:datatype xsd:dateTime ]
               [sh:datatype xsd:date ]
-              [sh:datatype xsd:time ]) .
+              [sh:datatype xsd:gYear ]) .
 
 ###  meanOfTransportation ###
 js-shacl:meanOfTransportationShape
