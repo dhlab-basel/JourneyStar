@@ -129,7 +129,7 @@
 ###################
 
 :SofiaM js:hasJourney :Journey_2018_03 .
-<< :SofiaM js:hasJourney :Journey_2018_03 >> js:hasStartDate "2018-03-10"^^xsd:date .
+<< :SofiaM js:hasJourney :Journey_2018_03 >> js:departureDate "2018-03-10"^^xsd:date .
 << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasEndDate "2018-03-22"^^xsd:date.
 
 :Journey_2018_03 a js:Journey ;
@@ -143,7 +143,7 @@
 ##################################
 
 :Journey_2018_03 js:hasStage :Stage1 .
-<<:Journey_2018_03 js:hasStage :Stage1>> js:hasStartDate "2018-03-10"^^xsd:date .
+<<:Journey_2018_03 js:hasStage :Stage1>> js:departureDate "2018-03-10"^^xsd:date .
 <<:Journey_2018_03 js:hasStage :Stage1>> js:hasEndDate "2018-03-13"^^xsd:date .
 
 :Stage1 a js:Journey;
@@ -186,7 +186,7 @@
 
 :Journey_2018_03 js:hasStage :Stage2 .
 
-<<:Journey_2018_03 js:hasStage :Stage2>> js:hasStartDate "2018-03-13"^^xsd:date .
+<<:Journey_2018_03 js:hasStage :Stage2>> js:departureDate "2018-03-13"^^xsd:date .
 <<:Journey_2018_03 js:hasStage :Stage2>> js:hasEndDate "2018-03-15"^^xsd:date .
 
 :Stage2 a js:Journey;
@@ -215,7 +215,7 @@
 
 
 :Journey_2018_03 js:hasStage :Stage3 .
-<< :Journey_2018_03 js:hasStage :Stage3>> js:hasStartDate "2018-03-15"^^xsd:date .
+<< :Journey_2018_03 js:hasStage :Stage3>> js:departureDate "2018-03-15"^^xsd:date .
 << :Journey_2018_03 js:hasStage :Stage3>> js:hasEndDate "2018-03-18"^^xsd:date.
 
 :Stage3 a :Journey;
@@ -249,7 +249,7 @@
 
 :Journey_2018_03 js:hasStage :Stage4 .
 
-<<:Journey_2018_03 js:hasStage :Stage4>> js:hasStartDate "2018-03-18"^^xsd:date .
+<<:Journey_2018_03 js:hasStage :Stage4>> js:departureDate "2018-03-18"^^xsd:date .
 <<:Journey_2018_03 js:hasStage :Stage4>> js:hasEndDate "2018-03-22"^^xsd:date.
 
 :Stage4 a js:Journey;

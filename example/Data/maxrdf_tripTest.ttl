@@ -127,7 +127,7 @@
     js:hasStartLocation :Zurich;
     js:hasDestination :Morocco .
 
-<< :SofiaM js:hasJourney :Journey_2018_03 >> js:hasStartDate "2018-03-10"^^xsd:date .
+<< :SofiaM js:hasJourney :Journey_2018_03 >> js:departureDate "2018-03-10"^^xsd:date .
 << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasEndDate "2018-03-22"^^xsd:date.
 
 << :Journey_2018_03 js:hasStartLocation :Zurich >> js:hasDeparture "2018-03-10T08:00:00"^^xsd:dateTime .
@@ -171,7 +171,7 @@
     js:hasParticipant :SofiaM;
     js:hasParticipant :OskarH;
     js:hasParticipant :AdrianaM;
-    js:hasStartDate "2018-03-11T14:00:00"^^xsd:dateTime ;
+    js:departureDate "2018-03-11T14:00:00"^^xsd:dateTime ;
     js:hasEndDate "2018-03-11T16:45:00"^^xsd:dateTime;
     js:hasDescription "Entering Sagrada Familia felt like stepping into a realm of divine artistry. The sun's gentle rays painted vibrant hues on the ornate stained glass, illuminating the sacred space. Massive columns rose like ancient trees, supporting the heavens above. Every detail, from intricately carved facades to delicate interior patterns, whispered tales of Gaudí's genius.Leaving, I carried a sense of awe that words could barely capture.".
 
