@@ -14,8 +14,8 @@
 # ##############################################################
 
 
-### Shape for Class Person ###
-################################
+### Shape for Class js:Person
+####################################
 
 js-shacl:PersonShape a sh:NodeShape  ;
     sh:targetClass js:Person ;
@@ -23,7 +23,7 @@ js-shacl:PersonShape a sh:NodeShape  ;
         sh:path schema:name ;
         sh:minCount 1 ;
         sh:datatype xsd:string ;
-    ],
+    ] ,
     [
         sh:path schema:givenName ;
         sh:datatype xsd:string ;
@@ -49,12 +49,12 @@ js-shacl:PersonShape a sh:NodeShape  ;
         sh:path schema:birthPlace ;
         sh:maxCount 1 ;
         sh:nodeKind sh:IRI ;
-    ],
+    ] ,
     [
         sh:path schema:knows ;
         sh:or ([sh:node js-shacl:LocationShape]
                [sh:node js-shacl:PersonShape]) ;
-    ],
+    ] ,
     [
         sh:path js:participatedIn ;
         sh:node js-shacl:ActivityShape ;
@@ -63,15 +63,15 @@ js-shacl:PersonShape a sh:NodeShape  ;
         sh:path js:hasGnd ;
         sh:maxCount 1 ;
         sh:datatype xsd:string ;
-    ],
+    ] ,
     [
         sh:path js:hasWikiLink ;
         sh:maxCount 1 ;
         sh:datatype xsd:anyURI ;
     ] .
 
-### Shape for Class Location ###
-################################
+### Shape for Class js:Location
+####################################
 
 js-shacl:LocationShape a sh:NodeShape  ;
     sh:targetClass js:Location ;
@@ -93,8 +93,8 @@ js-shacl:LocationShape a sh:NodeShape  ;
                 [sh:nodeKind sh:IRI ]) ;
     ] .
 
-### Shape for Class Excursion ###
-################################
+### Shape for Class js:Excursion
+####################################
 js-shacl:ExcursionShape a sh:NodeShape  ;
     sh:targetClass js:Excursion ;
     sh:property
@@ -105,8 +105,8 @@ js-shacl:ExcursionShape a sh:NodeShape  ;
         sh:message "An excursion is specified by returning back to the location of departure after visiting a different location"@en;
     ] .
 
-### Shape for Class Stay ###
-################################
+### Shape for Class js:Stay
+####################################
 js-shacl:StayShape a sh:NodeShape  ;
     sh:targetClass js:Stay ;
     sh:property
@@ -130,8 +130,8 @@ js-shacl:StayShape a sh:NodeShape  ;
         sh:maxCount 1 ;
     ] .
 
-### Shape for Class Accommodation ###
-################################
+### Shape for Class js:Accommodation
+####################################
 js-shacl:AccommodationShape a sh:NodeShape ;
     sh:targetClass js:Accommodation ;
     sh:property
@@ -152,7 +152,7 @@ js-shacl:AccommodationShape a sh:NodeShape ;
                 [sh:nodeKind sh:IRI ]) ;
     ] .
 
-### Shape for Class Event ###
+# Shape for Class js:Event
 ################################
 js-shacl:EventShape a sh:NodeShape ;
     sh:targetClass js:Event ;
@@ -177,8 +177,8 @@ js-shacl:EventShape a sh:NodeShape ;
                 [sh:datatype xsd:gYear ]) ;
     ] .
 
-### Shape for Class Activity ###
-################################
+### Shape for Class js:Activity
+####################################
 js-shacl:ActivityShape a sh:NodeShape ;
     sh:targetClass js:Activity ;
     sh:property
@@ -193,8 +193,8 @@ js-shacl:ActivityShape a sh:NodeShape ;
         sh:datatype xsd:decimal ;
     ] .
 
-### Shape for Class Journey ###
-################################
+### Shape for Class js:Journey
+####################################
 js-shacl:JourneyShape a sh:NodeShape ;
     sh:targetClass js:Journey ;
     sh:property
@@ -237,8 +237,8 @@ js-shacl:JourneyShape a sh:NodeShape ;
         sh:node js-shacl:ActivityShape ;
     ] .
 
-### Shape for Class SightSeeing ###
-################################
+### Shape for Class js:SightSeeing
+####################################
 js-shacl:SightSeeingShape a sh:NodeShape ;
     sh:targetClass js:SightSeeing ;
     sh:property
@@ -248,24 +248,24 @@ js-shacl:SightSeeingShape a sh:NodeShape ;
         sh:or ([sh:datatype xsd:anyURI ]
                [sh:nodeKind sh:IRI]
                [sh:datatype xsd:string ]) ;
-    ].
+    ] .
 
-### Shape for Class Dining ###
-################################
+### Shape for Class js:Dining
+####################################
 js-shacl:DiningShape a sh:NodeShape ;
     sh:targetClass js:Dining ;
     sh:property
     [
         sh:path js:mealType ;
         sh:datatype xsd:string ;
-    ],
+    ] ,
     [
         sh:path js:cuisine ;
         sh:datatype xsd:string ;
-    ].
+    ] .
 
-### Shape for Class Entertainment ###
-################################
+### Shape for Class js:Entertainment
+####################################
 js-shacl:EntertainmentShape a sh:NodeShape ;
     sh:targetClass js:Entertainment ;
     sh:property
@@ -274,8 +274,8 @@ js-shacl:EntertainmentShape a sh:NodeShape ;
         sh:datatype xsd:string ;
     ] .
 
-### Shape for Class Currency ###
-################################
+### Shape for Class js:Currency
+####################################
 js-shacl:CurrencyShape a sh:NodeShape ;
     sh:targetClass js:Currency ;
     sh:property
@@ -301,8 +301,8 @@ js-shacl:CurrencyShape a sh:NodeShape ;
 ## Shapes for Star Properties
 # ##############################################################
 
-### Shape for calendar ###
-################################
+### Shape for js:calendar
+####################################################
 js-shacl:calendarPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:calendar ;
@@ -310,8 +310,8 @@ js-shacl:calendarPropertyShape
               [sh:datatype xsd:anyURI]
               [sh:nodeKind sh:IRI ]) .
 
-### Shape for accordingTo ###
-################################
+### Shape for js:accordingTo
+####################################################
 js-shacl:accordingToPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:accordingTo ;
@@ -319,16 +319,16 @@ js-shacl:accordingToPropertyShape
   	         [sh:nodeKind sh:IRI]
              [sh:datatype xsd:anyURI]) .
 
-### Shape for Property mentionedIn ###
-################################
+### Shape for Property js:mentionedIn
+####################################################
 js-shacl:mentionedInPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:mentionedIn ;
     	sh:or ([sh:datatype xsd:anyURI]
     	        [sh:nodeKind sh:IRI]) .
 
-### Shape for Property hasDescription ###
-################################
+### Shape for Property js:hasDescription
+####################################################
 js-shacl:hasDescriptionPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:hasDescription ;
@@ -336,16 +336,16 @@ js-shacl:hasDescriptionPropertyShape
              [sh:datatype xsd:anyURI]
              [sh:nodeKind sh:IRI ]) .
 
-### Shape for Property origin ###
-################################
+### Shape for Property js:origin
+####################################################
 js-shacl:originPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:origin ;
     	sh:or ([sh:node js-shacl:LocationShape]
     	       [sh:nodeKind sh:IRI]) .
 
-### Shape for Property destination ###
-################################
+### Shape for Property js:destination
+####################################################
 js-shacl:destinationPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:destination ;
@@ -353,17 +353,17 @@ js-shacl:destinationPropertyShape
              [sh:datatype xsd:anyURI]
     	       [sh:nodeKind sh:IRI]) .
 
-### Shape for Property arrivalDate ###
-################################
+### Shape for Property js:arrivalDate
+####################################################
 js-shacl:arrivalDatePropertyShape
     a sh:NodeShape ;
-    sh:targetObjectsOf js:arrivalDate;
+    sh:targetObjectsOf js:arrivalDate ;
     sh:or ( [sh:datatype xsd:dateTime ]
             [sh:datatype xsd:date ]
             [sh:datatype xsd:gYear ]) .
 
-### Shape for Property departureDate ###
-################################
+### Shape for Property js:departureDate
+####################################################
 js-shacl:departureDatePropertyShape
     a sh:NodeShape ;
     sh:targetObjectsOf js:departureDate ;
@@ -371,8 +371,8 @@ js-shacl:departureDatePropertyShape
             [sh:datatype xsd:date ]
             [sh:datatype xsd:gYear ]) .
 
-### Shape for Property startDate ###
-################################
+### Shape for Property js:startDate
+####################################################
 js-shacl:startDatePropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:startDate ;
@@ -380,8 +380,8 @@ js-shacl:startDatePropertyShape
               [sh:datatype xsd:date ]
               [sh:datatype xsd:gYear ]) .
 
-### Shape for Property endDate ###
-################################
+### Shape for Property js:endDate
+####################################################
 js-shacl:endDatePropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:endDate ;
@@ -389,7 +389,8 @@ js-shacl:endDatePropertyShape
               [sh:datatype xsd:date ]
               [sh:datatype xsd:gYear ]) .
 
-###  meanOfTransportation ###
+### Shape for Property js:meanOfTransportation
+####################################################
 js-shacl:meanOfTransportationShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:meanOfTransportation ;
@@ -397,7 +398,8 @@ js-shacl:meanOfTransportationShape
                 [sh:nodeKind sh:IRI ]
                 [sh:datatype xsd:string ]) .
 
-### hasIntermediateDestination###
+### Shape for Property js:hasIntermediateDestination
+####################################################
 js-shacl:hasIntermediateDestinationPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:hasIntermediateDestination ;
@@ -405,7 +407,8 @@ js-shacl:hasIntermediateDestinationPropertyShape
              [sh:nodeKind sh:IRI]
              [sh:datatype xsd:anyURI]) .
 
-### hasParticipant ###
+### Shape for Property js:hasParticipant
+####################################################
 js-shacl:hasParticipantPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:hasParticipant ;
@@ -413,31 +416,36 @@ js-shacl:hasParticipantPropertyShape
              [sh:nodeKind sh:IRI]
              [sh:datatype xsd:anyURI]) .
 
-### hasStage ###
+### Shape for Property js:hasStage
+####################################################
 js-shacl:hasStagePropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:hasStage ;
     	sh:node js-shacl:JourneyShape .
 
-### has stay ###
+### Shape for Property js:hasStay
+####################################################
 js-shacl:hasStayPropertyShape
     a sh:NodeShape ;
     sh:targetObjectsOf js:hasStay ;
     sh:node js-shacl:StayShape .
 
-### has activity ###
+### Shape for Property js:hasActivity
+####################################################
 js-shacl:hasActivityPropertyShape
     a sh:NodeShape ;
     sh:targetObjectsOf js:hasActivity ;
     sh:node js-shacl:ActivityShape .
 
-### has occurrence ###
+### Shape for Property js:hasOccurrence
+####################################################
 js-shacl:hasOccurrencePropertyShape
     a sh:NodeShape ;
     sh:targetObjectsOf js:hasOccurrence ;
     sh:class js:Occurrence .
 
-### transit through###
+### Shape for Property js:transitThrough
+####################################################
 js-shacl:TransitPropertyShape
     a sh:NodeShape ;
     sh:targetObjectsOf js:transitThrough ;
@@ -445,7 +453,8 @@ js-shacl:TransitPropertyShape
            [sh:nodeKind sh:IRI]
            [sh:datatype xsd:anyURI]) .
 
-### hasCost ###
+### Shape for Property js:hasCost
+####################################################
 js-shacl:hasCostPropertyShape
     a sh:NodeShape ;
     sh:targetObjectsOf js:hasCost ;
@@ -453,7 +462,8 @@ js-shacl:hasCostPropertyShape
             [sh:datatype xsd:integer ]) ;
    sh:minExclusive 0 .
 
-### currency ###
+### Shape for Property js:hasCurrency
+####################################################
 js-shacl:hasCurrencyPropertyShape
     a sh:NodeShape ;
     sh:targetObjectsOf js:hasCurrency ;
@@ -462,14 +472,16 @@ js-shacl:hasCurrencyPropertyShape
             [sh:nodeKind sh:IRI]
             [sh:node js-shacl:CurrencyShape]) .
 
-### wikilink ###
+### Shape for Property js:hasWikiLink
+####################################################
 js-shacl:hasWikiLinkPropertyShape
     a sh:NodeShape ;
     sh:targetObjectsOf js:hasWikiLink ;
     sh:or ([sh:nodeKind sh:IRI]
            [sh:datatype xsd:anyURI]) .
 
-### value ###
+### Shape for Property js:value
+####################################################
 js-shacl:valuePropertyShape
    a sh:NodeShape ;
    sh:targetObjectsOf js:value ;
@@ -478,7 +490,8 @@ js-shacl:valuePropertyShape
    sh:minExclusive 0 .
 
 
-### certaintyPercentage ###
+### Shape for Property js:certaintyPercentage
+####################################################
 js-shacl:certaintyPercentagePropertyShape
    a sh:NodeShape ;
    sh:targetObjectsOf js:certaintyPercentage ;
@@ -487,7 +500,8 @@ js-shacl:certaintyPercentagePropertyShape
    sh:maxInclusive 100 .
 
 
-### value ###
+### Shape for Property js:alternativeName
+####################################################
 js-shacl:alternativeNamePropertyShape
    a sh:NodeShape ;
    sh:targetObjectsOf js:alternativeName ;
