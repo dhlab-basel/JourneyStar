@@ -56,7 +56,7 @@ js-shacl:PersonShape a sh:NodeShape  ;
     ] ,
     [
         sh:path js:participatedIn ;
-        sh:node js-shacl:ActivityShape ;
+        sh:node js-shacl:EventShape ;
     ] ,
     [
         sh:path js:hasGnd ;
