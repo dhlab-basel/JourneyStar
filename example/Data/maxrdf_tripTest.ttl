@@ -171,7 +171,7 @@
     js:hasParticipant :SofiaM;
     js:hasParticipant :OskarH;
     js:hasParticipant :AdrianaM;
-    js:departureDate "2018-03-11T14:00:00"^^xsd:dateTime ;
+    js:hasStartDate "2018-03-11T14:00:00"^^xsd:dateTime ;
     js:hasEndDate "2018-03-11T16:45:00"^^xsd:dateTime;
     js:hasDescription "Entering Sagrada Familia felt like stepping into a realm of divine artistry. The sun's gentle rays painted vibrant hues on the ornate stained glass, illuminating the sacred space. Massive columns rose like ancient trees, supporting the heavens above. Every detail, from intricately carved facades to delicate interior patterns, whispered tales of Gaudí's genius.Leaving, I carried a sense of awe that words could barely capture.".
 
@@ -248,11 +248,12 @@
 
 
 ############# Journey Back to Zurich #######
-:SofiaM js:hasJourney :Journey_2018_22 .
+:Journey_2018_22 js:hasParticipant :SofiaM .
+
 
 :Journey_2018_22 a js:Journey ;
     js:destination :Zurich;
     js:origin :Marrakech .
 
-<< :SofiaM js:hasJourney :Journey_2018_22 >> js:departureDate "2018-03-22T10:00:00"^^xsd:dateTime .
-<< :SofiaM js:hasJourney :Journey_2018_22 >> js:arrivalDate "2018-03-22T14:00:00"^^xsd:dateTime .
+<< :Journey_2018_22 js:hasParticipant :SofiaM >> js:departureDate "2018-03-22T10:00:00"^^xsd:dateTime .
+<< :Journey_2018_22 js:hasParticipant :SofiaM >> js:arrivalDate "2018-03-22T14:00:00"^^xsd:dateTime .

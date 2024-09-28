@@ -267,11 +267,11 @@
 << << :StayStage4 js:hasAccommodation :HotelMarrakech>> js:hasCost 1000 >> js:hasCurrency currency:MoroccanDirham.
 
 ############# Journey Back to Zurich #######
-:SofiaM js:hasJourney :Journey_2018_22 .
+:Journey_2018_22 js:hasParticipant :SofiaM .
 
 :Journey_2018_22 a js:Journey ;
     js:destination :Zurich;
     js:origin :Marrakech .
 
-<< :SofiaM js:hasJourney :Journey_2018_22 >> js:departureDate "2018-03-22T10:00:00"^^xsd:dateTime .
-<< :SofiaM js:hasJourney :Journey_2018_22 >> js:arrivalDate "2018-03-22T14:00:00"^^xsd:dateTime .
+<< :Journey_2018_22 js:hasParticipant :SofiaM >> js:departureDate "2018-03-22T10:00:00"^^xsd:dateTime .
+<< :Journey_2018_22 js:hasParticipant :SofiaM >> js:arrivalDate "2018-03-22T14:00:00"^^xsd:dateTime .
