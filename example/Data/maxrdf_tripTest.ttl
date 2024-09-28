@@ -128,7 +128,7 @@
     js:hasDestination :Morocco .
 
 << :SofiaM js:hasJourney :Journey_2018_03 >> js:departureDate "2018-03-10"^^xsd:date .
-<< :SofiaM js:hasJourney :Journey_2018_03 >> js:hasEndDate "2018-03-22"^^xsd:date.
+<< :SofiaM js:hasJourney :Journey_2018_03 >> js:arrivalDate "2018-03-22"^^xsd:date.
 
 << :Journey_2018_03 js:hasStartLocation :Zurich >> js:hasDeparture "2018-03-10T08:00:00"^^xsd:dateTime .
 << :Journey_2018_03 js:hasStartDestination :Morocco >> js:hasArrival "2018-03-14T14:00:00"^^xsd:dateTime .
