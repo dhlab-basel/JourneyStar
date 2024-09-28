@@ -143,7 +143,7 @@
     js:origin :Zurich;
     js:destination :Barcelona ;
     js:meanOfTransportation dbr:Train ;
-    js:hasParticipant :LeaD , :AdrianaM ;
+    js:hasParticipant :LeaD , :AdrianaM .
 
 << :Stage1 js:origin :Zurich >> js:departureDate "2018-03-10T08:00:00"^^xsd:dateTime .
 << :Stage1 js:destination :Barcelona >> js:arrivalDate "2018-03-10T22:00:00"^^xsd:dateTime .
@@ -231,8 +231,8 @@
 :StayStage3 a js:Stay ;
     js:hasAccommodation :HotelRabat .
 
-<< :StayStage3 js:hasAccommodation :HotelRabat >> js:hasCost "1000" .
-<< << :StayStage3 js:hasAccommodation :HotelRabat >> :hasCost "1000" >> :hasCurrency currency:MoroccanDirham .   #currency:hasPrice
+<< :StayStage3 js:hasAccommodation :HotelRabat >> js:hasCost 1000 .
+<< << :StayStage3 js:hasAccommodation :HotelRabat >> :hasCost 1000 >> :hasCurrency currency:MoroccanDirham .   #currency:hasPrice
 
 
 ### Sub Journey 4 Rabat–Marakech ###

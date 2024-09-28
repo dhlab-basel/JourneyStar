@@ -218,7 +218,7 @@
 << :Journey_2018_03 js:hasStage :Stage3>> js:departureDate "2018-03-15"^^xsd:date .
 << :Journey_2018_03 js:hasStage :Stage3>> js:arrivalDate "2018-03-18"^^xsd:date.
 
-:Stage3 a :Journey;
+:Stage3 a js:Journey;
     js:origin :Tangier;
     js:destination :Rabat ;
     js:meanOfTransportation dbr:Car .
