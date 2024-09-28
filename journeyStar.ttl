@@ -273,7 +273,6 @@ js:sightingOf rdf:type owl:ObjectProperty ;
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#mealType
 js:mealType rdf:type owl:DatatypeProperty ;
-        rdfs:subClassOf dbo:cuisine ;
         rdfs:label "Mahlzeit typ"@de ,
                    "meal type"@en ;
         rdfs:comment "The type of a meal during a dining activity."@en .
@@ -281,6 +280,7 @@ js:mealType rdf:type owl:DatatypeProperty ;
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#cuisine
 js:cuisine rdf:type owl:DatatypeProperty ;
+        rdfs:subClassOf dbo:cuisine ;
         rdfs:label "Küche"@de ,
                    "cuisine"@en ;
         rdfs:comment "The type of cuisine of a dining activity."@en .
