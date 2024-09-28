@@ -76,20 +76,20 @@ has super class:
 
 is domain of:
       js:hasGeonameID  (max cardinality 1, range: xsd:string)
-      js:hasWikiLink   (max cardinality 1, range: IRI or xsd:anyURI)
+      js:hasWikiLink   (max cardinality 1, range: IRI)
       schema:name      (range: xsd:string, permitted language tags "en", "de", "fr", "es")
 
 Corresponding SHACL node shape:
       js-shacl:LocationShape
 ```
-Below, you can see an example RDF representation of a location:
+Below, you can see an example of an RDF representation of a location:
 
 ![Location Representation](docs/images/location_example.png)
 
 ***
 ## Person
 The `js:Person` is an OWL class representing a person who undertakes a journey or
- is involved in a journey (such as hotel owner, waiter/waitress, travel companion, etc.).
+ is involved in a journey (such as: hotel owner, waiter/waitress, travel companion, etc.).
 
 ```
 IRI: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Person>
@@ -106,7 +106,6 @@ is domain of:
       schema:knows       (range js:Person, js:Location)  
       js:participatedIn  (range js:Event)
       js:hasGnd          (max cardinality 1, range: xsd:string)
-      js:hasWikiLink     (max cardinality 1, range: IRI or xsd:anyURI)
 
 Corresponding SHACL node shape:
       js-shacl:PersonShape
@@ -118,9 +117,9 @@ Below, you can see an example of an RDF representation of a person:
 
 ***
 ## Event
-The `js:Event` is a general OWL class describing an event in a real world with
+The `js:Event` is a general OWL class describing an an event in a real world with
 spatiotemporal data and participants. An event can be an activity such as a journey,
- sightseeing, excursion, dining, etc., or an occurrence such as encounter with a person,
+ sightseeing, excursion, dining, etc, or an occurrence such as encounter with a person,
  or even a natural phenomena.
 
 ```
@@ -137,7 +136,7 @@ Corresponding SHACL node shape:
 ```
 
 There are various classes that are defined as subclass of the `js:Event` each with their specific predicates, for example:
-- `js:Activity` that has predicates to describe a physical activity such as a movement.
+- `js:Activity` that has predicates to describe the a physical activity such as a movement.
 - `js:Occurrence` with properties to describe an occurrence.
 - `js:NaturalPhenomena` representing a natural phenomena.
 
@@ -162,7 +161,6 @@ Corresponding SHACL node shape:
 There are various classes that are defined as subclass of the `js:Activity` each with their specific predicates, for example:
 - `js:Dining` that has predicates to describe the cuisine and type of the meals.
 - `js:Sightseeing` with properties to describe the building or monument.
-- `js:Entertainment` that has predicates to describe entertainment activities.
 - `js:Trip` representing a movement from one place to another.
 
 ***
@@ -200,22 +198,6 @@ is domain of:
 
 Corresponding SHACL node shape:
       js-shacl:SightSeeingShape
-```
-
-***
-## Entertainment
-The `js:Entertainment` is a general OWL class describing entertainment.
-
-```
-IRI: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Entertainment>
-has super class:
-      js:Activity
-
-is domain of:
-      js:entertainmentType (range: xsd:string)
-
-Corresponding SHACL node shape:
-      js-shacl:EntertainmentShape
 ```
 
 ***
