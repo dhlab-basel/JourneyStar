@@ -273,6 +273,7 @@ js:sightingOf rdf:type owl:ObjectProperty ;
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#mealType
 js:mealType rdf:type owl:DatatypeProperty ;
+        rdfs:subClassOf dbo:cuisine ;
         rdfs:label "Mahlzeit typ"@de ,
                    "meal type"@en ;
         rdfs:comment "The type of a meal during a dining activity."@en .
@@ -356,13 +357,6 @@ js:accordingTo rdf:type owl:ObjectProperty;
         rdfs:comment "Link to the person who narrated the info."@en .
 
 
-### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#certaintyPercentage
-js:certaintyPercentage rdf:type owl:DatatypeProperty ;
-        rdfs:label "Sicherheitsprozent"@de ,
-                   "certainty percentage"@en ;
-        rdfs:comment "How certain an editor is of the information provided."@en .
-
-
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasWikiLink
 js:hasWikiLink rdf:type owl:DatatypeProperty ;
         rdfs:label "hat link zu einer Wikidata Seite"@de ,
@@ -410,3 +404,10 @@ js:alternativeName rdf:type owl:ObjectProperty ;
               rdfs:label "alternativer Name"@de ,
                          "alternative name"@en ;
               rdfs:comment "Other names used."@en .
+
+
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#certaintyPercentage
+js:certaintyPercentage rdf:type owl:DatatypeProperty ;
+        rdfs:label "Sicherheitsprozent"@de ,
+                   "certainty percentage"@en ;
+        rdfs:comment "How certain an editor is of the information provided."@en .
