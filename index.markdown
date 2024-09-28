@@ -106,7 +106,7 @@ is domain of:
       schema:knows       (range: js:Person, js:Location)  
       js:participatedIn  (range: js:Event)
       js:hasGnd          (max cardinality 1, range: xsd:string)
-      js:hasWikiLink     (max cardinality 1, range: IRI or xsd:anyURI)
+      js:hasWikiLink     (max cardinality 1, xsd:anyURI)
 
 Corresponding SHACL node shape:
       js-shacl:PersonShape
@@ -127,9 +127,9 @@ spatiotemporal data and participants. An event can be an activity such as a jour
 IRI: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Event>
 
 is domain of:
-      js:hasParticipant  (range: IRI)
+      js:hasParticipant  (range: IRI or xsd:anyURI)
       js:hasLocation     (range: xsd:string, js:Location, xsd:anyURI, IRI)
-      js:hasDate         (range: xsd:date, xsd:dateTime)
+      js:hasDate         (range: xsd:date, xsd:dateTime, xsd:gYear)
 
 
 Corresponding SHACL node shape:
@@ -152,7 +152,7 @@ has super class:
       activity:Activity, js:Event
 
 is domain of:
-      schema:name  (min cardinality 1, range: xsd:string)
+      schema:name  (range: xsd:string)
       js:hasCost   (max cardinality 1, range: xsd:decimal)
 
 Corresponding SHACL node shape:
@@ -231,14 +231,15 @@ has super class:
       js:Activity
 
 is domain of:
+      js:hasParticipant        (range: IRI)
       js:origin                (min cardinality 1, range: IRI or xsd:anyURI)
       js:destination           (min cardinality 1, range: IRI or xsd:anyURI)
-      js:startDate             (max cardinality 1, range: xsd:date , xsd:dateTime)
-      js:endDate               (max cardinality 1, range: xsd:date , xsd:dateTime)
+      js:startDate             (max cardinality 1, range: xsd:date, xsd:dateTime or xsd:gYear)
+      js:endDate               (max cardinality 1, range: xsd:date, xsd:dateTime or xsd:gYear)
       js:hasActivity           (range: js:Activity)
       js:hasStay               (range: js:Stay)
-      js:meanOfTransportation  (range: range: IRI or xsd:anyURI)
-      js:transitThrough        (range: range: IRI or xsd:anyURI)
+      js:meanOfTransportation  (range: IRI or xsd:anyURI)
+      js:transitThrough        (range: IRI or xsd:anyURI)
 
 Corresponding SHACL node shape:
       js-shacl:JourneyShape
@@ -287,7 +288,7 @@ has super class:
 
 is domain of:
       schema:name     (min cardinality 1, range: xsd:string)
-      schema:adress   (range: xsd:string)
+      schema:address  (range: xsd:string)
       js:hasLocation  (range: xsd:string, js:Location, xsd:anyURI, IRI)
 
 Corresponding SHACL node shape:
@@ -305,7 +306,7 @@ has super class:
     js:Activity
 
 is domain of:
-      js:hasAccommodation  (range:  js:Accommodation or any IRI)
+      js:hasAccommodation  (range: js:Accommodation or IRI)
       js:startDate         (max cardinality 1, range: xsd:date or xsd:dateTime)
       js:endDate           (max cardinality 1, range: xsd:date or xsd:dateTime)
 
