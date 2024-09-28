@@ -8,7 +8,7 @@
 
 # Journey
 :JourneyBaselGenf a js:Journey ;
-    js:hasStartLocation :Basel;
+    js:origin :Basel;
     js:hasDestination :Genf ;
     js:hasDescription "Journey from Basel to Geneva with a long stay in Geneva.".
 
@@ -23,14 +23,14 @@
 << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasDescription "Duration of stay in Geneva 20 months".
 
 
-<< :JourneyBaselGenf js:hasStartLocation :Basel >> js:hasDeparture "1676-08-20"^^xsd:date .
+<< :JourneyBaselGenf js:origin :Basel >> js:hasDeparture "1676-08-20"^^xsd:date .
 << :JourneyBaselGenf js:hasDestination :Genf >> js:hasArrival "1676-08-27"^^xsd:dateTime .
 
 ### Basel–Liestal###
 ##################################
 
 :StageBaselLiestal a js:Journey;
-    js:hasStartLocation :Basel;
+    js:origin :Basel;
     js:hasDestination :Liestal ;
     js:meanOfTransportation :Horse .
 
@@ -42,7 +42,7 @@
 # mentioned in Page 13 of Reisebuechlein, using page IRI
 << << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageBaselLiestal >> js:mentionedIn <http://rdfh.ch/0801/zcLJ81hdQFaH8Kq3kmcqCQ> .
 
-<< :StageBaselLiestal js:hasStartLocation :Basel >> js:hasDeparture "1676-08-20"^^xsd:date .
+<< :StageBaselLiestal js:origin :Basel >> js:hasDeparture "1676-08-20"^^xsd:date .
 << :StageBaselLiestal js:hasDestination :Liestal >> js:hasArrival "1676-08-20"^^xsd:date .
 
 #Stay
@@ -63,7 +63,7 @@
 ##################################
 
 :StageLiestalWaldenburg a js:Journey;
-    js:hasStartLocation :Liestal;
+    js:origin :Liestal;
     js:hasDestination :Waldenburg ;
     js:meanOfTransportation :Horse .
 
@@ -73,7 +73,7 @@
 # mentioned in page 14, page IRI used
 << << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageLiestalWaldenburg >> js:mentionedIn <http://rdfh.ch/0801/xNykPawcT36A5cEFSTSHKg> .
 
-<< :StageLiestalWaldenburg js:hasStartLocation :Liestal >> js:hasDeparture "1676-08-21"^^xsd:date .
+<< :StageLiestalWaldenburg js:origin :Liestal >> js:hasDeparture "1676-08-21"^^xsd:date .
 << :StageLiestalWaldenburg js:hasDestination :Waldenburg >> js:hasArrival "1676-08-21"^^xsd:date .
 
 #Stay
@@ -89,7 +89,7 @@
 ### Stage Waldenburg-Solothurn###
 ##################################
 :StageWaldenburgSolothurn a js:Journey;
-    js:hasStartLocation :Waldenburg;
+    js:origin :Waldenburg;
     js:hasDestination :Solothurn ;
     js:meanOfTransportation :Horse .
 
@@ -100,7 +100,7 @@
 # mentioned in page 14, page IRI used
 << << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageWaldenburgSolothurn >> js:mentionedIn <http://rdfh.ch/0801/xNykPawcT36A5cEFSTSHKg> .
 
-<< :StageWaldenburgSolothurn js:hasStartLocation :Waldenburg >> js:hasDeparture "1676-08-22"^^xsd:date .
+<< :StageWaldenburgSolothurn js:origin :Waldenburg >> js:hasDeparture "1676-08-22"^^xsd:date .
 << :StageWaldenburgSolothurn js:hasDestination :Solothurn >> js:hasArrival "1676-08-22"^^xsd:date .
 
 #Stay
@@ -118,7 +118,7 @@
 ### Stage Solothurn-Biel###
 ##################################
 :StageSolothurnBiel a js:Journey;
-    js:hasStartLocation :Solothurn;
+    js:origin :Solothurn;
     js:hasDestination :Biel ;
     js:meanOfTransportation :Horse .
 
@@ -126,7 +126,7 @@
 << << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageSolothurnBiel >> js:departureDate "1676-08-23"^^xsd:date.
 << << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageSolothurnBiel >> js:arrivalDate "1676-08-24"^^xsd:date.
 
-<< :StageSolothurnBiel js:hasStartLocation :Solothurn >> js:hasDeparture "1676-08-23"^^xsd:date .
+<< :StageSolothurnBiel js:origin :Solothurn >> js:hasDeparture "1676-08-23"^^xsd:date .
 << :StageSolothurnBiel js:hasDestination :Biel >> js:hasArrival "1676-08-23"^^xsd:date .
 
 #Stay
@@ -152,7 +152,7 @@
 ##################################
 
 :StageBielAvenches a js:Journey;
-    js:hasStartLocation :Biel;
+    js:origin :Biel;
     js:hasDestination :Avenches ;
     js:meanOfTransportation :Horse .
 
@@ -160,7 +160,7 @@
 << << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageBielAvenches >> js:departureDate "1676-08-24"^^xsd:date.
 << << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageBielAvenches >> js:arrivalDate "1676-08-25"^^xsd:date.
 
-<< :StageBielAvenches js:hasStartLocation :Biel >> js:hasDeparture "1676-08-24"^^xsd:date .
+<< :StageBielAvenches js:origin :Biel >> js:hasDeparture "1676-08-24"^^xsd:date .
 << :StageBielAvenches js:hasDestination :Avenches >> js:hasArrival "1676-08-24"^^xsd:date .
 
 #Stay
@@ -185,7 +185,7 @@
 ##################################
 
 :StageAvenchesLausanne a js:Journey;
-    js:hasStartLocation :Avenches;
+    js:origin :Avenches;
     js:hasDestination :Lausanne ;
     js:meanOfTransportation :Horse .
 
@@ -195,7 +195,7 @@
 
 
 
-<< :StageAvenchesLausanne js:hasStartLocation :Avenches >> js:hasDeparture "1676-08-25"^^xsd:date .
+<< :StageAvenchesLausanne js:origin :Avenches >> js:hasDeparture "1676-08-25"^^xsd:date .
 << :StageAvenchesLausanne js:hasDestination :Lausanne >> js:hasArrival "1676-08-25"^^xsd:date .
 
 #Stay
@@ -233,7 +233,7 @@
 ##################################
 
 :StageLausanneCoppet a js:Journey;
-    js:hasStartLocation :Lausanne;
+    js:origin :Lausanne;
     js:hasDestination :Coppet ;
     js:meanOfTransportation :Horse .
 
@@ -243,7 +243,7 @@
 ### mentionedIn page 17, page IRI is used
 << << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageLausanneCoppet >> js:mentionedIn <http://rdfh.ch/0801/DHpF4ip3SbSdxm97CcEeNA> .
 
-<< :StageLausanneCoppet js:hasStartLocation :Lausanne >> js:hasDeparture "1676-08-26"^^xsd:date .
+<< :StageLausanneCoppet js:origin :Lausanne >> js:hasDeparture "1676-08-26"^^xsd:date .
 << :StageLausanneCoppet js:hasDestination :Coppet >> js:hasArrival "1676-08-26"^^xsd:date .
 
 # activity
@@ -274,12 +274,12 @@
 << << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageCoppetGenf >> js:mentionedIn <http://rdfh.ch/0801/DHpF4ip3SbSdxm97CcEeNA>, <http://rdfh.ch/0801/CsdlPD0YRc2X9PZg2e59Jw> .
 
 :StageCoppetGenf a js:Journey;
-    js:hasStartLocation :Coppet;
+    js:origin :Coppet;
     js:hasDestination :Genf ;
     js:meanOfTransportation :Horse .
 
 # AK: check dates >> inconsistencies departure arrival
-<< :StageCoppetGenf js:hasStartLocation :Coppet >> js:hasDeparture "1676-08-27"^^xsd:date .
+<< :StageCoppetGenf js:origin :Coppet >> js:hasDeparture "1676-08-27"^^xsd:date .
 << :StageCoppetGenf js:hasDestination :Genf >> js:hasArrival "1676-08-27"^^xsd:date .
 
 :StageCoppetGenf js:hasStay :StayStageCoppetGenf .

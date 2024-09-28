@@ -133,10 +133,10 @@
 << :SofiaM js:hasJourney :Journey_2018_03 >> js:arrivalDate "2018-03-22"^^xsd:date.
 
 :Journey_2018_03 a js:Journey ;
-    js:hasStartLocation :Zurich;
+    js:origin :Zurich;
     js:hasDestination :Morocco .
 
-<<:Journey_2018_03 js:hasStartLocation :Zurich >> js:hasDeparture "2018-03-10T08:00:00"^^xsd:dateTime .
+<<:Journey_2018_03 js:origin :Zurich >> js:hasDeparture "2018-03-10T08:00:00"^^xsd:dateTime .
 <<:Journey_2018_03 js:hasDestination :Morocco >> js:hasArrival "2018-03-14T14:00:00"^^xsd:dateTime .
 
 ### Stage Journey 1 ZH-Barcelona ###
@@ -147,7 +147,7 @@
 <<:Journey_2018_03 js:hasStage :Stage1>> js:arrivalDate "2018-03-13"^^xsd:date .
 
 :Stage1 a js:Journey;
-    js:hasStartLocation :Zurich;
+    js:origin :Zurich;
     js:hasDestination :Barcelona ;
     js:hasTransitFrom :Paris;
     js:meanOfTransportation dbr:Train .
@@ -190,12 +190,12 @@
 <<:Journey_2018_03 js:hasStage :Stage2>> js:arrivalDate "2018-03-15"^^xsd:date .
 
 :Stage2 a js:Journey;
-    js:hasStartLocation :Barcelona;
+    js:origin :Barcelona;
     js:hasDestination :Tangier ;
     js:meanOfTransportation dbr:Ferry .
 
- << :Stage2 js:hasStartLocation :Barcelona >> js:hasDeparture "2018-03-13T09:00:00"^^xsd:dateTime .
- << :Stage2 js:hasStartLocation :Tangier >> js:hasArrival "2018-03-14T14:00:00"^^xsd:dateTime .
+ << :Stage2 js:origin :Barcelona >> js:hasDeparture "2018-03-13T09:00:00"^^xsd:dateTime .
+ << :Stage2 js:origin :Tangier >> js:hasArrival "2018-03-14T14:00:00"^^xsd:dateTime .
 
 << :Stage2 js:meanOfTransportation dbr:Ferry >> :hasCost 150 .
 << << :Stage2 js:meanOfTransportation :Ferry >> :hasCost 150 >> js:hasCurrency currency:Euro.
@@ -219,12 +219,12 @@
 << :Journey_2018_03 js:hasStage :Stage3>> js:arrivalDate "2018-03-18"^^xsd:date.
 
 :Stage3 a :Journey;
-    js:hasStartLocation :Tangier;
+    js:origin :Tangier;
     js:hasDestination :Rabat ;
     js:meanOfTransportation dbr:Car .
 
 
-<< :Stage3 js:hasStartLocation :Tangier>> js:hasDeparture "2018-03-15T08:00:00"^^xsd:dateTime .
+<< :Stage3 js:origin :Tangier>> js:hasDeparture "2018-03-15T08:00:00"^^xsd:dateTime .
 << :Stage3 js:hasDestination :Rabat>>  js:hasArrival "2018-03-15T12:00:00"^^xsd:dateTime .
 
 
@@ -253,11 +253,11 @@
 <<:Journey_2018_03 js:hasStage :Stage4>> js:arrivalDate "2018-03-22"^^xsd:date.
 
 :Stage4 a js:Journey;
-    js:hasStartLocation :Rabat;
+    js:origin :Rabat;
     js:hasDestination :Marrakech ;
     js:meanOfTransportation dbr:Car .
 
-<< :Stage4 js:hasStartLocation :Rabat>> js:hasDeparture "2018-03-18T08:00:00"^^xsd:dateTime .
+<< :Stage4 js:origin :Rabat>> js:hasDeparture "2018-03-18T08:00:00"^^xsd:dateTime .
 << :Stage3 js:hasDestination :Marrakech>>  js:hasArrival "2018-03-18T16:00:00"^^xsd:dateTime .
 
 << :Stage4 js:meanOfTransportation dbr:Car>> :hasCost 500 .
@@ -278,7 +278,7 @@
 
 :Journey_2018_22 a js:Journey ;
     js:hasDestination :Zurich;
-    js:hasStartLocation :Marrakech .
+    js:origin :Marrakech .
 
 << :SofiaM js:hasJourney :Journey_2018_22 >> js:hasDeparture "2018-03-22T10:00:00"^^xsd:dateTime .
 << :SofiaM js:hasJourney :Journey_2018_22 >> js:hasArrival "2018-03-22T14:00:00"^^xsd:dateTime .
