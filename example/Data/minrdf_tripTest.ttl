@@ -134,10 +134,10 @@
 
 :Journey_2018_03 a js:Journey ;
     js:origin :Zurich;
-    js:hasDestination :Morocco .
+    js:destination :Morocco .
 
 <<:Journey_2018_03 js:origin :Zurich >> js:hasDeparture "2018-03-10T08:00:00"^^xsd:dateTime .
-<<:Journey_2018_03 js:hasDestination :Morocco >> js:hasArrival "2018-03-14T14:00:00"^^xsd:dateTime .
+<<:Journey_2018_03 js:destination :Morocco >> js:hasArrival "2018-03-14T14:00:00"^^xsd:dateTime .
 
 ### Stage Journey 1 ZH-Barcelona ###
 ##################################
@@ -148,7 +148,7 @@
 
 :Stage1 a js:Journey;
     js:origin :Zurich;
-    js:hasDestination :Barcelona ;
+    js:destination :Barcelona ;
     js:hasTransitFrom :Paris;
     js:meanOfTransportation dbr:Train .
 
@@ -191,7 +191,7 @@
 
 :Stage2 a js:Journey;
     js:origin :Barcelona;
-    js:hasDestination :Tangier ;
+    js:destination :Tangier ;
     js:meanOfTransportation dbr:Ferry .
 
  << :Stage2 js:origin :Barcelona >> js:hasDeparture "2018-03-13T09:00:00"^^xsd:dateTime .
@@ -220,12 +220,12 @@
 
 :Stage3 a :Journey;
     js:origin :Tangier;
-    js:hasDestination :Rabat ;
+    js:destination :Rabat ;
     js:meanOfTransportation dbr:Car .
 
 
 << :Stage3 js:origin :Tangier>> js:hasDeparture "2018-03-15T08:00:00"^^xsd:dateTime .
-<< :Stage3 js:hasDestination :Rabat>>  js:hasArrival "2018-03-15T12:00:00"^^xsd:dateTime .
+<< :Stage3 js:destination :Rabat>>  js:hasArrival "2018-03-15T12:00:00"^^xsd:dateTime .
 
 
 << :Stage3 js:meanOfTransportation dbr:Car >> js:hasCost 300 .
@@ -254,11 +254,11 @@
 
 :Stage4 a js:Journey;
     js:origin :Rabat;
-    js:hasDestination :Marrakech ;
+    js:destination :Marrakech ;
     js:meanOfTransportation dbr:Car .
 
 << :Stage4 js:origin :Rabat>> js:hasDeparture "2018-03-18T08:00:00"^^xsd:dateTime .
-<< :Stage3 js:hasDestination :Marrakech>>  js:hasArrival "2018-03-18T16:00:00"^^xsd:dateTime .
+<< :Stage3 js:destination :Marrakech>>  js:hasArrival "2018-03-18T16:00:00"^^xsd:dateTime .
 
 << :Stage4 js:meanOfTransportation dbr:Car>> :hasCost 500 .
 << << :Stage4 js:meanOfTransportation dbr:Car >> :hasCost 500 >> js:hasCurrency  currency:MoroccanDirham.
@@ -277,7 +277,7 @@
 :SofiaM js:hasJourney :Journey_2018_22 .
 
 :Journey_2018_22 a js:Journey ;
-    js:hasDestination :Zurich;
+    js:destination :Zurich;
     js:origin :Marrakech .
 
 << :SofiaM js:hasJourney :Journey_2018_22 >> js:hasDeparture "2018-03-22T10:00:00"^^xsd:dateTime .
