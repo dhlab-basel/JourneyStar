@@ -182,7 +182,6 @@ js-shacl:ActivityShape a sh:NodeShape ;
     sh:property
     [
         sh:path schema:name ;
-        sh:minCount 1 ;
         sh:datatype xsd:string ;
     ] ,
     [
