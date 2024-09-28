@@ -106,6 +106,7 @@ is domain of:
       schema:knows       (range js:Person, js:Location)  
       js:participatedIn  (range js:Event)
       js:hasGnd          (max cardinality 1, range: xsd:string)
+      js:hasWikiLink     (max cardinality 1, range: IRI or xsd:anyURI)
 
 Corresponding SHACL node shape:
       js-shacl:PersonShape
