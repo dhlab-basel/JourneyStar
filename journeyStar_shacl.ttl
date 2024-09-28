@@ -14,7 +14,7 @@
 # ##############################################################
 
 
-### Star-Shape for Class js:Person
+### Shape for Class js:Person
 #########################################
 js-shacl:PersonShape a sh:NodeShape  ;
     sh:targetClass js:Person ;
@@ -69,7 +69,7 @@ js-shacl:PersonShape a sh:NodeShape  ;
         sh:datatype xsd:anyURI ;
     ] .
 
-### Star-Shape for Class js:Location
+### Shape for Class js:Location
 #########################################
 js-shacl:LocationShape a sh:NodeShape  ;
     sh:targetClass js:Location ;
@@ -91,7 +91,7 @@ js-shacl:LocationShape a sh:NodeShape  ;
                 [ sh:nodeKind sh:IRI ]) ;
     ] .
 
-### Star-Shape for Class js:Excursion
+### Shape for Class js:Excursion
 #########################################
 js-shacl:ExcursionShape a sh:NodeShape  ;
     sh:targetClass js:Excursion ;
@@ -103,7 +103,7 @@ js-shacl:ExcursionShape a sh:NodeShape  ;
         sh:message "An excursion is specified by returning back to the location of departure after visiting a different location"@en;
     ] .
 
-### Star-Shape for Class js:Stay
+### Shape for Class js:Stay
 #########################################
 js-shacl:StayShape a sh:NodeShape  ;
     sh:targetClass js:Stay ;
@@ -128,7 +128,7 @@ js-shacl:StayShape a sh:NodeShape  ;
         sh:maxCount 1 ;
     ] .
 
-### Star-Shape for Class js:Accommodation
+### Shape for Class js:Accommodation
 #########################################
 js-shacl:AccommodationShape a sh:NodeShape ;
     sh:targetClass js:Accommodation ;
@@ -150,7 +150,7 @@ js-shacl:AccommodationShape a sh:NodeShape ;
                 [ sh:nodeKind sh:IRI ]) ;
     ] .
 
-### Star-Shape for Class js:Event
+### Shape for Class js:Event
 #########################################
 js-shacl:EventShape a sh:NodeShape ;
     sh:targetClass js:Event ;
@@ -175,7 +175,7 @@ js-shacl:EventShape a sh:NodeShape ;
                 [ sh:datatype xsd:gYear ]) ;
     ] .
 
-### Star-Shape for Class js:Activity
+### Shape for Class js:Activity
 #########################################
 js-shacl:ActivityShape a sh:NodeShape ;
     sh:targetClass js:Activity ;
@@ -190,7 +190,7 @@ js-shacl:ActivityShape a sh:NodeShape ;
         sh:datatype xsd:decimal ;
     ] .
 
-### Star-Shape for Class js:Journey
+### Shape for Class js:Journey
 #########################################
 js-shacl:JourneyShape a sh:NodeShape ;
     sh:targetClass js:Journey ;
@@ -234,7 +234,7 @@ js-shacl:JourneyShape a sh:NodeShape ;
         sh:node js-shacl:ActivityShape ;
     ] .
 
-### Star-Shape for Class js:SightSeeing
+### Shape for Class js:SightSeeing
 #########################################
 js-shacl:SightSeeingShape a sh:NodeShape ;
     sh:targetClass js:SightSeeing ;
@@ -247,7 +247,7 @@ js-shacl:SightSeeingShape a sh:NodeShape ;
                [ sh:datatype xsd:string ]) ;
     ] .
 
-### Star-Shape for Class js:Dining
+### Shape for Class js:Dining
 #########################################
 js-shacl:DiningShape a sh:NodeShape ;
     sh:targetClass js:Dining ;
@@ -261,7 +261,7 @@ js-shacl:DiningShape a sh:NodeShape ;
         sh:datatype xsd:string ;
     ] .
 
-### Star-Shape for Class js:Entertainment
+### Shape for Class js:Entertainment
 #########################################
 js-shacl:EntertainmentShape a sh:NodeShape ;
     sh:targetClass js:Entertainment ;
@@ -271,7 +271,7 @@ js-shacl:EntertainmentShape a sh:NodeShape ;
         sh:datatype xsd:string ;
     ] .
 
-### Star-Shape for Class js:Currency
+### Shape for Class js:Currency
 #########################################
 js-shacl:CurrencyShape a sh:NodeShape ;
     sh:targetClass js:Currency ;
