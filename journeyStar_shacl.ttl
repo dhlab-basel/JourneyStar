@@ -310,7 +310,7 @@ js-shacl:calendarPropertyShape
               [sh:datatype xsd:anyURI]
               [sh:nodeKind sh:IRI ]) .
 
-### Shape for  accordingTo ###
+### Shape for accordingTo ###
 ################################
 js-shacl:accordingToPropertyShape
     	a sh:NodeShape ;
@@ -485,3 +485,10 @@ js-shacl:certaintyPercentagePropertyShape
    sh:datatype xsd:integer ;
    sh:minInclusive 0 ;
    sh:maxInclusive 100 .
+
+
+### value ###
+js-shacl:alternativeNamePropertyShape
+   a sh:NodeShape ;
+   sh:targetObjectsOf js:alternativeName ;
+   sh:datatype xsd:string .

@@ -400,7 +400,7 @@ js:value rdf:type owl:ObjectProperty ;
 
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#alternativeName
-js:alternativeName rdf:type owl:ObjectProperty ;
+js:alternativeName rdf:type owl:DatatypeProperty ;
               rdfs:label "alternativer Name"@de ,
                          "alternative name"@en ;
               rdfs:comment "Other names used."@en .
