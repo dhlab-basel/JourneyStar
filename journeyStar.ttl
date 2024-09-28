@@ -30,7 +30,7 @@ js:Person rdf:type owl:Class ;
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Location
 js:Location rdf:type owl:Class ;
-        rdfs:subclassOf dbo:Place , schema:Place ;
+        rdfs:subClassOf dbo:Place , dbo:Settlement , schema:Place ;
         rdfs:label  "Ort"@de,
                     "Location"@en;
         rdfs:comment "A location on plant earth with a coordinate."@en .
@@ -318,7 +318,7 @@ js:hasCost rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf currencyA:hasPrice ;
         rdfs:label "kostet"@de ,
                    "has cost"@en ;
-        rdfs:comment "The cost of an activity, transport, or accomodation."@en .
+        rdfs:comment "The cost of an activity, transport, or accommodation."@en .
 
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasCurrency
@@ -354,6 +354,13 @@ js:accordingTo rdf:type owl:ObjectProperty;
         rdfs:label "gemäss"@de ,
                    "according to"@en ;
         rdfs:comment "Link to the person who narrated the info."@en .
+
+
+### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#certaintyPercentage
+js:certaintyPercentage rdf:type owl:DatatypeProperty ;
+        rdfs:label "Sicherheitsprozent"@de ,
+                   "certainty percentage"@en ;
+        rdfs:comment "How certain an editor is of the information provided."@en .
 
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#hasWikiLink
