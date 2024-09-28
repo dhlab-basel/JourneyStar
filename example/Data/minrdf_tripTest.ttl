@@ -128,9 +128,9 @@
 ### Journey_2018_03 ###
 ###################
 
-:SofiaM js:hasJourney :Journey_2018_03 .
-<< :SofiaM js:hasJourney :Journey_2018_03 >> js:departureDate "2018-03-10"^^xsd:date .
-<< :SofiaM js:hasJourney :Journey_2018_03 >> js:arrivalDate "2018-03-22"^^xsd:date.
+:Journey_2018_03 js:hasParticipant :SofiaM .
+<< :Journey_2018_03 js:hasParticipant :SofiaM >> js:departureDate "2018-03-10"^^xsd:date .
+<< :Journey_2018_03 js:hasParticipant :SofiaM >> js:arrivalDate "2018-03-22"^^xsd:date.
 
 :Journey_2018_03 a js:Journey ;
     js:origin :Zurich;

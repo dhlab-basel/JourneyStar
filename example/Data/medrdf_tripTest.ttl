@@ -123,9 +123,9 @@
 ### Journey_2018_03 ###
 ###################
 
-:SofiaM js:hasJourney :Journey_2018_03 .
-<< :SofiaM js:hasJourney :Journey_2018_03 >> js:departureDate "2018-03-10"^^xsd:date .
-<< :SofiaM js:hasJourney :Journey_2018_03 >> js:arrivalDate "2018-03-22"^^xsd:date.
+:Journey_2018_03 js:hasParticipant :SofiaM .
+<< :Journey_2018_03 js:hasParticipant :SofiaM >> js:departureDate "2018-03-10"^^xsd:date .
+<< :Journey_2018_03 js:hasParticipant :SofiaM >> js:arrivalDate "2018-03-22"^^xsd:date.
 
 :Journey_2018_03 a js:Journey ;
     js:origin :Zurich;
@@ -137,7 +137,7 @@
 ### Stage Journey 1 ZH-Barcelona ###
 ##################################
 
-<< :SofiaM js:hasJourney :Journey_2018_03 >> js:hasStage :Stage1 .
+<< :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasStage :Stage1 .
 
 :Stage1 a js:Journey;
     js:origin :Zurich;
@@ -179,10 +179,10 @@
 ### Stage2 Barcelona–Tangier ###
 #######################################
 
-<< :SofiaM js:hasJourney :Journey_2018_03 >> js:hasStage :Stage2 .
+<< :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasStage :Stage2 .
 
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasStage :Stage2 >> js:departureDate "2018-03-13"^^xsd:date .
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasStage :Stage2 >> js:arrivalDate "2018-03-15"^^xsd:date .
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasStage :Stage2 >> js:departureDate "2018-03-13"^^xsd:date .
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasStage :Stage2 >> js:arrivalDate "2018-03-15"^^xsd:date .
 
 :Stage2 a js:Journey;
     js:origin :Barcelona;
@@ -206,10 +206,10 @@
 ### Sub Journey 3 Tangier-Rabat ###
 ###################################
 
-<< :SofiaM js:hasJourney :Journey_2018_03 >> js:hasStage :Stage3 .
+<< :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasStage :Stage3 .
 
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasStage :Stage3 >> js:departureDate "2018-03-15"^^xsd:date .
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasStage :Stage3 >> js:arrivalDate "2018-03-18"^^xsd:date.
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasStage :Stage3 >> js:departureDate "2018-03-15"^^xsd:date .
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasStage :Stage3 >> js:arrivalDate "2018-03-18"^^xsd:date.
 
 
 :Stage3 a js:Journey;
@@ -238,10 +238,10 @@
 ### Sub Journey 4 Rabat–Marakech ###
 ####################################
 
-<< :SofiaM js:hasJourney :Journey_2018_03 >> js:hasStage :Stage4 .
+<< :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasStage :Stage4 .
 
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasStage :Stage4>> js:departureDate "2018-03-18"^^xsd:date .
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasStage :Stage4>> js:arrivalDate "2018-03-22"^^xsd:date.
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasStage :Stage4>> js:departureDate "2018-03-18"^^xsd:date .
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasStage :Stage4>> js:arrivalDate "2018-03-22"^^xsd:date.
 
 :Stage4 a js:Journey;
     js:origin :Rabat;
