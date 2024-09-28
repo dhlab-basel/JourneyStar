@@ -1,8 +1,69 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix schema: <https://schema.org/> .
 @prefix js: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#> .
+@prefix wd: <https://www.wikidata.org/wiki/> .
 @prefix : <http://journeyStar.dhlab.ch/data/JBReisebuechlein#> .
 @base <http://journeyStar.dhlab.ch/data/JBReisebuechlein#> .
+
+# Persons
+:JacobBernoulli a js:Person ;
+                schema:name "Jacob Bernoulli" ;
+                schema:givenName "Jacob" ;
+                schema:familyName "Bernoulli" ;
+                schema:gender schema:Male ;
+                schema:birthDate "1655-01-06"^^xsd:date ;
+                schema:birthPlace :Basel ;
+                js:hasGnd "120475030"^^xsd:string ;
+                js:hasWikiLink "https://www.wikidata.org/wiki/Q122392"^^xsd:anyURI .
+
+
+# Locations
+:Basel a js:Location ;
+  schema:name "Basel"@de ;
+  js:hasWikiLink "https://www.wikidata.org/wiki/Q78"^^xsd:anyURI ;
+  js:hasGeonameID "2661604"^^xsd:string .
+
+:Liestal a js:Location ;
+	js:hasGeonameID "2659891"^^xsd:string ;
+	schema:name "Liestal"@de ;
+	js:alternativeName "Liechstal" ;
+	js:hasWikiLink "https://www.wikidata.org/wiki/Q68972"^^xsd:anyURI .
+
+:Waldenburg a js:Location ;
+	js:hasGeonameID "2658071"^^xsd:string ;
+	schema:name "Waldenburg"@de ;
+	js:alternativeName "Wallenburg" ;
+	js:hasWikiLink "https://www.wikidata.org/wiki/Q67092"^^xsd:anyURI .
+
+:Solothurn a js:Location ;
+	js:hasGeonameID "2658564"^^xsd:string ;
+	schema:name "Solothurn"@de ;
+	js:hasWikiLink "https://www.wikidata.org/wiki/Q68965"^^xsd:anyURI .
+
+:Biel a js:Location ;
+	js:hasGeonameID "2661513"^^xsd:string ;
+	schema:name "Biel"@de ;
+	js:hasWikiLink "https://www.wikidata.org/wiki/Q1034"^^xsd:anyURI .
+
+:Avenches a js:Location ;
+	js:hasGeonameID "2661661"^^xsd:string ;
+	schema:name "Avenches"@de ;
+	js:hasWikiLink "https://www.wikidata.org/wiki/Q43236"^^xsd:anyURI .
+
+:Lausanne a js:Location ;
+	js:hasGeonameID "2659994"^^xsd:string ;
+	schema:name "Lausanne"@de ;
+	js:hasWikiLink "https://www.wikidata.org/wiki/Q807"^^xsd:anyURI .
+
+:Coppet a js:Location ;
+	js:hasGeonameID "2661124"^^xsd:string ;
+	schema:name "Coppet"@de ;
+	js:hasWikiLink "https://www.wikidata.org/wiki/Q57097"^^xsd:anyURI .
+
+:Genf a js:Location ;
+  schema:name "Genf"@de ;
+  js:hasGeonameID "2660646"^^xsd:string ;
+  js:hasWikiLink "https://www.wikidata.org/wiki/Q71"^^xsd:anyURI  .
 
 # Data – Reise von Basel nach Genf
 
@@ -32,7 +93,7 @@
 :StageBaselLiestal a js:Journey;
     js:origin :Basel;
     js:destination :Liestal ;
-    js:meanOfTransportation :Horse .
+    js:meanOfTransportation wd:Q726 .
 
 << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageBaselLiestal .
 << << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageBaselLiestal >> js:departureDate "1676-08-20"^^xsd:date.
@@ -65,7 +126,7 @@
 :StageLiestalWaldenburg a js:Journey;
     js:origin :Liestal;
     js:destination :Waldenburg ;
-    js:meanOfTransportation :Horse .
+    js:meanOfTransportation wd:Q726 .
 
 << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageLiestalWaldenburg .
 << << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageLiestalWaldenburg >> js:departureDate "1676-08-21"^^xsd:date.
@@ -91,7 +152,7 @@
 :StageWaldenburgSolothurn a js:Journey;
     js:origin :Waldenburg;
     js:destination :Solothurn ;
-    js:meanOfTransportation :Horse .
+    js:meanOfTransportation wd:Q726 .
 
 << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageWaldenburgSolothurn .
 << << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageWaldenburgSolothurn >> js:departureDate "1676-08-22"^^xsd:date.
@@ -120,7 +181,7 @@
 :StageSolothurnBiel a js:Journey;
     js:origin :Solothurn;
     js:destination :Biel ;
-    js:meanOfTransportation :Horse .
+    js:meanOfTransportation wd:Q726 .
 
 << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageSolothurnBiel .
 << << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageSolothurnBiel >> js:departureDate "1676-08-23"^^xsd:date.
@@ -154,7 +215,7 @@
 :StageBielAvenches a js:Journey;
     js:origin :Biel;
     js:destination :Avenches ;
-    js:meanOfTransportation :Horse .
+    js:meanOfTransportation wd:Q726 .
 
 << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageBielAvenches .
 << << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageBielAvenches >> js:departureDate "1676-08-24"^^xsd:date.
@@ -187,7 +248,7 @@
 :StageAvenchesLausanne a js:Journey;
     js:origin :Avenches;
     js:destination :Lausanne ;
-    js:meanOfTransportation :Horse .
+    js:meanOfTransportation wd:Q726 .
 
 << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageAvenchesLausanne .
 << << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageAvenchesLausanne >> js:departureDate "1676-08-25"^^xsd:date.
@@ -235,7 +296,7 @@
 :StageLausanneCoppet a js:Journey;
     js:origin :Lausanne;
     js:destination :Coppet ;
-    js:meanOfTransportation :Horse .
+    js:meanOfTransportation wd:Q726 .
 
 << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageLausanneCoppet .
 << << :JourneyBaselGenf js:hasParticipant :JacobBernoulli >> js:hasStage :StageLausanneCoppet >> js:departureDate "1676-08-26"^^xsd:date.
@@ -276,7 +337,7 @@
 :StageCoppetGenf a js:Journey;
     js:origin :Coppet;
     js:destination :Genf ;
-    js:meanOfTransportation :Horse .
+    js:meanOfTransportation wd:Q726 .
 
 # AK: check dates >> inconsistencies departure arrival
 << :StageCoppetGenf js:origin :Coppet >> js:departureDate "1676-08-27"^^xsd:date .
