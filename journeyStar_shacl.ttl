@@ -85,6 +85,10 @@ js-shacl:LocationShape a sh:NodeShape  ;
         sh:languageIn ("en" "de" "fr" "es") ;
     ] ,
     [
+        sh:path js:alternativeName ;
+        sh:minCount 0 ;
+    ] ,
+    [
         sh:path js:hasWikiLink ;
         sh:maxCount 1 ;
         sh:datatype xsd:anyURI ;
@@ -255,6 +259,7 @@ js-shacl:DiningShape a sh:NodeShape;
     [
         sh:path js:mealType;
         sh:datatype xsd:string;
+        sh:in ( "Breakfast" "Lunch" "Dinner" "Snack" ) ;
     ],
     [
         sh:path js:cuisine ;
