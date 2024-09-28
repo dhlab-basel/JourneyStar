@@ -77,7 +77,7 @@ has super class:
 is domain of:
       js:hasGeonameID  (max cardinality 1, range: xsd:string)
       js:hasWikiLink   (max cardinality 1, range: IRI or xsd:anyURI)
-      schema:name      (range: xsd:string, permitted language tags "en", "de", "fr", "es")
+      schema:name      (min cardinality 1, range: xsd:string, permitted language tags "en", "de", "fr", "es")
 
 Corresponding SHACL node shape:
       js-shacl:LocationShape
@@ -100,11 +100,11 @@ is domain of:
       schema:name        (min cardinality 1, range: xsd:string)
       schema:givenName   (range: xsd:string)
       schema:familyName  (range: xsd:string)
-      schema:gender      (restricted to schema:Male, schema:Female, and xsd:string)
-      schema:birthDate   (max cardinality 1, range: xsd:date)
+      schema:gender      (range: xsd:string or schema:Male, schema:Female)
+      schema:birthDate   (max cardinality 1, range: xsd:date, xsd:dateTime, xsd:gYear)
       schema:birthPlace  (max cardinality 1, range: IRI)
-      schema:knows       (range js:Person, js:Location)  
-      js:participatedIn  (range js:Event)
+      schema:knows       (range: js:Person, js:Location)  
+      js:participatedIn  (range: js:Event)
       js:hasGnd          (max cardinality 1, range: xsd:string)
       js:hasWikiLink     (max cardinality 1, range: IRI or xsd:anyURI)
 
@@ -127,7 +127,7 @@ spatiotemporal data and participants. An event can be an activity such as a jour
 IRI: <http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#Event>
 
 is domain of:
-      js:hasParticipant  (range IRI)
+      js:hasParticipant  (range: IRI)
       js:hasLocation     (range: xsd:string, js:Location, xsd:anyURI, IRI)
       js:hasDate         (range: xsd:date, xsd:dateTime)
 
