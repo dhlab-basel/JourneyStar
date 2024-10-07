@@ -138,7 +138,7 @@ js-shacl:AccommodationShape a sh:NodeShape ;
         sh:datatype xsd:string ;
     ] ,
     [
-        sh:path schema:adress ;
+        sh:path schema:address ;
         sh:datatype xsd:string ;
     ] ,
     [
@@ -232,6 +232,15 @@ js-shacl:JourneyShape a sh:NodeShape;
     [
         sh:path js:hasActivity ;
         sh:node js-shacl:ActivityShape ;
+    ] ,
+    [
+        sh:path js:meanOfTransportation ;
+        sh:or ([ sh:datatype xsd:anyURI ]
+               [ sh:nodeKind sh:IRI ]) ;
+    ] ,
+    [
+        sh:path js:transitThrough ;
+        sh:node js-shacl:LocationShape ;
     ] .
 
 ### Shape for Class SightSeeing ###
