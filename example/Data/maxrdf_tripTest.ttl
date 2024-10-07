@@ -121,50 +121,50 @@
 ### Journey_2018_03 ###
 ###################
 
-:SofiaM js:hasJourney :Journey_2018_03 .
+:Journey_2018_03 js:hasParticipant :SofiaM .
 
 :Journey_2018_03 a js:Journey ;
-    js:hasStartLocation :Zurich;
-    js:hasDestination :Morocco .
+    js:origin :Zurich;
+    js:destination :Morocco .
 
-<< :SofiaM js:hasJourney :Journey_2018_03 >> js:hasStartDate "2018-03-10"^^xsd:date .
-<< :SofiaM js:hasJourney :Journey_2018_03 >> js:hasEndDate "2018-03-22"^^xsd:date.
+<< :Journey_2018_03 js:hasParticipant :SofiaM >> js:departureDate "2018-03-10"^^xsd:date .
+<< :Journey_2018_03 js:hasParticipant :SofiaM >> js:arrivalDate "2018-03-22"^^xsd:date.
 
-<< :Journey_2018_03 js:hasStartLocation :Zurich >> js:hasDeparture "2018-03-10T08:00:00"^^xsd:dateTime .
-<< :Journey_2018_03 js:hasStartDestination :Morocco >> js:hasArrival "2018-03-14T14:00:00"^^xsd:dateTime .
+<< :Journey_2018_03 js:origin :Zurich >> js:departureDate "2018-03-10T08:00:00"^^xsd:dateTime .
+<< :Journey_2018_03 js:hasStartDestination :Morocco >> js:arrivalDate "2018-03-14T14:00:00"^^xsd:dateTime .
 
 
 ### Sub Journey to Barcelona #####
 ##################################
-<< :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Barcelona .
+<< :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Barcelona .
 
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Barcelona >> js:hasStartLocation :Zurich.
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Barcelona >> js:origin :Zurich.
 
-<< << << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Barcelona >> js:hasStartLocation :Zurich >> js:hasDeparture "2018-03-10T08:00:00"^^xsd:dateTime.
+<< << << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Barcelona >> js:origin :Zurich >> js:departureDate "2018-03-10T08:00:00"^^xsd:dateTime.
 
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Barcelona >> js:meanOfTransportation dbr:Train.
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Barcelona >> js:meanOfTransportation dbr:Train.
 
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Barcelona >> js:hasTransitFrom :Paris .
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Barcelona >> js:hasTransitFrom :Paris .
 
-<< << << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Barcelona >> js:meanOfTransportation dbr:Train >> js:hasCost 120.
+<< << << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Barcelona >> js:meanOfTransportation dbr:Train >> js:hasCost 120.
 
-<< << << << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Barcelona >> js:meanOfTransportation dbr:Train >> js:hasCost 120 >> js:hasCurrency currency:Euro.
+<< << << << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Barcelona >> js:meanOfTransportation dbr:Train >> js:hasCost 120 >> js:hasCurrency currency:Euro.
 
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Barcelona >> js:hasArrival "2018-03-10T22:00:00"^^xsd:dateTime .
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Barcelona >> js:arrivalDate "2018-03-10T22:00:00"^^xsd:dateTime .
 
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Barcelona >> js:hasStay :IntStay1 .
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Barcelona >> js:hasStay :IntStay1 .
 
 :IntStay1 a js:Stay ;
           js:hasAccommodation :HotelBarca .
 
 
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Barcelona >> js:hasStay :IntStay1 .
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Barcelona >> js:hasStay :IntStay1 .
 
 << :IntStay1 js:hasAccommodation :HotelBarca >> js:hasCost 240 .
 << << :IntStay1 js:hasAccommodation :HotelBarca >> js:hasCost 240 >> js:hasCurrency currency:Euro .
 
 ##sightseeing activity ##
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Barcelona >> js:hasActivity :SightSeeingSagradaFamilia1.
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Barcelona >> js:hasActivity :SightSeeingSagradaFamilia1.
 
 :SightSeeingSagradaFamilia1 a js:SightSeeing ;
     js:sightingOf dbr:Sagrada_Família;
@@ -180,23 +180,23 @@
 ### Sub Journey to Tangier ###
 #######################################
 
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Tangier >> js:hasStartLocation :Barcelona.
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Tangier >> js:origin :Barcelona.
 
-<< << << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Tangier >> js:hasStartLocation :Barcelona >> js:hasDeparture "2018-03-13T09:00:00"^^xsd:dateTime.
+<< << << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Tangier >> js:origin :Barcelona >> js:departureDate "2018-03-13T09:00:00"^^xsd:dateTime.
 
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Tangier >> js:hasArrival "2018-03-14T14:00:00"^^xsd:dateTime.
-
-
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Tangier >> js:meanOfTransportation dbr:Ferry.
-
-<< << << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Tangier >> js:meanOfTransportation dbr:Ferry>> js:hasCost 150.
-
-<< << << << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Tangier >> js:meanOfTransportation dbr:Ferry>> js:hasCost 150 >> js:hasCurrency currency:Euro.
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Tangier >> js:arrivalDate "2018-03-14T14:00:00"^^xsd:dateTime.
 
 
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Tangier >> js:hasStay :IntStay2 .
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Tangier >> js:meanOfTransportation dbr:Ferry.
 
-<< << << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Tangier >> js:hasStay :IntStay2 >> js:hasAccommodation :AirBnBTangier .
+<< << << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Tangier >> js:meanOfTransportation dbr:Ferry>> js:hasCost 150.
+
+<< << << << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Tangier >> js:meanOfTransportation dbr:Ferry>> js:hasCost 150 >> js:hasCurrency currency:Euro.
+
+
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Tangier >> js:hasStay :IntStay2 .
+
+<< << << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Tangier >> js:hasStay :IntStay2 >> js:hasAccommodation :AirBnBTangier .
 
 :IntStay2 a js:Stay ;
         js:hasAccommodation :AirBnBTangier .
@@ -208,16 +208,16 @@
 ### Sub Journey to Rabat ###
 ############################
 
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Rabat >> js:hasStartLocation :Tangier.
-<< << << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Rabat >> js:hasStartLocation :Tangier >> js:hasDeparture "2018-03-15T08:00:00"^^xsd:dateTime.
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Rabat >> js:hasArrival "2018-03-15T12:00:00"^^xsd:dateTime.
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Rabat >> js:origin :Tangier.
+<< << << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Rabat >> js:origin :Tangier >> js:departureDate "2018-03-15T08:00:00"^^xsd:dateTime.
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Rabat >> js:arrivalDate "2018-03-15T12:00:00"^^xsd:dateTime.
 
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Tangier >> js:meanOfTransportation dbr:Car .
-<< << << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Tangier >> js:meanOfTransportation dbr:Car >> js:hasCost 300.
-<< << << << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Tangier >> js:meanOfTransportation dbr:Car >> js:hasCost 300 >> js:hasCurrency currency:MoroccanDirham .
-<< << << << << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Tangier >> js:meanOfTransportation dbr:Car >> js:hasCost 300 >> js:hasCurrency currency:MoroccanDirham >> js:hasDescription "For Fuel".
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Tangier >> js:meanOfTransportation dbr:Car .
+<< << << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Tangier >> js:meanOfTransportation dbr:Car >> js:hasCost 300.
+<< << << << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Tangier >> js:meanOfTransportation dbr:Car >> js:hasCost 300 >> js:hasCurrency currency:MoroccanDirham .
+<< << << << << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Tangier >> js:meanOfTransportation dbr:Car >> js:hasCost 300 >> js:hasCurrency currency:MoroccanDirham >> js:hasDescription "For Fuel".
 
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Rabat >> js:hasStay :IntStay3 .
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Rabat >> js:hasStay :IntStay3 .
 
 
 :IntStay3 a js:Stay;
@@ -230,15 +230,15 @@
 ### Sub Journey to Marrakech ###
 ###############################
 
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Marrakech >> js:hasStartLocation :Rabat.
-<< << << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Marrakech >> js:hasStartLocation :Rabat >> js:hasDeparture "2018-03-18T09:00:00"^^xsd:dateTime.
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Marrakech >> js:hasArrival "2018-03-18T14:00:00"^^xsd:dateTime.
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Marrakech >> js:origin :Rabat.
+<< << << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Marrakech >> js:origin :Rabat >> js:departureDate "2018-03-18T09:00:00"^^xsd:dateTime.
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Marrakech >> js:arrivalDate "2018-03-18T14:00:00"^^xsd:dateTime.
 
 
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Marrakech >> js:meanOfTransportation dbr:Car.
-<< << << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Marrakech >> js:meanOfTransportation dbr:Car>> js:hasCost 500 .
-<< << << << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Marrakech >> js:meanOfTransportation dbr:Car>> js:hasCost 500 >> js:hasCurrency currency:MoroccanDirham .
-<< << :SofiaM js:hasJourney :Journey_2018_03 >> js:hasIntermediateDestination :Marrakech >> js:hasStay :IntStay4 .
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Marrakech >> js:meanOfTransportation dbr:Car.
+<< << << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Marrakech >> js:meanOfTransportation dbr:Car>> js:hasCost 500 .
+<< << << << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Marrakech >> js:meanOfTransportation dbr:Car>> js:hasCost 500 >> js:hasCurrency currency:MoroccanDirham .
+<< << :Journey_2018_03 js:hasParticipant :SofiaM >> js:hasIntermediateDestination :Marrakech >> js:hasStay :IntStay4 .
 
 :IntStay4 a js:Stay;
     js:hasAccommodation :HotelMarrakech .
@@ -248,11 +248,12 @@
 
 
 ############# Journey Back to Zurich #######
-:SofiaM js:hasJourney :Journey_2018_22 .
+:Journey_2018_22 js:hasParticipant :SofiaM .
+
 
 :Journey_2018_22 a js:Journey ;
-    js:hasDestination :Zurich;
-    js:hasStartLocation :Marrakech .
+    js:destination :Zurich;
+    js:origin :Marrakech .
 
-<< :SofiaM js:hasJourney :Journey_2018_22 >> js:hasDeparture "2018-03-22T10:00:00"^^xsd:dateTime .
-<< :SofiaM js:hasJourney :Journey_2018_22 >> js:hasArrival "2018-03-22T14:00:00"^^xsd:dateTime .
+<< :Journey_2018_22 js:hasParticipant :SofiaM >> js:departureDate "2018-03-22T10:00:00"^^xsd:dateTime .
+<< :Journey_2018_22 js:hasParticipant :SofiaM >> js:arrivalDate "2018-03-22T14:00:00"^^xsd:dateTime .
