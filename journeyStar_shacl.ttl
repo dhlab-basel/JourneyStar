@@ -95,6 +95,12 @@ js-shacl:LocationShape a sh:NodeShape  ;
                 [ sh:nodeKind sh:IRI ]) ;
     ] .
 
+### Shape for Class js:Trip
+#########################################
+js-shacl:TripShape a sh:NodeShape ;
+    sh:targetClass js:Trip .
+
+
 ### Shape for Class js:Journey
 #########################################
 js-shacl:JourneyShape a sh:NodeShape ;
