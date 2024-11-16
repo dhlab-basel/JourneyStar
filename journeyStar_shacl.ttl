@@ -66,7 +66,8 @@ js-shacl:PersonShape a sh:NodeShape  ;
     [
         sh:path js:hasWikiLink ;
         sh:maxCount 1 ;
-        sh:datatype xsd:anyURI ;
+        sh:or ([ sh:datatype xsd:anyURI ]
+                [ sh:nodeKind sh:IRI ]) ;
     ] .
 
 ### Shape for Class js:Location
@@ -103,6 +104,10 @@ js-shacl:TripShape a sh:NodeShape ;
     [
         sh:path js:hasParticipant ;
         sh:nodeKind sh:IRI ;
+    ] ,
+    [
+        sh:path js:hasStay ;
+        sh:node js-shacl:StayShape ;
     ] ,
     [
         sh:path js:origin ;
