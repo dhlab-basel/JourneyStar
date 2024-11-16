@@ -525,7 +525,6 @@ js-shacl:valuePropertyShape
           [ sh:datatype xsd:integer ]) ;
    sh:minExclusive 0 .
 
-
 ### Star-Shape for Property js:certaintyPercentage
 ####################################################
 js-shacl:certaintyPercentagePropertyShape
