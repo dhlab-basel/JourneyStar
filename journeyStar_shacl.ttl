@@ -148,7 +148,6 @@ js-shacl:TripShape a sh:NodeShape ;
         sh:node js-shacl:LocationShape ;
     ] .
 
-
 ### Shape for Class js:Journey
 #########################################
 js-shacl:JourneyShape a sh:NodeShape ;
@@ -161,6 +160,12 @@ js-shacl:JourneyShape a sh:NodeShape ;
     [
         sh:path js:destination ;
         sh:minCount 1 ;
+    ] ,
+    [
+        sh:path js:destination ;
+        sh:disjoint js:origin ;
+        sh:severity sh:Violation ;
+        sh:message "A Journey is specified that the destination and origin are not the same location."@en;
     ] .
 
 ### Shape for Class js:Excursion
