@@ -95,6 +95,59 @@ js-shacl:LocationShape a sh:NodeShape  ;
                 [ sh:nodeKind sh:IRI ]) ;
     ] .
 
+### Shape for Class js:Journey
+#########################################
+js-shacl:JourneyShape a sh:NodeShape ;
+    sh:targetClass js:Journey ;
+    sh:property
+    [
+        sh:path js:hasParticipant ;
+        sh:nodeKind sh:IRI ;
+    ] ,
+    [
+        sh:path js:origin ;
+        sh:minCount 1 ;
+        sh:or ( [ sh:datatype xsd:string ]
+                [ sh:node js-shacl:LocationShape ]
+                [ sh:datatype xsd:anyURI ]
+                [ sh:nodeKind sh:IRI ]) ;
+    ] ,
+    [
+        sh:path js:destination ;
+        sh:minCount 1 ;
+        sh:or ( [ sh:datatype xsd:string ]
+                [ sh:node js-shacl:LocationShape ]
+                [ sh:datatype xsd:anyURI ]
+                [ sh:nodeKind sh:IRI ]) ;
+    ] ,
+    [
+        sh:path js:startDate ;
+        sh:maxCount 1 ;
+        sh:or ( [ sh:datatype xsd:dateTime ]
+                [ sh:datatype xsd:date ]
+                [ sh:datatype xsd:gYear ]) ;
+    ] ,
+    [
+        sh:path js:endDate ;
+        sh:maxCount 1 ;
+        sh:or ( [ sh:datatype xsd:dateTime ]
+                [ sh:datatype xsd:date ]
+                [ sh:datatype xsd:gYear ]) ;
+    ] ,
+    [
+        sh:path js:hasActivity ;
+        sh:node js-shacl:ActivityShape ;
+    ] ,
+    [
+        sh:path js:meanOfTransportation ;
+        sh:or ([ sh:datatype xsd:anyURI ]
+               [ sh:nodeKind sh:IRI ]) ;
+    ] ,
+    [
+        sh:path js:transitThrough ;
+        sh:node js-shacl:LocationShape ;
+    ] .
+
 ### Shape for Class js:Excursion
 #########################################
 js-shacl:ExcursionShape a sh:NodeShape  ;
@@ -192,59 +245,6 @@ js-shacl:ActivityShape a sh:NodeShape ;
         sh:path js:hasCost ;
         sh:maxCount 1;
         sh:datatype xsd:decimal ;
-    ] .
-
-### Shape for Class js:Journey
-#########################################
-js-shacl:JourneyShape a sh:NodeShape ;
-    sh:targetClass js:Journey ;
-    sh:property
-    [
-        sh:path js:hasParticipant ;
-        sh:nodeKind sh:IRI ;
-    ] ,
-    [
-        sh:path js:origin ;
-        sh:minCount 1 ;
-        sh:or ( [ sh:datatype xsd:string ]
-                [ sh:node js-shacl:LocationShape ]
-                [ sh:datatype xsd:anyURI ]
-                [ sh:nodeKind sh:IRI ]) ;
-    ] ,
-    [
-        sh:path js:destination ;
-        sh:minCount 1 ;
-        sh:or ( [ sh:datatype xsd:string ]
-                [ sh:node js-shacl:LocationShape ]
-                [ sh:datatype xsd:anyURI ]
-                [ sh:nodeKind sh:IRI ]) ;
-    ] ,
-    [
-        sh:path js:startDate ;
-        sh:maxCount 1 ;
-        sh:or ( [ sh:datatype xsd:dateTime ]
-                [ sh:datatype xsd:date ]
-                [ sh:datatype xsd:gYear ]) ;
-    ] ,
-    [
-        sh:path js:endDate ;
-        sh:maxCount 1 ;
-        sh:or ( [ sh:datatype xsd:dateTime ]
-                [ sh:datatype xsd:date ]
-                [ sh:datatype xsd:gYear ]) ;
-    ] ,
-    [
-        sh:path js:hasActivity ;
-        sh:node js-shacl:ActivityShape ;
-    ] ,
-    [
-        sh:path js:meanOfTransportation ;
-        sh:or ([ sh:datatype xsd:anyURI ]
-               [ sh:nodeKind sh:IRI ]) ;
-    ] ,
-    [
-        sh:path js:transitThrough ;
-        sh:node js-shacl:LocationShape ;
     ] .
 
 ### Shape for Class js:SightSeeing
