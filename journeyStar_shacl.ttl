@@ -98,13 +98,7 @@ js-shacl:LocationShape a sh:NodeShape  ;
 ### Shape for Class js:Trip
 #########################################
 js-shacl:TripShape a sh:NodeShape ;
-    sh:targetClass js:Trip .
-
-
-### Shape for Class js:Journey
-#########################################
-js-shacl:JourneyShape a sh:NodeShape ;
-    sh:targetClass js:Journey ;
+    sh:targetClass js:Trip ;
     sh:property
     [
         sh:path js:hasParticipant ;
@@ -112,7 +106,7 @@ js-shacl:JourneyShape a sh:NodeShape ;
     ] ,
     [
         sh:path js:origin ;
-        sh:minCount 1 ;
+        sh:maxCount 1 ;
         sh:or ( [ sh:datatype xsd:string ]
                 [ sh:node js-shacl:LocationShape ]
                 [ sh:datatype xsd:anyURI ]
@@ -120,7 +114,7 @@ js-shacl:JourneyShape a sh:NodeShape ;
     ] ,
     [
         sh:path js:destination ;
-        sh:minCount 1 ;
+        sh:maxCount 1 ;
         sh:or ( [ sh:datatype xsd:string ]
                 [ sh:node js-shacl:LocationShape ]
                 [ sh:datatype xsd:anyURI ]
@@ -152,6 +146,21 @@ js-shacl:JourneyShape a sh:NodeShape ;
     [
         sh:path js:transitThrough ;
         sh:node js-shacl:LocationShape ;
+    ] .
+
+
+### Shape for Class js:Journey
+#########################################
+js-shacl:JourneyShape a sh:NodeShape ;
+    sh:targetClass js:Journey ;
+    sh:property
+    [
+        sh:path js:origin ;
+        sh:minCount 1 ;
+    ] ,
+    [
+        sh:path js:destination ;
+        sh:minCount 1 ;
     ] .
 
 ### Shape for Class js:Excursion
