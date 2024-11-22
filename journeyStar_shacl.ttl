@@ -42,8 +42,7 @@ js-shacl:PersonShape a sh:NodeShape  ;
         sh:or ( [ sh:datatype xsd:dateTime ]
                 [ sh:datatype xsd:date ]
                 [ sh:datatype xsd:gYear ]) ;
-    ]
-    ,
+    ] ,
     [
         sh:path schema:birthPlace ;
         sh:maxCount 1 ;
@@ -87,7 +86,7 @@ js-shacl:LocationShape a sh:NodeShape  ;
     ] ,
     [
         sh:path js:alternativeName ;
-        sh:minCount 0 ;
+        sh:datatype xsd:string ;
     ] ,
     [
         sh:path js:hasWikiLink ;
@@ -111,7 +110,6 @@ js-shacl:TripShape a sh:NodeShape ;
     ] ,
     [
         sh:path js:origin ;
-        sh:maxCount 1 ;
         sh:or ( [ sh:datatype xsd:string ]
                 [ sh:node js-shacl:LocationShape ]
                 [ sh:datatype xsd:anyURI ]
@@ -119,7 +117,6 @@ js-shacl:TripShape a sh:NodeShape ;
     ] ,
     [
         sh:path js:destination ;
-        sh:maxCount 1 ;
         sh:or ( [ sh:datatype xsd:string ]
                 [ sh:node js-shacl:LocationShape ]
                 [ sh:datatype xsd:anyURI ]
@@ -127,14 +124,12 @@ js-shacl:TripShape a sh:NodeShape ;
     ] ,
     [
         sh:path js:departureDate ;
-        sh:maxCount 1 ;
         sh:or ( [ sh:datatype xsd:dateTime ]
                 [ sh:datatype xsd:date ]
                 [ sh:datatype xsd:gYear ]) ;
     ] ,
     [
         sh:path js:arrivalDate ;
-        sh:maxCount 1 ;
         sh:or ( [ sh:datatype xsd:dateTime ]
                 [ sh:datatype xsd:date ]
                 [ sh:datatype xsd:gYear ]) ;
@@ -161,10 +156,20 @@ js-shacl:JourneyShape a sh:NodeShape ;
     [
         sh:path js:origin ;
         sh:minCount 1 ;
+        sh:maxCount 1 ;
     ] ,
     [
         sh:path js:destination ;
         sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ,
+    [
+        sh:path js:departureDate ;
+        sh:maxCount 1 ;
+    ] ,
+    [
+        sh:path js:arrivalDate ;
+        sh:maxCount 1 ;
     ] ,
     [
         sh:path js:destination ;
@@ -183,6 +188,14 @@ js-shacl:ExcursionShape a sh:NodeShape  ;
         sh:equals js:origin ;
         sh:severity sh:Violation ;
         sh:message "An excursion is specified by returning back to the location of departure after visiting a different location"@en;
+    ] ,
+    [
+        sh:path js:departureDate ;
+        sh:maxCount 1 ;
+    ] ,
+    [
+        sh:path js:arrivalDate ;
+        sh:maxCount 1 ;
     ] .
 
 ### Shape for Class js:Stay
@@ -223,6 +236,7 @@ js-shacl:AccommodationShape a sh:NodeShape ;
     [
         sh:path schema:address ;
         sh:datatype xsd:string ;
+        sh:maxCount 1 ;
     ] ,
     [
         sh:path js:hasLocation ;
@@ -230,6 +244,7 @@ js-shacl:AccommodationShape a sh:NodeShape ;
                 [ sh:node js-shacl:LocationShape ]
                 [ sh:datatype xsd:anyURI ]
                 [ sh:nodeKind sh:IRI ]) ;
+        sh:maxCount 1 ;
     ] .
 
 ### Shape for Class js:Event
@@ -263,13 +278,13 @@ js-shacl:ActivityShape a sh:NodeShape ;
                 [ sh:nodeKind sh:IRI ]) ;
     ] ,
     [
-        sh:path schema:name;
-        sh:datatype xsd:string;
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
     ] ,
     [
         sh:path js:hasCost ;
-        sh:maxCount 1;
         sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
     ] .
 
 ### Shape for Class js:SightSeeing
@@ -279,10 +294,10 @@ js-shacl:SightSeeingShape a sh:NodeShape ;
     sh:property
     [
         sh:path js:sightingOf ;
-        sh:minCount 1 ;
         sh:or ([ sh:datatype xsd:anyURI ]
                [ sh:nodeKind sh:IRI ]
                [ sh:datatype xsd:string ]) ;
+        sh:minCount 1 ;
     ] .
 
 ### Shape for Class js:Dining
@@ -317,15 +332,14 @@ js-shacl:CurrencyShape a sh:NodeShape ;
     sh:property
     [
         sh:path schema:name ;
-        sh:minCount 1 ;
         sh:datatype xsd:string ;
+        sh:minCount 1 ;
     ] ,
     [
         sh:path js:hasSubunit ;
         sh:or ([ sh:node js-shacl:CurrencyShape ]
                [ sh:nodeKind sh:IRI ]
-               [ sh:datatype xsd:anyURI ]
-               )
+               [ sh:datatype xsd:anyURI ] ) ;
     ] ,
     [
         sh:path js:alternativeName ;
