@@ -190,11 +190,11 @@ js-shacl:ExcursionShape a sh:NodeShape  ;
         sh:message "An excursion is specified by returning back to the location of departure after visiting a different location"@en;
     ] ,
     [
-        sh:path js:departureDate ;
+        sh:path js:startDate ;
         sh:maxCount 1 ;
     ] ,
     [
-        sh:path js:arrivalDate ;
+        sh:path js:endDate ;
         sh:maxCount 1 ;
     ] .
 
