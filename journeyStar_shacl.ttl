@@ -123,13 +123,13 @@ js-shacl:TripShape a sh:NodeShape ;
                 [ sh:nodeKind sh:IRI ]) ;
     ] ,
     [
-        sh:path js:departureDate ;
+        sh:path js:startDate ;
         sh:or ( [ sh:datatype xsd:dateTime ]
                 [ sh:datatype xsd:date ]
                 [ sh:datatype xsd:gYear ]) ;
     ] ,
     [
-        sh:path js:arrivalDate ;
+        sh:path js:endDate ;
         sh:or ( [ sh:datatype xsd:dateTime ]
                 [ sh:datatype xsd:date ]
                 [ sh:datatype xsd:gYear ]) ;
@@ -164,11 +164,11 @@ js-shacl:JourneyShape a sh:NodeShape ;
         sh:maxCount 1 ;
     ] ,
     [
-        sh:path js:departureDate ;
+        sh:path js:startDate ;
         sh:maxCount 1 ;
     ] ,
     [
-        sh:path js:arrivalDate ;
+        sh:path js:endDate ;
         sh:maxCount 1 ;
     ] ,
     [
@@ -253,6 +253,12 @@ js-shacl:EventShape a sh:NodeShape ;
     sh:targetClass js:Event ;
     sh:property
     [
+        sh:path js:hasParticipant ;
+        sh:or ( [ sh:node js-shacl:PersonShape ]
+                [ sh:datatype xsd:anyURI ]
+                [ sh:nodeKind sh:IRI ]) ;
+    ] ,
+    [
         sh:path js:hasLocation ;
         sh:or ( [ sh:datatype xsd:string ]
                 [ sh:node js-shacl:LocationShape ]
@@ -271,12 +277,6 @@ js-shacl:EventShape a sh:NodeShape ;
 js-shacl:ActivityShape a sh:NodeShape ;
     sh:targetClass js:Activity ;
     sh:property
-    [
-        sh:path js:hasParticipant ;
-        sh:or ( [ sh:node js-shacl:PersonShape ]
-                [ sh:datatype xsd:anyURI ]
-                [ sh:nodeKind sh:IRI ]) ;
-    ] ,
     [
         sh:path schema:name ;
         sh:datatype xsd:string ;
