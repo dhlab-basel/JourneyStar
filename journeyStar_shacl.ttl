@@ -287,6 +287,20 @@ js-shacl:ActivityShape a sh:NodeShape ;
         sh:maxCount 1 ;
     ] .
 
+### Shape for Class js:Event
+#########################################
+js-shacl:NaturalPhenomenaShape a sh:NodeShape ;
+    sh:targetClass js:NaturalPhenomena ;
+    sh:property
+    [
+        sh:path js:hasLocation ;
+        sh:minCount 1 ;
+    ] ,
+    [
+        sh:path js:hasDate ;
+        sh:minCount 1 ;
+    ] .
+
 ### Shape for Class js:SightSeeing
 #########################################
 js-shacl:SightSeeingShape a sh:NodeShape ;
