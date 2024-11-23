@@ -145,7 +145,10 @@ js-shacl:TripShape a sh:NodeShape ;
     ] ,
     [
         sh:path js:transitThrough ;
-        sh:node js-shacl:LocationShape ;
+        sh:or ( [ sh:datatype xsd:string ]
+                [ sh:node js-shacl:LocationShape ]
+                [ sh:datatype xsd:anyURI ]
+                [ sh:nodeKind sh:IRI ]) ;
     ] .
 
 ### Shape for Class js:Journey
@@ -391,17 +394,20 @@ js-shacl:hasDescriptionPropertyShape
 js-shacl:originPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:origin ;
-    	sh:or ([ sh:node js-shacl:LocationShape ]
-    	       [ sh:nodeKind sh:IRI ]) .
+      sh:or ( [ sh:datatype xsd:string ]
+              [ sh:node js-shacl:LocationShape ]
+              [ sh:datatype xsd:anyURI ]
+              [ sh:nodeKind sh:IRI ]) .
 
 ### Star-Shape for Property js:destination
 ####################################################
 js-shacl:destinationPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:destination ;
-    	sh:or ([ sh:node js-shacl:LocationShape ]
-             [ sh:datatype xsd:anyURI ]
-    	       [ sh:nodeKind sh:IRI ]) .
+      sh:or ( [ sh:datatype xsd:string ]
+              [ sh:node js-shacl:LocationShape ]
+              [ sh:datatype xsd:anyURI ]
+              [ sh:nodeKind sh:IRI ]) .
 
 ### Star-Shape for Property js:arrivalDate
 ####################################################
@@ -444,18 +450,19 @@ js-shacl:endDatePropertyShape
 js-shacl:meanOfTransportationShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:meanOfTransportation ;
-        sh:or ([ sh:datatype xsd:anyURI ]
-               [ sh:nodeKind sh:IRI ]
-               [ sh:datatype xsd:string ]) .
+      sh:or ([ sh:datatype xsd:anyURI ]
+             [ sh:nodeKind sh:IRI ]
+             [ sh:datatype xsd:string ]) .
 
 ### Star-Shape for Property js:hasIntermediateDestination
 ####################################################
 js-shacl:hasIntermediateDestinationPropertyShape
     	a sh:NodeShape ;
     	sh:targetObjectsOf js:hasIntermediateDestination ;
-    	sh:or ([ sh:node js-shacl:LocationShape ]
-             [ sh:nodeKind sh:IRI ]
-             [ sh:datatype xsd:anyURI ]) .
+      sh:or ( [ sh:datatype xsd:string ]
+              [ sh:node js-shacl:LocationShape ]
+              [ sh:datatype xsd:anyURI ]
+              [ sh:nodeKind sh:IRI ]) .
 
 ### Star-Shape for Property js:hasParticipant
 ####################################################
@@ -499,9 +506,10 @@ js-shacl:hasOccurrencePropertyShape
 js-shacl:TransitPropertyShape
     a sh:NodeShape ;
     sh:targetObjectsOf js:transitThrough ;
-    sh:or ([ sh:node js-shacl:LocationShape ]
-           [ sh:nodeKind sh:IRI ]
-           [ sh:datatype xsd:anyURI ]) .
+    sh:or ( [ sh:datatype xsd:string ]
+            [ sh:node js-shacl:LocationShape ]
+            [ sh:datatype xsd:anyURI ]
+            [ sh:nodeKind sh:IRI ]) .
 
 ### Star-Shape for Property js:hasCost
 ####################################################
