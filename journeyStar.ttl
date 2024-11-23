@@ -191,6 +191,7 @@ js:hasDate rdf:type owl:DatatypeProperty ;
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#startDate
 js:startDate rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf js:hasDate ;
         rdfs:label "Startdatum"@de ,
                    "Start date"@en ;
         rdfs:comment "The start of an activity."@en .
@@ -198,6 +199,7 @@ js:startDate rdf:type owl:DatatypeProperty ;
 
 ### http://journey-star.dhlab.unibas.ch/ontology/JourneyStar#endDate
 js:endDate rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf js:hasDate ;
         rdfs:label "Enddatum"@de ,
                    "has end date"@en ;
         rdfs:comment "The end of an activity."@en .
