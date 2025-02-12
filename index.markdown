@@ -84,7 +84,7 @@ Corresponding SHACL node shape:
 ```
 Below, you can see an example RDF representation of a location:
 
-![Location Representation](docs/images/location_example.png)
+![Location Representation](docs/images/Location.png)
 
 ***
 ## Person
@@ -114,7 +114,7 @@ Corresponding SHACL node shape:
 
 Below, you can see an example of an RDF representation of a person:
 
-![Person Representation](docs/images/person_example.png)
+![Person Representation](docs/images/Person.png)
 
 ***
 ## Event
@@ -141,6 +141,7 @@ There are various classes that are defined as subclass of the `js:Event` each wi
 - `js:Occurrence` with properties to describe an occurrence.
 - `js:NaturalPhenomena` representing a natural phenomena.
 
+![Event Representation](docs/images/Event.png)
 
 ***
 ## Activity
@@ -165,6 +166,9 @@ There are various classes that are defined as subclass of the `js:Activity` each
 - `js:Entertainment` that has predicates to describe entertainment activities.
 - `js:Trip` representing a movement from one place to another.
 
+
+![Activity Representation](docs/images/Activity.png)
+
 ***
 ## Dining
 The `js:Dining` is a general OWL class describing the act of dining during a journey.
@@ -182,9 +186,8 @@ Corresponding SHACL node shape:
       js-shacl:DiningShape
 ```
 
-<!-- Below, you can see an example of an RDF representation of a dining activity: -->
 
-<!-- ![Dining Representation](images/activity.png) -->
+![Dining Representation](docs/images/Dining.png)
 
 ***
 ## SightSeeing
@@ -202,6 +205,9 @@ Corresponding SHACL node shape:
       js-shacl:SightSeeingShape
 ```
 
+![SightSeeing Representation](docs/images/SightSeeing.png)
+
+
 ***
 ## Entertainment
 The `js:Entertainment` is a general OWL class describing entertainment.
@@ -217,6 +223,9 @@ is domain of:
 Corresponding SHACL node shape:
       js-shacl:EntertainmentShape
 ```
+
+![Entertainment Representation](docs/images/Entertainment.png)
+
 
 ***
 ## Journey
@@ -252,7 +261,8 @@ time the person left location A (departure date) and the time, person arrives to
 These meta-level information can be added to the edges of the graph representing
 the origin and destination, respectively through predicates `js:arrivalDate` and `js:departureDate`.
 
-<!-- ![Alt text](ontology_graphs/journey.png) -->
+
+![Journey Representation](docs/images/Journey.png)
 
 _**Note:** The predicates of the star (annotated) triples, such as `js:arrivalDate` and `js:departureDate`, do not have domain restriction, and can be used with subjects of any type, even a triple!_
 
@@ -274,6 +284,8 @@ Corresponding SHACL node shape:
       js-shacl:ExcursionShape
 ```
 
+![Excursion Representation](docs/images/Excursion.png)
+
 ***
 ## Accommodation
 The class `js:Accommodation` represents an accommodation. It can be any kind of
@@ -294,6 +306,8 @@ is domain of:
 Corresponding SHACL node shape:
       js-shacl:AccommodationShape
 ```
+
+![Accommodation Representation](docs/images/Accommodation.png)
 
 ***
 ## Stay
@@ -319,5 +333,4 @@ Additionally, the currency type can be added to the edge representing `js:hasCos
  the currency of the amount is also stored with it. The currency types can be
  found in the [currency data graph](https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/).
 
-<!-- Below, you can see an example of the RDF-star representation of a stay:
-![Stay Representation](images/stay_example.png) -->
+![Stay Representation](docs/images/Stay.png)
